@@ -1,0 +1,142 @@
+<link href='/static/crm/css/system/schedule.css' rel='stylesheet' />
+<div id="content" class="col-lg-10 col-sm-10">
+<!-- content starts -->
+<div class="row-fluid sortable">
+	<div class="box col-md-12">
+		<div class="box-inner">
+			<div class="box-header well" data-original-title>
+				<h2>潜客管理</h2>
+			</div>
+			<div class="box-content visitor">
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="v-mobile">潜客手机</th>
+						    <th class="v-come">来源</th>
+							<th class="v-date">报名时间</th>
+							<th class="v-level">意向等级</th>
+                            <th class="v-time">回访时间</th>
+                            <th class="v-action">操作</th>
+						</tr>
+					</thead>
+
+					<tbody>
+		            <?py if page_data:?>
+		                <?py for s in page_data.result:?>
+						<tr>
+							<input type="hidden" value="${s.Fid}"/>
+							<td class="v-mobile">${s.Fpotential_customer_phone}</td>
+							<td class="v-come">${s.Fshare_name}</td>
+							<td class="v-date">${s.Fcreate_time}</td>
+							<td class="v-level">${s.Fintention}</td>
+							<td class="v-time">${s.Fmodify_time}</td>
+							<td class="v-action">
+                                <a class="btn btn-primary btn-sm" href="javascript:add_visit_info(${s.Fid})">添加回访</a>
+
+								<a href="javascript:get_visit_info(${s.Fid})" class="btn btn-primary btn-sm">查看回访</a>
+							</td>
+						</tr>
+		                <?py #endfor ?>
+		                <?py #endif?>
+					</tbody>
+                    #{page_html}
+				</table>
+			</div>
+		</div><!--/span-->
+	</div>
+</div><!--/row-->
+</div><!--/#content.span10-->
+</div><!--/fluid-row-->
+</div><!--/.fluid-container-->
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="ModalLabel">回访数据</h4>
+        </div>
+            <div class="modal-body" id="potential_customer_visitor">
+
+            </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="add_visits_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="ModalLabel">添加回访数据</h4>
+        </div>
+            <div class="modal-body" id="add_visitor_info">
+                     <form id="set_visits_form">
+                                <div class="series-extra">
+                                        <div class="form-group">
+                                            <input type="hidden" value="" id="potential_customer_id" name="potential_customer_id">
+                                            <label>意向选择</label>
+                                            <label class="radio-inline">
+                                                    <input type="radio" value="1" name="is_access">未接通
+                                            </label>
+                                            <label class="radio-inline">
+                                                    <input type="radio" value="2" name="is_access">有意向
+                                            </label>
+                                             <label class="radio-inline">
+                                                    <input type="radio" value="3" name="is_access">无意向
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="v-top">备注</label>
+                                            <textarea cols="3" class="form-control" name="remark"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>回访人</label>
+                                            <input type="text" value="" class="form-control" name="visitor_user">
+                                        </div>
+                                    </div>
+                          #{xsrf_form_html}
+                     </form>
+            </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="add_visits_btn">提交</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script language="Javascript">
+
+    function get_visit_info(id){
+
+         $.get('/merchant/potential_customer/visits/'+id+'/',{},function(data){
+                $('#potential_customer_visitor').html(data);
+                $('#myModal').modal();
+            })
+    }
+    function add_visit_info(id){
+          $('#potential_customer_id').val(id);
+          $('#add_visits_modal').modal();
+
+    }
+
+$(document).ready(function()
+{
+    $('#add_visits_btn').click(function(){
+            $('#add_visits_modal').modal('hide');
+            $.post('/merchant/create/visits/',$('#set_visits_form').serialize(),function(data){
+                   var obj = $.parseJSON(data);
+                   if(obj.stat=='ok')
+                        show_dialog_none_reload('添加回访','添加回访成功');
+                   else
+                        show_dialog_none_reload('添加回访',obj.info);
+            })
+    })
+
+});
+
+
+</script>

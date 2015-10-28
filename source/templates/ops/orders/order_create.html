@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- The styles -->
+	<link rel="stylesheet" href="/static/web/js/plugins/dataTime/jquery.datetimepicker.css" />
+	<link href='/static/web/css/order/order.css' rel='stylesheet' />
+	<script src="/static/web/js/plugins/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<?py include('ops/orders/order_companys_base.html') ?>
+
+<div class="col-md-10">
+    <div class="panel">
+        <div class="panel-heading"><strong><i class="icon-globe"></i>添加订单</strong></div>
+        <div class="panel-body order-infos">
+            <form class="form-inline" action="" id="user_ajax_form" method="post">
+                <table class="table table-form">
+                    <tbody>
+                    <tr>
+                        <th class="col-xs-2">订单类型</th>
+                        <td>
+                            <label class="radio-inline">
+                                <input type="radio" name="type" id="radio1" class="type-bdrde" value="1" checked>婚纱
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="type" id="radio2" class="type-other" value="3">孕妇
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="type" id="radio3" class="type-other" value="4">亲子
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="type" id="radio4" class="type-other" value="2">写真
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="type" id="radio5" class="type-other" value="0">其他
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-xs-2 customer-name">新娘</th>
+                        <td class="col-xs-6">
+                            <input type="text"  class="form-control" value="" id="user_name" />
+                            <span class="text-error red" for="title" ></span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th class="col-xs-2 customer-mobi">新娘手机号</th>
+                        <td class="col-xs-6"><input type="text" class="form-control" value="" id="user_mobi"/>
+                             <span class="text-error red" for="title" ></span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th class="col-xs-2 customer-birth">新娘生日</th>
+                        <td class="col-xs-6"><input type="text" class="form-control datatime" value="" id="user_birth"/>
+                             <span class="text-error red" for="title" ></span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr class="bride">
+                        <th class="col-xs-2">新郎</th>
+                        <td class="col-xs-6"><input type="text" class="form-control" value="" id="user_name_ex"/>
+                             <span class="text-error red" for="title" ></span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr class="bride">
+                        <th class="col-xs-2">新郎手机号</th>
+                        <td class="col-xs-6"><input type="text" class="form-control" value="" id="user_mobi_ex"/>
+                             <span class="text-error red" for="title" ></span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr class="bride">
+                        <th class="col-xs-2">新郎生日</th>
+                        <td class="col-xs-6"><input type="text" class="form-control datatime" value="" id="user_birth_ex"/>
+                             <span class="text-error red" for="title" ></span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th class="col-xs-2">订单号</th>
+                        <td class="col-xs-6"><input type="text" class="form-control" value="" id="order_num"/>
+                             <span class="text-error red" for="title" ></span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th class="col-xs-2">订单金额</th>
+                        <td class="col-xs-6"><input type="text" class="form-control" value="" id="order_amount"/>
+                             <span class="text-error red" for="title" ></span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th class="col-xs-2">接单人:</th>
+                        <td>
+                            <select id="order_stf">
+                                <?py for staffer in staffers: ?>
+                                    <option value="${staffer.Fid}">${staffer.Fname}</option>
+                                <?py #endfor?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-xs-2">备注</th>
+                        <td class="col-xs-6">
+                           <textarea class="form-control" rows="3" id="order_comment" placeholder="请填写您的需求"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td colspan="2">
+                            #{xsrf_form_html}
+                        <input type="button" data-loading="稍候..." value="保存" class="btn btn-primary" id="user_submit"></td>
+                    </tr>
+                        <input type="hidden" id="user_id" value="${user_id}" />
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/static/web/js/plugins/bootstrap.min.js"></script>
+<script src="/static/web/js/plugins/jquery.cookie.js"></script>
+<script src="/static/web/js/plugins/responsive-tables.js"></script>
+<script src="/static/web/js/plugins/jquery.autogrow-textarea.js"></script>
+<script src="/static/web/js/plugins/jquery.history.js"></script>
+<script src="/static/web/js/plugins/dataTime/jquery.datetimepicker.js" ></script>
+<script src="/static/web/js/common.js"></script>
+<!--gzh func js-->
+
+</body>
+<script language="Javascript">
+    $(".order-infos .datatime").datetimepicker({
+		timepicker:false,
+		format:'Y-m-d'
+	});
+
+	$(".type-bdrde").click(function(){
+		$(".bride").show();
+        $(".customer-name").empty().html('新娘');
+        $(".customer-mobi").empty().html('新娘手机号');
+        $(".customer-birth").empty().html('新娘生日');
+	});
+
+	$(".type-other").click(function(){
+		$(".bride").hide();
+        $(".customer-name").empty().html('客户姓名');
+        $(".customer-mobi").empty().html('客户手机');
+        $(".customer-birth").empty().html('客户生日');
+	});
+
+    $('#user_submit').click(function(){
+        var _user_id = $('#user_id').val();
+        var _order_type = $('input[name="type"]:checked').val();
+        var _user_name = $("#user_name").val();
+        var _user_mobi = $("#user_mobi").val();
+		var _user_birth = $("#user_birth").val();
+		var _user_name_ex = $("#user_name_ex").val();
+		var _user_mobi_ex = $("#user_mobi_ex").val();
+		var _user_bitrh_ex = $("#user_birth_ex").val();
+		var _order_num = $("#order_num").val();
+		var _order_amount = $("#order_amount").val();
+		var _user_stf = $("#order_stf option:selected").val();
+		var _order_desc = $("#order_comment").val();
+        var _xsrf = "#{xsrf_token}";
+
+        $.ajax({
+            type:"post",
+            url:"/gzh/ops/create/order/"+_user_id,
+            data:{
+                order_type:_order_type,
+                bride_name:_user_name,
+                bride_mobi:_user_mobi,
+                bride_birth:_user_birth,
+                groom_name:_user_name_ex,
+                groom_mobi:_user_mobi_ex,
+                groom_birth:_user_bitrh_ex,
+                operation_order_id:_order_num,
+                order_price:_order_amount,
+                staffer:_user_stf,
+                comment:_order_desc,
+                _xsrf:_xsrf,
+            },
+            success:function(data){
+                var obj = $.parseJSON(data);
+                if(obj.stat == "success"){
+                    alert('创建订单成功');
+                    location.href = "/gzh/ops/company/orders/list";
+                }else{
+
+                }
+            },
+            error: function(){
+
+			}
+        });
+    });
+
+</script>
+</html>

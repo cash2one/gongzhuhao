@@ -1,0 +1,124 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>照片分享</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="../../styles/ionic.css" />
+        <link rel="stylesheet" href="../../styles/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../styles/iconfont.css" />
+        <link rel="stylesheet" type="text/css" href="../../styles/work/work.css" />
+        <style type="text/css">
+        body{
+          font-size: 9px;
+        }
+        header .title{
+          font-size: 1.6em;
+        }
+        .content ul li+li{
+          border-top:1px solid #e5e5e5;
+        }
+        .work-container .media-left .img-circle{
+          width:80px;
+          height:80px;
+        }
+        .work-container .content .media {
+          margin-top: 0px;
+          padding: 15px 10px;
+        }
+        .media .title{
+          font-size: 1.5em;
+          color:#ff6577;
+          line-height: 1;
+          margin-top: 0px;
+          margin-bottom: 6px;
+        }
+        .media .content{
+          font-size: 1.5em;
+          color:#666;
+          line-height: 1.5;
+        }
+        .media .time{
+          color:#999;
+          font-size: 1.25em;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="work-container">
+          <header class="bar bar-header bar-light">
+              <button class="button back-button buttons  button-clear header-item" onclick="javascript:history.go(-1)">
+                  <i class="icon ion-ios-arrow-back"></i>
+                  <span class="back-text">
+                      <span class="default-title hide">返回</span>
+                  </span>
+              </button>
+              <div class="title title-center header-item">评论</div>
+          </header>
+          <div class="content padding">
+            <ul>
+              <li class="media">
+                  <div class="media-left">
+                    <img class="media-object img-circle" src="http://img.gongzhuhao.com/3/161232WAx2919203372370389.jpg" alt="" />
+                  </div>
+                  <div class="media-body">
+                    <h4 class="title">失忆早晨</h4>
+                    <p class="content">答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝</p>
+                    <span class="time">昨天</span>
+                  </div>
+              </li>
+              <li class="media">
+                  <div class="media-left">
+                    <img class="media-object img-circle" src="http://img.gongzhuhao.com/3/161232WAx2919203372370389.jpg" alt="" />
+                  </div>
+                  <div class="media-body">
+                    <h4 class="title">失忆早晨</h4>
+                    <p class="content">答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝</p>
+                    <span class="time">昨天</span>
+                  </div>
+              </li>
+              <li class="media">
+                  <div class="media-left">
+                    <img class="media-object img-circle" src="http://img.gongzhuhao.com/3/161232WAx2919203372370389.jpg" alt="" />
+                  </div>
+                  <div class="media-body">
+                    <h4 class="title">失忆早晨</h4>
+                    <p class="content">答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝</p>
+                    <span class="time">昨天</span>
+                  </div>
+              </li>
+              <li class="media">
+                  <div class="media-left">
+                    <img class="media-object img-circle" src="http://img.gongzhuhao.com/3/161232WAx2919203372370389.jpg" alt="" />
+                  </div>
+                  <div class="media-body">
+                    <h4 class="title">失忆早晨</h4>
+                    <p class="content">答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝</p>
+                    <span class="time">昨天</span>
+                  </div>
+              </li>
+              <li class="media">
+                  <div class="media-left">
+                    <img class="media-object img-circle" src="http://img.gongzhuhao.com/3/161232WAx2919203372370389.jpg" alt="" />
+                  </div>
+                  <div class="media-body">
+                    <h4 class="title">失忆早晨</h4>
+                    <p class="content">答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝答案出人意料却又在情理之中，解法优雅精巧令人拍案叫绝</p>
+                    <span class="time">昨天</span>
+                  </div>
+              </li>
+            </ul>
+          </div>
+          <?py if has_next: ?>
+            <div class="list">
+                <input type="hidden" value="${price}" id="price" />
+                <button type="button" class="btn btn-more"> 点击获取更多数据>></button>
+            </div>
+          <?py #endif ?>
+        </div>
+    </body>
+</html>
+

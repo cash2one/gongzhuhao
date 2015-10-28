@@ -1,0 +1,15 @@
+<ion-view view-title="我的相册">
+  <ion-content class="photo">
+  	<div ng-repeat="item in model.photos.list"class="list card photo-list">
+  	<a href="#/photolist/{{item.id}}">
+	  <div class="item item-image">
+	    <img class="full-image" style="padding:5px;height:200px;" src="{{item.album_cover_url}}">
+	  </div>
+  	  <a class="item assertive" href="#/photolist/{{item.id}}">
+	    <h2>{{item.album_name}}</h2>
+	    <p>{{item.create_time}}</p>
+	  </a>
+	  </a>
+  </div>
+  </ion-content>
+</ion-view>

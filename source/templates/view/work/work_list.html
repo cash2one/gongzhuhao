@@ -1,0 +1,205 @@
+<link rel="stylesheet" href="/static/skin/css/merchant.css"/>
+<link rel="stylesheet" type="text/css" href="/static/skin/css/less.css">
+<style type="text/css">
+    * {
+          box-sizing: border-box;
+    }
+    body{
+        background-color:#fff !important;
+        font-size: 16px;
+    }
+</style>
+<article class="gzh-main">
+        <ul class="gzh-tab"><!-- 列表 Start -->
+            <li><a href="/api/packages/">套系列表</a></li>
+            <li><a href="/api/merchant/list/">商家列表</a></li>
+            <li class="gzh-active"><a href="/api/products/">作品列表</a></li>
+        </ul><!-- 列表 End -->
+
+        <!-- 筛选 start -->
+        <div class="gm-filter-works gzh-list--list1 gzh-list--list2">
+            <?py if type == '' or type == 'wedding': ?>
+                <a href="/api/products/" class="current">婚纱摄影</a>
+                <span class="gm-vline">|</span>
+                <a href="/api/products/?product_type=traveling">旅游摄影</a>
+            <?py else: ?>
+                <a href="/api/products/">婚纱摄影</a>
+                <span class="gm-vline">|</span>
+                <a href="/api/products/?product_type=traveling" class="current">旅游摄影</a>
+            <?py #endif ?>
+        </div>
+        <!-- 筛选 end -->
+
+    <?py if type == 'wedding' or type == '': ?>
+        <div class="gzh-list gzh-list--list1">
+            <div class="gzh-list-left"><i class="iconfont gzh-star"></i>风格</div>
+            <?py if work_style == '': ?>
+                <div class="gzh-list-center gzh-active"><span>全部</span></div>
+            <?py else: ?>
+                <div class="gzh-list-center"><a href="/api/products/?scene=${work_scene}&mode_style=${mode_style}&order=${order}">全部</a></div>
+            <?py #endif ?>
+            <ul class="gzh-list-right">
+            <?py for style in query_style: ?>
+                <?py if work_style == style: ?>
+                    <li class="gzh-active"><span>${query_style[style]}</span></li>
+                <?py else: ?>
+                    <li><a href="/api/products/?style=${style}&scene=${work_scene}&mode_style=${mode_style}&order=${order}">${query_style[style]}</a></li>
+                <?py #endif ?>
+
+            <?py #endfor ?>
+            </ul>
+        </div><!--风格 End-->
+
+        <div class="gzh-list"><!--场景 Start -->
+            <div class="gzh-list-left"><i class="iconfont gzh-scene"></i>场景</div>
+            <?py if work_scene == '': ?>
+                <div class="gzh-list-center gzh-active"><span>全部</span></div>
+            <?py else: ?>
+                <div class="gzh-list-center"><a href="/api/products/?style=${work_style}&mode_style=${mode_style}&order=${order}">全部</a></div>
+            <?py #endif ?>
+
+            <ul class="gzh-list-right">
+            <?py for scene in query_scene_wedding: ?>
+                <?py if scene == work_scene: ?>
+                    <li class="gzh-active"><span>${query_scene_wedding[scene]}</span></li>
+                <?py else: ?>
+                    <li><a href="/api/products/?scene=${scene}&style=${work_style}&mode_style=${mode_style}&order=${order}">${query_scene_wedding[scene]}</a></li>
+                <?py #endif ?>
+            <?py #endfor ?>
+            </ul>
+        </div><!--场景 End-->
+    <?py elif type == 'traveling': ?>
+        <div class="gzh-list gzh-list--list1">
+            <div class="gzh-list-left"><i class="iconfont gzh-adress_2"></i>拍摄地</div>
+            <?py if shot_space == '': ?>
+                <div class="gzh-list-center gzh-active"><span>全部</span></div>
+            <?py else: ?>
+                <div class="gzh-list-center"><a href="/api/products/?product_type=traveling&scene=${work_scene}&mode_style=${mode_style}&order=${order}">全部</a></div>
+            <?py #endif ?>
+            <ul class="gzh-list-right">
+            <?py for site in query_site: ?>
+                <?py if shot_space == site[0]: ?>
+                    <li class="gzh-active"><span>${site[1]}</span></li>
+                <?py else: ?>
+                    <li><a href="/api/products/?product_type=traveling&shot_space=${site[0]}&scene=${work_scene}&mode_style=${mode_style}&order=${order}">${site[1]}</a></li>
+                <?py #endif ?>
+            <?py #endfor ?>
+            </ul>
+        </div><!--风格 End-->
+
+        <div class="gzh-list"><!--场景 Start -->
+            <div class="gzh-list-left"><i class="iconfont gzh-scene"></i>场景</div>
+            <?py if work_scene == '': ?>
+                <div class="gzh-list-center gzh-active"><span>全部</span></div>
+            <?py else: ?>
+                <div class="gzh-list-center"><a href="/api/products/?product_type=traveling&shot_space=${shot_space}&mode_style=${mode_style}&order=${order}">全部</a></div>
+            <?py #endif ?>
+
+            <ul class="gzh-list-right">
+            <?py for scene in query_scene_traveling: ?>
+                <?py if work_scene == scene[0]: ?>
+                    <li class="gzh-active"><span>${scene[1]}</span></li>
+                <?py else: ?>
+                    <li>
+                    <a href="/api/products/?product_type=traveling&scene=${scene[0]}&shot_space=${shot_space}&mode_style=${mode_style}&order=${order}">${scene[1]}</a>
+                    </li>
+                <?py #endif ?>
+            <?py #endfor ?>
+            </ul>
+
+        </div><!--场景 End-->
+    <?py #endif ?>
+
+    <div class="gzh-list gzh-list--list2"><!--造型 Start -->
+        <div class="gzh-list-left"><i class="iconfont gzh-molding"></i>造型</div>
+        <?py if mode_style == '': ?>
+            <div class="gzh-list-center gzh-active"><span>全部</span></div>
+        <?py else: ?>
+            <div class="gzh-list-center">
+                <a href="/api/products/?product_type=${type}&style=${work_style}&scene=${work_scene}&shot_space=${shot_space}&order=${order}">全部</a>
+            </div>
+        <?py #endif ?>
+        <ul class="gzh-list-right">
+        <?py for mode in query_mode: ?>
+            <?py if mode[0] == mode_style: ?>
+                <li class="gzh-active"><span>${mode[1]}</span></li>
+            <?py else: ?>
+                <li>
+                <a href="/api/products/?product_type=${type}&style=${work_style}&scene=${work_scene}&shot_space=${shot_space}&mode_style=${mode[0]}&order=${order}">${mode[1]}</a>
+                </li>
+            <?py #endif ?>
+        <?py #endfor ?>
+        </ul>
+    </div><!--造型 End-->
+
+    <!-- 排序栏 Start-->
+    <div class="gzh-filter">
+        <ul class="clearfix">
+            <?py if order == 'Fcreate_time': ?>
+                <li class="hover">
+                    <a href="/api/products/?order=Fcreate_time&product_type=${type}&style=${work_style}&scene=${work_scene}&shot_space=${shot_space}&mode_style=${mode_style}">默认排序</a>
+                </li>
+            <?py else: ?>
+                <li>
+                    <a href="/api/products/?order=Fcreate_time&product_type=${type}&style=${work_style}&scene=${work_scene}&shot_space=${shot_space}&mode_style=${mode_style}">默认排序</a>
+                </li>
+            <?py #endif ?>
+
+            <li>
+                <a href="#">喜欢最多</a>
+            </li>
+
+            <?py if order == 'Fcreate_time desc': ?>
+                <li class="hover">
+                    <a href="/api/products/?order=Fcreate_time desc&product_type=${type}&style=${work_style}&scene=${work_scene}&shot_space=${shot_space}&mode_style=${mode_style}">最新发布</a>
+                </li>
+            <?py else: ?>
+                <li>
+                    <a href="/api/products/?order=Fcreate_time desc&product_type=${type}&style=${work_style}&scene=${work_scene}&shot_space=${shot_space}&mode_style=${mode_style}">最新发布</a>
+                </li>
+            <?py #endif ?>
+        </ul>
+        <i>为您找到<span>${works_count}</span>个商家</i>
+    </div>
+    <!-- 排序栏 End-->
+
+    <!-- 作品列表 Start -->
+    <ul class="gzh-block-grid  gzh-block-grid-4">
+      <?py for work in works: ?>
+        <li class="gzh-card gzh-card--285">
+            <a class="gzh-overlay gzh-overlay-hover" href="/product/${work.Fid}">
+                <img data-lazyload="${work.Fcover_img}" class="gzh-lazy gzh-thumbnail">
+                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                </figcaption>
+            </a>
+            <div class="gzh-caption">
+                <a class="gzh-title" href="/product/${work.Fid}">${work.Fname}</a>
+                <p class="gzh-label">
+                    <?py company = handler.get_company(work.Fmerchant_id) ?>
+                    <?py if company: ?>
+                        <a href="">${company.get('Fcompany_name')}</a>
+                    <?py else: ?>
+                        <a href=""></a>
+                    <?py #endif ?>
+
+                    <span class="pull-right"><i class="iconfont gzh-like_line"></i>36</span>
+                </p>
+            </div>
+        </li>
+      <?py #endfor ?>
+    </ul>
+    <!-- 作品列表 End -->
+
+    <!-- 分页 Start -->
+    <ul class="gzh-pagination gzh-pagination--center">
+        #{page_html}
+    </ul>
+    <!-- 分页 End  -->
+</article>
+
+
+<script>
+    $('#nav_merchant').addClass('current');
+    $('#nav_merchant').html('婚纱摄影<i class="iconfont gzh-down"></i>');
+     $('.nav-dropdown').css({left:'0px'})
+</script>

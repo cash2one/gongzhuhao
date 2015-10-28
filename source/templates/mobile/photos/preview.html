@@ -1,0 +1,141 @@
+<html lang="ch">
+<head>
+<title>${user_photos_share.Ftitle}</title>
+<meta charset="utf-8" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="pragram" content="no-cache" />
+<link rel="stylesheet" type="text/css" href="/static/mobile/css/photo/main.css" />
+<script type="text/javascript" src="/static/mobile/js/photo/offline.js" ></script> <!--移动端版本兼容 -->
+<meta property="wb:webmaster" content="260acc1e378e5f77" />
+<meta property="qc:admins" content="446525720607636" />
+<script type="text/javascript">
+var c_count=7;
+var phoneWidth = parseInt(window.screen.width);
+var phoneScale = phoneWidth/640;
+var ua = navigator.userAgent;
+if (/Android (\d+\.\d+)/.test(ua)){
+var version = parseFloat(RegExp.$1);
+// andriod 2.3
+if(version>2.3){
+document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+// andriod 2.3以上
+}else{
+document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+}
+// 其他系统
+} else {
+document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+}
+</script>
+<!--移动端版本兼容 end -->
+
+<style>
+	body{ background: #fff;}
+	.shared{ padding: 5%;}
+	.cons{ overflow: hidden; margin: .5em 0; font-size: 2em;}
+	.wish{ padding: 0;}
+	.user-form{ margin: 0; padding: 0; clear: both;}
+	.al{ display: inline; width: 70%; float: left;}
+	.input-txt{ width: 100%; height: 60px; line-height: 60px; border: 1px solid #ddd; border-radius: 3px;}
+	.ar{ display: inline; float: left; width: 25%; text-align: left; margin: .6em .5em;}
+	.input-textarea{ border: 1px solid #ddd; border-radius: 3px; margin-top: .5em; width: 100%; height: 120px;}
+	.wishes{ overflow: hidden;  padding: 0;}
+	.ad{ height: 100px; line-height: 100px;}
+	.btn-save{ margin: .5em 0; padding: .5em 1.5em; background: #ddd; border-radius: 3px; border: none;}
+	.tcenter{ text-align: center;}
+	.wish-list{ margin-top: .5em; padding: 1em 0; border-top: 2px solid #fdc5df;}
+	.wish-totle{ width: 100%; padding: 0 0 .5em 0; }
+	.wish-list ul{ margin: 0; padding: 0; list-style: none;}
+	.wish-list ul li{ line-height: 1.5;}	
+</style>
+</head>
+<body class='s-bg-ddd'>
+<!--模版加载提示-->
+<section class="u-alert">
+<img style='display:none;' src="/static/mobile/images/loading_large.gif" />
+<div class='alert-loading z-move'>
+<div class='cycleWrap'>
+<span class='cycle cycle-1'></span>
+<span class='cycle cycle-2'></span>
+<span class='cycle cycle-3'></span>
+<span class='cycle cycle-4'></span>
+</div>
+<div class="lineWrap">
+<span class='line line-1'></span>
+<span class='line line-2'></span>
+<span class='line line-3'></span>
+</div>
+</div>
+</section>
+<!--模版加载提示 end-->
+<!-- 声音控件 -->
+<section class='u-audio f-hide' data-src='${user_photos_share.Fmusic_url}'>
+	<p id='coffee_flow' class="btn_audio">
+		<strong class='txt_audio z-hide'>关闭</strong>
+		<span class='css_sprite01 audio_open'></span>
+	</p>
+</section>
+<section class='u-arrow f-hide'><p class="css_sprite01"></p></section>
+<section class='p-ct'>
+	<div class='translate-back f-hide'>
+		
+	<!--<input id="ca-tips" type="hidden" value="" />-->
+	<!--<input id="r-cover" type="hidden" value='/static/touchspa/7.jpg' />-->
+
+	<?py index=0?>
+	<?py for img in images:?>
+        <?py if index==0:?>
+            <div class='m-page m-fengye f-hide' data-page-type='info_pic3' data-statics='info_pic3'>
+                <!-- <div class="page-con lazy-img" data-src='${handler.get_show_img_url(img.Fimg_url,600)}'></div> -->
+                <div class="photo-wrapper page-con j-txtWrap lazy-img">
+                    <span>
+                        <img data-src='${handler.get_show_img_url(img.Fimg_url,600)}' />
+                    </span>
+                </div>                
+            </div>
+        <?py else:?>
+            <div class='m-page m-bigTxt f-hide' data-page-type='bigTxt' data-statics='info_list'>
+                <!-- <div class="page-con j-txtWrap lazy-img" data-src='${handler.get_show_img_url(img.Fimg_url,600)}'></div> -->
+                <div class="photo-wrapper page-con j-txtWrap lazy-img">
+                    <span>
+                        <img data-src='${handler.get_show_img_url(img.Fimg_url,600)}' />
+                    </span>
+                </div>                  
+            </div>
+        <?py #endif?>
+        <?py index+=1 ?>
+    <?py #endfor ?>
+
+		<div class='m-page m-bigTxt f-hide' data-page-type='bigTxt' data-statics='info_list'>
+		    <form method="post" id="share_edit_form" action="/mobile/user/photos/share/edit" data-ajax="false">
+               <footer data-role="footer" data-position="fixed" class="footer">
+                    <input type="hidden" value="${user_photos_share.Fid}" name="user_share_id">
+                    <button type="button" id="submit_btn" name="operation" value='0' >确认分享</button>
+                    <button type="button" id="deleted_btn"  name="operation" value='1'>取消分享</button>
+               </footer>
+		    </form>		
+		</div>
+	</div>
+</section>
+<script src="java/javascript">
+(function($){
+        $('#submit_btn').on('click',function(){
+             $('#share_edit_form').submit();
+        })
+
+        $('#deleted_btn').on('click',function(){
+             $('#share_edit_form').submit();
+        })
+})
+</script>
+<script src="/static/mobile/js/photo/init.mix.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/mobile/js/photo/coffee.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/mobile/js/photo/main.js" type="text/javascript" charset="utf-8" defer="defer"></script>
+
+</body>
+</html>

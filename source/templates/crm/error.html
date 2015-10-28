@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>公主号-错误页面</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Central Page -- User">
+	<meta name="author" content="">
+	<!-- The styles -->
+	<link rel="stylesheet" href="/static/crm/css/plugins/bootstrap.min.css" />
+	<link rel="stylesheet" href="/static/crm/css/common.css" />
+	<script src="/static/crm/js/plugins/jquery.min.js"></script>
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="js/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	<!-- topbar starts -->
+	<?py include('crm/common/_nav.html') ?>
+	
+	<!-- topbar ends -->
+		<div class="ch-container">
+		<div class="row">
+				
+			<!-- left menu starts -->
+			<?py include('crm/common/_left.html') ?>
+			<!-- left menu ends -->
+			
+			<div id="content" class="col-lg-10 col-sm-10">			-->
+			<!-- content starts -->		
+                    <div class="row-fluid sortable">
+                      <h1>${msg}</h1>
+                    </div><!--/row-->
+			</div><!--/#content.span10-->
+		</div><!--/fluid-row-->
+	</div><!--/.fluid-container-->
+
+<script src="/static/crm/js/plugins/bootstrap.min.js"></script>
+<script src="/static/crm/js/plugins/jquery.cookie.js"></script>
+<script src="/static/crm/js/plugins/jquery.history.js"></script>
+<script src="/static/crm/js/common.js"></script>
+<!--gzh func js-->
+
+		
+</body>
+</html>

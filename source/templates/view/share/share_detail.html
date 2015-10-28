@@ -1,0 +1,549 @@
+    <script type="text/javascript" src="../../../static/skin/js/plugins/jQuery/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="../../../static/skin/css/common.css" />
+    <link rel="stylesheet" href="../../../static/skin/css/gzh-base.css" />
+    <link rel="stylesheet" href="../../../static/skin/css/header-footer.css">
+    <link rel="stylesheet" href="../../../static/skin/css/login.css" />
+    <link rel="stylesheet" href="../../../static/skin/css/pages.css" />
+    <link rel="stylesheet" href="../../../static/skin/css/icon.css" />
+    <link rel="stylesheet" href="../../../static/skin/css/iconfont.css" />
+    <link href="../../../static/skin/js/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="../../../static/skin/css/merchant.css"/>
+<link rel="stylesheet" href="../../../static/skin/css/share.css"/>
+<div class="gzh-container bg-white ">
+    <div class="gzh-position w1200">
+        <a href="/api/packages/">首页</a>
+        <span> > </span>
+        <a href="/api/products/">作品列表</a>
+        <span> > </span>
+        <span class="text-red">作品详情</span>
+    </div>
+
+    <div class="main w1200 clear">
+
+        <!--left content start-->
+        <div class="gzh-merchant w940 fl">
+            <div class="gm-item gm-works m30">
+                <div class="gs-header">
+                    <div class="fr gm-works-share">
+                       <div class="bdsharebuttonbox" data-tag="share_1">
+                            <a class="bds_more" data-cmd="more"><i class="iconfont gzh-share"></i>分享</a>
+                       </div>
+                        <script>
+                                    window._bd_share_config = {
+                                        common : {
+                                            bdText : '${product.Fname}',
+                                            bdDesc : '${product.Fdescription}',
+                                            bdUrl : 'http://www.gongzhuhao.com/product/${product.Fid}',
+                                            bdPic : '${product.Fcover_img}'
+                                        },
+                                        share : [{
+                                            "bdSize" : 16
+                                        }],
+                                        slide : [{
+                                            bdImg : 0,
+                                            bdPos : "right",
+                                            bdTop : 100
+                                        }],
+                                        selectShare : [{
+                                            "bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
+                                        }]
+                                    }
+                        </script>
+                    </div>
+                    <div class="fr gm-works-fav">
+                        <a class="bds_more"><i class="iconfont gzh-star"></i>收藏</a>
+                    </div>
+                    <!--<h1 class="f20">${product.Fname}</h1>-->
+                    <dl class="gs-profile fl">
+                        <dt>
+                            <img src="http://img.gongzhuhao.com/3/head_photo/001857001824brh3UIMG_0248.JPG" width="80" height="80" />
+                        </dt>
+                        <dd class="gs-name f18">
+                            失忆蝴蝶
+                        </dd>
+                        <dd class="gs-extra">
+                            服务商：<a href="" class="text-gray" target="_blank" title="唯一视觉婚纱摄影">唯一视觉婚纱摄影</a>
+                            状态：<span class="text-gray">进行中</span>
+                            发表时间：<span class="text-gray">2015-06-25</span>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="gm-item gm-location gm-location-share f18 m30" id="gmFixNav">
+                <a href="" class="btn btn-enter fr" target="_blank" title="进入店铺">进入店铺</a>
+                <a href="javascript:;" onclick="orderShow()" class="btn btn-order fr">预约看店</a>
+                <a href="#service" class="current">服务成果</a>
+                <a href="#share">过程分享</a>
+                <a href="#appraise">评价</a>
+            </div>
+
+
+            <!--服务成果 start-->
+            <div class="gm-item m30" id="service">
+                <h2 class="gm-item-title f20" >服务成果</h2>
+                <div class="gs-item-preview">
+                    <div class="preview-inner">
+                        <div class="photo">
+                            <!--<a href="${img.Furl}" title="">-->
+                                <img data-lazyload="" class="gzh-lazy" width="900" height="auto" />
+                            <!--</a>-->
+                        </div>
+                        <div class="photo">
+                            <!--<a href="${img.Furl}" title="">-->
+                                <img data-lazyload="" class="gzh-lazy" width="900" height="auto" />
+                            <!--</a>-->
+                        </div>
+                        <div class="photo">
+                            <!--<a href="${img.Furl}" title="">-->
+                                <img data-lazyload="" class="gzh-lazy" width="900" height="auto" />
+                            <!--</a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--服务成果 end-->
+
+            <!--分享过程 start-->
+            <div class="gm-item m30" id="share">
+                <h2 class="gm-item-title f20" >分享过程</h2>
+                <div class="gs-item-preview">
+                    <!-- 试衣阶段 start -->
+                    <div class="step step1">
+                        <h2 class="f16">
+                            <span class="bg-cercle"><i class="iconfont gzh-clothes"></i></span>试衣阶段
+                        </h2>
+                        <p class="text-red gm-info-star">
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <span>5分</span>
+                        </p>
+                        <div class="gs-text">
+                            6月13日，瑞典皇室迎来婚礼庆典，这次的主角是瑞典国王唯一的儿子卡尔·菲利普王子。菲利普是继姐姐维多利亚公主、外甥女埃斯特尔Estelle之后的王位第三顺位继承人。
+                            6月13日，瑞典皇室迎来婚礼庆典，这次的主角是瑞典国王唯一的儿子卡尔·菲利普王子。菲利普是继姐姐维多利亚公主、外甥女埃斯特尔Estelle之后的王位第三顺位继承人。
+                            6月13日，瑞典皇室迎来婚礼庆典，这次的主角是瑞典国王唯一的儿子卡尔·菲利普王子。菲利普是继姐姐维多利亚公主、外甥女埃斯特尔Estelle之后的王位第三顺位继承人。
+                        </div>
+                        <div class="gs-thumb">
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                        </div>
+                        <p class="gs-worker text-gray">
+                            礼服师：<span>Kinson</span>
+                        </p>
+                    </div>
+                    <!-- 试衣阶段 end -->
+
+                    <!-- 摄影阶段 start -->
+                    <div class="step step2">
+                        <h2 class="f16">
+                            <span class="bg-cercle"><i class="iconfont gzh-photography text-blue"></i></span>摄影阶段
+                        </h2>
+                        <p class="text-red gm-info-star">
+                            化妆：
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <span class="mr40">4分</span>
+
+                            摄影：
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <span>3分</span>
+
+                        </p>
+                        <div class="gs-text">
+                            6月13日，瑞典皇室迎来婚礼庆典，这次的主角是瑞典国王唯一的儿子卡尔·菲利普王子。菲利普是继姐姐维多利亚公主、外甥女埃斯特尔Estelle之后的王位第三顺位继承人。
+                        </div>
+                        <div class="gs-thumb">
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                        </div>
+                        <p class="gs-worker text-gray">
+                            摄影师：<span>Kinson</span>
+                            化妆师：<span>Kinson</span>
+                        </p>
+                    </div>
+                    <!-- 摄影阶段 end -->
+
+                    <!-- 选样阶段 start -->
+                    <div class="step step3">
+                        <h2 class="f16">
+                            <span class="bg-cercle"><i class="iconfont gzh-photos text-blue"></i></span>选样阶段
+                        </h2>
+                        <p class="text-red gm-info-star">
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <span>5分</span>
+                        </p>
+                        <div class="gs-text">
+                            6月13日，瑞典皇室迎来婚礼庆典，这次的主角是瑞典国王唯一的儿子卡尔·菲利普王子。菲利普是继姐姐维多利亚公主、外甥女埃斯特尔Estelle之后的王位第三顺位继承人。
+                        </div>
+                        <div class="gs-thumb">
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                        </div>
+                        <p class="gs-worker text-gray">
+                            选样师：<span>Kinson</span>
+                        </p>
+                    </div>
+                    <!-- 选样阶段 end -->
+
+                    <!-- 定稿阶段 start -->
+                    <div class="step step4">
+                        <h2 class="f16">
+                            <span class="bg-cercle"><i class="iconfont gzh-finalization text-blue"></i></span>定稿阶段
+                        </h2>
+                        <p class="text-red gm-info-star">
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <span>4分</span>
+                        </p>
+                        <div class="gs-text">
+                            6月13日，瑞典皇室迎来婚礼庆典，这次的主角是瑞典国王唯一的儿子卡尔·菲利普王子。菲利普是继姐姐维多利亚公主、外甥女埃斯特尔Estelle之后的王位第三顺位继承人。
+                            6月13日，瑞典皇室迎来婚礼庆典，这次的主角是瑞典国王唯一的儿子卡尔·菲利普王子。菲利普是继姐姐维多利亚公主、外甥女埃斯特尔Estelle之后的王位第三顺位继承人。
+                            6月13日，瑞典皇室迎来婚礼庆典，这次的主角是瑞典国王唯一的儿子卡尔·菲利普王子。菲利普是继姐姐维多利亚公主、外甥女埃斯特尔Estelle之后的王位第三顺位继承人。
+                        </div>
+                        <div class="gs-thumb">
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                        </div>
+                        <p class="gs-worker text-gray">
+                            看样师：<span>Kinson</span>
+                        </p>
+                    </div>
+                    <!-- 定稿阶段 end -->
+
+                    <!-- 取件阶段 start -->
+                    <div class="step step5">
+                        <h2 class="f16">
+                            <span class="bg-cercle"><i class="iconfont gzh-pickup text-blue"></i></span>取件阶段
+                        </h2>
+                        <p class="text-red gm-info-star">
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <span>5分</span>
+                        </p>
+                        <div class="gs-text">
+                            6月13日，瑞典皇室迎来婚礼庆典
+                        </div>
+                        <div class="gs-thumb">
+                            <div class="photo">
+                                <img src="http://img.gongzhuhao.com/album/merchant/1025/17450020120705030742508.jpg" width="80" height="80" />
+                            </div>
+                        </div>
+                        <p class="gs-worker text-gray">
+                            客服代表：<span>Kinson</span>
+                        </p>
+                    </div>
+                    <!-- 取件阶段 end -->
+
+                    <!-- 总体阶段 start -->
+                    <div class="step step6">
+                        <h2 class="f16">
+                            <span class="bg-yellow"><i class="iconfont gzh-reply_1 text-yellow "></i></span>总评价
+                        </h2>
+                        <p class="text-red gm-info-star">
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <span>5分</span>
+                        </p>
+                        <div class="gs-text">
+                            6月13日，瑞典皇室迎来婚礼庆典，这次的主角是瑞典国王唯一的儿子卡尔·菲利普王子。菲利普是继姐姐维多利亚公主、外甥女埃斯特尔Estelle之后的王位第三顺位继承人。
+                            6月13日，瑞典皇室迎来婚礼庆典，这次的主角是瑞典国王唯一的儿子卡尔·菲利普王子。菲利普是继姐姐维多利亚公主、外甥女埃斯特尔Estelle之后的王位第三顺位继承人。
+                            6月13日，瑞典皇室迎来婚礼庆典，这次的主角是瑞典国王唯一的儿子卡尔·菲利普王子。菲利普是继姐姐维多利亚公主、外甥女埃斯特尔Estelle之后的王位第三顺位继承人。
+                        </div>
+                    </div>
+                    <!-- 总体阶段 end -->
+                </div>
+            </div>
+            <!--分享过程 end-->
+
+            <!--评价 start-->
+            <form method="">
+            <div class="gm-item m30" >
+                <h2 class="gm-item-title f20" id="appraise">评价</h2>
+                <div class="gs-item-preview">
+                    <textarea class="appraise-cons" id="appraise-cons" maxlength="200" placeholder="人可以走，留下你的态度！"></textarea>
+                </div>
+            </div>
+            <p class="text-count" >
+                <input class="fr btn btn-order" type="submit" id="js_share" value="发表"/>
+                <span id="text-count">0/200</span>
+            </p>
+            </form>
+            <div class="appraise-list">
+                <div class="al-item">
+                    <div class="al-avatar fl">
+                        <img src="" width="48" height="48" />
+                    </div>
+                    <div class="al-extra fl">
+                        <p class="f14">
+                            <strong>路过蜻蜓</strong>
+                            <span class="f12 text-gray">2015-06-20</span>
+                        </p>
+                        <p class="al-desc">
+                            最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？
+                        </p>
+                    </div>
+                </div>
+                <div class="al-item">
+                    <div class="al-avatar fl">
+                        <img src="" width="48" height="48" />
+                    </div>
+                    <div class="al-extra fl">
+                        <p class="f14">
+                            <strong>路过蜻蜓</strong>
+                            <span class="f12 text-gray">2015-06-20</span>
+                        </p>
+                        <p class="al-desc">
+                            最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？
+                            最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？
+                            最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？
+                            最后这张真的在水里拍的呀？？？最后这张真
+                        </p>
+                    </div>
+                </div>
+                <div class="al-item">
+                    <div class="al-avatar fl">
+                        <img src="" width="48" height="48" />
+                    </div>
+                    <div class="al-extra fl">
+                        <p class="f14">
+                            <strong>路过蜻蜓</strong>
+                            <span class="f12 text-gray">2015-06-20</span>
+                        </p>
+                        <p class="al-desc">
+                            最后这张真的在水里拍的呀？？？
+                    </div>
+                </div>
+                <div class="al-item">
+                    <div class="al-avatar fl">
+                        <img src="" width="48" height="48" />
+                    </div>
+                    <div class="al-extra fl">
+                        <p class="f14">
+                            <strong>路过蜻蜓</strong>
+                            <span class="f12 text-gray">2015-06-20</span>
+                        </p>
+                        <p class="al-desc">
+                            最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？
+                    </div>
+                </div>
+                <div class="al-item">
+                    <div class="al-avatar fl">
+                        <img src="" width="48" height="48" />
+                    </div>
+                    <div class="al-extra fl">
+                        <p class="f14">
+                            <strong>路过蜻蜓</strong>
+                            <span class="f12 text-gray">2015-06-20</span>
+                        </p>
+                        <p class="al-desc">
+                            最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？
+                        </p>
+                    </div>
+                </div>
+                <div class="al-item">
+                    <div class="al-avatar fl">
+                        <img src="" width="48" height="48" />
+                    </div>
+                    <div class="al-extra fl">
+                        <p class="f14">
+                            <strong>路过蜻蜓</strong>
+                            <span class="f12 text-gray">2015-06-20</span>
+                        </p>
+                        <p class="al-desc">
+                            最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？
+                        </p>
+                    </div>
+                </div>
+                <div class="al-item">
+                    <div class="al-avatar fl">
+                        <img src="" width="48" height="48" />
+                    </div>
+                    <div class="al-extra fl">
+                        <p class="f14">
+                            <strong>路过蜻蜓</strong>
+                            <span class="f12 text-gray">2015-06-20</span>
+                        </p>
+                        <p class="al-desc">
+                            最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？
+                            最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？
+                            最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？
+                            最后这张真的在水里拍的呀？？？最后这张真
+                        </p>
+                    </div>
+                </div>
+                <div class="al-item">
+                    <div class="al-avatar fl">
+                        <img src="" width="48" height="48" />
+                    </div>
+                    <div class="al-extra fl">
+                        <p class="f14">
+                            <strong>路过蜻蜓</strong>
+                            <span class="f12 text-gray">2015-06-20</span>
+                        </p>
+                        <p class="al-desc">
+                            最后这张真的在水里拍的呀？？？
+                    </div>
+                </div>
+                <div class="al-item">
+                    <div class="al-avatar fl">
+                        <img src="" width="48" height="48" />
+                    </div>
+                    <div class="al-extra fl">
+                        <p class="f14">
+                            <strong>路过蜻蜓</strong>
+                            <span class="f12 text-gray">2015-06-20</span>
+                        </p>
+                        <p class="al-desc">
+                            最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？
+                    </div>
+                </div>
+                <div class="al-item">
+                    <div class="al-avatar fl">
+                        <img src="" width="48" height="48" />
+                    </div>
+                    <div class="al-extra fl">
+                        <p class="f14">
+                            <strong>路过蜻蜓</strong>
+                            <span class="f12 text-gray">2015-06-20</span>
+                        </p>
+                        <p class="al-desc">
+                            最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？最后这张真的在水里拍的呀？？？
+                        </p>
+                    </div>
+                </div>
+                <div class="page">
+                    <ul class="gzh-pagination gzh-pagination--center">
+                        <li class="gzh-pagination-previous gzh-disabled"><span>上一页</span></li>
+                        <li class="gzh-active"><span>1</span></li>
+                        <li><a href="/api/packages/?page=2">2</a></li>
+                        <li><a href="/api/packages/?page=3">3</a></li>
+                        <li><a href="/api/packages/?page=4">4</a></li>
+                        <li class="gzh-pagination-next"><a href="/api/packages/?page=2">下一页</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--评价 end-->
+
+        </div>
+        <!--left content end-->
+
+        <!--right content start-->
+        <div class="gzh-side w230 fr">
+            <?py include('/view/share/recent_share.html') ?>
+        </div>
+        <!--right content end-->
+    </div>
+</div>
+<script type="text/html" id="j_model">
+    <div class="al-item">
+        <div class="al-avatar fl">
+            <img src="" width="48" height="48" />
+        </div>
+        <div class="al-extra fl">
+            <p class="f14">
+                <strong>路过蜻蜓</strong>
+                <span class="f12 text-gray">2015-06-20</span>
+            </p>
+            <p class="al-desc" data-value=""></p>
+        </div>
+    </div>
+</script>
+
+<script>
+    $(function() {
+        var elm = $('#gmFixNav');
+        var startPos = $(elm).offset().top;
+        $.event.add(window, "scroll", function() {
+            var p = $(window).scrollTop();
+            $(elm).css('position',((p) > startPos) ? 'fixed' : 'static');
+            $(elm).css('top',((p) > startPos) ? '0px' : '');
+        });
+
+        //字数统计
+        $("#appraise-cons").keyup(function(){
+            var _curLength = $("#appraise-cons").val().length;
+            if(_curLength > 300){
+                var _num = $("#appraise-cons").val().substr(0, 200);
+                $("#appraise-cons").val(_num);
+            }else{
+              /*$("#txt-count").text($("#profile-info").val().length + '/300')*/
+                $("#text-count").text($("#appraise-cons").val().length + '/200');
+            }
+        });
+
+        $("#js_share").on("click", function(){
+            var appraise = $("#appraise-cons").val();
+            $.ajax({
+                type:"POST",
+                url:"",
+                data: {
+                    //_xsrf:_xsrf,
+                    appraise: appraise,
+                },
+                success:function(data){
+                    var obj = $.parseJSON(data);
+                    if(obj.state == "1000"){
+                        alert("发表成功！");
+                    }else{
+                        alert(obj.info);
+                    }
+                },
+                error: function(){
+
+                }
+            });
+        })
+
+
+    });
+
+</script>

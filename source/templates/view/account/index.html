@@ -1,0 +1,208 @@
+					<?py include('view/account/_header.html') ?>
+
+                    <div class="col-lg-9 col-md-9">
+						<div class="gzh-well clearfix">
+							<h4 class="h4 pull-left ng-scope">修改资料</h4>
+							<ul class="pull-left nav-profile" id="js_tab">
+								<li><a href="javascript:;" class="nav-profile-basic">个人资料</a></li>
+								<li><a href="javascript:;">修改头像</a></li>
+								<li><a href="javascript:;">手机绑定</a></li>
+								<li><a href="javascript:;">修改密码</a></li>
+								<!--<li><a href="javascript:;">账号绑定</a></li>-->
+							</ul>
+						</div>
+						<div class="gzh-profile" id="js_tabCon">
+
+							<!--基本资料-->
+							<div class="tab-con" id="account-profile" style="display: block">
+								<div class="form-horizontal">
+									<div class="form-group">
+										<label for="nick" class="col-sm-1 control-label">昵称</label>
+
+										<div class="col-sm-11">
+											<input type="text" name="nick" id="nick" value="${user.Fnick_name}" class="form-control input-txt" placeholder="请填写您的昵称" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label for="realname" class="col-sm-1 control-label">姓名</label>
+
+										<div class="col-sm-11">
+											<input type="text" name="realname" id="realname" value="${user.Frealname}" class="form-control input-txt" placeholder="请填写您的真实姓名" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-1 control-label sex-label">性别</label>
+
+										<div class="col-sm-11 sex-control">
+
+											<label for="M">
+                                                <?py if user.Fsex in ('M','m'):?>
+												    <input type="radio" name="sex" value="M" id="M" checked/>
+                                                <?py else:?>
+                                                    <input type="radio" name="sex" value="M" id="M"/>
+                                                <?py #endif ?>
+												男
+											</label>
+
+											<label for="F">
+                                                 <?py if user.Fsex in ('F','f'):?>
+												    <input type="radio" name="sex" value="F" id="F" checked/>
+                                                <?py else:?>
+                                                    <input type="radio" name="sex" value="F" id="F"/>
+                                                <?py #endif ?>
+												女
+											</label>
+
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label for="sign" class="col-sm-1 control-label signature-label">个性签名</label>
+
+										<div class="col-sm-11">
+											<textarea id="sign" class="form-control input-txt" style="height: auto; width: 500px" placeholder="请输入您的个性签名">${user.Fsign_text}</textarea>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-sm-offset-1 col-sm-11">
+											<button type="submit" class="btn btn-default btn-save" id="saveProfile">保存</button>
+											<span class="error profile-error"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!--修改头像-->
+							<div class="tab-con" id="account-avatar">
+								<div class="current-avatar row" name="avatarForm">
+									<div class="col-md-3 text-right">
+										<img src="${user.Fphoto_url}" class="img-cercle" id="current-avatar" width="120" height="120" alt="current avatar" />
+									</div>
+
+									<div class="col-md-8">
+										<input type="file" id="btn-upload" name="head_photo"/>
+										<input type="button" class="btn btn-default btn-upload-avatar" value="上传头像" />
+										<p class="avatar-tips">支持JPG，JPEG，PNG，GIF，图片大小5M以内</p>
+									</div>
+									<div class="avatar-preview" style="display: none">
+										<div class="preview" id="preview">
+											<img src="${user.Fphoto_url}" id="target" alt="[Jcrop Example]" />
+											<div id="preview-pane">
+												<div class="preview-container">
+													<img src="${user.Fphoto_url}" id="target-thumbnail" class="jcrop-preview" alt="Preview" />
+												</div>
+											</div>
+										</div>
+										<div class="avatar-btn">
+											<button type="button" id="btn-save-avatar" class="btn btn-default btn-save">保存</button>
+										</div>
+									</div>
+
+									<div class="col-md-11 text-center error"></div>
+								</div>
+							</div>
+
+							<!--绑定手机号-->
+							<div class="tab-con" id="account-phone">
+								<div class="form-horizontal">
+									<div class="form-group">
+										<label for="phone" class="col-sm-1 control-label">手机号码</label>
+
+										<div class="col-sm-11">
+											<input type="tel" name="phone" id="phone" class="form-control input-txt" placeholder="请输入您的手机号" value="${user.Fuser_mobi}" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label for="code" class="col-sm-1 control-label">验证码</label>
+
+										<div class="col-sm-11">
+											<input type="text" name="code" id="code" class="form-control input-txt code" placeholder="请输入验证码" />
+											<input type="button" class="btn btn-code" id="getCode" value="发送验证码"  />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-sm-offset-1 col-sm-11">
+											<button type="submit" class="btn btn-default btn-save" id="savePhone">保存</button>
+											<span class="error phone-error"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!--修改密码-->
+							<div class="tab-con" id="account-password">
+								<div class="form-horizontal">
+									<div class="form-group">
+										<label for="passwd" class="col-sm-1 control-label">新密码</label>
+
+										<div class="col-sm-11">
+											<input type="password" name="passwd" id="passwd" class="form-control input-txt" placeholder="请输入新密码" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label for="confirm_pwd" class="col-sm-1 control-label">确认密码</label>
+
+										<div class="col-sm-11">
+											<input type="password" name="confirm_pwd" id="confirm_pwd" class="form-control input-txt" placeholder="请确认密码" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-sm-offset-1 col-sm-11">
+											<button type="submit" class="btn btn-default btn-save" id="savePwd">保存</button>
+											<span class="error pwd-error"></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!--第三方帐号绑定-->
+							<!--<div class="tab-con" id="account-account">-->
+								<!--<p class="gzh-account-tips">-->
+									<!--绑定第三方账号，可以直接登录公主号，还可以将公主号内容同步到以下平台，与更多好友分享。-->
+								<!--</p>-->
+
+								<!--<ul class="gzh-share">-->
+									<!--<li>-->
+										<!--<i class="icon icon48 icon-weibo"></i>-->
+										<!--<a href="" class="btn btn-default">绑定新浪微博</a>-->
+									<!--</li>-->
+
+									<!--<li>-->
+										<!--<i class="icon icon48 icon-wechat"></i>-->
+										<!--<a href="" class="btn btn-default">绑定微信</a>-->
+									<!--</li>-->
+
+									<!--<li>-->
+										<!--<i class="icon icon48 icon-douban"></i>-->
+										<!--<a href="" class="btn btn-default">绑定豆瓣</a>-->
+									<!--</li>-->
+
+									<!--<li>-->
+										<!--<i class="icon icon48 icon-qq"></i>-->
+
+										<!--<span>-->
+											<!--已绑定：-->
+											<!--<em class="">失忆蝴蝶</em>-->
+										<!--</span>-->
+									<!--</li>-->
+								<!--</ul>-->
+							<!--</div>-->
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<?py include('view/account/_footer.html') ?>
+			<script>
+				$(function(){
+					$('#user_profile').addClass('current');
+				})
+			</script>

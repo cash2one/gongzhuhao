@@ -1,0 +1,46 @@
+
+<div class="clearfix row-main">
+
+    <?py include('ops/users/user_menu.html') ?>
+
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading">
+                <strong><i class="icon-group"></i>商户权限列表</strong>
+
+
+            </div>
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                <tr class="text-center">
+                    <th>编号</th>
+                    <th>代码</th>
+                    <th>名称</th>
+                </tr>
+
+                </thead>
+
+                <tbody>
+                <?py if permissions:?>
+                    <?py for r in permissions: ?>
+                    <tr class="text-center">
+                        <td>${r.Fid}</td>
+                        <td>${r.Fcode}</td>
+                        <td>${r.Fdesc}</td>
+                    </tr>
+                    <?py #endfor ?>
+                <?py #endif ?>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+ <script language="Javascript">$(document).ready(function()
+{
+    $('#user_role_nav').addClass('active');
+    $('#permission_menu_list').addClass('active');
+});
+</script>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>公主号手机登录页面</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="styles/icon.css" />
+	<!--<link rel="stylesheet" href="styles/login.css" />-->
+	<script type="text/javascript">
+		var phoneWidth = parseInt(window.screen.width);
+		var phoneScale = phoneWidth/640;
+		var ua = navigator.userAgent;
+		if (/Android (\d+\.\d+)/.test(ua)){
+			var version = parseFloat(RegExp.$1);
+			// andriod 2.3
+			if(version>2.3){
+				document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi" />');
+			// andriod 2.3以上
+			}else{
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+			}
+		// 其他系统
+		} else {
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi" />');
+		}
+	</script>
+	<style>
+		.nav{ margin: 0; padding: 0; clear: both; list-style: none;}
+		.nav li{ height: 100px; line-height: 100px; width: 50%; float: left; background: #fff; font-size: 1.6em; text-align: center;}
+		.nav li a{ display: inline-block; width: 100%; height: 100%; text-decoration: none; border-bottom: 2px solid #fff; color: #333;}
+		.nav li a.on{ color: #ff4676;}
+		.con{ overflow: hidden; display: inline-block; width: 100%;}
+		.con-item{ display: none; position: relative; margin: 1em auto; padding: 1%; width: 98%;}
+		.con-item.on{ display: block;}
+		.item{ display: inline-block;position: relative; top: 0; left: 0; width: 100%; height: 80px; border-bottom: 1px solid #ccc;}
+		.borderNone{ border-bottom: none;}
+		.item:first{ border-bottom: none;}
+		.con input{ margin: 0;}
+		.input-txt{ top: 0; left: 0; padding: 0 0 0 2.5em; width: 100%; height: 80px; line-height: 80px; border: none; font-size: 1.4em;}
+		/*.input-mobile{  position: absolute;}*/
+		.item span{ display: inline-block;}
+		.icon{ position: absolute; top: 24px; left: 1em; width: 32px; height: 32px;}
+		.btnCons{ margin: 2em 0 0 0;}
+		.login{ width: 100%; height: 80px; line-height: 80px; background: #ff6577; color: #fff; border: none; font-size: 1.6em; cursor: pointer;}
+		.login:hover{ background: #f2586a; border: none;}
+		.btn-code{ position: absolute; right: 5px; top: 15px; margin: 10px; padding: 0 .5em; width: 180px; height: 50px; line-height: 50px; text-align: center; border: none; background: #fff; color: #ff4676; font-size: 1.2em; cursor: pointer; -webkit-appearance : none}
+		.error{ margin-top: 1em; text-align: center; color: #ff6577; font-size: 2em;}
+		.notAllow{ cursor:not-allowed; background: #fff; border-color: #fff; color: #999;}		
+	</style>
+</head>
+<body>
+	<section class="wrapper">
+		<ul id="nav" class="nav">
+			<li>
+				<a href="javascript:;">手机号登录</a>
+			</li>
+			<li>
+				<a href="javascript:;">账号登录</a>
+			</li>
+		</ul>
+		<div class="con" id="con">
+			<div class="con-item">
+				<form method="" action="" id="user_reg_form">
+					<div class="item">
+						<input type="text" name="phone" id="phone" class="input-txt" placeholder="手机号码"/>
+						<span class="icon icon-mobile-color"></span>
+						<input type="submit" class="btn btn-code" id="sendCode" value="获取验证码"/>
+					</div>
+					<div class="item">
+						<input type="text" name="code" id="code" class="input-txt" placeholder="输入验证码"/>
+						<span class="icon icon-code-color"></span>
+					</div>
+					<div class="btnCons">
+						<input type="button" name="register" id="register" class="login" value="登录" style="-webkit-appearance : none"/>
+					</div>	
+					<div class="error reg-error"></div>
+				</form>
+			</div>
+			<div class="con-item">
+				<form method="post" action="" id="user_login_form">
+					<div class="item">
+						<input type="text" name="mobile" id="mobile" class="input-txt input-mobile" placeholder="用户名"/>
+						<span class="icon icon-key"></span>
+					</div>
+					<div class="item">
+						<input type="password" name="password" id="password" class="input-txt" placeholder="密码"/>
+						<span class="icon icon-code-color"></span>
+					</div>
+					<div class="btnCons">
+						<input type="submit" name="login" id="login" class="login" value="登录" style="-webkit-appearance : none"/>
+					</div>
+					<div class="error"></div>
+				</form>
+			</div>			
+		</div>
+	</section>
+	<script src="vendor/alert_login.js"></script>
+</body>
+</html>

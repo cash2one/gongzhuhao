@@ -1,0 +1,134 @@
+.photo-header{ padding: 15px 0; text-align: center;}
+.photo-header p{ margin: 0; padding: 0;}
+.photo-content{ padding: 0; text-align: center;}
+.pc-item{ position: relative; float: left; height: 300px; padding: 1%; width: 48%; text-align: center;}
+.pc-item img{ width: 100%; height: auto;}
+
+/*
+ * 预览缩略图
+ */
+.preview-item{ position: relative; padding: 1%; width: 98%; text-align: center;} 
+.preview-item img{ width: 100%; height: auto;}
+.pc-item .ui-checkbox{ position: absolute; display: inline-block; top: 5%; left: 5%;}
+.pc-item .ui-checkbox input, .pc-item .ui-checkbox label{ cursor: pointer;}
+.pc-item .ui-checkbox label, .pc-item .ui-checkbox label:hover{ background: transparent; border: none;}
+.pc-item .ui-checkbox input{ margin: 0 0 0 2px;}
+.pc-item .ui-checkbox label{ margin: 0; padding: 0; display: inline-block; width: 100%; position: relative;}
+.pt-link{ position: relative;}
+
+.setcover{ position: absolute; top: 5%; right: 5%; padding: 5px 10px; background:rgba(0, 0, 0, 0.5)!important; filter:alpha(opacity=50); background: #000; color: #fff; cursor: pointer; z-index: 99;}
+.photo-content .ui-overlay-a, 
+.photo-content .ui-page-theme-a, 
+.photo-content .ui-page-theme-a .ui-panel-wrapper{ text-shadow: 0 0 0;}
+.photo-content .ui-page-theme-a a, 
+.photo-content .ui-bar-a a, 
+.photo-content .ui-body-a a,
+.photo-content .ui-group-theme-a a{ font-weight: normal;}
+
+
+.pc-detail{ margin: 0 auto; padding: 1%; width: 98%; text-align: center;}
+.pc-detail img{ width: 100%; height: auto;}
+.footer{ padding: 2px 0; text-align: center;}
+.ui-content{ padding: 0;}
+.ui-field-contain{ margin: 0;}
+
+/*.ul-setting{ margin: 0; padding: 0;}
+.ul-setting li{ margin: 10px 0; list-style: none;}*/
+
+/*
+ * 设置封面
+ */
+/*.preview-cover{ width: 98%; padding: 0 1%;}
+.preview-cover .swiper-slide{ float: left; display: inline; margin: 0 10px 10px 0; width: 54px; height: 54px}
+.preview-cover .swiper-slide img{ width: 100%; height: 100%; vertical-align: middle;}
+
+.pc-item .ui-radio{ position: absolute; top: 5%; left: 50%;}
+.pc-item .ui-radio input, .pc-item .ui-radio label{ vertical-align: middle; cursor: pointer;}
+.pc-item .ui-radio label, .pc-item .ui-radio label:hover{ background: transparent; border: none;}
+.pc-item .ui-radio input{ margin: 0 0 0 2px;}
+.pc-item .ui-radio label{ margin: -2px 0 0 0; padding: 0 0 0 1.6em; display: inline-block; width: 100%; position: relative;}
+
+.ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after{ content: none ;}
+.ui-radio input{ left: 0; top: 0; }
+.ui-btn, label.ui-btn{ font-weight: 100; }
+.ui-controlgroup, fieldset.ui-controlgroup{ margin: 0;}
+.ui-mobile label, div.ui-controlgroup-label{ font-weight: 100;}
+
+.ui-controlgroup-label legend{ display: inline-block; width: 100%; padding-top: 1em; padding-left: .5em; max-width: 100%; font-size: 1em; text-align: left;} */
+
+
+/*
+ * 分享
+ */
+.shared{ padding: 10px 0; text-align: center;}
+.share-img{ display: inline-block; margin: 5px auto; text-align: center; width: 100%; height: 200px;}
+.share-img img{ display: inline-block; width: 100%; height: 100%;}
+
+.save{ height: 60px; font-size: 1.6em; line-height: 60px;}
+.input-txt{ height: 60px; line-height: 60px;}
+.cons{  overflow: hidden; margin: .5em 0;}
+.wish{ padding: 0;}
+.user-form{ margin: 0; padding: 0; clear: both;}
+.al{ width: 50%; float: left;}
+.ar{ display: inline; float: left; width: 25%; text-align: left; margin: 1.2em .5em;}
+.wishes{  padding: 0;}
+.ad{ height: 100px; line-height: 100px;}
+.telephone{}
+.wish-list{ margin-top: 1em; padding: 1em 0; border-top: 2px solid #cf4156;}
+.wish-list ul{ margin: 0; padding: 0; list-style: none;}
+.wish-list ul li{ line-height: 1.5;}
+
+.cd-main-content{ position: relative; padding-top: 100px;}	
+
+/*album*/
+.album .share-list{ padding: .5em 0; margin: 0; overflow: hidden; clear: both; list-style: none; text-align: center; background: #fff;}
+.album .share-list li{ display: inline; float: left; margin: 9px; width: 300px; height: 450px; border: 1px solid #ddd; }
+.album .share-list li a{ display: block; width: 300px;overflow: hidden; background: #fff; text-align: center;}
+.album .share-list li img{ display: inline; width: 300px; height: 360px;}		
+.album .share-list li p{ margin: .5em 0; padding: 0; color: #333; font-size: 1.4em;}
+
+
+/*photo*/
+.lightbox .lb-dataContainer{ display: none;}
+.photo .photo-share{ overflow-y: auto; padding: 0 0 60px 0; }
+.photo .share-list{ padding: .5em 0; margin: 0; clear: both; list-style: none;}
+.photo .share-list li{ display: inline; float: left; margin: 9px; width: 300px; height: 360px; border: 1px solid #ddd; }
+.photo .share-list li a{ display: block; width: 300px;overflow: hidden; background: #fff; text-align: center;}
+.photo .share-list li img{ display: inline; width: 300px; height: 360px;}		
+.photo .share-list li p{ margin: 0; padding: 0; color: #333;}
+.footer{ position: fixed; bottom: 0; left: 0; display: inline-block; width: 100%; padding: 0; z-index: 999; border-top: 1px solid #ccc8cb;}
+
+
+/*share*/
+.share .photo-share{ overflow-y: auto; padding: 1em 0 60px 0; }
+.share .ps-title{ padding-left: .5em; margin: 0; font-size: 1.4em; text-align: left;}
+.share .share-list{ padding: .5em 0; margin: 0; overflow: hidden; clear: both; list-style: none; text-align: center; background: #fff;}
+.share .share-list li{ position: relative; display: inline; float: left; margin: 9px; width: 300px; height: 360px; border: 1px solid #ddd; }
+.share .share-list li a{ display: block; width: 300px;overflow: hidden; background: #fff; text-align: center;}
+.share .share-list li img{ display: inline; width: 300px; height: 360px;}	
+.share .label-check{ position: absolute; top: .6em; left: .5em;}
+.share .label-cover{ position: absolute; top: .6em; right: .5em; font-size: 1em;}
+
+.setting{  font-size: 1.4em;}
+.setting .input-txt{ height: 80px; line-height: 80px;}
+.setting .ul-setting{ padding: 0 .5em; list-style: none;}
+.setting .ul-setting li{ clear: both; margin: .4em 0;}
+.setting .ul-setting li .input-txt{ width: 100%; font-size: 1.4em;}
+.setting .ul-setting li .cover-img{ float: left; display: inline-block; width: 160px; height: 160px; font-size: 1.4em;}
+.setting .ul-setting li .desc{ float: left; margin-left: 20px; width: 435px; border: 1px solid #e5e5e5; background: #fff; font-size: 1.4em;}
+#bg_music{ width: 100%; border: 1px solid #e5e5e5; background: #fff; height: 50px; line-height: 50px;}
+#bg_music-button{ border: 1px solid #ccc;}	
+
+/*share album*/
+.share-album .list{ margin: 0; padding: 0; overflow: hidden; background: #fff;}
+.share-album .list li{ width: 100%; display: inline-block; margin: 0; padding: 1em; border-bottom: 1px solid #ddd;}
+.share-album .list li a{ text-decoration: none;}
+.share-album .list li:hover{ background: #fdc5df; color: #fff;}
+.share-album .list li:hover a{ color: #fff; text-decoration: none;}
+.share-album .list li dl{ overflow: hidden; margin: 0; padding: 0;}
+.share-album .list li dt{ display: inline-block; float: left; margin-right: 1em; width: 120px; height: 160px;}
+.share-album .list li img{ display: inline-block; width: 120px; height: 160px;}
+.share-album .list li dd{ margin-bottom: .5em; color: #333; text-align: left; font-weight: 100; font-size: 1.6em;} 
+.share-album .list li dd.desc{ font-size: 1.4em; color: #666;}	
+
+

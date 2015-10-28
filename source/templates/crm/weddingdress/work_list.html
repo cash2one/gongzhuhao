@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="/static/crm/css/work/work.css" />
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->		
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+	                    <h2>作品预览</h2>
+	            	</div>
+				<div class="box-content">
+					<a href="/merchant/weddingdress/work/add/" class="btn btn-primary btn-publish"><span class="glyphicon glyphicon-open"></span>作品发布</a>
+					<div class="work-tab"><a>&nbsp;</a></div>
+				</div>
+				<div class="box-content work">
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="ml-avatar">名称</th>
+							    <th class="ml-mobile">分类</th>
+								<th class="ml-mobile">颜色</th>
+								<th class="ml-lastlogin">款式</th>
+								<th class="ml-role">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+			            <?py if work:?>
+			                <?py for w in work:?>
+							<tr>
+								<input type="hidden" value="${w.Fid}" id="work-id"/>
+								<td class="ml-avatar">
+									<!--<img src="" width="45" height="45" alt="avatar" class="fleft"/>-->
+									${w.Fname}
+								</td>
+								<td class="ml-mobile">
+									<?py if w.Fcategory in category_info: ?>
+										${category_info[w.Fcategory]}
+									<?py else: ?>
+										${w.Fcategory}
+									<?py #endif ?>
+								</td>
+								<td class="ml-mobile">
+									<?py if w.Fcolor in color_info: ?>
+										${color_info[w.Fcolor]}
+									<?py else: ?>
+										${w.Fcolor}
+									<?py #endif ?>
+								</td>
+								<td class="ml-lastlogin">
+									<?py if w.Fstyle in style_info: ?>
+										${style_info[w.Fstyle]}
+									<?py else: ?>
+										${w.Fstyle}
+									<?py #endif ?>
+								</td>
+								<td class="ml-role">
+									<a href="/merchant/weddingdress/work/edit/${w.Fid}" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-edit"></span>编辑</a>
+									<a href="javascript:;" data-id="${w.Fid}" class="btn btn-danger btn-sm delete"><span class="glyphicon glyphicon-trash"></span>删除</a>
+								</td>
+							</tr>
+			                <?py #endfor ?>
+			                <?py #endif?>
+						</tbody>
+					</table>								
+
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+<script src="/static/crm/js/weddingdress/work_delete.js"></script>
+<script>
+	$(function(){
+		$(".nav-work").addClass("active");
+	})
+</script>

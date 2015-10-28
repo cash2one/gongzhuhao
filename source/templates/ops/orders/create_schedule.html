@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- The styles -->
+	<link rel="stylesheet" href="/static/web/js/plugins/dataTime/jquery.datetimepicker.css" />
+	<link href='/static/web/css/order/order.css' rel='stylesheet' />
+	<script src="/static/web/js/plugins/jquery.min.js"></script>
+    <style>
+        .panel-body > form{ width: 100%; max-width: 100%}
+        .order-infos{ min-height: 750px}
+        .schedule-item{ width: 10%}
+        .schedule-date{ width: 15%}
+        .schedule-service{ width: 15%}
+        .schedule-address{ width: 20%}
+        .schedule-tips{ width: 30%}
+    </style>
+
+</head>
+
+<body>
+
+<?py include('ops/orders/order_companys_base.html') ?>
+
+<div class="col-md-10">
+    <div class="panel">
+        <div class="panel-heading"><strong><i class="icon-globe"></i>添加订单</strong></div>
+        <div class="panel-body order-infos">
+            <form method="post">
+                <div class="schedule-order-info">
+                    <ul>
+                        <li>订单号码：<span>${order.Forder_id_user}</span></li>
+                        <li>客户姓名：<span>${order.Fuser_name}</span></li>
+                        <li>客户手机：${order.Fuser_mobi}</li>
+                        <li>订单类型：</li>
+                        <li>订单金额：${order.Famount}元</li>
+                        <li>订单时间：${order.Fcreate_time}</li>
+                    </ul>
+                </div>
+                <div class="table table-bordered table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td class="schedule-item">类型</td>
+                                <td class="schedule-date">日期</td>
+                                <td class="schedule-service">服务人员</td>
+                                <td class="schedule-address">服务地点</td>
+                                <td class="schedule-tips">温馨提示</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="schedule-item">试衣</td>
+                                <td class="schedule-date">
+                                    <input type="text" class="form-control datatime" id="sch_date_0" value="${schedules[0].Fdatetime}"/>
+                                </td>
+                                <td class="schedule-service">
+                                    <div class="ss-item marginT">
+                                        <label>礼服师：</label>
+                                        <select id="sch_uid_stf_0">
+                                            <?py for staffer in staffers: ?>
+                                                <?py if schedules[0].Fuid_stf == str(staffer.Fid): ?>
+                                                    <option value="${staffer.Fid}" selected="selected">${staffer.Fname}</option>
+                                                <?py else: ?>
+                                                    <option value="${staffer.Fid}">${staffer.Fname}</option>
+                                                <?py #endif ?>
+                                            <?py #endfor ?>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td class="schedule-address">
+                                    <input type="text" class="form-control" value="${schedules[0].Fsite}" id="sch_site_0"/>
+                                </td>
+                                <td class="schedule-tips">
+                                    <textarea class="form-control" id="sch_tips_0" cols="3">${schedules[0].Freminder}</textarea>
+                                </td>
+                            </tr>
+                            <input type="hidden" id="Ftitle_stf_0" value="1" />
+
+                            <tr>
+                                <td class="schedule-item">摄影</td>
+                                <td class="schedule-date">
+                                    <input type="text" class="form-control datatime" id="sch_date_1" value="${schedules[1].Fdatetime}" style="margin-top: 20px;"/>
+                                </td>
+                                <td class="schedule-service">
+                                    <div class="ss-item" style="margin-top: 5px;">
+                                            <label>摄影师：</label>
+                                            <select id="sch_uid_stf_1">
+                                                <?py for staffer in staffers: ?>
+                                                    <?py if str(staffer.Fid) == schedules[1].Fuid_stf.split('$')[0]: ?>
+                                                        <option value="${staffer.Fid}" selected="selected">${staffer.Fname}</option>
+                                                    <?py else: ?>
+                                                        <option value="${staffer.Fid}">${staffer.Fname}</option>
+                                                    <?py #endif ?>
+                                                <?py #endfor ?>
+                                            </select>
+                                     </div>
+                                     <div class="ss-item">
+                                       <label>化妆师：</label>
+                                        <select id="sch_uid_stf_1_1">
+                                            <?py for staffer in staffers: ?>
+                                                <?py if str(staffer.Fid) == (-1 if '$' not in schedules[1].Fuid_stf else schedules[1].Fuid_stf.split('$')[1]): ?>
+                                                    <option value="${staffer.Fid}" selected="selected">${staffer.Fname}</option>
+                                                <?py else: ?>
+                                                    <option value="${staffer.Fid}">${staffer.Fname}</option>
+                                                <?py #endif ?>
+                                            <?py #endfor ?>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td class="schedule-address">
+                                    <input type="text" class="form-control" value="${schedules[1].Fsite}" id="sch_site_1" style="margin-top: 20px;"/>
+                                </td>
+                                <td class="schedule-tips">
+                                    <textarea class="form-control" id="sch_tips_1" cols="3" style="margin-top: 10px;">${schedules[1].Freminder}</textarea>
+                                </td>
+                            </tr>
+                            <input type="hidden" id="Ftitle_stf_1" value="2$3" />
+
+                            <tr>
+                                <td class="schedule-item">选样</td>
+                                <td class="schedule-date">
+                                    <input type="text" class="form-control datatime" id="sch_date_2" value="${schedules[2].Fdatetime}"/>
+                                </td>
+                                <td class="schedule-service">
+                                    <div class="ss-item marginT">
+                                        <label>选样师：</label>
+                                        <select id="sch_uid_stf_2">
+                                            <?py for staffer in staffers: ?>
+                                                <?py if str(staffer.Fid) == schedules[2].Fuid_stf: ?>
+                                                    <option value="${staffer.Fid}">${staffer.Fname}</option>
+                                                <?py else: ?>
+                                                    <option value="${staffer.Fid}">${staffer.Fname}</option>
+                                                <?py #endif ?>
+                                            <?py #endfor ?>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td class="schedule-address">
+                                    <input type="text" class="form-control" value="${schedules[2].Fsite}" id="sch_site_2"/>
+                                </td>
+                                <td class="schedule-tips">
+                                    <textarea class="form-control" id="sch_tips_2" cols="3">${schedules[2].Freminder}</textarea>
+                                </td>
+                            </tr>
+                            <input type="hidden" id="Ftitle_stf_2" value="4" />
+
+                            <tr>
+                                <td class="schedule-item">定稿</td>
+                                <td class="schedule-date">
+                                    <input type="text" class="form-control datatime" id="sch_date_3" value="${schedules[3].Fdatetime}"/>
+                                </td>
+                                <td class="schedule-service">
+                                    <div class="ss-item marginT">
+                                        <label>看样师：</label>
+                                        <select id="sch_uid_stf_3">
+                                            <?py for staffer in staffers: ?>
+                                                <?py if str(staffer.Fid) == schedules[3].Fuid_stf: ?>
+                                                    <option value="${staffer.Fid}" selected="selected">${staffer.Fname}</option>
+                                                <?py else: ?>
+                                                    <option value="${staffer.Fid}">${staffer.Fname}</option>
+                                                <?py #endif ?>
+                                            <?py #endfor ?>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td class="schedule-address">
+                                    <input type="text" class="form-control" id="sch_site_3" value="${schedules[3].Fsite}" />
+                                </td>
+                                <td class="schedule-tips">
+                                    <textarea class="form-control" id="sch_tips_3" cols="3">${schedules[3].Freminder}</textarea>
+                                </td>
+                            </tr>
+                            <input type="hidden" id="Ftitle_stf_3" value="5" />
+
+                            <tr>
+                                <td class="schedule-item">取件</td>
+                                <td class="schedule-date">
+                                    <input type="text" class="form-control datatime"  id="sch_date_4" value="${schedules[4].Fdatetime}"/>
+                                </td>
+                                <td class="schedule-service">
+                                    <div class="ss-item marginT">
+                                        <label>客服代表：</label>
+                                        <select id="sch_uid_stf_4">
+                                            <?py for staffer in staffers: ?>
+                                                <?py if str(staffer.Fid) == schedules[4].Fuid_stf:?>
+                                                    <option value="${staffer.Fid}" selected="selected">${staffer.Fname}</option>
+                                                <?py else:?>
+                                                    <option value="${staffer.Fid}">${staffer.Fname}</option>
+                                                <?py #endif ?>
+                                            <?py #endfor?>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td class="schedule-address">
+                                    <input type="text" class="form-control" id="sch_site_4" value="${schedules[4].Fsite}" />
+                                </td>
+                                <td class="schedule-tips">
+                                    <textarea class="form-control" id="sch_tips_4" cols="3">${schedules[4].Freminder}</textarea>
+                                </td>
+                            </tr>
+                            <input type="hidden" id="Ftitle_stf_4" value="6" />
+
+                        </tbody>
+                            <tfoot>
+                              <tr>
+                                <td colspan="5" class="tright">
+                                    <div class="error"></div>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel">取消</button>
+                                    <button type="button" class="btn btn-green save" id="save">保存</button>
+                                </td>
+                              </tr>
+                            </tfoot>
+                    </table>
+                </div>
+                <input type="hidden" id="order_id" value="${order.Fid}">
+                <input type="hidden" id="user_id" value="${order.Fuid_mct}">
+                #{xsrf_form_html}
+			</form>
+        </div>
+    </div>
+</div>
+<script src="/static/web/js/plugins/bootstrap.min.js"></script>
+<script src="/static/web/js/plugins/jquery.cookie.js"></script>
+<script src="/static/web/js/plugins/responsive-tables.js"></script>
+<script src="/static/web/js/plugins/jquery.autogrow-textarea.js"></script>
+<script src="/static/web/js/plugins/jquery.history.js"></script>
+<script src="/static/web/js/plugins/dataTime/jquery.datetimepicker.js" ></script>
+<script src="/static/web/js/common.js"></script>
+<!--gzh func js-->
+
+</body>
+<script language="Javascript">
+$(".order-infos .datatime").datetimepicker({
+		timepicker:false,
+		format:'Y-m-d'
+});
+
+$('#save').click(function(){
+    var _order_id = $('#order_id').val();
+    var _user_id = $('#user_id').val();
+
+    var _sch_date_0 = $('#sch_date_0').val();
+    var _sch_uid_stf_0 = $('#sch_uid_stf_0 option:selected').val();
+    var _sch_title_stf_0 = $('#Ftitle_stf_0').val();
+    var _sch_site_0 = $('#sch_site_0').val();
+    var _sch_reminder_0 = $('#sch_tips_0').val();
+
+    var _sch_date_1 = $('#sch_date_1').val();
+    var _sch_uid_stf_1 = $('#sch_uid_stf_1 option:selected').val()+"$"+$('#sch_uid_stf_1_1 option:selected').val();
+    var _sch_title_stf_1 = $('#Ftitle_stf_1').val();
+    var _sch_site_1 = $('#sch_site_1').val();
+    var _sch_reminder_1 = $('#sch_tips_1').val();
+
+    var _sch_date_2 = $('#sch_date_2').val();
+    var _sch_uid_stf_2 = $('#sch_uid_stf_2 option:selected').val();
+    var _sch_title_stf_2 = $('#Ftitle_stf_2').val();
+    var _sch_site_2 = $('#sch_site_2').val();
+    var _sch_reminder_2 = $('#sch_tips_2').val();
+
+    var _sch_date_3 = $('#sch_date_3').val();
+    var _sch_uid_stf_3 = $('#sch_uid_stf_3 option:selected').val();
+    var _sch_title_stf_3 = $('#Ftitle_stf_3').val();
+    var _sch_site_3 = $('#sch_site_3').val();
+    var _sch_reminder_3 = $('#sch_tips_3').val();
+
+    var _sch_date_4 = $('#sch_date_4').val();
+    var _sch_uid_stf_4 = $('#sch_uid_stf_4 option:selected').val();
+    var _sch_title_stf_4 = $('#Ftitle_stf_4').val();
+    var _sch_site_4 = $('#sch_site_4').val();
+    var _sch_reminder_4 = $('#sch_tips_4').val();
+    var _xsrf = '#{xsrf_token}'
+
+    $.ajax({
+        type:'post',
+        url:'/gzh/ops/create/schedule/'+_order_id,
+        data:{
+            'sch_date_0':_sch_date_0,
+            'sch_uid_stf_0':_sch_uid_stf_0,
+            'sch_title_stf_0':_sch_title_stf_0,
+            'sch_site_0':_sch_site_0,
+            'sch_reminder_0':_sch_reminder_0,
+
+            'sch_date_1':_sch_date_1,
+            'sch_uid_stf_1':_sch_uid_stf_1,
+            'sch_title_stf_1':_sch_title_stf_1,
+            'sch_site_1':_sch_site_1,
+            'sch_reminder_1':_sch_reminder_1,
+
+            'sch_date_2':_sch_date_2,
+            'sch_uid_stf_2':_sch_uid_stf_2,
+            'sch_title_stf_2':_sch_title_stf_2,
+            'sch_site_2':_sch_site_2,
+            'sch_reminder_2':_sch_reminder_2,
+
+            'sch_date_3':_sch_date_3,
+            'sch_uid_stf_3':_sch_uid_stf_3,
+            'sch_title_stf_3':_sch_title_stf_3,
+            'sch_site_3':_sch_site_3,
+            'sch_reminder_3':_sch_reminder_3,
+
+            'sch_date_4':_sch_date_4,
+            'sch_uid_stf_4':_sch_uid_stf_4,
+            'sch_title_stf_4':_sch_title_stf_4,
+            'sch_site_4':_sch_site_4,
+            'sch_reminder_4':_sch_reminder_4,
+            '_xsrf':_xsrf,
+        },
+        success:function(data){
+            var obj = $.parseJSON(data);
+            if(obj.stat == 'success'){
+                alert('制定排期成功');
+                location.href = '/gzh/ops/orders/list/';
+            }else{
+                alert("定制排期失败");
+            }
+
+        },
+        error:function(){}
+    });
+
+})
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

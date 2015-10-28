@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/static/web/js/plugins/jquery.min.js"></script>
+</head>
+<body>
+<div class="clearfix row-main">
+<?py include('ops/users/user_menu.html') ?>
+ <div class="col-md-10">
+   <div class="panel">
+     <div class="panel-heading"><strong><i class="icon-globe"></i>用户授权</strong></div>
+       <div class="panel-body">
+         <form class="form-inline" action="" id="user_ajax_form" method="post">
+           <table class="table table-form">
+             <tbody>
+              <tr>
+                <th class="col-xs-2">用户名</th>
+                <td class="col-xs-6">
+                    <input type="text"  class="form-control" value="${user.Fuser_name}" id="user_name" name="Fuser_name" disabled/>
+                    <span class="text-error red" for="title" ></span>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                  <th class="col-xs-2">授权</th>
+                  <td>
+                    <?py for role in roles: ?>
+                      <?py if role.Fcode in user.Frole_codes: ?>
+                         <label class="checkbox">
+                            <input type="checkbox" value="${role.Fcode}" name="roles" checked/>${role.Fname}
+                         </label>
+                      <?py else: ?>
+                         <label>
+                            <input type="checkbox" value="${role.Fcode}" name="roles"/>${role.Fname}
+                         </label>
+                      <?py #endif ?>
+                    <?py #endfor ?>
+                  </td>
+              </tr>
+              <tr>
+                <th></th>
+                <td colspan="2">
+                    <input type="button" data-loading="稍候..." value="保存" class="btn btn-primary" id="user_submit">
+                </td>
+              </tr>
+             </tbody>
+           </table>
+             <input type="hidden" value="${user.Fid}" id="user_id" />
+             #{xsrf_form_html}
+         </form>
+       </div>
+   </div>
+ </div>
+</div>
+<?py include('ops/common/dialog.html') ?>
+<script language="Javascript">
+    $('#user_submit').click(function(){
+        var _user_id = $('#user_id').val();
+
+        var _roles_array = new Array();
+        $('input:checkbox:checked[name="roles"]').each(function(i){_roles_array[i] = this.value;});
+        var _n_roles = "";
+        for(var i=0;i<_roles_array.length;i++){
+            _n_roles += _roles_array[i]+",";
+        }
+        var _roles = _n_roles.slice(0,-1);
+        var _xsrf = "#{xsrf_token}";
+        $.ajax({
+            type:"post",
+            url:"/gzh/ops/users/authorize/"+_user_id,
+            data:{
+                Frole_codes:_roles,
+                _xsrf:_xsrf,
+            },
+            success:function(data){
+                var obj = $.parseJSON(data);
+                if(obj.stat == 'success'){
+                    alert('授权成功!');
+                    location.href = "/gzh/ops/users/list/";
+                }else{
+                    alert('授权失败!');
+                }
+            },
+            error:function(){
+                alert('error');
+            }
+        });
+    });
+</script>
+
+<?py include('ops/common/datetime_html.html') ?>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<ion-header-bar class="bar-positive bar bar-header disable-user-behavior" align-title="center">
+	<button ng-click="$ionicGoBack($event)" class="button back-button buttons  button-clear header-item">
+	<i class="icon ion-ios-arrow-back"></i> 
+	<span class="back-text">
+		<span class="default-title hide">设置</span>
+	</span>
+	</button>
+	<div class="title title-center header-item">个人信息</div>
+   <button class="publish" ng-click="onPush(model)" ng-disabled="clicked">保存</button>
+</ion-header-bar>
+<ion-view view-title="个人信息">
+  <ion-content>
+		<div class="list">
+		  <label class="item item-input">
+		    <span class="input-label">昵称：</span>
+		    <input type="text" ng-model="model.Fnick_name" name="Fnick_name"/>
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">地址：</span>
+		    <input type="text" ng-model="model.Faddress" name="Faddress"/>
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">个性签名：</span>
+		    <input type="text" ng-model="model.Fsign_text" name="Fsign_text"/>
+		  </label>
+		  <div class="item item-input">
+	  			<span class="input-label">头像：</span>
+	  			<div class="row">
+			    <div class="col col-33" style="position:relative;overflow:hidden;" ng-repeat="item in uploader.queue">
+			    	<div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 , width:100 }"></div>
+			    </div>
+			    <div class="col col-33" style="position:relative;overflow:hidden;" ng-hide="uploader.queue.length > 0">
+			    	<img style="width:100px;height:100;" src="{{model.head_photo}}" />
+			    </div>
+				<div class="col col-33" style="position:relative;overflow:hidden;">
+	            	<input type="file" style="display:none" 
+	              id="file_profile" nv-file-select="" uploader="uploader"/>
+	            	<img ng-click="onTriggerClick()"  style="max-width:100px;max-height:100px;width:100%;height:100%;" src="/static/images/photo.png"/>
+	        	</div>	
+	        	</div>	
+	  	  </div>
+		</div>
+  </ion-content>
+</ion-view>

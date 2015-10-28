@@ -1,0 +1,49 @@
+<?py include('view/login/login_header.html')?>
+    <div class="gzh-login-cons">
+        <div class="gzh-dialog-cons">
+            <p class="error login-pwd-error">
+                <?py if data:?>
+                    ${data['error']}
+                <?py #endif ?>
+            </p>
+            <ul>
+                <form method="post">
+                    <li>
+                        <input type="text" name="username" class="input-txt" id="username"  value="" placeholder="手机号码或者账号"  />
+                    </li>
+                    <li>
+                        <input type="password" name="passwd"  class="input-txt" id="passwd" value="" placeholder="密码" />
+                    </li>
+                    <li>
+                        <p class="agreement f14">
+                            <a href="＃" class="text-pink">忘记密码?</a>
+                            <a href="/login_code.html" class="text-pink fright">手机动态码登录</a>
+                        </p>
+                    </li>
+                    <li>
+                        <input type="submit" name="login" class="btn btn-submit btn-login－pwd" value="登录" />
+                    </li>
+                </form>
+            </ul>
+        </div>
+        <!--
+                <div class="gzh-dialog-footer">
+                    <h2 class="gzh-dialog-line">
+                        <span>社交帐号登录</span>
+                    </h2>
+                    <p class="gzh-dialog-social">
+                        <a href="#">
+                            <i class="icon icon48 icon-weibo"></i>
+                        </a>
+                        <a href="#">
+                            <i class="icon icon48 icon-wechat"></i>
+                        </a>
+                        <a href="#">
+                            <i class="icon icon48 icon-qq"></i>
+                        </a>
+                    </p>
+                </div>
+                -->
+
+  </div>
+<?py include('view/login/login_footer.html')?>

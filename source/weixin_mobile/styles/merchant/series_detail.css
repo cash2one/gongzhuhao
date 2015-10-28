@@ -1,0 +1,169 @@
+  .swiper-container {
+      width: 100%;
+      height: 180px;
+  }
+  .swiper-slide {
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+  }
+  .swiper-slide img{
+    width: 100%;
+    height: 180px;
+    object-fit:cover;
+  }
+  .swiper-container-horizontal>.swiper-pagination {
+    position: absolute;
+    width: 50px;
+    top: 20px;
+    left: 20px;
+  }
+
+  .swiper-pagination-bullet{
+    display: none;
+    color:white;
+    font-size: 1.5rem;
+    width: auto;
+    height: auto;
+    border-radius: 0px;
+    background: transparent;
+  }
+  .swiper-pagination-bullet-active{opacity: 1;display: block;}
+  .thumbnail-header{
+      border-bottom:1px solid #ddd;
+      margin-bottom:1rem;
+  }
+  .thumbnail-header a,
+  .thumbnail-header a:hover{
+    color:#333;
+    font-size: 1.5rem;
+    text-decoration:none;
+  }
+  .thumbnail-header>h3{
+      display:inline-block;
+      font-size: 2.1em;
+      color:#333;
+  }
+  .header-title{
+      color:#333;
+      font-size: 1.5em;
+      padding: 10px 0px;
+      margin-top: 10px;
+  }
+  .thumbnail-header>span{
+      font-size: 1.25em;
+      color:#666;
+  }
+  .media .media-body>p{
+      color:#ff6577 !important;
+  }
+  .media .media-body del{
+      color:#999;
+      margin-left: 10px;
+      font-size: 1.125rem;
+  }
+  .list:last-child.card{
+      margin-bottom: 0px;
+  }
+
+  .work-container .list-line dt,
+  .work-container .list-line dd{
+      border-bottom: 1px dashed #ddd;
+  }
+  .work-container .list-line dt{
+      border-bottom: 1px solid #ddd;
+  }
+  .swiper-price{
+      color:#333;
+      padding-left: 10px;
+      font-size: 1.75em;
+      border-bottom: 1px solid #ddd;
+      padding-top: 15px;
+      padding-bottom: 15px;
+  }
+
+  .swiper-price .pink{
+      color:#ff6577;
+  }
+
+  .swiper-price del{
+      color:#999;
+      font-size: 1em;
+      margin-left: 10px;
+  }
+
+  .swiper-phone{
+      color:#333;
+      padding-left: 10px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-size: 1.875em;
+  }
+
+  .swiper-phone i{
+      margin-right: 10px;
+  }
+
+  .gzh-btn-primary {
+    color: #fff;
+    background-color: #ff6577;
+    border-color: #000;
+    border: 0px solid transparent;
+    padding: 8px 12px; }
+    .gzh-btn-primary:hover,
+    .gzh-btn-primary:focus,
+    .gzh-btn-primary.focus,
+    .gzh-btn-primary:active,
+    .gzh-btn-primary.active,
+    .open > .gzh-btn-primary.dropdown-toggle {
+      color: #fff;
+      background-color: #ff324a;
+      border-color: black; }
+    .gzh-btn-primary:active,
+    .gzh-btn-primary.active,
+    .open > .gzh-btn-primary.dropdown-toggle {
+      background-image: none; }
+    .gzh-btn-primary.disabled,
+    .gzh-btn-primary.disabled:hover,
+    .gzh-btn-primary.disabled:focus,
+    .gzh-btn-primary.disabled.focus,
+    .gzh-btn-primary.disabled:active,
+    .gzh-btn-primary.disabled.active,
+    .gzh-btn-primary[disabled],
+    .gzh-btn-primary[disabled]:hover,
+    .gzh-btn-primary[disabled]:focus,
+    .gzh-btn-primary[disabled].focus,
+    .gzh-btn-primary[disabled]:active,
+    .gzh-btn-primary[disabled].active,
+    fieldset[disabled] .gzh-btn-primary,
+    fieldset[disabled] .gzh-btn-primary:hover,
+    fieldset[disabled] .gzh-btn-primary:focus,
+    fieldset[disabled] .gzh-btn-primary.focus,
+    fieldset[disabled] .gzh-btn-primary:active,
+    fieldset[disabled] .gzh-btn-primary.active {
+      background-color: #ff6577;
+      border-color: #000; }
+    .gzh-btn-primary .badge {
+      color: #ff6577;
+      background-color: #fff; }
+    .gzh-btn-primary > i {
+      margin-right: 5px; }
+    .gzh-btn-primary:hover,
+    .gzh-btn-primary:focus,
+    .gzh-btn-primary.focus {
+      background-color: #f8596b;
+      text-decoration: none; }
+    .gzh-btn-primary:active,
+    .gzh-btn-primary.active {
+      outline: 0;
+      background-image: none; }

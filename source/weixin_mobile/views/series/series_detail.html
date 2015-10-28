@@ -1,0 +1,176 @@
+<!doctype html>
+<?py from services.series.series_services import SeriesServices?>
+<?py series_service = SeriesServices() ?>
+<?py series_service.set_db(handler.db)?>
+<?py from services.company.location_service import LocationServices?>
+<?py location_service = LocationServices(handler.db) ?>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>套系详情</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <?py include("views/assets/styles.html") ?>
+        <link rel="stylesheet" href="/static/scripts/plugins/swiper/swiper.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/styles/block-grid.css">
+        <link rel="stylesheet" type="text/css" href="/static/styles/merchant/series_detail.css">
+        <style type="text/css">
+        body{
+            font-size: 9px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="work-container">
+            <header class="bar bar-header bar-light">
+                <button class="button back-button buttons  button-clear header-item" onclick="javascript:history.go(-1)">
+                <i class="icon ion-ios-arrow-back"></i>
+                </button>
+                <div class="title title-center header-item">套系详情</div>
+                <button class="button button-clear header-item right-button">
+                <i class="iconfont like"></i>
+                </button>
+            </header>
+            <div class="gzh-banner">
+                <div class="swiper-container swiper-no-swiping">
+                    <div class="swiper-wrapper">
+                    <?py for image in package_images: ?>
+                        <div class="swiper-slide">
+                                <img src="${image.Furl}" width="180" />
+                        </div>
+                    <?py #endfor ?>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper-price clearfix">
+                    <span class="pink">¥${package.Fsale_price}</span>
+                    <del>市场价：¥${package.Fprice}</del>
+                    <a href="/mobile/bespeak_order/2/${package.Fid}/${package.Fmerchant_id}" class="btn gzh-btn-primary pull-right" style="margin-right:10px;">立即预约</a>
+                </div>
+                <div class="swiper-phone clearfix">
+                    <span><i class="iconfont gzh-phone"></i>${company.Fphone}</span>
+                    <a href="tel:${company.Fphone}" class="pull-right">立即咨询<i class="iconfont gzh-right-thin"></i></a>
+                </div>
+            </div>
+            <div class="work-divider"></div>
+            <div class="content padding">
+                <dl class="work-item list-line" style="margin-bottom:0px;">
+                    <dt>套系详情</dt>
+                    <dd>拍摄地<span>${package.Foutdoor_space} ${package.Finner_space}</span></dd>
+                    <dd>新娘选型<span>${package.Fbride_style_count}套</span></dd>
+                    <dd>新郎造型<span>${package.Fgroom_style_count}套</span></dd>
+                    <dd>摄影师级别<span>${package.Fphotographer_level}级</span></dd>
+                </dl>
+                <dl class="work-item list-line collapse" id="collapseExample">
+                    <?py if package.Fshot_desc: ?>
+                        <dd>套系特色<span>${package.Fshot_desc}</span></dd>
+                    <?py #endif ?>
+                    <?py if package.Frecommend_photographer: ?>
+                        <dd>推荐摄影师<span>${package.Frecommend_photographer}</span></dd>
+                    <?py #endif ?>
+                    <?py if package.Farter_level: ?>
+                        <dd>化妆师级别<span>${package.Farter_level}级</span></dd>
+                    <?py #endif ?>
+                    <?py if package.Frecommend_arter: ?>
+                        <dd>推荐化妆师<span>${package.Frecommend_arter}</span></dd>
+                    <?py #endif ?>
+                    <?py if package.Fphoto_album_desc: ?>
+                        <dd>相册<span>${package.Fphoto_album_desc}</span></dd>
+                    <?py #endif ?>
+                    <?py if package.Fphoto_frame_desc: ?>
+                        <dd>相框<span>${package.Fphoto_frame_desc}</span></dd>
+                    <?py #endif ?>
+                    <?py if package.Fmv_desc: ?>
+                        <dd>MV<span>${package.Fmv_desc}</span></dd>
+                    <?py #endif ?>
+                    <?py if package.Fother_desc: ?>
+                        <dd>其他<span>${package.Fother_desc}</span></dd>
+                    <?py #endif ?>
+                    <?py if package.Fdescription: ?>
+                        <dd>补充说明<span>${package.Fdescription}</span></dd>
+                    <?py #endif ?>
+                    <?py if package.Fother_pay_desc: ?>
+                        <dd>其他收费项目<span>${package.Fother_pay_desc}</span></dd>
+                    <?py #endif ?>
+                </dl>
+                <div class="header-title" id="collapseToggle" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">查看全部<span class="pull-right"><i class="iconfont gzh-down-thin"></i></span></div>
+            </div>
+            <div class="work-divider"></div>
+            <div class="content padding">
+                <div class="list work-item">
+                    <a class="media work-media" style="text-decoration:none;" href="/mobile/merchant/detail/${company.Fuser_id}">
+                      <div class="media-left">
+                            <img class="media-object" src="${company.Fphoto_url}" alt="">
+                      </div>
+                      <div class="media-body">
+                        <h2>${company.Fcompany_name}<span class="btn-tip btn-red">惠</span><span class="btn-tip btn-blue">返</span></h2>
+                        <p class="price">${company.Fcheapest} ~ ${company.Fmost_expensive}</p>
+                        <p class="area">${location_service.get_location_name_by_id('area',company.Farea)}</p>
+                      </div>
+                    </a>
+                </div>
+            </div>
+            <div class="work-divider"></div>
+            <div class="content padding">
+                <div class="thumbnail-header">
+                    <h3>热门套系</h3>
+                    <a class="pull-right" href="/api/mobile/series/query/1/${company.Fuser_id}">查看全部${hot_series.total}个套系<i class="iconfont iconfont-2x gzh-right-thin"></i></a>
+                </div>
+                <ul class="gzh-avg-sm-2">
+                    <?py for series in hot_series.result: ?>
+                    <li>
+                        <div class="list card work-item">
+                            <div class="item-image">
+                              <a href="/api/mobile/series/${series.Fid}"><img class="gzh-thumbnail" src="${series.Fcover_img}"></a>
+                            </div>
+                            <div class="media">
+                                 <div class="media-body">
+                                   <h4 class="media-heading">${series.Fpackage_name}</h4>
+                                   <p>¥${series.Fsale_price}<del>¥${series.Fprice}</del></p>
+                                </div>
+                                <div class="media-right media-middle">
+                                  <a href="/api/mobile/series/${series.Fid}">
+                                       <i class="iconfont iconfont-2x gzh-like"></i>
+                                  </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <?py #endfor ?>
+                </ul>
+            </div>
+            <div class="work-divider" style="margin:0px;"></div>
+        </div>
+        <?py include("views/assets/javascripts.html") ?>
+        <script src="/static/scripts/plugins/swiper/swiper.min.js"></script>
+        <script src="/static/scripts/plugins/swiper/swiper.jquery.min.js"></script>
+        <script type="text/javascript">
+        $(function(){
+            var total_count = 0;
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                // paginationClickable: true,
+                autoplay: 6 * 1000,
+                loop: true,
+                onInit : function(swiper){
+                  total_count = swiper.bullets.length;
+                },
+                paginationBulletRender: function (index, className) {
+                    return '<span class="' + className + '">' + (index + 1)+"/" + total_count + '</span>';
+                }
+            });
+        });
+
+        //单独对在IOS上点击不展开进行事件重新绑定
+        $("#collapseToggle").on('click.bs.collapse.data-api', function (e) {
+            // var $this   = $(this)
+            // if (!$this.attr('data-target')) e.preventDefault()
+            // var $target = getTargetFromTrigger($this)
+            // var data    = $target.data('bs.collapse')
+            // var option  = data ? 'toggle' : $this.data()
+        });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>全部套系</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <?py include("views/assets/styles.html") ?>
+        <link rel="stylesheet" type="text/css" href="/static/styles/block-grid.css">
+        <link rel="stylesheet" href="/static/styles/common.css"/>
+        <link rel="stylesheet" href="/static/styles/merchant/merchant.css"/>
+    </head>
+    <body>
+        <div class="work-container">
+            <header class="bar bar-header bar-light">
+                <button class="button back-button buttons  button-clear header-item" onclick="javascript:history.go(-1)">
+                <i class="icon ion-ios-arrow-back"></i>
+                </button>
+                <div class="title title-center header-item">全部套系</div>
+                <button class="button button-clear header-item right-button">
+                <i class="iconfont like"></i>
+                </button>
+            </header>
+            <div class="gzh-cons">
+                <div class="md-series bg-white">
+                    #{_content}
+                </div>
+
+                <input type="hidden" value="${merchant_id}" id="merchant_id" />
+                <?py if has_next: ?>
+                    <div class="list">
+                        <button type="button" class="btn btn-more"> 点击获取更多数据>></button>
+                    </div>
+                <?py #endif ?>
+            </div>
+        </div>
+        <?py include("views/assets/javascripts.html") ?>
+        <script type="text/javascript">
+          $(function(){
+                var page_code = 2 ,
+                    merchant_id = $("#merchant_id").val(),
+                    basepath = "/api/mobile/series/query/";
+
+                $(".btn-more").click(function(e){
+                    var url = basepath + page_code + "/" + merchant_id;
+                    var promise = $.get(url);
+                    promise.success(function(rs){
+                        rs = JSON.parse(rs);
+                        if(rs.has_next == 1){
+                            page_code += 1;
+                            $('.btn-more').show();
+                        }else{
+                            $(".btn-more").hide();
+                        }
+                        $('.md-series').append(rs.html);
+                    });
+
+                    promise.error(function(error){
+                        console.log(error);
+                    });
+                });
+
+            });
+        </script>
+    </body>
+</html>

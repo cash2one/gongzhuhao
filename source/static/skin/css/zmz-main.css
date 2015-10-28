@@ -1,0 +1,542 @@
+/*
+*    Created By Hujunhao
+*    Date:2014.11.27
+*/
+
+body {
+    background-color: #f6f6f6;
+}
+.zmz-img-round{
+    background: #f2f2f2;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.075);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.075);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.075);
+    margin-bottom: 35px;
+}
+/**  轮播图样式  **/
+div.slideBox{ position:relative; margin:0 auto; overflow:hidden;}
+div.slideBox ul.items{ position:absolute; float:left; background:none; list-style:none; padding:0px; margin:0px;}
+div.slideBox ul.items li{ float:left; background:none; list-style:none; padding:0px; margin:0px;}
+div.slideBox ul.items li a{ float:left; line-height:normal !important; padding:0px !important; border:none/*For IE.ADD.JENA.201206300844*/;}
+div.slideBox ul.items li a img{width: 1210px; height: 400px; margin:0px !important; padding:0px !important; display:block; border:none/*For IE.ADD.JENA.201206300844*/;}
+div.slideBox div.tips{ position:absolute; bottom:0px; width:100%; height:50px; background-color:#000; overflow:hidden;}
+div.slideBox div.tips div.title{ position:absolute; left:0px; top:0px; height:100%;}
+div.slideBox div.tips div.title a{ color:#FFF; font-size:18px; line-height:50px; margin-left:10px; text-decoration:none;}
+div.slideBox div.tips div.title a:hover{ text-decoration:underline !important;}
+div.slideBox div.tips div.nums{ position:absolute; right:0px; top:0px; height:100%;}
+div.slideBox div.tips div.nums a{ display:inline-block; float:left/*For IE.ADD.JENA.201206300844*/; width:20px; height:20px; background-color:#FFF; text-indent:-99999px; margin:15px 10px 0px 0px; border-radius: 10px;}
+div.slideBox div.tips div.nums a.active{ background-color:#093;}
+.zmz-main-box{
+    width: 1210px;
+    margin: 0 auto;
+}
+.zmz-box{
+    margin-bottom: 35px;
+}
+.zmz-home-tipsDownLoad{
+    width: 277px;
+    height: 36px;
+    background-position: -21px -13px;
+    float: left;
+}
+.zmz-more{
+    float: left;
+    color: #626161;
+    margin:14px 0 0 25px;
+}
+.zmz-more:hover{
+    color: #626161;
+}
+.zmz-box-1{
+    background: #fff;
+    padding: 40px;
+    margin-bottom: 30px;
+    -webkit-box-shadow: 2px 2px 5px #d2d2d2;
+    -moz-box-shadow: 2px 2px 5px #d2d2d2;
+    box-shadow: 2px 2px 5px #d2d2d2;
+}
+/* 横向滚动基本样式 */
+.cxscroll{}
+.cxscroll .box{overflow:hidden;width:1130px;}
+.cxscroll .list{overflow:hidden;width:9999px; margin: 0;}
+.cxscroll .list li{float:left;width:192px;height:325px;}
+.cxscroll .list li .zmz-jn-box{
+    width: 170px;
+    padding-right:22px;
+}
+.cxscroll .list li .zmz-jn-box .zmz-jn-img{
+    width: 168px;
+    height: 240px;
+    border: 1px #d7d7d7 solid;
+    margin-bottom: 15px;
+}
+.cxscroll .list li .zmz-jn-box .zmz-jn-img img{
+    width: 160px;
+    height: 232px;
+    padding: 4px;
+    display: block;
+}
+.cxscroll .list li .zmz-jn-box .zmz-jn-word{
+    text-align: center;
+    color: #313131;
+    font-size: 16px;
+    line-height: 16px;
+    margin-bottom: 10px;
+}
+.cxscroll .list li .zmz-jn-box .zmz-jn-btn-download{
+    width: 150px;
+    height: 30px;
+    background: #2ad79c;
+    border-radius: 6px;
+    display: block;
+    padding-top: 12px;
+    margin: 0 auto;
+}
+.cxscroll .list li .zmz-jn-box .zmz-jn-btn-download:hover{
+    text-decoration: none;
+    background: #0bc686;
+}
+.cxscroll .list li .zmz-jn-box .zmz-jn-btn-download .zmz-download{
+    background-position: 50px -215px;
+    width: 90px;
+    height: 18px;
+    font-size: 16px;
+    color: #fff;
+    margin: 0 auto;
+}
+.zmz-main-info{
+    margin-bottom: 100px;
+}
+.zmz-main-info .zmz-message {
+    float: left;
+    width:850px;
+}
+.zmz-main-info .zmz-tool{
+    float: right;
+    width: 345px;
+}
+.zmz-home-share{
+    width: 104px;
+    height: 36px;
+    background-position: -21px -58px;
+    float: left;
+}
+.zmz-show-word{
+    float:right;
+    font-size: 14px;
+    line-height: 36px;
+    color: #494949;
+    margin-right: 40px;
+}
+.zmz-right-box{
+    margin-bottom: 30px;
+}
+.zmz-box-2{
+    background: #fff;
+    padding: 35px 40px;
+    -webkit-box-shadow: 2px 2px 5px #d2d2d2;
+    -moz-box-shadow: 2px 2px 5px #d2d2d2;
+    box-shadow: 2px 2px 5px #d2d2d2;
+}
+.zmz-right-box-title{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    line-height: 36px;
+}
+.zmz-goodWrite-author{
+    margin: 0 0 20px 0;
+}
+.zmz-goodWrite-author li{
+    width: 58px;
+    margin-right: 11px;
+    float: left;
+    margin-bottom: 10px;
+}
+.zmz-goodWrite-author li a{
+    display: block;
+}
+.zmz-goodWrite-author li a img{
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    position:relative;
+    z-index:2;
+    behavior: url(/static/skin/js/ie/PIE.htc);
+}
+.zmz-right-box-w{
+    font-size: 14px;
+    color: #666;
+    line-height: 16px;
+    margin-bottom: 10px;
+}
+.zmz-box-3{
+    background: #fff;
+    padding: 20px 0 20px 40px;
+    -webkit-box-shadow: 2px 2px 5px #d2d2d2;
+    -moz-box-shadow: 2px 2px 5px #d2d2d2;
+    box-shadow: 2px 2px 5px #d2d2d2;
+    width: 810px;
+}
+.zmz-left-title{
+    margin-bottom: 25px;
+    border-bottom: 2px #e6e6e6 solid;
+    width: 770px;
+}
+.zmz-left-title .zmz-tab{
+    float: left;
+    width: 120px;
+    text-align: center;
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    line-height: 38px;
+    margin-bottom: -2px;
+}
+.zmz-left-title .zmz-tab-more{
+    float: right;
+}
+.zmz-left-title .zmz-tab-more a{
+    font-size: 14px;
+    color: #000;
+    line-height: 38px;
+}
+.zmz-left-title .zmz-tab:hover, .zmz-left-title .zmz-tab:active{
+    text-decoration: none;
+}
+.zmz-left-title .zmz-tab a{
+    font-size: 14px;
+    line-height: 14px;
+    color: #626161;
+    margin-right: 5px;
+ }
+.zmz-left-title .zmz-left-title-active{
+    color: #2ad79c;
+    border-bottom: 2px #2ad79c solid;
+}
+.zmz-share-list{
+    margin: 0;
+}
+.zmz-share-list li{
+    padding-bottom: 27px;
+    margin-bottom: 25px;
+    border-bottom: 1px #ededed solid;
+}
+.zmz-share-list li:last-child{
+    margin-bottom: 0;
+    border-bottom: none;
+}
+.zmz-share-list li .zmz-share-summary-img{
+    float: left;
+    margin-right: 20px;
+    border: 1px #d7d7d7 solid;
+}
+.zmz-share-list li .zmz-share-summary-img img{
+    display: block;
+    width: 200px;
+    height: 135px;
+    padding: 4px;
+    -webkit-box-shadow: 4px 4px 0 #d2d2d2;
+    -moz-box-shadow: 4px 4px 0 #d2d2d2;
+    box-shadow: 4px 4px 0 #d2d2d2;
+}
+.zmz-share-list li .zmz-share-summary-info{
+    float: left;
+    width: 540px;
+}
+.zmz-share-list li .zmz-share-summary-info .zmz-share-summary-title{
+    margin-bottom: 27px;
+}
+.zmz-share-list li .zmz-share-summary-info .zmz-share-summary-title img{
+    float: left;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    margin-right:12px;
+    position:relative;
+    z-index:2;
+    behavior: url(/static/skin/js/ie/PIE.htc);
+}
+.zmz-share-list li .zmz-share-summary-info .zmz-share-summary-title .zmz-share-titleMessage{
+    float: left;
+    width: 470px;
+}
+.zmz-share-list li .zmz-share-summary-info .zmz-share-summary-title .zmz-share-titleMessage .zmz-share-alink{
+    font-size: 20px;
+    color: #525252;
+    display: inline-block;
+    font-weight: bold;
+    margin:5px 0 15px 0;
+}
+.zmz-share-list li .zmz-share-summary-info .zmz-share-summary-title .zmz-share-titleMessage .zmz-share-author-info .zmz-share-author-alink{
+    font-size: 14px;
+    color: #525252;
+    display: inline-block;
+    font-weight: bold;
+    margin:5px 0 15px 0;
+}
+.zmz-share-list li .zmz-share-summary-info .zmz-share-summary-title .zmz-share-titleMessage .zmz-share-author-info .share-author{
+    float: left;
+    font-size: 14px;
+    line-height: 14px;
+    width: 220px;
+    margin-bottom: 0;
+}
+.zmz-share-list li .zmz-share-summary-info .zmz-share-summary-title .zmz-share-titleMessage .zmz-share-author-info .share-date{
+    float: left;
+    font-size: 14px;
+    line-height: 14px;
+    margin-bottom: 0;
+}
+.vote{
+    float: right;
+    height: 12px;
+    background-position: -29px -2940px;
+    padding-left: 20px;
+    font-size: 12px;
+    line-height: 8px;
+    color: #5c5c5c;
+    margin-right: 12px;
+    margin-bottom: 0;
+}
+.agree{
+    float: right;
+    height: 12px;
+    background-position: -29px -2968px;
+    padding-left: 20px;
+    font-size: 12px;
+    line-height: 8px;
+    color: #5c5c5c;
+    margin-bottom: 0;
+}
+.zmz-share-list li .zmz-share-summary-info .zmz-share-summary{
+    font-size: 14px;
+    display:block;
+    width:540px;
+    height: 60px;
+    overflow: hidden;
+}
+/** 翻页共有样式 **/
+.page-part{
+    margin: 20px 0;
+}
+.page-part .page{
+    text-align: center;
+}
+.page-part .page p, .page-part .page a{
+    display: inline-block;
+    border: 1px #d2d2d2 solid;
+    height: 30px;
+    width: 30px;
+    margin:0 5px 0 0;
+    text-align: center;
+    line-height: 30px;
+    color: #666;
+ }
+.page-prev{
+    background-position: -20px -373px;
+    vertical-align: -11px;
+}
+.page-next{
+    background-position: -20px -410px;
+    vertical-align: -11px;
+}
+.page-prev:hover{
+    background-position: -71px -373px;
+}
+.page-next:hover{
+    background-position: -71px -410px;
+}
+.page-part .page .total-page{
+    width: 70px;
+    border: none;
+    height: 32px;
+    line-height: 32px;
+}
+.page-part .page .goPage{
+    border: none;
+    width: 100px;
+    vertical-align: -10px;
+}
+.page-part .page .goPage ins{
+    float: left;
+    margin-right: 5px;
+}
+.page-part .page .goPage input{
+    float: left;
+    width: 30px;
+    height: 30px;
+    padding: 0 5px;
+    margin: 0 5px 0 0;
+}
+.page-part .page .toJump{
+    border: none;
+    font-size: 14px;
+    width: 50px;
+    height: 32px;
+    line-height: 32px;
+    color: #fff;
+    background: #2ab79c;
+    text-align: center;
+    display: inline-block;
+}
+.page-part .page .page-active{
+    background: #2ab79c;
+    color: #fff;
+    border: 1px #2ab79c solid;
+}
+.page-part .page .pageNum:hover{
+    background: #2ab79c;
+    color: #fff;
+    border: 1px #2ab79c solid;
+    text-decoration: none;
+}
+/** 翻页共有样式结束 **/
+
+.zmz-home-inspiration{
+    width: 148px;
+    height: 36px;
+    background-position: -21px -109px;
+    float: left;
+}
+.zmz-inspiration-list{
+    margin: 0;
+}
+.zmz-inspiration-list li{
+    width: 236px;
+    border: 1px #d7d7d7 solid;
+    margin-right: 15px;
+    margin-bottom: 18px;
+    padding: 4px 4px 0;
+    float:left;
+    position: relative;
+}
+.zmz-inspiration-list li:nth-child(3n){
+    margin-right: 0;
+}
+.zmz-inspiration-list li .ins-img-part .insImg{
+    width: 236px;
+    height: 160px;
+}
+.zmz-inspiration-list li .ins-img-part .ins-agree{
+    width: 54px;
+    height: 54px;
+    background: #ec0f2e;
+    border-radius: 50%;
+    position: absolute;
+    top: 38px;
+    left: 166px;
+}
+.zmz-inspiration-list li .ins-img-part .ins-comment{
+    width: 54px;
+    height: 54px;
+    background: #2ad79c;
+    border-radius: 50%;
+    position: absolute;
+    top: 106px;
+    left: 166px;
+}
+.zmz-inspiration-list li .ins-img-part .ins-share{
+    width: 54px;
+    height: 54px;
+    background: #ff7e00;
+    border-radius: 50%;
+    position: absolute;
+    top: 174px;
+    left: 166px;
+    line-height: 54px;
+}
+.agree2{
+    height: 14px;
+    width: 19px;
+    background-position: -22px -305px;
+    margin: 14px auto 4px;
+    display: block;
+}
+.comment{
+    height: 15px;
+    width: 19px;
+    background-position: -22px -335px;
+    margin: 13px auto 4px;
+    display: block;
+}
+.zmz-inspiration-list li .ins-img-part a:hover{
+    text-decoration: none;
+}
+.zmz-inspiration-list li .ins-img-part a{
+    color: #fff;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+}
+.zmz-inspiration-list li .insInfo{
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+.zmz-inspiration-list li .lg_message{
+    position: absolute;
+    top: 145px;
+    right: 15px;
+}
+.zmz-inspiration-list li .insInfo .headImg{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    float: left;
+    margin: 0 8px 0 3px;
+    position:relative;
+    z-index:2;
+    behavior: url(/static/skin/js/ie/PIE.htc);
+}
+.zmz-inspiration-list li .insInfo .ins-img-title-part{
+    float: left;
+    width: 180px;
+}
+.zmz-inspiration-list li .insInfo .ins-img-title-part .ins-title{
+    font-size: 14px;
+    line-height: 14px;
+    color: #504f4f;
+    margin: 2px 0 5px 0;
+    display: block;
+    width: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.zmz-inspiration-list li .insInfo .ins-img-title-part p{
+    font-size: 12px;
+    line-height: 12px;
+    color: #656565;
+    margin: 0;
+}
+.zmz-home-preferential{
+    width: 164px;
+    height: 36px;
+    background-position: -21px -166px;
+    float: left;
+}
+.zmz-preferential-list{
+    margin: 0;
+}
+.zmz-preferential-list li{
+    float: left;
+    margin:0 20px 15px 0;
+    border: 1px #d7d7d7 solid;
+}
+.zmz-preferential-list li a{
+    padding: 4px;
+    display: block;
+}
+.zmz-preferential-list li a img{
+    width: 365px;
+    height: 176px;
+}
+
+/*修改样式*/
+.zmz-box .zmz-box-title .zmz-home-mark-title{
+    float: left;
+    line-height: 36px;
+    font-size: 20px;
+    color: #545454;
+}

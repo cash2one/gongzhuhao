@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="/static/crm/css/photo/photo.css" />
+<style>
+	.pt-name{ margin-bottom: 5px;}
+</style>
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>客片管理</h2>
+				</div>
+				<div class="box-content orders">
+					<!--<a href="/merchant/albums/" class="btn btn-primary btn-upload-photo">上传图片</a>
+					<ul class="nav nav-tabs" id="myTab">
+						<li class="active"><a href="#photo-all">全部</a></li>
+						<li><a href="#photo-new">新建</a></li>
+						<li><a href="#photo-">待确认</a></li>
+						<li><a href="#order-completed">已确认</a></li>
+						<li><a href="">精修图</a></li>
+					</ul>-->
+					<form action="" method="get" class="form-search">
+						<div class="input-group">
+					    	<input type="text" value="${search_text and search_text or ''}" name='search_text' class="form-control input-txt" placeholder="请输入订单号/手机号/相册名称搜索">
+					      	<span class="input-group-btn">
+					        		<button class="btn btn-default" type="submit">搜索</button>
+					      	</span>
+					    </div>
+					</form>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane active" id="photo-all">
+		                    <?py for album in albums: ?>
+							<div class="photo-item">
+								<!--<span class="pi-state label label-success">已确认</span>-->
+								<div class="pi-img">
+									<a href="/merchant/album/photo/upload/${album.Fid}/adorn">
+		                                <?py if not album.Furl_pic_cover:?>
+		                                    <img src="${default_url}" alt="" />
+		                                <?py else:?>
+		                                    <img src="${handler.get_show_img_url(album.Furl_pic_cover,180)}" alt="" />
+		                                <?py #endif?>
+									</a>
+									<p class="pt-total bg-alpha tright">共<span>${album.Ftotal}</span>张</p>
+								</div>
+								<p class="pt-name"><span class="red fright">${album.Fstatus==0 and '未发送' or '已发送'}</span><span>${album.Fablum_name}</span></p>
+								<p class="pt-time">创建时间：<span>${album.Fcreate_time}</span></p>
+							</div>
+		                    <?py #endfor ?>
+		                    #{page_html}
+						</div>
+
+						<div class="tab-pane" id="order-schedule">
+						</div>
+
+						<div class="tab-pane" id="order-executing">
+						</div>
+
+						<div class="tab-pane" id="order-completed">
+						</div>
+					</div>
+
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+<!--gzh func js-->
+<script>
+	$(function(){
+		$(".nav-photo").addClass("active");
+	})	
+</script>

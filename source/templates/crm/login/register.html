@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    		<meta http-equiv="X-UA-COMPATIBLE" content="IE=Edge">
+    		<meta name="keywords" content="">
+    		<meta name="description" content="">
+		<title>公主号 - 个人信息</title>
+		<link rel="stylesheet" href="/static/web/css/reset.css" />
+		<link rel="stylesheet" href="/static/web/css/common.css" />
+		<link rel="stylesheet" href="/static/web/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/static/web/css/login/login.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="login tcenter" id="js_reg">
+				<form method="post">
+                                      #{xsrf_form_html}
+            			<input type="hidden" name="url" id="url" value="/">
+					<ul class="ul-login">
+	                		<li>
+	                			<label for="nikename">昵称：</label>
+	                			<input name="nikename" class="input-txt" type="text" id="nikename" value="" placeholder="商家昵称" />
+	                			<div class="error nickname-error"></div>
+	                			
+	                		</li>
+	                		<li>
+	                			<label for="mctname">用户名：</label>
+	                			<input name="mctname" class="input-txt" type="text" id="mctname" value="" placeholder="商家用户名" />
+	                			<div class="error mctname-error"></div>
+	                		</li>
+	                		<li>
+	                			<label for="mobile">电话：</label>
+	                			<input name="mobile" class="input-txt" type="tel" id="mobile" value="" placeholder="商家联系电话" />
+	                			<div class="error mobile-error"></div>
+	                		</li>
+	                		<li>
+	                			<label for="address">地址：</label>
+	                			<input name="address" class="input-txt" type="text" id="address" value="" placeholder="商家联系地址" />
+	                			<div class="error add-error"></div>
+	                		</li>
+	                		<li>
+	                			<label for="password">密码：</label>
+	                			<input name="password" class="input-txt" type="password" id="password" value="" placeholder="密码" />
+	                			<div class="error pwd-error"></div>
+	                		</li>
+	                		<li>
+	                			<label for="confirmpwd">密码：</label>
+	                			<input name="confirmpwd" class="input-txt" type="password" id="confirmpwd" value="" placeholder="密码" />
+	                			<div class="error confirmpwd-error"></div>
+	                		</li>
+	                		<li>
+	                			<input type="checkbox" name="agreement" id="agreement" checked/>
+	               			<span >我已同意<a href="" target="_blank">《公主号网站注册协议》</a></span>
+	                		</li>
+	                		<li>
+	                			<input type="button" class="btn btn-green btn-rege f16" id="register" value="注册">
+	                			<a class="btn-reg" target="_blank" href="">已有账号？立即登录！</a>
+	                		</li>
+	                	</ul>
+	               <div class="error"></div>
+                	</form>
+			</div>
+		</div>
+		<script type="text/javascript" src="/static/web/js/plugins/jquery-1.11.1.min.js" ></script>
+		<script type="text/javascript" src="/static/web/js/plugins/bootstrap.min.js" ></script>	
+		<script type="text/javascript" src="/static/web/js/login/reg.js" ></script>
+	</body>
+</html>

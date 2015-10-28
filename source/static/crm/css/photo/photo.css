@@ -1,0 +1,113 @@
+.photo-item{ position: relative; float: left; display: inline-block; margin: 15px 9px; padding: 10px; width: 202px; height: auto; border: 1px solid #ddd;}
+.pi-img{position: relative; top: 0; left: 0; margin: 0 auto 10px auto; width: 180px; height: 220px; background: #000;}
+.pt-total{ position: absolute; bottom: 0; left: 0; padding: 5px 10px; width: 100%;}
+.pt-total span{ margin: 0 2px;}
+.photo-item p{ margin: 0;}
+.pi-img a{ display: inline-block; width: 180px; height: 220px;}
+.pi-img img{ width: 100%; height: 220px; overflow: hidden;}
+.pi-state{ position: absolute; right: 10px; top: 10px; z-index: 999; display: inline-block; padding: 8px 0; width: 50px; text-align: center;} 
+.tab-pane{ overflow: hidden; padding: 10px; margin: 0 -9px;}
+.photo-upload{ overflow: hidden; min-height: 600px;}
+.pu-order{ margin-bottom: 10px;}
+.pu-extra{}
+.pu-extra h3{ margin: 0 0 10px 0;}
+.pu-extra .label{ padding: .3em .6em; font-weight: normal;}
+.pu-qrcode{ padding: 10px; width: 160px; height: 160px; text-align: center; border: 1px solid #ddd;}
+.pu-qrcode img{ width: 100%; height: 100%;}
+.photo-upload .col-sm-2{ float: left;}
+.photo-upload .col-sm-9{ float: right;}
+.glyphicon{  font-weight: normal;}
+
+.photo-tag{ margin: 10px 0;}
+.photo-tag ul{ margin: 0; padding: 0;}
+.photo-tag ul li{ margin: 10px 0;}
+.photo-tag ul li .glyphicon{ margin-right: 5px;}
+.photo-tag ul li a{ margin-right: 3px;}
+.tags{ display: inline-block; padding: 1px 8px; text-align: center; line-height: 20px; background: #ddd; color: #333; font-size: 12px; font-weight: normal; border-radius: 3px;}
+.tags:hover{ text-decoration: none; background: #5cb85c; color: #fff;}
+.tags.current{ text-decoration: none; background: #5cb85c; color: #fff;}
+
+.btn-upload-photo{ position: absolute; right: 20px;}
+.photo-thumb{ position: relative; overflow: hidden; margin: 0 auto;}
+
+.pt-item{ position: relative; margin: 10px 10px 0 0; display: inline-block; width: auto;} 
+/*新加样式*/
+.photo-thumb ul {list-style:none;}
+.photo-thumb ul li {zoom:1;height:150px;float:left;margin:10px 0px 0px 10px;}
+#xu-save{ display:none;}
+.pt-tags{ display: none; position: relative; top: 30px; left: 0; margin: -30px 0 0 0;  width: 100%; height: 30px; line-height: 30px; border-top-left-radius: 5px; border-top-right-radius: 5px;}
+.pt-item:hover .pt-tags{ display: block; position: relative; top: 30px; left: 0; }
+.pt-tags input{ margin: 10px 0 0 10px; vertical-align: middle;}
+.pt-tags .pt-delete{ margin: 8px 10px 0 0; cursor: pointer;}
+.pt-link{ /*float: left;*/ position: relative; top: 0; display: inline-block; height: 150px; border-radius: 5px;} 
+.pt-link .pt-image{ width: auto; height: 150px; border-radius: 5px; vertical-align: top;}
+
+.photo-item .pt-name{ margin-bottom: 3px;}
+/*.pu-action{ overflow: hidden; margin: 10px auto; padding-bottom: 20px; width: 100%; }*/
+.pu-action{ overflow: hidden; width: 100%; }
+.pu-action .btn-tag{ margin-right: 10px;}
+
+.photo-infos{ overflow: hidden; margin: 0 auto; padding: 0;}
+.photo-infos li{ float: left; margin-right: 30px; margin-bottom: 0; line-height: 30px;} 
+.photo-infos li span{ margin-left: 5px;}
+.pu-upload{ position: relative; float: right; display: inline-block;}
+
+
+.upload-photo-btn{ }
+.create-main-right #J-formFile{
+    position: relative;
+    margin-bottom: 20px;
+}
+#J-formFile .upload-photo-btn{
+    background: url(../../images/user-upload-photo.png) no-repeat;
+    width: 200px;
+    height: 62px;
+	border: none;
+}
+.btn-uploadphoto{ position: relative; margin-right: 10px;}
+#J-formFile input[name="files"]{
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    opacity: 0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)";
+    width: 70px;
+    height: 29px;
+    cursor: pointer;
+}
+
+
+.lightbox .lb-close{ background-size: 14px 14px;}
+
+/*
+ * photo tags dialog
+ */
+.tag-dialog{ display: none;  position: fixed; left: 0; top: 0; width: 100%; height: 100%; background:rgba(0, 0, 0, 0.3)!important; filter:alpha(opacity=30); background: #000; z-index: 99; }
+.tag-dialog .dialog{ position: absolute; top: 30%; left: 50%; padding-bottom: 10px; margin-left: -280px; width: 580px; background: #fff; border-radius: 5px;}
+.tag-dialog .dialog h2{ clear: both; margin: 0; padding: 0 20px; line-height: 40px; border-bottom: 1px solid #ddd; color: #3c3c3c; font-size: 14px; font-weight: normal; text-align: left; }
+.tag-dialog .dialog ul{ padding: 0 20px; margin: 0;}
+.tag-dialog .close-tag{ float: right; margin: 10px 0 0 0; display: block; cursor: pointer;}
+.tags-del{ display: none; margin: 2px 0 0 5px; cursor: pointer;}
+
+.choose-tag{ padding: 10px 20px 0 20px; border-top: 1px solid #ddd;}
+.choose-tag .btn-conform{ margin-left: 10px;}
+.btn-cancel{}
+.pt-tag{  margin-top: 10px;}
+.add-tags{ padding-left: 10px; cursor: pointer;}
+.add-tags a{ color: #fff; text-decoration: none;}
+.add-tags a:hover{ text-decoration: none;}
+.pt-tags .check-tags{ padding: 0 0 0 10px; font-size: 12px; font-weight: 100; cursor: pointer;}
+
+.photoTags{ margin-right: 20px;}
+.photoTags .glyphicon{ margin-right: 4px;}
+
+/*
+ * search
+ */
+.input-txt{ width: 400px; font-size: 12px;}
+.input-group-addon, .input-group-btn{ margin-left: -1px; width: auto;}
+.form-control{ height: 30px;}
+.input-group .form-control{ width: 500px; }
+.input-group{ margin-bottom: -10px;}

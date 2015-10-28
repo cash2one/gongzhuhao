@@ -1,0 +1,241 @@
+
+user  root;
+worker_processes  2;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  120;
+    underscores_in_headers on;#nginx igore header parameters with  '_'
+    gzip  on;
+    upstream gongzhuhao {
+        server 127.0.0.1:8000;
+        server 127.0.0.1:8001;
+        #server 127.0.0.1:8002;
+        #server 127.0.0.1:8003;
+    }
+   
+   upstream admin_gongzhuhao {
+        server 127.0.0.1:7001;
+        #server 127.0.0.1:7002;
+    }
+ 
+    upstream gongzhuhao_mobile{
+		server 127.0.0.1:8007;
+        	server 127.0.0.1:8008;
+    }
+
+ upstream www_gongzhuhao{
+                server 127.0.0.1:8009;
+ 		server 127.0.0.1:8010;
+    }
+
+
+ server {
+                listen       80;
+                server_name  www.gongzhuhao.com;
+
+        location / {
+
+                client_max_body_size    200m;
+                proxy_pass_header Server;
+                proxy_redirect     off;
+
+                proxy_set_header   Host              $host;
+                proxy_set_header   X-Real-IP         $remote_addr;
+                proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+                proxy_set_header   X-Forwarded-Proto $scheme;
+                proxy_pass         http://www_gongzhuhao;
+        }
+#       location ~* ^.+\.(css|js|txt|xml|swf|wav)$ {
+#               root         /home/admin/www/gongzhuhao/weixin_mobile/;
+#               access_log   off;
+#                expires      24h;
+#       }
+    }
+
+#----------------------admin ----------------------
+   server {
+                listen       80;
+                server_name  admin.gongzhuhao.com;
+
+        location / {
+		 client_max_body_size    200m;
+                proxy_pass         http://admin_gongzhuhao;
+                proxy_redirect     off;
+
+                proxy_set_header   Host              $host;
+                proxy_set_header   X-Real-IP         $remote_addr;
+                proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+                proxy_set_header   X-Forwarded-Proto $scheme;
+        }
+    }
+#----------------------mobile ----------------
+   server {
+                listen       80;
+                server_name  m.gongzhuhao.com;
+
+        location / {
+		
+		client_max_body_size    200m;
+		proxy_pass_header Server;
+                proxy_redirect     off;
+
+                proxy_set_header   Host              $host;
+                proxy_set_header   X-Real-IP         $remote_addr;
+                proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+                proxy_set_header   X-Forwarded-Proto $scheme;
+		proxy_pass         http://gongzhuhao_mobile;
+        }
+#	location ~* ^.+\.(css|js|txt|xml|swf|wav)$ {  
+#    		root         /home/admin/www/gongzhuhao/weixin_mobile/;  
+#    		access_log   off;  
+#   		 expires      24h;  
+#	} 
+    }
+
+
+    server {
+        listen       80;
+        server_name  e.gongzhuhao.com;
+
+        #charset koi8-r;
+
+	 location ~\/mobile/ {
+
+                client_max_body_size    200m;
+                proxy_pass_header Server;
+                proxy_set_header Host $http_host;
+                proxy_redirect off;
+                proxy_set_header X-Real-IP $http_x_forwarded_for;
+                proxy_set_header X-Scheme $scheme;
+                proxy_pass http://gongzhuhao_mobile;
+        }
+
+	    location ~\/weixin/ {
+
+                client_max_body_size    200m;
+                proxy_pass_header Server;
+                proxy_set_header Host $http_host;
+                proxy_redirect off;
+                proxy_set_header X-Real-IP $http_x_forwarded_for;
+                proxy_set_header X-Scheme $scheme;
+                proxy_pass http://gongzhuhao_mobile;
+        }
+
+        #access_log  logs/host.access.log  main;
+  	 location / {
+
+                client_max_body_size    200m;
+                proxy_pass_header Server;
+                proxy_set_header Host $http_host;
+                proxy_redirect off;
+                proxy_set_header X-Real-IP $http_x_forwarded_for;
+                proxy_set_header X-Scheme $scheme;
+                proxy_pass http://gongzhuhao;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+ 	server {
+        	listen       80;
+       		 server_name  logs.gongzhuhao.com;
+
+        location / {
+                proxy_pass         http://127.0.0.1:9000;
+                proxy_redirect     off;
+
+                proxy_set_header   Host              $host;
+                proxy_set_header   X-Real-IP         $remote_addr;
+                proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
+                proxy_set_header   X-Forwarded-Proto $scheme;
+        }
+    }
+  # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443;
+    #    server_name  localhost;
+
+    #    ssl                  on;
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_timeout  5m;
+
+    #    ssl_protocols  SSLv2 SSLv3 TLSv1;
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers   on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}

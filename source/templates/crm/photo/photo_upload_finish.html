@@ -1,0 +1,271 @@
+<link href='/static/crm/css/photo/photo.css' rel='stylesheet' />
+<link rel="stylesheet" href="/static/crm/css/photo/slider.css" />
+<style>
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  direction: ltr;
+  cursor: pointer;
+}
+</style>
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->		
+	<div class="row-fluid sortable">		
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well">
+					<h2>客片管理</h2>
+				</div>
+				<div class="box-content photo-upload">
+					<ul class="photo-infos">
+	                    <?py if order:?>
+						<li>订单号：<span id="order-no">${order.Forder_id_user}</span></li>
+						<li>订单类型：<span id="order-type">${_TYPE_ORDER[order.Forder_type]}</span></li>
+						<li>客户姓名：<span id="order-name">${order.Fuser_name}</span></li>
+						<li>联系方式：<span id="order-mobile">${order.Fuser_mobi}</span></li>
+	                    <?py role_codes = handler.get_current_user().get('Frole_codes')?>
+	                    <?py permission = handler.get_current_user().get('Fpermission')?>
+
+	                    <?py if album.Ftotal >= 1:?>
+	                            <?py if album and album.Fstatus==1:?>
+	                                <li>确认状态：<span class="red">已发送</span>
+	                                    <?py if role_codes or ('send_photoes' in permission): ?>
+	                                        <input id="confirm_user" type="button" class="btn btn-primary btn-sm btn-danger" data-url="${order.Fid}" value="再次发送">
+	                                    <?py #endif ?>
+	                                </li>
+	                                
+	                            <?py else:?>
+	                                <li>确认状态：<span class="red">未发送</span>
+	                                    <?py if role_codes or ('send_photoes' in permission): ?>
+	                                         <input id="confirm_user" type="button" class="btn btn-primary btn-sm btn-danger" data-url="${order.Fid}" value="发送照片">
+	                                    <?py #endif ?>
+	                                </li>
+	                            <?py #endif ?>
+	                    <?py elif album.Ftotal == 0: ?>
+	                                <li class="confirm_and_send">确认状态：<span class="red">未发送</span>
+	                                    <?py if role_codes or ('send_photoes' in permission): ?>
+	                                         <input id="confirm_user" type="button" class="btn btn-primary btn-sm btn-danger" data-url="${order.Fid}" value="发送照片">
+	                                    <?py #endif ?>
+	                                </li>
+	                    <?py #endif ?>
+	                    <?py #endif ?>
+	                    <li> <input id="xu-save" type="button" class="btn btn-primary btn-sm " value="保存"></li>
+	                    <div class="pu-upload">
+	                    <?py if role_codes or 'photos_edit' in permission: ?>
+	                    <span class="btn btn-primary btn-sm btn-danger fileinput-button">
+					        <span>上传图片</span>
+					        <!-- The file input field used as target for the file upload widget -->
+					        <input id="fileupload" type="file" name="files"  data-url="/merchant/album/photo/upload/${ablum_id}/adorn"  title="请选择图片" multiple>
+					    </span>
+					    <?py #endif ?>
+                        </div>
+                        <input type="hidden" name="_xsrf" value="${xsrf_token}">
+                        <input type="hidden" value="${ablum_id}" id="album_id" />
+						<!--<li>客户确认情况：<span class="label label-warning">客户确认中</span></li>-->
+					</ul>
+					<div class="photo-tag" id="js_tag_photo">
+					</div>						
+					<ul class="nav nav-tabs" id="myTab">
+					</ul>
+					<div class="tab-pane active" id="photo-finishing">
+						<div class="pu-action clear">
+							<div class="tags-all">
+								
+							</div>
+						</div>
+				      	
+				        <div class="photo-thumb" id="J-append-photo">
+				        		<input type="hidden" id="js-photo" />
+				        </div>
+				        <div class="photo-thumb case-img-list clearfix" id="clearfix">
+				          <ul>	
+						    <?py for p in photos:?>
+						    	  <li>
+						    		<div class="masonry-brick item">
+						    			<p class="pt-tags bg-alpha">
+					        				<span class="pt-delete fright glyphicon glyphicon-remove"></span>
+					        			</p>
+							         <a class="pt-link example-image-link" data-lightbox="pt-thumb" data-title="" data-id="${p.Fid}"  href="${p.Fimage_url}">
+							            <img class="pt-image" alt="Hello" src="${handler.get_show_img_url(p.Fimage_url,150)}"/>
+							         </a>	
+							         <p class="pt-tag"></p>
+						    		</div>
+						    	  </li>	
+						    <?py #endfor ?>				        		
+						   </ul> 
+				        </div>	
+						<div class="slider-mask" id="slider-mask"></div>
+						<div class="slider-pop-box" id="slider-pop-box" data-id="0">
+						    <div class="slider-desc-review">
+						        <div class="info">
+					            		<p class="info-name">客户姓名：<span>${order.Fuser_name}</span></p>
+					            		<p class="info-no">订单号：<span>${order.Forder_id_user}</span></p>
+					            		<p class="info-type">订单类型：<span>${_TYPE_ORDER[order.Forder_type]}</span></p>
+					            		<p class="info-mobile">联系方式：<span>${order.Fuser_mobi}</span></p>
+						            <p class="length"></p>
+						        </div>
+						    </div>
+						    <div class="slider-photo-wrap">
+						        <div class="photo-main">
+						            <div class="mid">
+						            	<img class="loading" src="/static/crm/js/plugins/lightbox/images/loading.gif" alt=""/>
+						            	<img class="photo" src="" alt=""/>
+						        </div>
+						        </div>
+						        <div class="photo-nav">
+						            <a title="下一张" href="javascript:;" class="photo-next" id="photo-next"><img src="/static/crm/js/plugins/lightbox/images/next.png" alt="下一张"/></a>
+						            <a title="上一张" href="javascript:;" class="photo-prev" id="photo-prev"><img src="/static/crm/js/plugins/lightbox/images/prev.png" alt="上一张"/></a>
+						        </div>
+						    </div>
+						    <a class="slider-close" id="slider-close" href="javascript:;"><img src="/static/crm/js/plugins/lightbox/images/close.png" alt=""/></a>
+						</div>					        
+					</div>
+
+				</div><!--/span-->
+			</div>
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+<script type="text/html" id="J-model-photo">
+	<!--<div class="pt-item">
+        <a class="pt-link" data-lightbox="pt-thumb" data-id=""  href="">
+            <img class="pt-image" alt="" src="/static/crm/js/plugins/uploadify/img/user-loading.gif" />
+        </a>		
+   	</div>-->
+	<div class="pt-item masonry-brick">
+		<p class="pt-tags bg-alpha">
+			<!--<input type="checkbox" name="check_tags" class="check-tags fleft" />-->
+			<span class="pt-delete fright glyphicon glyphicon-remove"></span>
+		</p>
+	    <a class="pt-link example-image-link" data-lightbox="pt-thumb" data-title="" data-id=""  href="">
+	        <img class="pt-image" data-pid="" alt="Hello" src="/static/crm/js/plugins/uploadify/img/user-loading.gif"/>
+	    </a>	
+	    <p class="pt-tag"></p>
+	</div>   	   	
+</script>
+
+<div class="tag-dialog" id="js_dialog_tag">
+	<div class="photo-tag dialog">
+		<h2>请选择标签：<span class="fright close-tag glyphicon glyphicon-remove"></span></h2>
+		<ul>
+			<li id="style">
+				<span class="glyphicon glyphicon-picture"></span>拍摄风格：
+				<a href="javascript:void(0)" class="tags" data-id="1">时尚<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="2">清新<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="3">特色<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="4">韩式<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="5">复古<span class="glyphicon glyphicon-remove tags-del"></span></a>
+			</li>
+			<li id="scene">
+				<span class="glyphicon glyphicon-home"></span>拍摄场景：
+				<a href="javascript:void(0)" class="tags" data-id="1">花海<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="2">外景<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="3">特色<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="4">实景基地<span class="glyphicon glyphicon-remove tags-del"></span></a>
+			</li>
+			<li id="clothes">
+				<span class="glyphicon glyphicon-picture"></span>婚纱礼服：
+				<a href="javascript:void(0)" class="tags" data-id="1">婚纱<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="2">便装<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="3">礼服<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="4">裙子<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="5">情侣装<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="6">特色<span class="glyphicon glyphicon-remove tags-del"></span></a>
+			</li>
+		</ul>
+		<div class="choose-tag">
+			<div class="tips"></div>
+			<button class="btn btn-success btn-sm fright btn-conform">确定</button>
+			<button class="btn btn-default btn-sm fright btn-cancel">取消</button>
+		</div>
+	</div>
+	
+	
+<script src="/static/crm/js/plugins/bootstrap-dialog.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+    var start = new slider({wrap:".masonry-brick",
+        title: $(".case-name").text(),
+        name: $(".merchant-name").text()
+    }).init();
+	
+    $('#confirm_user').on('click',function(data){
+
+        $.get('/merchant/orders/confirm/'+$(this).attr('data-url'),{},function(data){
+                var obj = $.parseJSON(data);
+                if(obj.status == 'ok')
+                   {
+                        show_dialog_reload('发送照片','发送成功');
+                   }
+                else
+                    {
+                        show_dialog_none_reload('发送照片',obj.info);
+                    }
+        });
+    });
+
+	//删除图片
+	$(".photo-thumb").on('click','.pt-delete',function(){
+
+	    var image_id = $(this).parent().parent().find('a').attr('data-id');
+        var del_obj = $(this).parent().parent();
+
+	    BootstrapDialog.show({
+            title: '删除照片',
+            message: '确定删除照片',
+            buttons: [{
+                label: 'Cancle',
+                action: function(dialogItself){
+                    dialogItself.close()
+                }
+            },
+            {
+                label: 'OK',
+                action: function(dialogItself){
+                      dialogItself.close()
+                      $.get('/merchant/photos/delete/'+image_id,{},function(data){
+                               var obj = $.parseJSON(data);
+                               show_dialog_none_reload('删除照片',obj.info);
+                               if(obj.status=='ok'){
+                                    del_obj.remove()
+                                }
+                       })
+                }
+            }]
+        });
+           　　
+
+	});
+
+    <?py if album.Ftotal == 0: ?>
+        $('.confirm_and_send').hide();
+    <?py #endif ?>
+})
+</script>
+<!--gzh func js-->
+<script src="/static/crm/js/plugins/uploadify/js/jquery.ui.widget.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.iframe-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/load-image.min.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.xdr-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-ui.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-process.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-image.js"></script>
+<script src="/static/crm/js/photo/lightbox-slider.js"></script>
+
+<script src="/static/crm/js/photo/photo.js"></script>
+<script>
+	$(function(){
+		$(".nav-photo").addClass("active");
+	})	
+</script>

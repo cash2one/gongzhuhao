@@ -1,0 +1,197 @@
+<link rel="stylesheet" href="/static/skin/css/topic.css">
+
+<!-- 页面信息存储 -->
+<div class="hide">
+    <input type="hidden" name="pageType" value="LIST">
+    <input type="hidden" name="_xsrf" value="${xsrf_token}">
+</div>
+<div class="gzh-container">
+<div class="main bg-white border">
+    <!--页面浮动部分-->
+    <div class="fixedPart">
+        <ul class="fixed-do-list">
+            <li>
+                <a href="/topic/create/" class="f-one-icon f-public"></a>
+            </li>
+            <li>
+                <a href="javascript:;" onclick="$(this).closest('li').find('.qrCode-img').slideToggle();" class="f-one-icon f-wx-qrcode"></a>
+                <img src="/static/skin/images/wx-dyh.png" class="qrCode-img" alt="">
+            </li>
+            <li>
+                <a href="#" class="f-one-icon f-toTop"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="topic_header clearfix">
+        <span class="c_name fl f22">话题社区</span>
+        <div class="topic_publish_btn fr">
+            <a href="/topic/create/" class="btn btn-publish ">
+                <i class="iconfont" title="编辑">&#xe609</i>
+                发布话题
+            </a>
+        </div>
+    </div>
+    <div class="t_con_box clearfix">
+        <ul class="topic_tab fl">
+            <li>
+                <a href="/topic" class="topic_type ${'topic_type_active' if not base_data['category_id'] else ''} clearfix" data-id="0">
+                    <p class="w1">全部</p>
+                    <span class="topic_icon arrow">
+                        <i class="iconfont gray">&#xe610;</i>
+                    </span>
+                </a>
+            </li>
+            <?py for c in topic_cate[:]: ?>
+            <li>
+                <a href="/topic/${c['id']}/" class="topic_type ${'topic_type_active' if  base_data['category_id']==c['id'] else ''} clearfix" data-id="${c['id']}">
+                    <img src="${c['url']}" alt="">
+                    <p class="w1">${c['name']}</p>
+                    <span class="topic_icon arrow">
+                        <i class="iconfont gray">&#xe610;</i>
+                    </span>
+                </a>
+            </li>
+            <?py #endfor ?>
+        </ul>
+        <div class="main_topic_part right">
+            <div class="hotTopic">
+                <p class="tf_name">推荐帖</p>
+                <div class="hot_topic_detail clearfix">
+                    <a href="/member/index/${rec_topic.Fuser_id}" class="head">
+                        <img src="${user_db.get_user_msg(rec_topic.Fuser_id).get('photo')}" alt="">
+                    </a>
+                    <div class="ht_part">
+                        <div class="ht_title clearfix">
+                            <?py if rec_topic.Fis_recommend: ?>
+                            <p class="essence">官</p>
+                            <?py #endif ?>
+                            <?py if rec_topic.Fis_top: ?>
+                            <p class="top">顶</p>
+                            <?py #endif ?>
+                            <?py if rec_topic.Fis_essence: ?>
+                            <p class="essence">精</p>
+                            <?py #endif ?>
+                            <a href="/topic/detail/${rec_topic.Fid}/${rec_topic.Fuser_id}" class="tt_link">${rec_topic.Ftitle}</a>
+                            <a href="/member/index/${rec_topic.Fuser_id}" class="name">${user_db.get_user_msg(rec_topic.Fuser_id).get('nick')}</a>
+                        </div>
+                        <div class="ht_content">#{rec_topic.Fcontent}</div>
+                        <div class="topic_this_info clearfix">
+                            <p class="topic_date">${time_passed(rec_topic.Fcreate_time)}</p>
+                            <p class="topic_icon topic_toComment">
+                                <i class="iconfont " title="评论数">&#xe605;</i>
+                                ${rec_topic.Ftotal_assess}
+                            </p>
+                            <p class="topic_icon topic_view">
+                                <i class="iconfont " title="浏览量">&#xe602</i>
+                                ${handler.get_page_view('t_topics',rec_topic.Fid,rec_topic.Fpage_view)}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main_topic_list">
+                <ul class="topic_list" id="topic">
+                    <?py for c in topic_list: ?>
+                    <li class="topic-list" data-id="${c['Fid']}">
+                        <div class="ht_title clearfix">
+                            <?py if c['Fis_top']: ?>
+                            <p class="top">顶</p>
+                            <?py #endif ?>
+                            <?py if c['Fis_essence']: ?>
+                            <p class="essence">精</p>
+                            <?py #endif ?>
+                            <a href="/topic/detail/${c['Fid']}/${c['Fuser_id']}" class="tt_link">${c['Ftitle']}</a>
+                            <a href="/member/index/${c['Fuser_id']}" class="name">${c['nick_name']}</a>
+                        </div>
+                        <div class="ht_content">#{c['Fcontent']}</div>
+
+                        <div class="topic_this_info clearfix">
+                            <p class="topic_date">${c['time']}</p>
+                            <p class="topic_icon topic_toComment">
+                                <i class="iconfont " title="评论数">&#xe605;</i>
+                                ${c['Ftotal_assess']}
+                            </p>
+                            <p class="topic_icon topic_view">
+                                <i class="iconfont " title="浏览量">&#xe602</i>
+                                ${c['Fpage_view']}
+                            </p>
+                            <?py if is_admin: ?>
+                            <input type="button" class="manageOperatingBtn toDelete" data-stat="1" value="删除">
+                            <input type="button" class="manageOperatingBtn toEssence" data-stat="${0 if c['Fis_essence'] else 1}" value="${'取消精华' if c['Fis_essence'] else '精华'}">
+                            <input type="button" class="manageOperatingBtn toTop" data-stat="${0 if c['Fis_top'] else  1}" value="${'取消置顶' if c['Fis_top'] else '置顶'}">
+                            <?py #endif ?>
+                        </div>
+                    </li>
+                    <?py #endfor ?>
+                </ul>
+
+                <!-- 翻页部分在此 -->
+                <div class="page-part">
+                    <!--页面信息保存-->
+                    <input type="hidden" name="page" value="1">
+                    <input type="hidden" name="total_page" value="${total_page}">
+                    <div class="page" id="J-manage-page"></div>
+                </div>
+
+                <!-- 话题发表部分新增页面，此部分删除--5.25
+                <div class="topic-publish-part" id="topicPublishForm">
+                    <h3 class="publish-title">发布话题</h3>
+                    <div class="publish-condition clearfix">
+                        <select class="topicType">
+                            <option value="-1">请选择话题</option>
+                            <?py for c in topic_cate: ?>
+                            <option value="${c['id']}" ${'selected = "selected"' if base_data['category_id'] == int(c['id']) else '' }>${c['name']}</option>
+                            <?py #endfor ?>
+                        </select>
+                        <input type="text" name="title" class="topicTitle" maxlength="25" placeholder="请输入标题， 2-25个字">
+                    </div>
+                    <div class="topic-main-desc">
+                        <div class="desc-other-mark">
+                            <a href="javascript:;" class="topic_icon emotion face"></a>
+                            <form action="/album/photo/qa/upload/" method="post" enctype="multipart/form-data" class="topic-form" id="J-topic-formFile">
+                                <input type="hidden" name="_xsrf" value="">
+                                <p class="topic_icon uploadImg"></p>
+                                <input id="fileupload_topic" type="file" name="files" data-url="" title="请选择图片" multiple="">
+                            </form>
+                        </div>
+                        <textarea class="topic-desc-content" id="saytext" name="saytext" placeholder="请输入话题内容，至少5个字"></textarea>
+                    </div>
+                    <ul class="upload-descImg-list clearfix"></ul>
+                </div>
+                <input type="button" class="publishBtn" value="发布">
+                <span class="err"></span>
+                -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/topic_v2.js"></script>
+<script type="text/javascript">
+    var topic = new topic().init();
+    $('#nav_topic').addClass('current');
+</script>
+<script type="text/html" id="J-model-topic-list">
+    <li class="topic-list" data-id="{{topic_id}}">
+        <div class="ht_title clearfix">
+            {{Fis_top}}
+            {{Fis_essence}}
+            <a href="/topic/detail/{{topic_id}}/{{user_id}}" class="tt_link">{{title}}</a>
+            <a href="/member/index/{{user_id}}" class="name">{{name}}</a>
+        </div>
+        <div class="ht_content">{{content}}</div>
+        {{descImg}}
+        <div class="topic_this_info clearfix">
+            <p class="topic_date">{{time}}</p>
+            <p class="topic_icon topic_toComment">
+                <i class="iconfont" title="评论数">&#xe605;</i>
+                {{comment}}
+            </p>
+            <p class="topic_icon topic_view">
+                <i class="iconfont" title="浏览量">&#xe602</i>
+                {{view}}
+            </p>
+            {{operating}}
+        </div>
+    </li>
+</script>

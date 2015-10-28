@@ -1,0 +1,42 @@
+
+添加用户：insert into mysql.user(Host,User,Password) values("*","zenmez",password("1qaz2wsx"));
+授权 grant select,insert,update,delete on decorate.* to zenmez@'%' identified by '1qaz2wsx';
+
+--数据顶针
+update t_orders as td set td.Ffitting_time=(select Fshot_date from t_orders_schedule as ts where ts.Fid=0 and ts.Forder_id=td.Fid) where td.Fcreate_time>'2015-06-10';
+update t_orders as td set td.Fshot_time=(select Fshot_date from t_orders_schedule as ts where ts.Fid=1 and ts.Forder_id=td.Fid) where td.Fcreate_time>'2015-06-10';
+update t_orders as td set td.Fselect_time=(select Fshot_date from t_orders_schedule as ts where ts.Fid=2 and ts.Forder_id=td.Fid) where td.Fcreate_time>'2015-06-10';
+update t_orders as td set td.Fcertain_time=(select Fshot_date from t_orders_schedule as ts where ts.Fid=3 and ts.Forder_id=td.Fid) where td.Fcreate_time>'2015-06-10';
+update t_orders as td set td.Fabtain_time=(select Fshot_date from t_orders_schedule as ts where ts.Fid=4 and ts.Forder_id=td.Fid) where td.Fcreate_time>'2015-06-10';
+
+desc t_orders
+
+select * from t_orders;
+select * from t_orders_schedule;
+
+Fselect_time
+Fshot_time
+Fcertain_time
+Fabtain_time
+Ftitting_time
+
+
+select * from t_users where  Frole_codes like '%merchant%';
+
+(1,2,3,4,5,6,1026,1029)
+
+select * from t_company
+
+update t_company set Fdeleted=1 where Fuser_id in (1,2,3,4,5,6,1026,1029)
+
+select * from t_company  where Fuser_id in (1,2,3,4,5,6,1026,1029);
+
+select * from  t_shot_package
+
+update  t_shot_package set Fdeleted=1 where Fmerchant_id in (1,2,3,4,5,6,1026,1029);
+
+select * from t_wedding_photo_product
+
+update  t_wedding_photo_product set Fdeleted=1 where Fmerchant_id in (1,2,3,4,5,6,1026,1029);
+
+

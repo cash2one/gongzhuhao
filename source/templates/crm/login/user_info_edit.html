@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="/static/crm/css/system/member.css" />
+<link rel="stylesheet" href="/static/crm/js/plugins/dataTime/jquery.datetimepicker.css" />
+<div id="content" class="col-lg-10 col-sm-10">
+	<div class="row-fluid sortable">
+	    <div class="box col-md-12">
+	        <div class="box-inner">
+		        <div class="box-header well" data-original-title>
+		            <h2>个人信息</h2>
+		        </div>
+		        <div class="box-content member" id="js_member">
+                    <input type="hidden" value="${user.Fid}" id="member_id"/>
+                    <ul class="ul-action">
+                    		<!--li>
+                    			<label for="m-nickname" class="p-name">昵称：</label>
+                                <input type="text" name="m-nickname" id="m-nickname" class="form-control input-txt" value="${user.Fnick_name}"/>
+                    		</li-->
+                    		<li>
+                    			<label for="m-mobile" class="p-name">手机号：</label>
+                             <input type="tel" name="m-mobile" id="m-mobile" class="form-control input-txt" value="${user.Fuser_mobi}" disabled />
+                             <div class="error mobile-error"></div>
+                    		</li>
+                    		<li>
+                    			<label for="m-name" class="p-name">用户名：</label>
+                             <input type="text" name="m-name" id="m-name" class="form-control input-txt" value="${user.Fuser_name}" disabled />
+                             <div class="error name-error"></div>
+                    		</li>
+                    		<li>
+                    			<label for="m-email" class="p-name">邮箱：</label>
+                             <input type="email" name="m-email" id="m-email" class="form-control input-txt" value="${user.Femail}"/>
+                    		</li>
+                    		<li>
+                    			<label for="m-weixin" class="p-name">微信：</label>
+                             <input type="text" name="m-weixin" id="m-weixin" class="form-control input-txt" value="${user.Fweixin}"/>
+                    		</li>
+                    		<li>
+                    			<label for="m-weibo" class="p-name">微博：</label>
+                             <input type="text" name="m-weibo" id="m-weibo" class="form-control input-txt" value="${user.Fweibo}"/>
+                    		</li>
+                    		<li>
+                    			<label for="m-qq" class="p-name">QQ：</label>
+                             <input type="text" name="m-qq" id="m-qq" class="form-control input-txt" value="${user.Fqq}"/>
+                    		</li>
+                    		<li>
+                    			<label for="m-birthday" class="p-name">生日：</label>
+                             <input type="text" name="m-birthday" id="m-birthday" class="form-control input-txt datatime" value="${user.Fbirthday}"/>
+                    		</li>
+                    </ul>
+                    <hr>
+                    <p class="pwd-modify">
+                    		<label for="m-pwd" class="p-name">重置密码：</label>
+                         <a herf="javascript:void(0);" class="change_passwd">重 置</a>
+                    </p>
+                    <ul class="ul-action" style="display:none" id="show-pwd">
+                        <li>
+                            <label for="m-pwd" class="p-name">新密码：</label>
+                            <input type="password" name="m-pwd" id="m-pwd" class="form-control input-txt" />
+                            <div class="error pwd-error"></div>
+                        </li>
+                        <li>
+                            <label for="m-pwd1" class="p-name">确认密码：</label>
+                            <input type="password" name="m-pwd1" id="m-pwd1" class="form-control input-txt" />
+                            <div class="error pwd1-error"></div>
+                        </li>
+                    </ul>
+                    <div class="p-button">
+                        <button type="button" name="add" class="btn btn-default" id="js_cancel">取消</button>
+                        <button type="button" name="add" class="btn btn-success" id="js_save">保存</button>
+                    </div>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</div>
+<!--gzh func js-->
+<script src="/static/crm/js/plugins/dataTime/jquery.datetimepicker.js" ></script>
+<script src="/static/crm/js/login/user_info_edit.js"></script>

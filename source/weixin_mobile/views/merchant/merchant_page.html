@@ -1,0 +1,34 @@
+<section class="merchant-list">
+    <?py for merchant in merchants.result:?>
+        <dl class="merchant-item">
+            <a href="/mobile/merchant/detail/${merchant.Fuser_id}">
+                <dt class="mi-img fl">
+                    <img src="${merchant.Fphoto_url}" class="img-responsive" width="" height="" />
+                </dt>
+                <dd class="mi-title">
+                    <h2>${merchant.Fcompany_name}
+                        <span class="bg-red text-white">惠</span>
+                        <span class="bg-blue text-white">返</span>
+                        <?py if merchant.Fis_activity:?>
+                        <span class="bg-blue text-white" style="background-color: #ff5daa;">七夕特惠</span>
+                        <?py #endif?>
+                    </h2>
+                </dd>
+                <dd class="mi-price">
+                    <p >
+                        <span class="price">¥</span>${merchant.Fcheapest}~${merchant.Fmost_expensive}
+                    </p>
+                </dd>
+                <dd class="mi-other">
+                    <p>
+                        <span class="mi-location">
+                            <?py if merchant.Farea in area_dict.keys():?>
+                                ${area_dict[merchant.Farea]}
+                            <?py #endif?>
+                        </span>
+                    </p>
+                </dd>
+            </a>
+        </dl>
+    <?py #endfor ?>
+</section>

@@ -1,0 +1,18 @@
+<?py for work in works.result: ?>
+      <div class="list card work-item">
+        <div class="item item-image">
+          <a href="/api/mobile/work/${work.Fid}"><img src="${work.Fcover_img}"></a>
+        </div>
+        <div class="media">
+          <div class="media-body">
+            <h4 class="media-heading">${work.Fname}</h4>
+            <p>${handler.get_company(work.Fmerchant_id).Fcompany_name}</p>
+          </div>
+          <div class="media-right">
+            <a href="#">
+              <i class="iconfont gzh-like"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    <?py #endfor ?>

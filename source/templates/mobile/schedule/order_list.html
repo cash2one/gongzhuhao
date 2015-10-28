@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="/static/mobile/css/schedule/schedule.css"  />
+<style>
+	.cd-main-content{ padding-top: 100px;}
+</style>
+<header class="header">
+	<a id="cd-menu-trigger" href="#0"><span class="cd-menu-icon"></span></a>
+	<p class="title">我的排期</p>
+</header>					
+<section class="cd-main-content list">
+		<ul class="list">
+        <?py for order in orders:?>
+            <li>
+                <?py company = handler.get_company_by_order(order.Fid)?>
+                	<a href="/mobile/schedule/detail/${order.Fid}/" rel="external">
+                		<dl>
+                			<dt><img src="${company.Fphoto_url}" alt="avatar" width="168" height="168"/></dt>
+                			<dd class="order-title">${order.Forder_id_user}</dd>
+                			<dd class="order-no">${company.Fcompany_name}</dd>
+                      	<dd class="order-time">${order.Fcreate_time}</dd>
+                		</dl>
+              	</a>
+            </li>
+        <?py #endfor ?>
+		</ul>
+</section>
+<?py include('mobile/layout/menu_nav.html')?>
+<script>
+	$(function(){
+		$('.nav_schedule').addClass('current');
+	})
+</script>

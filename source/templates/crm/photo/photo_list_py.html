@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="/static/crm/js/plugins/lightbox/css/lightbox.css" />
+<link rel="stylesheet" href="/static/crm/css/photo/photo.css" />
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>客片管理</h2>
+				</div>
+				<div class="box-content orders">
+					<div class="photo-tag">
+						<!--<ul>
+							<li id="photo-style">
+								<span class="glyphicon glyphicon-picture"></span>拍摄风格：
+								<a href="javascript:void(0)" class="tags" data-id="1">时尚</a>
+								<a href="javascript:void(0)" class="tags" data-id="2">清新</a>
+								<a href="javascript:void(0)" class="tags" data-id="3">特色</a>
+								<a href="javascript:void(0)" class="tags" data-id="4">韩式</a>
+								<a href="javascript:void(0)" class="tags" data-id="5">复古</a>
+							</li>
+							<li id="photo-scene">
+								<span class="glyphicon glyphicon-home"></span>拍摄场景：
+								<a href="javascript:void(0)" class="tags" data-id="1">花海</a>
+								<a href="javascript:void(0)" class="tags" data-id="2">外景</a>
+								<a href="javascript:void(0)" class="tags" data-id="3">特色</a>
+								<a href="javascript:void(0)" class="tags" data-id="4">实景基地</a>
+							</li>
+							<li id="photo-clothes">
+								<span class="glyphicon glyphicon-picture"></span>婚纱礼服：
+								<a href="javascript:void(0)" class="tags" data-id="1">婚纱</a>
+								<a href="javascript:void(0)" class="tags" data-id="2">便装</a>
+								<a href="javascript:void(0)" class="tags" data-id="3">礼服</a>
+								<a href="javascript:void(0)" class="tags" data-id="4">裙子</a>
+								<a href="javascript:void(0)" class="tags" data-id="5">情侣装</a>
+								<a href="javascript:void(0)" class="tags" data-id="6">特色</a>
+							</li>
+						</ul>-->
+						<div class="photo-thumb" id="photo-thumb">
+							<div class="image-row">
+								<div class="image-set">
+		                            <?py for photo in photos: ?>
+		                                <a class="pt-link" data-lightbox="pt-thumb" data-title="images1" href="${photo.Fimage_url}">
+		                                    <img class="pt-image" alt="" src="${handler.get_show_img_url(photo.Fimage_url,400)}"/>
+		                                </a>
+		                            <?py #endfor ?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+<script src="/static/crm/js/plugins/lightbox/js/lightbox.min.js"></script>
+<!--gzh func js-->
+<script src="/static/crm/js/photo/photo.js"></script>
+<script>
+	$(function(){
+		$(".nav-photo").addClass("active");
+	})	
+</script>

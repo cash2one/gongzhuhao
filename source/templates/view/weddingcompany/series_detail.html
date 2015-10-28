@@ -1,0 +1,317 @@
+<link rel="stylesheet" href="/static/skin/css/merchant.css"/>
+<link rel="stylesheet" href="/static/skin/css/newMerchant.css"/>
+<div class="gzh-container bg-white ">
+    <div class="gzh-position w1200">
+        <a href="/">首页</a>
+        <span> > </span>
+        <a href="/weddingcompany/series/">套系列表</a>
+        <span> > </span>
+        <span class="text-red">${company.Fcompany_name}</span>
+    </div>
+
+    <div class="main w1200 clear">
+
+        <!--left content start-->
+        <div class="gzh-merchant w940 fl">
+
+            <!--套系详情 start-->
+            <div class="gm-item gm-series m30">
+                <div class="gm-item-title f18">
+                    <a href="/weddingcompany/merchant/${company.Fid}" class="btn btn-enter" target="_blank" title="进入店铺">进入店铺</a>
+                    <h2 class="f18">${company.Fcompany_name}</h2>
+                    <p class="gm-item-star text-red">
+                        <i class="iconfont gzh-star"></i>
+                        <i class="iconfont gzh-star"></i>
+                        <i class="iconfont gzh-star"></i>
+                        <i class="iconfont gzh-star"></i>
+                        <i class="iconfont gzh-star"></i>
+                    </p>
+                </div>
+
+                <div class="gm-series-info">
+                    <img data-lazyload="${series.Fcover_img}"  class="gzh-lazy gm-info-img" width="459" height="279" alt="${series.Fpackage_name}" />
+                    <div class="gm-info-extra">
+                        <h1 class="f20">${series.Fpackage_name}
+                            <!--<span class="bg-red gm-gift">惠</span><span class="bg-blue gm-gift">返</span>-->
+                        </h1>
+                        <p class="gm-item-price">
+                            <span class="f20"><i class="price">¥</i>${series.Fsale_price}</span>
+                            <del class="f14 text-gray">市场价：<i class="price">¥</i>${series.Fprice}</del>
+                        </p>
+                        <p class="gm-info-tips f14"><span class="icon icon-gift"></span>
+                            ${company_gift and company_gift.Fcontent or '无'}
+                        </p>
+                        <p class="gm-info-tips f14"><span class="icon icon-saleoff"></span>
+                            ${order_gift and order_gift.Fcontent or '无'}
+                        </p>
+                        <div class="gm-info-btn">
+                            <div class="fr gm-works-share">
+                               <div class="bdsharebuttonbox" data-tag="share_1">
+    	                            <a class="bds_more" data-cmd="more"><i class="iconfont gzh-share"></i>分享</a>
+                               </div>
+                                <script>
+                                    window._bd_share_config = {
+                                        common : {
+                                            bdText : '${series.Fpackage_name}',
+                                            bdDesc : '${series.Fextra}',
+                                            bdUrl : 'http://www.gongzhuhao.com/weddingcompanyseries/${series.Fid}',
+                                            bdPic : '${series.Fcover_img}'
+                                        },
+                                        share : [{
+                                            "bdSize" : 16
+                                        }],
+                                        slide : [{
+                                            bdImg : 0,
+                                            bdPos : "right",
+                                            bdTop : 100
+                                        }],
+
+                                        selectShare : [{
+                                            "bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
+                                        }]
+                                    }
+                                </script>
+                            </div>
+                            <div class="fr gm-works-fav">
+                                <a class="bds_more"><i class="iconfont gzh-star"></i>收藏</a>
+                            </div>
+                            <a href="javascript:;" class="btn btn-order text-center" onclick="orderShow()">预约看店</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--套系详情 end-->
+
+            <!-- 套系详情 start -->
+            <div class="gm-item m30">
+                <div class="gm-item-detail">
+                    <h2 class="gm-item-title f20">套系详情</h2>
+                    <ul class="f14 zq-newbuju" id="js_series_all ">
+                        <li class="zq-topding">
+                            <p>婚礼布置</p>
+                            <p>迎宾区</p>
+                            <p>${series.Fwelcome_area}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>仪式区</p>
+                            <p>${series.Fceremony_area}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>婚宴区</p>
+                            <p>${series.Freception_area}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>设备及灯光</p>
+                            <p>${series.Fequipment}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>补充说明</p>
+                            <p>${series.Farrangement_extra}</p>
+                        </li>
+                        <li class="zq-top">
+                            <p>鲜花装饰</p>
+                            <p>会场</p>
+                            <p>${series.Fmeetingplace}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>新郎</p>
+                            <p>${series.Fbridegroom}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>新娘</p>
+                            <p>${series.Fbride}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>贵宾</p>
+                            <p>${series.Fvip}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>补充说明</p>
+                            <p>${series.Fflower_extra}</p>
+                        </li>
+                        <li class="zq-top">
+                            <p>仪式</p>
+                            <p>证婚仪式</p>
+                            <p>${series.Fwedding_ceremony}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>宴会仪式</p>
+                            <p>${series.Fbanquet_ceremony}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>补充说明</p>
+                            <p>${series.Fceremony_extra}</p>
+                        </li>
+                        <li class="zq-top">
+                            <p>婚礼布置</p>
+                            <p>迎宾区</p>
+                            <p>${series.Fwelcome_area}</p>
+                        </li>
+                        <li class="zq-top">
+                            <p>服务团队</p>
+                            <p>司仪</p>
+                            <p>${series.Fmaster}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>化妆</p>
+                            <p>${series.Fmakeup}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>摄像</p>
+                            <p>${series.Fphotography}</p>
+                        </li>
+                        <li>
+                            <p></p>
+                            <p>摄像</p>
+                            <p>${series.Fcamera}</p>
+                        </li>
+                        <li >
+                            <p></p>
+                            <p>其他人员</p>
+                            <p>${series.Fservice_extra}</p>
+                        </li>
+                        <li class="zq-top">
+                            <p>补充说明:${series.Fextra}</p>
+                        </li>
+                    </ul>
+                    <div class="gm-view-more text-red f16" id="js_show">查看更多<i class="iconfont gzh-dropdown"></i></div>
+                </div>
+                <div class="gm-item-preview">
+                    <div class="preview-inner">
+                        <?py if images:?>
+                            <?py for img in images:?>
+                                <?py if img.Furl:?>
+                                    <a href="" data-lightbox="" data-title="" data-id="1">
+                                        <img data-lazyload="${img.Furl}" class="gzh-lazy" alt="${company.Fcompany_name}${series.Fpackage_name}" title="${company.Fcompany_name}${series.Fpackage_name}" />
+                                    </a>
+                                <?py #endif ?>
+                            <?py #endfor ?>
+                        <?py #endif?>
+
+                    </div>
+                </div>
+            </div>
+            <!-- 套系详情 end -->
+
+            <!--热门套系 start-->
+            <div class="gm-item m30">
+                <h2 class="gm-item-title f20" id="hot-series"><a href="/weddingcompany/merchant/all/series/${company.Fuser_id}" class="more" target="_blank">查看全部<i class="iconfont gzh-enter"></i></a>热门套系</h2>
+                <div class="gm-hot">
+                    <div class="gs-item">
+                     <?py if recommend_series:?>
+                        <?py for s in recommend_series:?>
+
+                           <div class="gm-hot-item">
+                                <a href="/weddingcompany/series/${s.Fid}" class="img-link" target="_blank">
+                                    <img data-lazyload="${s.Fcover_img}" class="gzh-lazy img-hover" width="300" height="187" alt="${s.Fpackage_name}"/>
+                                    <span class="img-cover"></span>
+                                </a>
+                                <p class="gm-hot-extra">
+                                    <!--<span class="gm-like text-gray fr">
+                                        <i class="iconfont gzh-like_line"></i>
+                                    </span>-->
+                                    <span class="gm-price text-red">
+                                        <i class="price">¥</i>${s.Fsale_price}
+                                    </span>
+                                    <del class="text-gray">
+                                        <i class="price">¥</i>${s.Fprice}
+                                    </del>
+                                </p>
+                                <p class="gm-hot-title">
+                                    <a href="" target="_blank" title="${s.Fpackage_name}">${s.Fpackage_name}</a>
+                                </p>
+                            </div>
+
+                        <?py #endfor ?>
+                    <?py #endif ?>
+                    </div>
+                </div>
+            </div>
+            <!--热门套系 end-->
+
+            <div class="gm-item gm-series m30">
+                <div class="gm-item-title f18">
+                    <a href="javascript:;" class="btn btn-order" onclick="orderShow()">预约看店</a>
+                    <a href="/weddingcompany/merchant/${company.Fid}" class="btn btn-enter" target="_blank" title="进入店铺">进入店铺</a>
+                    <h2 class="f18">${company.Fcompany_name}</h2>
+                    <p class="gm-item-star text-red">
+                        <i class="iconfont gzh-star"></i>
+                        <i class="iconfont gzh-star"></i>
+                        <i class="iconfont gzh-star"></i>
+                        <i class="iconfont gzh-star"></i>
+                        <i class="iconfont gzh-star"></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--left content end-->
+
+        <!--right content start-->
+        <div class="gzh-side w230 fr">
+            <!--<div class="gzh-ad m30">-->
+                <!--<img src="" width="230" height="142"/>-->
+            <!--</div>-->
+            <div class="gzh-side-pro">
+                <p class="gs-title">
+                    <span class="f16 text-red">精品推荐</span>
+                </p>
+                <?py if recommend_series:?>
+                    <?py for s in recommend_series:?>
+                        <div class="gs-item">
+                            <a href="/weddingcompany/series/${s.Fid}" class="img-link">
+                                <img data-lazyload="${s.Fcover_img}" class="gzh-lazy img-hover" width="190" height="118" />
+                                <span class="img-cover"></span>
+                            </a>
+                            <h2 class="f14"><a href="">${s.Fpackage_name}</a></h2>
+                            <p class="gm-price text-red f20">
+                                <i class="price">¥</i>${s.Fsale_price}
+                            </p>
+                        </div>
+                    <?py #endfor ?>
+                <?py #endif ?>
+            </div>        </div>
+        <!--right content end-->
+    </div>
+</div>
+<?py include('view/merchant/order_alert.html') ?>
+<script src="/static/skin/js/photo-slider.js"></script>
+<script>
+
+    function orderShow(){
+        $('#order_modal').modal();
+    }
+
+    function showCon(){
+        $('.order-content').fadeOut();
+        $('.order-succcess').fadeIn();
+    }
+    $(function() {
+        $('.gm-item-detail').on('click', '.gm-view-more', function(){
+            $('#js_show').addClass('showMore');
+            $('.zq-newbuju').css({height: '100%'});
+            $('.gm-view-more').find('i').addClass('gzh-fold').removeClass('gzh-dropdown');
+        })
+
+        $('.gm-item-detail').on('click', '.showMore', function(){
+            $('#js_show').removeClass('showMore');
+            $('.zq-newbuju').css('height', '185px');
+            $('.gm-view-more').find('i').addClass('gzh-dropdown').removeClass('gzh-fold');
+        })
+    $('#nav_merchant').addClass('current');
+    $('#nav_merchant').html('婚庆公司<i class="iconfont gzh-down"></i>');
+     $('.nav-dropdown').css({left:'0px'})
+    });
+</script>

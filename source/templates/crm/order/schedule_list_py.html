@@ -1,0 +1,443 @@
+	<link href='/static/crm/css/order/order.css' rel='stylesheet' />
+	<link rel="stylesheet" href="/static/crm/js/plugins/dataTime/jquery.datetimepicker.css" />
+    <link rel="stylesheet" href="/static/crm/js/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="/static/crm/js/plugins/zTree_v3/js/jquery.ztree.core-3.5.min.js"></script>
+	<script type="text/javascript">
+		<!--
+        var setting = {
+
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+				onClick: onClick
+			}
+		};
+
+		function filter(treeId, parentNode, childNodes) {
+			if (!childNodes) return null;
+			for (var i=0, l=childNodes.length; i<l; i++) {
+				childNodes[i].name = childNodes[i].name.replace(/\.n/g, '.');
+			}
+			return childNodes;
+		}
+
+		var zNodes=[
+		    <?py for d in data:?>
+			{ id:${d.get('id')}, pId:${d.get('pId')},open:true, name:'${d.get('name')}' },
+		    <?py #endfor?>
+		    ];
+	    function onClick(event, treeId, treeNode, clickFlag) {
+            $.get('/merchant/department/staffers/'+treeNode.id,{},function(data){
+                $('#staffes').html('');
+                var arrays = $.parseJSON(data);
+                $.each(arrays, function(key,obj) {
+                    var sf = '<label class="checkbox-inline"><input type="radio" value="'+obj.id+'" id="'+obj.id+'" name="department_staffes"><span class="department_stf">'+obj.name+'</span></label>';
+                    $('#staffes').append(sf);
+                });
+            })
+		}
+		$(document).ready(function(){
+            $.fn.zTree.init($("#ztree"), setting,zNodes);
+
+            var curr_id = "0";
+            $(".staff_choose").on("click", function(){
+                curr_id = $(this).attr('value');
+            })
+
+
+            $("#save").on("click",function(){
+		    		var _stf="";
+                var _id="";
+		    		$("input[name='department_staffes']:checked").each(function(){
+		     		//_stf += $(this).val() + ",";
+		     		_stf += $(this).next(".department_stf").text() + " ";
+                    if(_id==""){
+                        _id += $(this).attr('value');
+                    }else{
+                        _id += "&" + $(this).attr('value');
+                    }
+		    		});
+
+		    		//alert(_stf);
+            		var lable = "#order_stf_" + curr_id;
+		    		$(lable).empty();
+		    		$(lable).html(_stf).css("margin-right","0");
+		    		$(lable).attr('value', _id).css("margin-right","0");
+		    		$("#addModal").hide();
+		    		//$("#order_choose").html("修改员工");
+            })
+		});
+
+	</script>
+
+			
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->		
+	<div class="row-fluid sortable">		
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>制定排期</h2>
+				</div>
+				<div class="box-content schedule">
+					<form method="">
+						<div class="schedule-order-info">
+							<ul>
+		                        <li>订单号码：<span>${order.Forder_id_user}</span></li>
+		                        <li>客户姓名：<span>${order.Fuser_name}</span></li>
+		                        <li>客户手机：${order.Fuser_mobi}</li>
+		                        <li>订单类型：${order.Forder_type_str}</li>
+		                        <li>订单金额：${order.Famount}元</li>
+		                        <li>订单时间：${order.Fcreate_time}</li>
+							</ul>
+						</div>
+			                <table class="table">
+			                    <thead>
+			                        <tr>
+			                            <td class="schedule-item"></td>
+			                            <td class="schedule-date">日期</td>
+			                            <td class="schedule-service">服务人员</td>
+			                            <td class="schedule-address">服务地点</td>
+			                            <td class="schedule-tips">温馨提示</td>
+			                            <td class="schedule-notice">通知</td>
+			                        </tr>
+			                    </thead>
+			                    <input type="hidden" name="sch_orderId" id="sch_orderId" />
+			                    <input type="hidden" name="sch_sellerId" id="sch_sellerId" />
+			                    <tbody>
+			                        <tr>
+			                            <td class="schedule-item">试衣</td>
+			                            <td class="schedule-date">
+		                                    <input type="text" class="form-control datatime" name="sch_date" id="sch_date_${items[0].Fid}" value="${items[0].Fshot_date.strftime('%Y-%m-%d') if items[0].Fshot_date else ''}"/>
+			                            </td>
+			                            <td class="schedule-service">
+		                                    <div class="ss-item marginT">
+		                                    		<label class="staff_choose" value="0" data-toggle="modal" data-target="#addModal">礼服师</label>
+		                                        	<p class="tcenter">
+		                                        		<span id="order_stf_${items[0].Fid}" data-value="order_stf" class="order_stf" value="${items[0].Fuid_stf}">${items[0].Fname_stf} </span>
+		                                        	</p>
+		                                    </div>
+			                            </td>
+			                            <td class="schedule-address">
+		                                    <div class="input-group">
+		                                        <input type="text" class="form-control" value="${items[0].Fsite}" name="sch_site" id="sch_site_${items[0].Fid}"/>
+		                                        <div class="input-group-btn">
+		                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+		                                            <span class="caret"></span>
+		                                            </button>
+		                                            <ul class="dropdown-menu pull-right">
+		                                                <?py for s in sites: ?>
+		                                                <?py if s.Fschedule_type_id == 0: ?>
+		                                                <li><a href="javascript:void(0);" class="input_text">${s.Fsite}</a></li>
+		                                                <?py #endif ?>
+		                                                <?py #endfor ?>
+		                                            </ul>
+		                                        </div>
+		                                    </div>
+			                            </td>
+			                            <td class="schedule-tips">
+			                                <textarea class="form-control" class="sch_tips" id="sch_tips_${items[0].Fid}" cols="3">${items[0].Freminder}</textarea>
+			                            </td>
+			                            <td class="schedule-notice">
+			                            		<input type="button" class="btn btn-sm btn-primary btn-notice" id="sch_notice_${items[0].Fid}" value="已通知${items[0].Fnotified_num}次" onclick="saveReport(${items[0].id},${items[0].Fid})"/>
+			                            </td>
+		                                <input type="hidden" id="staffer_title_${items[0].Fid}" value="礼服师" />
+			                        </tr>
+
+
+			                        <tr>
+			                            <td class="schedule-item">
+			                            		<span>档期类型</span><br />
+			                            		<span>摄影</span>
+			                            </td>
+			                            <td class="schedule_category">
+		                                    <?py if items[1].Fschedule_category_id: ?>
+			                            		<select class="schedule_category_type">
+		                                            <?py for sc in schedule_categorys: ?>
+		                                                <?py if items[1].Fschedule_category_id == sc.Fid: ?>
+		                                                    <option value="${sc.Fid}" data-value="${sc.Fname}" selected>${sc.Fname}</option>
+		                                                <?py else: ?>
+		                                                    <option value="${sc.Fid}" data-value="${sc.Fname}">${sc.Fname}</option>
+		                                                <?py #endif ?>
+		                                            <?py #endfor ?>
+			                            		</select>
+		                                    <?py else: ?>
+		                                        <select class="schedule_category">
+		                                            <option value="-1">请选择</option>
+		                                            <?py for sc in schedule_categorys: ?>
+		                                                <option value="${sc.Fid}" data-value="${sc.Fname}">${sc.Fname}</option>
+		                                            <?py #endfor ?>
+			                            		</select>
+		                                    <?py #endif ?>
+			                                <input type="text" class="form-control datatime" name="sch_date" id="sch_date_${items[1].Fid}" value="${items[1].Fshot_date.strftime('%Y-%m-%d') if items[1].Fshot_date else ''}" />
+			                            </td>
+			                            <td class="schedule-service">
+		                                    <div class="ss-item">
+		                                    		<label class="staff_choose" value="1" data-toggle="modal" data-target="#addModal">摄影师</label>
+		                                        	<p class="tcenter">
+		                                                <span id="order_stf_${items[1].Fid}" data-value="order_stf" class="order_stf" value="${items[1].Fuid_stf.split('&')[0]}">${items[1].Fname_stf.split('&')[0]} </span>
+													<!--<span class="btn-link staff_choose" value="1" data-toggle="modal" data-target="#addModal" id="order_choose">选择员工</span>-->
+												    </p>
+		                                    </div>
+		                                    <div class="ss-item">
+		                                           <label class="staff_choose" value="1_1" data-toggle="modal" data-target="#addModal">化妆师</label>
+		                                            <?py order_stf_1_1_id = ('' if '&' not in items[1].Fuid_stf else items[1].Fuid_stf.split('&')[1]) ?>
+		                                            <?py order_stf_1_1_nm = ('' if '&' not in items[1].Fname_stf else items[1].Fname_stf.split('&')[1]) ?>
+		                                            <p class="tcenter">
+		                                                <span id="order_stf_1_${items[1].Fid}" data-value="order_stf_1" class="order_stf order_stf_1" value="${order_stf_1_1_id}">${order_stf_1_1_nm} </span>
+		                                                <!--<span class="btn-link staff_choose" value="1_1" data-toggle="modal" data-target="#addModal" id="order_choose">选择员工</span>-->
+		                                            </p>
+		                                    </div>
+			                            </td>
+			                            <td class="schedule-address">
+		                                    <div class="input-group">
+		                                        <input type="text" class="form-control" name="sch_site" value="${items[1].Fsite}" id="sch_site_${items[1].Fid}"/>
+		                                        <div class="input-group-btn">
+		                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+		                                            <span class="caret"></span>
+		                                            </button>
+		                                            <ul class="dropdown-menu pull-right">
+		                                                <?py for s in sites: ?>
+		                                                <?py if s.Fschedule_type_id == 1: ?>
+		                                                <li><a href="javascript:void(0);" class="input_text">${s.Fsite}</a></li>
+		                                                <?py #endif ?>
+		                                                <?py #endfor ?>
+		                                            </ul>
+		                                        </div>
+		                                    </div>
+			                            </td>
+			                            <td class="schedule-tips">
+			                                <textarea class="form-control" class="sch_tips" id="sch_tips_${items[1].Fid}" cols="3" >${items[1].Freminder}</textarea>
+			                            </td>
+			                            <td class="schedule-notice">
+			                            		<input type="button" class="btn btn-sm btn-primary btn-notice" id="sch_notice_${items[1].Fid}" value="已通知${items[1].Fnotified_num}次" onclick="saveReport(${items[1].id},${items[1].Fid})"/>
+			                            </td>
+		                                <input type="hidden" id="staffer_title_${items[1].Fid}" value="摄影师" />
+		                                <input type="hidden" id="staffer_title_2_${items[1].Fid}" value="化妆师" />
+			                        </tr>
+
+			                        <tr>
+			                            <td class="schedule-item">选样</td>
+			                            <td class="schedule-date">
+			                                <input type="text" class="form-control datatime" name="sch_date" id="sch_date_${items[2].Fid}" value="${items[2].Fshot_date.strftime('%Y-%m-%d') if items[2].Fshot_date else ''}"/>
+			                            </td>
+			                            <td class="schedule-service">
+		                                    <div class="ss-item marginT">
+		                                    		<label class="staff_choose" value="2" data-toggle="modal" data-target="#addModal">选样师</label>
+		                                        	<p class="tcenter">
+		                                        		<span id="order_stf_${items[2].Fid}" data-value="order_stf" class="order_stf" value="${items[2].Fuid_stf}">${items[2].Fname_stf} </span>
+													<!--<span class="btn-link staff_choose" value="2" data-toggle="modal" data-target="#addModal" id="order_choose">选择员工</span>-->
+												</p>
+		                                    </div>
+			                            </td>
+			                            <td class="schedule-address">
+		                                    <div class="input-group">
+		                                        <input type="text" class="form-control" name="sch_site" value="${items[2].Fsite}" id="sch_site_${items[2].Fid}"/>
+		                                        <div class="input-group-btn">
+		                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+		                                            <span class="caret"></span>
+		                                            </button>
+		                                            <ul class="dropdown-menu pull-right">
+		                                                <?py for s in sites: ?>
+		                                                <?py if s.Fschedule_type_id == 2: ?>
+		                                                <li><a href="javascript:void(0);" class="input_text">${s.Fsite}</a></li>
+		                                                <?py #endif ?>
+		                                                <?py #endfor ?>
+		                                            </ul>
+		                                        </div>
+		                                    </div>
+			                            </td>
+			                            <td class="schedule-tips">
+			                                <textarea class="form-control" class="sch_tips" id="sch_tips_${items[2].Fid}" cols="3">${items[2].Freminder}</textarea>
+			                            </td>
+			                            <td class="schedule-notice">
+			                            	<input type="button" class="btn btn-sm btn-primary btn-notice" id="sch_notice_${items[2].Fid}" value="已通知${items[2].Fnotified_num}次" onclick="saveReport(${items[2].id},${items[2].Fid})"/>
+			                            </td>
+		                                <input type="hidden" id="staffer_title_${items[2].Fid}" value="选样师" />
+			                        </tr>
+
+			                        <tr>
+			                            <td class="schedule-item">定稿</td>
+			                            <td class="schedule-date">
+			                                <input type="text" class="form-control datatime" name="sch_date" id="sch_date_${items[3].Fid}" value="${items[3].Fshot_date.strftime('%Y-%m-%d') if items[3].Fshot_date else ''}"/>
+			                            </td>
+			                            <td class="schedule-service">
+		                                    <div class="ss-item marginT">
+		                                    		<label class="staff_choose" value="3" data-toggle="modal" data-target="#addModal">看样师</label>
+		                                        	<p class="tcenter">
+		                                        		<span id="order_stf_${items[3].Fid}" data-value="order_stf" class="order_stf" value="${items[3].Fuid_stf}">${items[3].Fname_stf} </span>
+													<!--<span class="btn-link staff_choose" value="3" data-toggle="modal" data-target="#addModal" id="order_choose">选择员工</span>-->
+												</p>
+		                                    </div>
+			                            </td>
+			                            <td class="schedule-address">
+		                                    <div class="input-group">
+		                                        <input type="text" class="form-control" name="sch_site" value="${items[3].Fsite}" id="sch_site_${items[3].Fid}"/>
+		                                        <div class="input-group-btn">
+		                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+		                                            <span class="caret"></span>
+		                                            </button>
+		                                            <ul class="dropdown-menu pull-right">
+		                                                <?py for s in sites: ?>
+		                                                <?py if s.Fschedule_type_id == 3: ?>
+		                                                <li><a href="javascript:void(0);" class="input_text">${s.Fsite}</a></li>
+		                                                <?py #endif ?>
+		                                                <?py #endfor ?>
+		                                            </ul>
+		                                        </div>
+		                                    </div>
+			                            </td>
+			                            <td class="schedule-tips">
+			                                <textarea class="form-control" id="sch_tips_${items[3].Fid}" cols="3">${items[3].Freminder}</textarea>
+			                            </td>
+			                            <td class="schedule-notice">
+			                            		<input type="button" class="btn btn-sm btn-primary btn-notice" id="sch_notice_${items[3].Fid}" value="已通知${items[3].Fnotified_num}次" onclick="saveReport(${items[3].id},${items[3].Fid})"/>
+			                            </td>
+		                                <input type="hidden" id="staffer_title_${items[3].Fid}" value="看样师" />
+			                        </tr>
+
+		                            <tr>
+			                            <td class="schedule-item">取件</td>
+			                            <td class="schedule-date">
+			                                <input type="text" class="form-control datatime" name="sch_date" id="sch_date_${items[4].Fid}" value="${items[4].Fshot_date.strftime('%Y-%m-%d') if items[4].Fshot_date else ''}"/>
+			                            </td>
+			                            <td class="schedule-service">
+		                                    <div class="ss-item marginT">
+		                                    		<label class="staff_choose" value="4" data-toggle="modal" data-target="#addModal">客服代表</label>
+		                                        	<p class="tcenter">
+		                                        		<span id="order_stf_${items[4].Fid}" data-value="order_stf" class="order_stf" value="${items[4].Fuid_stf}">${items[4].Fname_stf} </span>
+													<!--<span class="btn-link staff_choose" value="4" data-toggle="modal" data-target="#addModal" id="order_choose">选择员工</span>-->
+												</p>
+		                                    </div>
+			                            </td>
+			                            <td class="schedule-address">
+		                                    <div class="input-group">
+		                                        <input type="text" class="form-control" name="sch_site" value="${items[4].Fsite}" id="sch_site_${items[4].Fid}"/>
+		                                        <div class="input-group-btn">
+		                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+		                                            <span class="caret"></span>
+		                                            </button>
+		                                            <ul class="dropdown-menu pull-right">
+		                                                <?py for s in sites: ?>
+		                                                <?py if s.Fschedule_type_id == 4: ?>
+		                                                <li><a href="javascript:void(0);" class="input_text">${s.Fsite}</a></li>
+		                                                <?py #endif ?>
+		                                                <?py #endfor ?>
+		                                            </ul>
+		                                        </div>
+		                                    </div>
+			                            </td>
+			                            <td class="schedule-tips">
+			                                <textarea class="form-control" class="sch_tips" id="sch_tips_${items[4].Fid}" cols="3">${items[4].Freminder}</textarea>
+			                            </td>
+			                            <td class="schedule-notice">
+			                            		<input type="button" class="btn btn-sm btn-primary btn-notice" id="sch_notice_${items[4].Fid}" value="已通知${items[4].Fnotified_num}次" onclick="saveReport(${items[4].id},${items[4].Fid})"/>
+			                            </td>
+		                                <input type="hidden" id="staffer_title_${items[4].Fid}" value="客服代表" />
+			                        </tr>
+			                    </tbody>
+				                    <tfoot>
+				                    		<tr>
+				                    			<td colspan="6" class="tright">
+				                    				<div class="error"></div>
+				                    				<button type="button" class="btn btn-default" data-dismiss="modal" id="cancel">关闭</button>
+				                    			</td>
+				                    		</tr>
+				                    </tfoot>
+			                </table>
+			                <input type="hidden" id='uid_mct' />
+		                <input type="hidden" name="" id="order_id" value="${order_id}" />
+		                <input type="hidden" name="_xsrf" value="${xsrf_token}" />
+					</form>
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<form method="">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="addModalLabel">选择接单人</h4>
+			</div>
+			<div class="modal-body order-infos">
+                <div id="ztree" class="ztree"></div>
+                <div class="stf-list" id="staffes"></div>
+				<!--<iframe src="http://127.0.0.1:8000/merchant/departments/" width="100%" height="100%"></iframe>-->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-green save" id="save">保存</button>
+			</div>
+		</div>
+		</form>
+	</div>
+</div>	
+
+<!--gzh func js-->
+<script src="/static/crm/js/order/schedule.js"></script>
+<script src="/static/crm/js/plugins/dataTime/jquery.datetimepicker.js" ></script>
+<script language="javascript">
+    function saveReport(order_schedule_id,type_id){
+        $('#sch_notice_'+type_id).attr("value","正在通知......");
+        var _date = $('#sch_date_'+type_id).val();
+        var _staffer = $('#order_stf_'+type_id).attr('value');
+        var _staffer_title = $('#staffer_title_'+type_id).val();
+        var _staffer_name = $('#order_stf_'+type_id).text()
+        var _site = $('#sch_site_'+type_id).val();
+        var _reminder = $('#sch_tips_'+type_id).val();
+        var _xsrf = $('input[name="_xsrf"]').val();
+        var _order_id = $('#order_id').val();
+
+        if(type_id == 1){
+            var _staffer_2 = $('#order_stf_1_'+type_id).attr('value');
+            var _staffer_title_2 = $('#staffer_title_2_'+type_id).val();
+            var _schedule_category = $('.schedule_category option:selected').val();
+            var _schedule_category_name = $('.schedule_category option:selected').attr("data-value");
+            var _staffer_name_2 = $('#order_stf_1_'+type_id).text();
+        }else{
+            var _staffer_2 = '';
+            var _staffer_title_2 = '';
+            var _schedule_category = '';
+            var _schedule_category_name='';
+            var _staffer_name_2 = '';
+        }
+
+        $.post('/merchant/order/schedule/update/',{
+				date:_date,
+				staffer_1:_staffer,
+				staffer_2:_staffer_2,
+				staffer_title:_staffer_title,
+				staffer_title_2:_staffer_title_2,
+				staffer_name:_staffer_name,
+				staffer_name_2:_staffer_name_2,
+				schedule_category:_schedule_category,
+				schedule_category_name:_schedule_category_name,
+				site:_site,
+				reminder:_reminder,
+				order_id:_order_id,
+				order_schedule_id:order_schedule_id,
+				type_id:type_id,
+				_xsrf:_xsrf
+			},function(data){
+			    var obj = $.parseJSON(data);
+				if(obj.stat == "ok"){
+                    show_dialog_none_reload('制定排期','排期通知成功');
+                    $('#sch_notice_'+type_id).attr("value","已通知"+obj.notified_num+"次");
+				}else{
+                    show_dialog_none_reload('设置档期',obj.msg)
+				}
+			});
+    }
+
+	$(function(){
+        $(".all_orders").addClass("active");
+	})
+</script>

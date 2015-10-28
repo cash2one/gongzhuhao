@@ -1,0 +1,311 @@
+<?py from services.users.role_services import * ?>
+<div class="clearfix row-main">
+    <?py include('ops/users/user_menu.html') ?>
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading">
+                <strong><i class="icon-group"></i>会员列表</strong>
+                 <div class="panel-actions">
+                     <a href="/gzh/ops/users/new" class="btn btn-primary"><i class="icon-plus"></i> 添加用户</a>
+                    </div>
+            </div>
+
+            <!--chosen  选择组件-->
+            <link rel="stylesheet" href="/static/ops/css/min.css" type="text/css" media="screen">
+            <script src="/static/ops/js/min.js" type="text/javascript"></script>
+            <link rel="stylesheet" href="/static/ops/datetime/bootstrap-datetimepicker.min.css" type="text/css" media="screen">
+            <script src="/static/ops/datetime/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+            <script>
+                     $(document).ready(function(){
+                        $(".chosen-select").chosen({allow_single_deselect:true});
+                        //startDate = new Date();
+                        //startDate:startDate,
+
+                        $('.search_date').datepicker({
+                        format: 'yyyy-mm-dd'
+                        });
+                        $('#user_role_nav').addClass('active');
+                        <?py if code in ('0',''): ?>
+                            $('#user_menu_list').addClass('active');
+                        <?py elif code == '1': ?>
+                            $('#user_menu_blist').addClass('active');
+                        <?py elif code == '2': ?>
+                            $('#user_menu_employee').addClass('active');
+                        <?py elif code == '3': ?>
+                            $('#user_menu_new_register').addClass('active');
+                        <?py else: ?>
+                            $('#user_menu_list').addClass('active');
+                        <?py #endif ?>
+                     });
+            </script>
+            <form id="user_search_form" action="" method="get">
+                <table class="table table-form">
+                    <tbody>
+                        <tr>
+                            <th>注册时间</th>
+                            <td>
+                                <div class="input-append date">
+                                    <input type="text" class="form-control search_date" value="" id="start_date" name="start_date">
+                                     <span class="add-on"><button type="button" class="btn btn-default"><i
+                                class="icon-calendar"></i></button></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="input-append date"><input type="text" class="form-control search_date" value="" name="end_date" id="end_date">
+                                    <span class="add-on"><button type="button" class="btn btn-default"><i
+                                    class="icon-calendar"></i></button></span>
+                                </div>
+                            </td>
+
+                            <th>状态</th>
+                            <td>
+                                <select class="form-control chosen-select" name="status">
+                                    <option value=""></option>
+                                    <?py if status: ?>
+                                        <?py for s in status.keys(): ?>
+                                            <option value="${s}">${status[s]}</option>
+                                        <?py #endfor ?>
+                                    <?py #endif ?>
+                                </select>
+                            </td>
+
+                            <th>角色</th>
+                            <td>
+                               <select class="form-control chosen-select" name="role" name="role">
+                                   <option value=""></option>
+
+                                   <?py if roles: ?>
+                                        <?py for r in roles: ?>
+                                            <option value="${r.Fcode}">${r.Fname}</option>
+                                        <?py #endfor ?>
+                                   <?py #endif ?>
+                               </select>
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <th>用户名</th>
+                            <td colspan="2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" value="" id="search_text" name="search_text"/>
+                                </div>
+                            </td>
+                            <th>联系电话</th>
+                            <td colspan="2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" value="" id="user_mobi" name="user_mobi"/>
+                                </div>
+                            </td>
+                            <th></th>
+                            <td colspan="2">
+                            </td>
+                            <td>
+                                <input type="submit" data-loading="稍候..." value="搜索" class="btn btn-primary" id="house_type_submit" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th><input type="checkbox" name="user_ids" value="all"></th>
+                        <th>编号</th>
+                        <th>昵称</th>
+                        <th>用户名</th>
+                        <th>联系电话</th>
+                        <th>角色</th>
+                        <th>所属商户</th>
+                        <th>注册日期</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                <?py if page_data: ?>
+                <?py for u in page_data.result: ?>
+                <tr class="text-center" id="${u.Fid}">
+                    <td><input type="checkbox" name="user_id" value="${u.Fid}" ></td>
+                    <td>${u.Fid}</td>
+                    <td>${u.Fnick_name}</td>
+                    <td>${u.Fuser_name}</td>
+                    <td>${u.Fuser_mobi}</td>
+                    <?py if u.Frole_codes: ?>
+                        <td>${RoleServices.role_format(handler.db,u.Frole_codes)}</td>
+                    <?py elif u.Fpermission and not u.Frole_codes: ?>
+                        <td>可登录用户</td>
+                    <?py else:?>
+                        <td>普通用户</td>
+                    <?py #endif ?>
+
+                    <?py if 'merchant' in u.Frole_codes: ?>
+                        <?py if handler.get_company(u): ?>
+                            <td>${handler.get_company(u).Fcompany_name}</td>
+                        <?py else: ?>
+                            <td></td>
+                        <?py #endif ?>
+                    <?py else: ?>
+                        <td></td>
+                    <?py #endif ?>
+
+                    <td>${u.Fcreate_time}</td>
+                    <td>
+                        <?py if u.Fstatus == 'reeze': ?>
+                            <label class="label" id="status_lable_${u.Fid}">${status[u.Fstatus]}</label>
+                        <?py else: ?>
+                            <label class="label label-success" id="status_lable_${u.Fid}">${status[u.Fstatus]}</label>
+                        <?py #endif ?>
+                    </td>
+                    <td>
+                        <?py if u.Frole_codes == 'admin' or u.Frole_codes == 'merchant': ?>
+                            <a href="/gzh/ops/users/authorize/${u.Fid}">授权</a>
+                        <?py #endif ?>
+
+                        <a href="#">数据</a>
+                        <a href="/gzh/ops/users/edit/${u.Fid}/">编辑</a>
+                        <a target="_blank" href="/gzh/ops/users/resetpwd/${u.Fid}/">重置密码</a>
+                        <a href="javascript:User.delete(${u.Fid})">删除</a>
+                        <a href="javascript:User.forbider(${u.Fid})">禁用</a>
+                        <?py if not u.Frole_codes and not u.Fpermission: ?>
+                            <a href="#">分享</a>
+                        <?py #endif ?>
+                    </td>
+                </tr>
+         <?py #endfor ?>
+         <?py #endif ?>
+                </tbody>
+                   #{page_html}
+            </table>
+        </div>
+    </div>
+</div>
+<?py include('ops/common/dialog.html') ?> <!--引入弹出框组件-->
+<script language="Javascript">
+$(document).ready(function()
+{
+    $('#user_permission_btn').click(function(){
+            $('#myModal').modal('hide')
+            $.post('/gzh/ops/users/edit/'+$('#permission_user_id').val()+'/permission',$('#permission_form').serialize(),function(data){
+               var obj = $.parseJSON(data);
+               if(obj.status=='success'){
+                  history.go(0);
+               }
+           })
+    })
+});
+
+
+var User = {
+　　　　delete:function(user_id){
+
+        BootstrapDialog.show({
+            title: '删除用户',
+            message: '确定删除用户',
+            buttons: [{
+                label: 'Cancle',
+                action: function(dialogItself){
+                    dialogItself.close()
+                }
+            },
+            {
+                label: 'OK',
+                action: function(dialogItself){
+
+                      dialogItself.close()
+                      $.get('/gzh/ops/users/delete/'+user_id,{},function(data){
+                               var obj = $.parseJSON(data);
+                               if(obj.status=='success'){
+                                     $('#'+user_id).remove();
+                                }
+                       })
+                }
+            }]
+        });        　　
+　　　},
+
+       forbider:function(user_id){
+               BootstrapDialog.show({
+                title: '禁用用户',
+                message: '确定禁用用户',
+                buttons: [{
+                    label: 'Cancle',
+                    action: function(dialogItself){
+                        dialogItself.close()
+                    }
+                },
+                {
+                    label: 'OK',
+                    action: function(dialogItself){
+                          dialogItself.close()
+                          $.post('/gzh/ops/users/edit/'+user_id+'/reeze',{'_xsrf':$("input[name='_xsrf']").val()},function(data){
+                                   var obj = $.parseJSON(data);
+                                   if(obj.status=='success'){
+                                   $('#status_lable_'+user_id).html('冻结');
+                                   $('#status_lable_'+user_id). removeClass('label-success');
+                                    }
+                           })
+                    }
+                }]
+            });
+       },
+
+       permission:function(user_id,user){
+            $('#myModal').modal()
+            $('#permission_user_id').val(user_id)
+       },
+
+       user_dialog:function(info){
+             $('#delete_model_content').html(info);
+             $("#user_delete_model").dialog({
+                modal: !0,
+                minWidth: 500,
+                minHeight: 150,
+                dialogClass: "no-shadow",
+                buttons: {
+                    OK: function() {
+                            $(this).dialog("close");
+                    }
+                },
+                show: "fadeIn"
+            }),
+            $(".ui-widget-overlay").addClass("bg-black opacity-80")
+       }
+};
+
+</script>
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">用户授权</h4>
+      </div>
+      <div class="modal-body">
+         <form id="permission_form">
+        <?py if roles:?>
+            <?py for r in roles:?>
+                <label class="checkbox"><input type="checkbox" value="${r.Fid}" name="roles" id="roles">${r.Fname}</label>
+            <?py #endfor?>
+            <?py #end?>
+             <input type="hidden" id="permission_user_id" name="" value="">
+             #{xsrf_form_html}
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="user_permission_btn">提交</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    permission:function(user_id,user_role){
+            $('#myModal').modal()
+            $('#permission_user_id').val(user_id)
+    },
+</script>

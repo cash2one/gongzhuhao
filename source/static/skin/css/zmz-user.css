@@ -1,0 +1,1106 @@
+/*
+*    Created By Hujunhao
+*    Date:2014.12.02
+*/
+
+.zmz-main-box{
+    width: 1210px;
+    margin: 0 auto;
+}
+.top-user-part .user-cover{
+    width: 1210px;
+    height: 400px;
+    margin: 0 auto;
+}
+.top-user-part .user-info{
+    position: relative;
+    height: 130px;
+}
+.top-user-part .user-info .user-head{
+    position: absolute;
+    top: -105px;
+    left: 75px;
+    width: 215px;
+    height: 215px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-box-shadow: 2px 2px 5px #d2d2d2;
+    -moz-box-shadow: 2px 2px 5px #d2d2d2;
+    box-shadow: 2px 2px 5px #d2d2d2;
+}
+.top-user-part .user-info .user-head img{
+    width:205px;
+    height: 205px;
+    padding: 5px;
+    border-radius: 50%;
+}
+.top-user-part .user-info .zmz-user-message{
+    margin: 30px 0 0 315px;
+    display: inline-block;
+}
+.top-user-part .user-info .zmz-user-message .user-name{
+    font-size: 24px;
+    line-height: 24px;
+    color: #393939;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.top-user-part .user-info .zmz-user-message .user-impor p{
+    font-size: 14px;
+    line-height: 14px;
+    color: #636363;
+    float: left;
+    margin: 0 15px 0 0;
+}
+.top-user-part .user-info .upload-cover-btn{
+    position: absolute;
+    top: -80px;
+    right: 45px;
+    border: 2px #fff solid;
+    color: #fff;
+    font-size: 18px;
+    background: #000;
+    border-radius: 10px;
+    width: 140px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    filter:alpha(opacity=80);
+    -moz-opacity:0.8;
+    opacity:0.8;
+}
+.top-user-part .user-info .user-setting-btn{
+    position: absolute;
+    top: 15px;
+    right: 45px;
+    border: 2px #fff solid;
+    background: #2ad79c;
+    padding: 11px 33px;
+}
+.top-user-part .user-info .user-setting-btn:hover{
+    background: #0bc686;
+}
+.top-user-part .user-info a:hover{
+    text-decoration: none;
+}
+.top-user-part .user-info .user-setting-btn ins{
+    float: left;
+    color: #fff;
+    font-size: 20px;
+    line-height: 23px;
+}
+.setting{
+    width: 23px;
+    height: 23px;
+    background-position: -363px -11px;
+    margin-right: 10px;
+}
+.nav-part{
+    width: 100%;
+    height: 54px;
+    background: #eeeeee;
+    margin-bottom: 35px;
+}
+.nav-part .nav{
+    float: left;
+    margin: 0;
+}
+.nav-part .nav li{
+    float: left;
+}
+.nav-part .nav li .active{
+    background: #2ad79c;
+    color: #fff;
+}
+.nav-part .nav li .hoverActive{
+    background: #2ad79c;
+    color: #fff;
+}
+.nav-part .nav li a{
+    line-height: 54px;
+    color: #353535;
+    width: 120px;
+    text-align: center;
+    font-size: 16px;
+}
+.nav-part .user-dtData{
+    float: right;
+    margin-right: 136px;
+}
+.nav-part .user-dtData .down-arrow{
+    float: left;
+    font-size: 14px;
+    color: #3d3d3d;
+    line-height: 14px;
+    height: 14px;
+    background-position: -280px -70px;
+    width: 120px;
+    margin: 20px 0 0 0;
+}
+.nav-part .user-dtData .user-message{
+    float: left;
+    line-height: 54px;
+    color: #3d3d3d;
+    position: relative;
+}
+.nav-part .user-dtData a:hover{
+    color: #3d3d3d;
+    text-decoration: none;
+}
+.pao{
+    height: 23px;
+    width: 21px;
+    background-position: -17px -459px;
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    top: 5px;
+    left: 28px;
+    text-align: center;
+    line-height: 23px;
+}
+.zx-diary{
+    margin-bottom: 100px;
+}
+.zx-diary .wirte-diary{
+    float: right;
+    width: 165px;
+    height: 195px;
+    border-radius: 10px;
+    background: #2ad79c;
+    margin-left: 10px;
+}
+.zx-diary .upload-picture{
+    float: right;
+    width: 165px;
+    height: 195px;
+    border-radius: 10px;
+    background: #2ad79c;
+    margin-left: 10px;
+}
+.camera{
+    height: 74px;
+    width: 74px;
+    background-position: -8px -637px;
+    margin: 40px auto 25px;
+}
+.diary{
+    height: 74px;
+    width: 74px;
+    background-position: -9px -550px;
+    margin: 40px auto 25px;
+}
+.zx-diary a p{
+    font-size: 24px;
+    line-height: 24px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+.zx-diary .wirte-diary:hover,
+.zx-diary .upload-picture:hover{
+    text-decoration: none;
+    background: #0bc686;
+}
+.left-list{
+    float: left;
+    width: 850px;
+}
+.part-box{
+    margin-bottom: 50px;
+}
+.part-box .part-box-title{
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    border-bottom: 2px #2ad79c solid;
+}
+.part-box .part-box-title p,
+.part-box .part-box-title a{
+    float: left;
+    margin-bottom: 0;
+}
+.part-box .part-box-title .user-box-part-name{
+    font-size: 24px;
+    line-height: 24px;
+    margin:0;
+    color: #393939;
+    font-weight: bold;
+}
+.part-box .part-box-title .toWirte{
+    font-size: 18px;
+    color: #2ad79c;
+    line-height: 18px;
+    margin: 6px 0 0 20px;
+}
+.part-box .part-box-title .impor-num{
+    margin: 0 30px 0 0;
+    float: right;
+}
+.part-box .part-box-title .impor-num .normal{
+    color: #393939;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 8px 5px 0 5px;
+}
+.part-box .part-box-title .more{
+    float: right;
+    font-size: 14px;
+    line-height: 14px;
+    color: #606060;
+    margin: 12px 10px 0 0;
+}
+.diary-list{
+    width:840px;
+    margin: 0 auto;
+}
+.diary-list li{
+    height: 46px;
+}
+.diary-list li .diaryMark{
+    background-position: -370px -50px;
+    width: 12px;
+    height: 15px;
+    float: left;
+    margin: 15px 15px 0 0;
+}
+.diary-list li .info-list{
+    float: left;
+    border-bottom: 1px #c5c5c5 solid;
+    width: 813px;
+}
+.diary-list li .zx-diary-name{
+    float: left;
+    width: 500px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 45px;
+    color: #393939;
+    font-size: 16px;
+    margin: 0;
+    height: 45px;
+}
+.diary-list li .zx-diary-date{
+    float: left;
+    width: 120px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 45px;
+    color: #828282;
+    margin: 0;
+}
+.diary-list li .comment{
+    float: right;
+    width: 50px;
+    height: 15px;
+    line-height: 14px;
+    color: #2ad79c;
+    font-size: 14px;
+    background-position: -239px -95px;
+    padding-left: 25px;
+    margin: 15px 0 0 0;
+}
+.diary-list li .agree{
+    float: right;
+    width: 50px;
+    height: 15px;
+    line-height: 14px;
+    color: #2ad79c;
+    font-size: 14px;
+    background-position: -238px -118px;
+    padding-left: 25px;
+    margin: 15px 0 0 0;
+}
+.albums-list{
+    margin: 0 0 0 -10px;
+}
+.albums-list li{
+    float: left;
+    margin: 0 0 10px 10px;
+}
+.albums-list li:nth-child(5n){
+    margin: 0 0 10px 0;
+}
+.albums-list li img{
+    width: 162px;
+    height: 110px;
+}
+.to-my-albums{
+    display: block;
+    height: 55px;
+    background: #f1f1f1;
+    line-height: 55px;
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    color: #666;
+}
+.to-my-albums:hover{
+    color: #3d3d3d;
+    text-decoration: none;
+}
+.message-boards{
+    background: #f1f1f1;
+    margin: 0 0 20px 0;
+    padding: 25px 20px 15px;
+}
+.message-boards .user-comment-head{
+    float: left;
+    width: 125px;
+    height: 125px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-box-shadow: 2px 2px 5px #d2d2d2;
+    -moz-box-shadow: 2px 2px 5px #d2d2d2;
+    box-shadow: 2px 2px 5px #d2d2d2;
+    margin: 0 25px 0 0;
+}
+.message-boards .user-comment-head img{
+    width: 115px;
+    height: 115px;
+    padding: 5px;
+    border-radius: 50%;
+}
+.message-boards .to-wirte-comments-part{
+    float: left;
+}
+.message-boards .to-wirte-comments-part .wirte-comments{
+    width: 645px;
+    height: 120px;
+}
+.message-boards .to-wirte-comments-part .comments-btn-num-part span{
+    float: left;
+    font-size: 12px;
+    color: #585858;
+}
+.message-boards .to-wirte-comments-part .comments-btn-num-part .comment-wirte-btn{
+    float: right;
+    width: 115px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background: #2ad79c;
+    color: #fff;
+    font-size: 16px;
+}
+.message-boards .to-wirte-comments-part .comments-btn-num-part .comment-wirte-btn:hover{
+    text-decoration: none;
+    background: #0bc686;
+}
+.comment-list{
+    margin: 0;
+}
+.comment-list li{
+    border-bottom: 1px #d6d6d6 solid;
+    padding-bottom: 25px;
+    margin-bottom: 20px;
+}
+.comment-list li:last-child{
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.comment-list li .comment-list-head{
+    float: left;
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-box-shadow: 2px 2px 5px #d2d2d2;
+    -moz-box-shadow: 2px 2px 5px #d2d2d2;
+    box-shadow: 2px 2px 5px #d2d2d2;
+    margin: 0 25px 0 0;
+}
+.comment-list li .comment-list-head img{
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    border-radius: 50%;
+}
+.comment-list li .comment-content{
+    float: left;
+    width:745px;
+}
+.comment-list li .comment-content .comment-list-user-name{
+    font-size: 18px;
+    line-height: 18px;
+    color: #2d2d2d;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.comment-list li .comment-content .detail-content{
+    font-size: 14px;
+    line-height: 14px;
+    color: #5f5f5f;
+}
+.comment-list li .comment-content .comment-list-date{
+    font-size: 12px;
+    line-height: 12px;
+    color: #828282;
+    margin: 0;
+    display: inline-block;
+}
+.right-list-part{
+    float: right;
+    width: 320px;
+}
+.user-box{
+    margin-bottom: 25px;
+}
+.user-box .user-box-title{
+    border-bottom: 1px #dedede solid;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.user-box .user-box-title p ins{
+    font-size: 24px;
+    font-weight: bold;
+    color: #2ad79c;
+    margin-left: 5px;
+}
+.user-box .user-box-title p:last-child{
+    float: right;
+    font-size: 14px;
+    line-height: 18px;
+    color: #6c6c6c;
+    margin: 0;
+}
+.user-box .user-box-title p:first-child{
+    float: left;
+    font-size: 18px;
+    line-height: 18px;
+    color: #393939;
+    margin: 0;
+    font-weight: bold;
+}
+.user-box .user-box-head-list{
+    margin: 0 10px;
+}
+.user-box .user-box-head-list li{
+    float: left;
+    margin: 0 6px 10px 0;
+}
+.user-box .user-box-head-list li:nth-child(6n){
+    margin: 0 0 10px 0;
+}
+.user-box .user-box-head-list li a{
+    display: block;
+}
+.user-box .user-box-head-list li a img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+/** diaryCss **/
+.diary-type{
+    margin:0 0 17px 100px;
+}
+.apartment{
+    float: left;
+    width: 54px;
+    height: 18px;
+    background-position: -364px -511px;
+    padding-left: 30px;
+    font-size: 18px;
+    color: #515151;
+    font-weight: bold;
+    line-height: 18px;
+    margin-top: 6px;
+}
+.diary-type .diary-select-list{
+    float: left;
+    margin: 0 0 0 19px;
+    width: 970px;
+}
+.diary-type .diary-select-list .diary-radio-list{
+    display: inline-block;
+    padding: 7px 10px;
+    border: 1px #ccc solid;
+    margin: 0 8px 8px 0;
+    font-size: 14px;
+    line-height: 14px;
+    color: #515151;
+    border-radius: 6px;
+}
+.diary-type .diary-select-list .diary-active,
+.diary-type .diary-select-list .diary-radio-list:hover{
+    text-decoration: none;
+    background: #a6ffe1;
+    border: 1px #2ad79c solid;
+    cursor: pointer;
+}
+.construction-mode{
+    float: left;
+    width: 90px;
+    height: 20px;
+    background-position: -373px -816px;
+    padding-left: 30px;
+    font-size: 18px;
+    color: #515151;
+    font-weight: bold;
+    line-height: 18px;
+    margin-top: 6px;
+}
+.style{
+    float: left;
+    width: 54px;
+    height: 18px;
+    background-position: -364px -560px;
+    padding-left: 30px;
+    font-size: 18px;
+    color: #515151;
+    font-weight: bold;
+    line-height: 18px;
+    margin-top: 6px;
+}
+.diary-main-part{
+    margin-bottom: 120px;
+}
+.diary-main-part .diary-stage{
+    float: left;
+    width: 76px;
+    padding: 0 10px 0 0;
+    position: relative;
+    height: 500px;
+    border-left: 4px #2ad79c solid;
+    margin-left: 10px;
+}
+.diary-main-part .diary-stage .stage{
+    position: absolute;
+    left: -9px;
+    height: 14px;
+    background-position: -367px -588px;
+    padding-left: 18px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #515151;
+}
+.diary-main-part .diary-stage .stage-active,
+.diary-main-part .diary-stage .stage:hover{
+    height: 22px;
+    background-position: -365px -615px;
+    left: -13px;
+    padding-left: 25px;
+    line-height: 22px;
+    text-decoration: none;
+    color: #2ad79c;
+    font-size: 14px;
+}
+.line-down-arrow{
+    position: absolute;
+    left: -10px;
+    top: 500px;
+    width: 16px;
+    height: 22px;
+    background-position: -373px -783px;
+}
+.diary-main-part .diary-content{
+    width: 750px;
+    float: left;
+}
+.diary-content .diary-title{
+    width: 736px;
+    height: 40px;
+    margin: 0 0 28px 0;
+}
+.diary-content .content{
+    width: 750px;
+    height: 425px;
+}
+.diary-main-part .diary-image{
+    float: right;
+    width: 340px;
+}
+.diary-image .diary-addimg-part{
+    background: #2ad79c;
+    width: 286px;
+    height: 59px;
+    border-radius: 6px;
+    display: block;
+    margin-bottom: 15px;
+    padding: 21px 0 0 54px;
+}
+.diary-image .diary-addimg-part:hover{
+    background: #0bc686;
+}
+.diary-addimg{
+    color: #fff;
+    font-size: 24px;
+    line-height: 37px;
+    font-weight: bold;
+    height: 37px;
+    background-position: -358px -652px;
+    padding-left: 60px;
+    margin: 0;
+    display: inline-block;
+}
+.diary-image .default-albums{
+    display: block;
+    width: 340px;
+    height: 56px;
+    background: #2ad79c;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.diary-image .default-albums .albums-name{
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 56px;
+    color: #fff;
+    margin: 0 0 0 25px;
+}
+.diary-image .default-albums{
+    text-decoration: none;
+}
+.arrow-to{
+    float: right;
+    background-position: -369px -704px;
+    width: 14px;
+    height: 8px;
+    margin: 24px 30px 0 0;
+}
+.diary-image .albums-part{
+    background: #f7f7f7;
+    padding: 20px 0 50px 11px;
+    position: relative;
+}
+.diary-image .albums-part .diary-albums-list{
+    margin: 0;
+    height: 312px;
+    overflow-y: scroll;
+}
+.diary-image .albums-part .diary-albums-list li{
+    width: 100px;
+    height: 100px;
+    margin: 0 6px 6px 0;
+    float: left;
+}
+.diary-image .albums-part .diary-albums-list li:nth-child(3n){
+    margin: 0 0 6px 0;
+}
+.diary-image .albums-part .diary-albums-list li img{
+    width: 100px;
+    height: 100px;
+}
+.zj{
+    width: 39px;
+    height: 34px;
+    background-position: -353px -729px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.diary-btn-part input{
+    float: right;
+    width: 128px !important;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    background: #2ad79c;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    margin: 0 0 0 18px;
+    border-radius: 6px;
+}
+.diary-btn-part input:hover {
+    background: #0bc686;
+}
+.modal{
+    width: 560px;
+}
+.upload-file-part{
+    position: relative;
+}
+.upload-file-part p:first-child{
+    float: left;
+    font-size: 14px;
+    line-height: 30px;
+    color: #666;
+}
+.upload-file-part .select-img-btn{
+    float: right;
+    width: 100px;
+    height: 30px;
+    margin-right: 50px;
+    border-radius: 6px;
+    border: none;
+    color: #666;
+}
+.upload-file-part .files-upload-part{
+    position: absolute;
+    top: 0;
+    left: 368px;
+    width: 100px;
+    height: 30px;
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    opacity: 0;
+}
+#ablum-layer{
+    margin: 0 0 20px 42px;
+    max-height: 223px;
+    overflow-y: scroll;
+}
+#ablum-layer li{
+    float: left;
+    width: 98px;
+    height: 98px;
+    margin: 10px 15px 5px 0;
+    position: relative;
+}
+#ablum-layer li:nth-child(4n){
+    margin: 10px 0 5px 0;
+}
+#ablum-layer li img{
+    width: 99px;
+    height: 99px;
+}
+.uploadImg-close{
+    width: 20px;
+    height: 20px;
+    background-position: -45px -2706px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+.creat-part p:first-child {
+     float: left;
+     font-size: 14px;
+     line-height: 30px;
+     color: #666;
+ }
+.creat-part{
+    padding: 60px 0 20px 121px;
+}
+.creat-part div{
+    padding-left: 225px;
+}
+
+/** diaryViewList css **/
+.diary-view-list li{
+    margin-bottom: 29px;
+    border-bottom: 2px #2ad79c solid;
+}
+.diary-view-list li .diary-list-title{
+    padding-bottom: 14px;
+    border-bottom: 1px #c9c9c9 solid;
+    margin: 0 30px;
+}
+.diary-view-list li .diary-list-title .diary-name{
+    float: left;
+    background-position: -370px -50px;
+    font-size: 16px;
+    height: 16px;
+    line-height: 16px;
+    color: #393939;
+    padding-left: 20px;
+    margin: 0;
+    width: 500px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.diary-view-list li .diary-list-title .diary-date{
+    float: right;
+    width: 120px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 16px;
+    color: #828282;
+    margin: 0 50px 0 0;
+}
+.diary-view-list li .diary-list-title .comment{
+    float: right;
+    height: 15px;
+    line-height: 16px;
+    color: #2ad79c;
+    font-size: 14px;
+    background-position: -239px -95px;
+    padding-left: 25px;
+    margin: 0 20px 0 0;
+}
+.diary-view-list li .diary-list-title .agree{
+    float: right;
+    height: 15px;
+    line-height: 16px;
+    color: #2ad79c;
+    font-size: 14px;
+    background-position: -238px -118px;
+    padding-left: 25px;
+    margin: 0;
+}
+.diary-view-list li .diary-list-content-part{
+    margin: 0 30px;
+    padding: 24px 0;
+}
+.diary-view-list li .diary-list-content-part .diary-list-thumbnails{
+    border: 1px #d7d7d7 solid;
+    float: left;
+    margin-right: 15px;
+}
+.diary-view-list li .diary-list-content-part .diary-list-thumbnails img{
+    width: 162px;
+    height: 100px;
+    padding: 2px;
+}
+.diary-view-list li .diary-list-content-part .diary-list-content{
+    float: left;
+    width: 607px;
+    padding-top: 5px;
+    font-size: 14px;
+    color: #515151;
+}
+.diary-view-list li .diary-list-share{
+    height: 44px;
+    padding-right: 20px;
+    background: #f7f7f7;
+}
+.diary-view-list li .diary-list-share p{
+    margin: 0 10px 0 0;
+    float: right;
+    color: #444444;
+    font-size: 14px;
+    line-height: 44px;
+}
+
+/** diaryDeatilCss **/
+.diary-detail-top{
+    margin-bottom: 30px;
+}
+.diary-detail-top .user-head-part{
+    float: left;margin-right: 20px;
+}
+.diary-detail-top .user-head-part .headimg{
+    background: #fff;
+    border-radius: 50%;
+    -webkit-box-shadow: 2px 2px 5px #d2d2d2;
+    -moz-box-shadow: 2px 2px 5px #d2d2d2;
+    box-shadow: 2px 2px 5px #d2d2d2;
+    display: block;
+}
+.diary-detail-top .user-head-part .headimg img{
+    width: 62px;
+    height: 62px;
+    padding: 4px;
+    border-radius: 50%;
+}
+.diary-detail-top .user-head-part p{
+    color: #393939;
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 5px;
+    text-align: center;
+    width: 70px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.diary-detail-top .diary-info{
+    float: left;
+    width: 760px;
+}
+.diary-detail-top .diary-info .diary-info-top{
+    border-bottom: 1px #c3c3c3 solid;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+.diary-detail-top .diary-info .diary-info-top p:first-child{
+    font-size: 30px;
+    line-height: 30px;
+    float: left;
+    color: #383838;
+    text-align: left;
+}
+.diary-detail-top .diary-info .diary-info-top p:last-child{
+    font-size: 12px;
+    line-height: 12px;
+    float: right;
+    color: #828282;
+    text-align: right;
+    margin-top: 18px;
+}
+.diary-detail-top .diary-info .diary-info-down{}
+.diary-detail-top .diary-info .diary-info-down .house-info{
+    float: left;
+    padding-left: 20px;
+    height: 12px;
+    background-position: -378px -842px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #828282;
+    margin-right: 28px;
+}
+.diary-detail-top .diary-info .diary-info-down .company{
+    float: left;
+    padding-left: 20px;
+    height: 12px;
+    background-position: -378px -860px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #828282;
+}
+.diary-progress{
+    border-top: 4px #2ad79c solid;
+    position: relative;
+    margin: 0 35px;
+    height: 80px;
+}
+.diary-progress .stage{
+    position: absolute;
+    top: -9px;
+    height: 0px;
+    background-position: -367px -588px;
+    padding: 20px 0 0 0;
+    width: 14px;
+    line-height: 12px;
+}
+.diary-progress .stage-active,
+.diary-progress .stage:hover{
+    height: 2px;
+    background-position: -365px -615px;
+    top: -13px;
+    line-height: 16px;
+    text-decoration: none;
+    color: #2ad79c;
+    font-size: 14px;
+    width: 23px;
+    text-align: center;
+    padding: 25px 0 0 0;
+}
+.diary-progress .line-right-arrow{
+    position: absolute;
+    left: 782px;
+    top: -13px;
+    width: 16px;
+    height: 22px;
+    background-position: -373px -783px;
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.diary-stage-list {
+    border-top: 2px #2ad79c solid;
+    margin-bottom: 50px;
+}
+.diary-stage-list .diary-list-stage-ul{
+    margin-bottom: 50px;
+}
+.diary-stage-list .diary-list-stage-ul li{
+    margin: 0 0 0 54px;
+    border-left: 1px #d1d1d1 solid;
+    border-bottom: 1px #d1d1d1 solid;
+    min-height: 150px;
+    position: relative;
+}
+.diary-stage-list .diary-list-stage-ul li .stage-mark{
+    width: 14px;
+    height: 80px;
+    background: #2ad79c;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 20px 8px;
+    position: absolute;
+    top: 20px;
+    left: -16px;
+}
+.diary-stage-list .diary-list-stage-ul li .stage-deteil-content{
+    padding: 20px 30px;
+    font-size: 14px;
+    color: #292929;
+}
+.diary-stage-list .diary-comment-part{
+    border-bottom: 1px #2ad79c solid;
+    position: relative;
+    padding-bottom: 15px;
+    margin-left: 54px;
+}
+.diary-stage-list .diary-comment-part p{
+    float: left;
+    color: #2ad79c;
+    font-size: 14px;
+    line-height: 14px;
+}
+.diary-stage-list .diary-comment-part a{
+    float: right;
+    margin-left: 10px;
+    color: #3e3e3e;
+    font-size: 14px;
+    line-height: 14px;
+}
+.upArrow{
+    width: 14px;
+    height: 8px;
+    background-position:-29px -3003px;
+    position: absolute;
+    top: 22px;
+    left: 22px;
+}
+.diary-stage-list .diary-detail-comment-list{
+    margin: 0 0 0 54px;
+}
+.diary-stage-list .diary-detail-comment-list li{
+    padding: 20px 0;
+    border-bottom: 1px #d2d2d2 solid;
+}
+.diary-stage-list .diary-detail-comment-list li:last-child{
+    border-bottom: none;
+}
+.diary-stage-list .diary-detail-comment-list li .headimg{
+    background: #fff;
+    border-radius: 50%;
+    -webkit-box-shadow: 2px 2px 5px #d2d2d2;
+    -moz-box-shadow: 2px 2px 5px #d2d2d2;
+    box-shadow: 2px 2px 5px #d2d2d2;
+    float: left;
+    margin-right: 25px;
+}
+.diary-stage-list .diary-detail-comment-list li .headimg img{
+    width: 62px;
+    height: 62px;
+    padding: 4px;
+    border-radius: 50%;
+}
+.diary-stage-list .diary-detail-comment-list li .comment-content{
+    float: left;
+}
+.diary-stage-list .diary-detail-comment-list li .comment-content p:first-child{
+    font-size: 18px;
+    line-height: 18px;
+    color: #2d2d2d;
+    margin-bottom: 10px;
+}
+.diary-stage-list .diary-detail-comment-list li .comment-content p:nth-child(2),
+.diary-stage-list .diary-detail-comment-list li .comment-content p:nth-child(3),
+.diary-stage-list .diary-detail-comment-list li .comment-content .answer{
+    font-size: 14px;
+    line-height: 14px;
+    color: #5f5f5f;
+    margin-bottom: 10px;
+}
+.diary-stage-list .answer-part{
+    margin-left: 54px;
+    margin-top: 20px;
+}
+.diary-stage-list .answer-part .answer-diary{
+    float: left;
+    width: 636px;
+    border-radius: 0;
+    height: 38px;
+    border-right: 0;
+}
+.diary-stage-list .answer-part .answer-fast-btn{
+    width: 146px;
+    height: 48px;
+    background: #2ad79c;
+    font-size: 18px;
+    line-height: 48px;
+    text-align: center;
+    color: #fff;
+    float: left;
+}

@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="/static/crm/js/plugins/dataTime/jquery.datetimepicker.css" />
+<link href='/static/crm/css/order/order.css' rel='stylesheet' />	
+<?py include('crm/calender/doublecalender.html') ?>
+<div id="content" class="col-lg-10 col-sm-10">
+	<!--<ul class="breadcrumb">
+		<li><a href="#">公主号</a></li>
+		<li><a href="#">订单管理</a></li>
+	</ul>				-->
+	<!-- content starts -->		
+	<div class="row-fluid sortable">		
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>服务管理</h2>
+				</div>
+				<div class="box-content box-search">
+		             <form action="" method="get" class="form-search col-md-8">
+		                 <input type="hidden" name="order_status" id="order_status" value="${order_status}">
+	                    <div class="col-md-4">
+	                        <?py if start_date:?>
+	                            <input type="text" class="form-control" name="sch_date" id="sch_date" value="${start_date and start_date or ''}-${end_date and end_date or ''}" placeholder="请输入时间"/>
+	                        <?py else:?>
+	                            <input type="text" class="form-control" name="sch_date" id="sch_date" value="" placeholder="请输入时间"/>
+	                        <?py #endif ?>
+	                    </div>
+
+						<div class="input-group">
+					    		<input type="text" value="${search_text and search_text or ''}" name='search_text' class="form-control input-txt" placeholder="请输入订单号/手机号/姓名搜索" />
+					      	<span class="input-group-btn">
+					        		<button class="btn btn-default" type="submit">搜索</button>
+					      	</span>
+					    </div>
+					</form>	
+					<div class="col-md-4">
+						<a class="btn btn-success add-order" href="/merchant/orders/add/"><i class="glyphicon glyphicon-plus"></i>添加</a>
+					</div>
+				</div>
+				<div class="box-content orders">
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane active" id="order-all">
+							<form class="form-horizontal">
+								<table class="table">
+									<thead>
+										<tr>
+											<th class="order-no">订单号码</th>
+											<th class="order-customer">客户姓名</th>
+											<th class="order-mobile">客户手机</th>
+											<th class="order-type">订单类型</th>
+											<th class="order-balance">订单余额</th>
+											<th class="order-date">订单时间</th>
+											<th class="order-state">状态</th>
+											<th class="order-action" >操作</th>
+										</tr>
+									</thead>   
+									<tbody>
+		                            <?py import datetime?>
+										<?py for item in items.result: ?>
+										<tr>
+											<input type="hidden" id="order_id" value="${item.Fid}" />
+											<td class="order-no">${item.Forder_id_user}</td>
+											<td class="order-customer">${item.Fuser_name}</td>
+											<td class="order-mobile">${item.Fuser_mobi}</td>
+											<td class="order-type">${ORDER_TYPES[item.Forder_type]}</td>
+											<td class="order-balance">${item.Famount}元</td>
+											<td class="order-date tcenter">${item.Fcreate_time}</td>
+                                            <td class="order-state tcenter">
+                                                <a  class="btn btn-sm btn-default"  href="#">已退单</a>
+                                            </td>
+                                            <td class="order-action tcenter" >
+                                                <div class="action">
+
+                                                </div>
+                                            </td>
+										    </tr>
+										<?py #endfor ?>
+									</tbody>
+		                            #{page_html}
+								</table>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+
+<!--gzh func js-->
+<script src="/static/crm/js/plugins/dataTime/jquery.datetimepicker.js" ></script>
+<script src="/static/crm/js/order/order.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('#sch_date').daterangepicker({}, function(start, end, label) {
+        console.log(start.toISOString(), end.toISOString(), label);
+      });
+      $(".delete_orders).addClass("active");
+   });
+ </script>

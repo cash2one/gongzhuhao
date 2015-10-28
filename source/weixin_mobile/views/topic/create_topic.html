@@ -1,0 +1,148 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <?py include("views/assets/styles.html") ?>
+        <link rel="stylesheet" type="text/css" href="/static/styles/rewrite.css">
+    </head>
+    <body>
+        <div class="work-container">
+            <header class="bar bar-header bar-light">
+                <button class="button back-button buttons  button-clear header-item" onclick="javascript:history.go(-1)">
+                    <i class="icon ion-ios-arrow-back"></i>
+                    <span class="back-text">
+                        <span class="default-title hide">返回</span>
+                    </span>
+                </button>
+                <div class="title title-center header-item" style="font-size:1.6em">发帖</div>
+                <a class="publish">发布</a>
+            </header>
+            <div class="content padding">
+            	<div class="list">
+            	  <label class="item item-input">
+            	    <input type="text" placeholder="请输入标题"  class="topic_title" name="title">
+            	  </label>
+            	  <label class="item item-input">
+            	    <textarea placeholder="请输入话题内容" rows=4 class="topic_content" name="content"></textarea>
+            	  </label>
+            	</div>
+                <div class="list">
+                    <ul class="upload-descImg-list clearfix"></ul>
+                    <form action="/mobile/topics/photo/upload/" method="post" enctype="multipart/form-data" class="topic-form" id="J-topic-formFile">
+                        <input type="hidden" name="_xsrf" value="">
+                        <span class="upload_image">
+                            <input id="fileupload_topic" type="file" name="files" data-url="" title="请选择图片" multiple="">
+                            <img src="/static/images/photo.png"/>
+                        </span>
+                    </form>
+                </div>
+            </div>
+         </div>
+        <input type="hidden" value="${type_num}" id="type_num"/>
+        <input type="hidden" value="${category_id}" id="category_id"/>
+        <?py include("views/assets/javascripts.html") ?>
+        <script type="text/javascript" charset="utf-8" src="/static/scripts/upload/jquery.ui.widget.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/static/scripts/upload/jquery.iframe-transport.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/static/scripts/upload/load-image.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/static/scripts/upload/jquery.fileupload.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/static/scripts/upload/jquery.xdr-transport.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/static/scripts/upload/jquery.fileupload-ui.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/static/scripts/upload/jquery.fileupload-process.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/static/scripts/upload/jquery.fileupload-image.js"></script>
+        <script type="text/javascript">
+        $(function(){
+            //上传图片
+            $('#fileupload_topic').click(function(){
+                var uploader = $("#J-topic-formFile");
+                var i = $('.upload-descImg-list li').length;
+                addPhotos(uploader, i);
+            });
+
+            //上传图片
+            function addPhotos(uploader, i){
+                uploader.fileupload({
+                    dataType: 'json',
+                    autoUpload: true,
+                    acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+                    //maxNumberOfFiles : 10,
+                    maxFileSize: 5000000,
+                    done: function (e, data) {
+                        $.each(data.result.files, function (index, file) {
+                            $('.upload-descImg-list li:eq(' + i + ')').attr("data-id", file.id);
+                            $('.upload-descImg-list li:eq(' + i + ')').find("img").attr({"src": file.url, "data-size": file.size});
+                            i++;
+                        });
+                    },
+                    send: function (e, data) {
+                        var close = '<a href="javascript:;" onclick="$(this).closest(\'li\').remove()" class="upload-descImg-close"></a>',
+                            img = '<img src="/static/images/loading.gif" data-size="" alt="">';
+                        var li = '<li data-id="">'+ close + img +'</li>';
+                        $('.upload-descImg-list').append(li);
+                    }
+                });
+                uploader.find("input:file").removeAttr('disabled');
+            };
+
+           //话题list页，提交话题
+            $(".publish").click(function(){
+                var result = true;
+                var content = $('.topic_content').val(),
+                    title = $('.topic_title').val(),
+                    category_id = $('#category_id').val(),
+                    type_num = $('#type_num').val(),
+                    img = $('.upload-descImg-list li');
+
+                    //描述图片的校验
+                if (result) {
+                    if (img.length > 0) {
+                        var add_img = [];
+                        img.each(function (i) {
+                            var list = new Object();
+                            list.id = $(this).attr("data-id");
+                            list.url = $(this).find("img").attr("src");
+                            list.size = $(this).find("img").attr("data-size");
+                            add_img[i] = list;
+                        });
+                    }
+                }
+                if (result) {
+                    var data_list = new Object();
+                    data_list.title = title;
+                    data_list.content = content;
+                    data_list.img = JSON.stringify(add_img);
+                    data_list._xsrf = $('input[name="_xsrf"]').val();
+                    console.log(data_list);
+
+                    jQuery.ajax({
+                        type: "POST",
+                        url: "/mobile/topics/create/" + category_id+"/"+type_num,
+                        data: data_list,
+                        dataType: "JSON",
+                        success: function (data) {
+                            var stat = data.stat;
+                            if (stat == "ok") {
+                                window.location.href = "/mobile/topic/detail/" + data.topic_id+'/1/'+type_num +"/"+data.category_id;
+                            } else {
+                                alert(data.msg);
+                            }
+                            console.log("error");
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+
+        });
+        </script>
+    </body>
+</html>
+

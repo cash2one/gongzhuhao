@@ -1,0 +1,199 @@
+<?py from tornado.options import options ?>
+<link rel="stylesheet" href="/static/skin/css/zmz-qa.css">
+
+<div class="main-box">
+    <div class="qa-box clearfix">
+        <div class="detail-qa-main">
+            <p class="qa-detail-title">${qa_detail.title}</p>
+            <div class="qa-user-info clearfix">
+                <a href="/member/index/${qa_detail.user_id}" class="qa-user-img-link">
+                    <img src="${user_db.get_user_msg(int(qa_detail.user_id)).get('photo')}" alt="">
+                </a>
+                <div class="qa-user-info-d">
+                    <a href="/member/index/${qa_detail.user_id}" class="qa-user-name">${user_db.get_user_msg(int(qa_detail.user_id)).get('nick')}</a>
+                    <div class="qa-date-from">
+                        <ins>${qa_detail.gmt_created}</ins>
+                        <ins>问题来自</ins>
+                        <ins style="color: #555555">${cate_dict.get(qa_detail.question_type_id)}</ins>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-qa-content">${qa_detail.question_desc}</div>
+            <ul class="detail-qa-img-list clearfix">
+                <?py for i in qa_images: ?>
+                <li>
+                    <img src="${handler.get_show_img_url(i.show_url,320)}" data-src="${i.show_url}" class="showBigImg" data-id="${i.id}" alt="">
+                </li>
+                <?py #endfor ?>
+            </ul>
+            <p class="answer-count">共<ins id="commentCount">${qa_detail.comments_count}</ins>个回应</p>
+            <!--
+            <div class="detail-qa-comments-tab clearfix">
+                <a href="/qa/detail/${qa_detail.id}/new" class="de-order time-order de-order-active">按时间排序</a>
+                <a href="/qa/detail/${qa_detail.id}/hot" class="de-order vote-order">按赞数排序</a>
+            </div>
+            -->
+            <ul class="detail-first-comments">
+                <?py for r in rsp_list: ?>
+                <li class="dfc-li clearfix" data-id="${r['id']}" data-userId="${r['user_id']}">
+                    <a id="${r['id']}" href="/member/index/${r['user_id']}" class="qa-user-img-link">
+                        <img src="${r['photo']}" alt="">
+                    </a>
+                    <div class="first-comments-info">
+                        <a href="/member/index/${r['user_id']}" class="first-user-name" data-userId="">${r['nick']}</a>
+                        <div class="first-comment-content">${r['answer']}</div>
+                        <ul class="first-comment-img-list clearfix">
+                            <?py for i in r['imgs']: ?>
+                            <li>
+                                <img src="${i['show_url']}" data-src="${i['show_url']}" class="showBigImg" alt="">
+                            </li>
+                            <?py #endfor ?>
+                        </ul>
+                        <div class="comments-opcity clearfix">
+                            <p>${r['gmt_created']}</p>
+                            <a href="javascript:void(0)" class="reply first-reply">回复</a>
+                            <!--<a href="javascript:void(0)" class="qa-icon zan"></a>-->
+                        </div>
+
+                        <div class="second-comments-part ${'hide' if not r['reply_list'] else ''} ">
+                            <p class="up-arrow"></p>
+                            <ul class="detail-second-comments">
+                                <?py for a in r['reply_list']: ?>
+                                <li class="dsc-li clearfix" data-id="${a['id']}" data-userId="${a['user_id']}">
+                                    <a id="${a['id']}" href="/member/index/${a['user_id']}" class="qa-user-img-link2">
+                                        <img src="${a['photo']}" alt="">
+                                    </a>
+                                    <div class="second-comments-info">
+                                        <a href="" class="first-user-name">${a['nick']}</a>
+                                        <div class="first-comment-content">${a['answer']}</div>
+                                        <div class="comments-opcity clearfix">
+                                            <p>${a['gmt_created']}</p>
+                                            <a href="javascript:void(0)" class="reply second-reply">回复</a>
+                                            <!--<a href="javascript:void(0)" class="qa-icon zan"></a>-->
+                                        </div>
+                                    </div>
+                                </li>
+                                <?py #endfor ?>
+                            </ul>
+                            <div class="reply-input-part hide clearfix">
+                                <input type="hidden" name="target_user_id" value="">
+                                <textarea class="reply-content" placeholder="回复TA:"></textarea>
+                                <a href="javascript:void(0)" class="reply-btn">回复</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <?py #endfor ?>
+            </ul>
+            <div class="set-comment-part clearfix" id="to_publish_comments">
+                <div class="now-user-info">
+                    <img src="${cur_user['photo'] if cur_user and cur_user.get('photo') else options.DEFAULT_USER_PHOTO}" alt="">
+                    <p>${cur_user.get('nick', '')}</p>
+                </div>
+                <div class="comment-content-part">
+                    <textarea id="answer" name="answer" class="comment-content" placeholder="描述"></textarea>
+                    <div class="mt10 clearfix">
+                        <?py if current_user and current_user.get('id'): ?>
+                            <form action="/album/photo/qa/upload/" method="post" enctype="multipart/form-data" class="qa-detail-form" id="J-qa-detail-formFile">
+                                <input type="hidden" name="_xsrf" value="${xsrf_token}">
+                                <input type="button" class="upload-qa-detail-btn">
+                                <input id="fileupload-qa-detail" type="file" name="files" title="请选择图片" multiple>
+                            </form>
+                        <?py #endif ?>
+                        <input type="button" class="upload-comments-btn" value="添加回答">
+                    </div>
+                    <ul class="detail-comments-img-list clearfix"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="detail-qa-related">
+            <a href="#to_publish_comments" class="to-answer">
+                <p class="qa-icon answer">我要回答</p>
+            </a>
+            <p class="de-re-title">相关问答</p>
+                <ul class="related-list">
+                <?py for q in relate_question: ?>
+                <li class="clearfix">
+                    <a href="/qa/detail/${q[0]}/" class="re-img">
+                        <img src="${q[3] if q[3] else options.DEFAULT_QA_IMG }" alt="">
+                    </a>
+                    <div class="related-info">
+                        <a href="/qa/detail/${q[0]}/" class="re-qa-name" target="_blank">${q[1]}</a>
+                        <p class="re-qa-message"><a href="/member/index/${q[2]}">${user_db.get_user_msg(int(q[2])).get('nick')}</a> | ${cate_dict.get(q[4])}</p>
+                        <div class="clearfix">
+                            <p class="qa-icon comments-num">${q[5]}</p>
+                            <p class="qa-icon view-num">${q[6]}</p>
+                        </div>
+                    </div>
+                </li>
+                <?py #endfor ?>
+            </ul>
+        </div>
+
+        <!-- 页面信息保存 -->
+        <div class="hide">
+            <input type="hidden" name="question_id" value="${qa_detail.id}">
+            <input type="hidden" name="_xsrf" value="${xsrf_token}">
+        </div>
+    </div>
+</div>
+<!--问题小图变大图展示-->
+<div class="bigImgShow">
+    <img src="" alt="">
+</div>
+
+<!-- 上传图片控件 -->
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.ui.widget.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.iframe-transport.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/load-image.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.xdr-transport.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-ui.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-process.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-image.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/qa.js?t=15"></script>
+
+<script type="text/html" id="J-model-first-comment">
+    <li class="dfc-li clearfix" data-id="{{id}}" data-userid="{{user_id}}">
+        <a href="/member/index/{{user_id}}" class="qa-user-img-link">
+            <img src="{{photo}}" alt="">
+        </a>
+        <div class="first-comments-info">
+            <a href="/member/index/{{user_id}}" class="first-user-name">{{nick}}</a>
+            <div class="first-comment-content">{{answer}}</div>
+            <ul class="first-comment-img-list clearfix">{{imgs}}</ul>
+            <div class="comments-opcity clearfix">
+                <p>{{gmt_created}}</p>
+                <a href="javascript:void(0)" class="reply first-reply">回复</a>
+                <!--<a href="javascript:void(0)" class="qa-icon zan"></a>-->
+            </div>
+            <div class="second-comments-part hide">
+                <p class="up-arrow"></p>
+                <ul class="detail-second-comments"></ul>
+                <div class="reply-input-part hide clearfix">
+                    <input type="hidden" name="target_user_id" value="">
+                    <textarea class="reply-content" placeholder="回复TA:"></textarea>
+                    <a href="javascript:void(0)" class="reply-btn">回复</a>
+                </div>
+            </div>
+        </div>
+    </li>
+</script>
+
+<script type="text/html" id="J-model-second-comment">
+    <li class="dsc-li clearfix" data-id="{{id}}" data-userid="{{user_id}}">
+        <a href="/member/index/{{user_id}}" class="qa-user-img-link2">
+            <img src="{{photo}}" alt="">
+        </a>
+        <div class="second-comments-info">
+            <a href="/member/index/{{user_id}}" class="first-user-name">{{nick}}</a>
+            <div class="first-comment-content">{{answer}}</div>
+            <div class="comments-opcity clearfix">
+                <p>{{gmt_created}}</p>
+                <a href="javascript:void(0)" class="reply second-reply">回复</a>
+                <!--<a href="javascript:void(0)" class="qa-icon zan"></a>-->
+            </div>
+        </div>
+    </li>
+</script>

@@ -1,0 +1,100 @@
+<div class="modal fade" id="order_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="width: 640px!important;">
+    <div class="modal-content" style="width: 640px!important;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="myLargeModalLabel">预约店铺：</h4>
+        </div>
+      <div class="modal-body">
+        <div class="gzh-order-dialog">
+            <form method="" id="orderForm">
+                <div class="gzh-dialog-cons">
+                    <div class="order-content">
+                        <p class="text-red compang-title f20 ">${company.Fcompany_name}</p>
+                        <p class="gm-info-tips f14"><span class="icon icon-gift"></span>${company_gift and company_gift.Fcontent or '无'}</p>
+                        <p class="gm-info-tips f14"><span class="icon icon-saleoff"></span>${order_gift and order_gift.Fcontent or '无'}</p>
+                        <ul>
+                            <li>
+                                <i class="iconfont gzh-phone"></i>
+                                <input type="tel" name="mobile" class="input-txt" id="phone" value="" placeholder="请输入手机号码" />
+                                <span class="error"></span>
+                            </li>
+                            <li>
+                                <p class="agreement">我们将通知商户尽快与您联系，请保持电话真实畅通</p>
+                            </li>
+                            <li>
+                                <input type="button" name="submit" class="btn btn-submit" id="btnSubmit" value="提交" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="order-succcess" style="display: none">
+                        <dl class="f14">
+                            <dt>
+                                <img src="/static/skin/images/consummation.png" width="60" height="60" alt="预约成功"/>
+                            </dt>
+                            <dd>
+                                <p>恭喜您成功预约：<a class="text-red" href="/merchant/detail/${company.Fid}" target="_blank" title="${company.Fcompany_name}">${company.Fcompany_name}</a></p>
+                            </dd>
+                            <dd>
+                                <p>请留意您店手机，我们将通知商户尽快与您联系</p>
+                            </dd>
+                        </dl>
+                        <p class="countdown f14 text-gray"><span id="timer" class="text-red">6</span>秒后自动消失</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+   $("#btnSubmit").on("click", function(e){
+        if($("#phone").val() == ""){
+            $(".error").html("请输入手机号");
+            return false;
+            e.preventDefault();
+        }
+
+        if(!$("#phone").val().match(/^[1]\d{10}$/)){
+           $(".error").html("手机格式不正确");
+           return false;
+           e.preventDefault();
+        }
+        var phone = $("#phone").val();
+        $.ajax({
+            type: "post",
+            url:"${order_url}",
+            data:{
+                phone:phone
+            },
+            success: function(data){
+                var obj = $.parseJSON(data)
+                if(obj.code == 200){
+                    $(".order-content").hide();
+                    $(".order-succcess").show();
+                    countdown();
+                } else {
+                    $(".error").html(data.info);
+                }
+            },
+
+            error: function(){
+
+            }
+        })
+})
+
+function countdown(){
+    var time = parseInt($('#timer').text())-1;
+    if(time==0){
+        clearTimeout(Account);
+        $('#timer').html("5");
+        $('#order_modal').modal('hide');
+    }else{
+        $('#timer').text(time);
+        var Account = setTimeout("countdown()",1000);
+    }
+}
+
+</script>

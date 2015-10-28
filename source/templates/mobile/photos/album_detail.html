@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>公主号-照片分享</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<link rel="stylesheet" href="/static/web/js/plugins/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" type="text/css" href="/static/web/js/plugins/Swiper/swiper.min.css" />
+	<link rel="stylesheet" href="/static/web/js/plugins/lightbox/css/lightbox.css" />
+	<link rel="stylesheet" href="/static/mobile/css/common.css"  />
+	<link rel="stylesheet" href="/static/mobile/css/photo/photo.css" />
+	<link rel="stylesheet" href="/static/mobile/css/style.css" />
+	<link rel="stylesheet" href="/static/mobile/css/icon.css"  />	
+	<style>
+		body, input, select, textarea, button, .ui-btn{ font-weight: 100;}
+		.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{ text-shadow: 0 0 0;}
+		.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a{ font-weight: 100; color: #fff; text-decoration: none;}
+		.ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html body .ui-group-theme-a a:visited{ color: #fff; text-decoration: none;}
+		
+		.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{ background-color: #fff;}
+		
+		.ui-shadow{ box-shadow:none}
+		
+		.ui-bar-a, 
+		.ui-page-theme-a .ui-bar-inherit, 
+		html .ui-bar-a .ui-bar-inherit, 
+		html .ui-body-a .ui-bar-inherit, 
+		html body .ui-group-theme-a .ui-bar-inherit{ font-weight: 100; text-shadow: none;}
+		
+		.ui-page-theme-a .ui-btn, 
+		html .ui-bar-a .ui-btn, 
+		html .ui-body-a .ui-btn, 
+		html body .ui-group-theme-a .ui-btn, 
+		html head+body .ui-btn.ui-btn-a, 
+		html head+body .ui-btn.ui-btn-a:hover, 
+		.ui-page-theme-a .ui-btn:visited,
+		.ui-page-theme-a .ui-btn:hover,
+		html .ui-bar-a .ui-btn:visited, 
+		html .ui-bar-a .ui-btn:hover, 
+		html .ui-body-a .ui-btn:visited, 
+		html .ui-body-a .ui-btn:hover, 
+		html body .ui-group-theme-a .ui-btn:visited, 
+		html body .ui-group-theme-a .ui-btn:hover,
+		html head+body .ui-btn.ui-btn-a:visited,
+		html head+body .ui-btn.ui-btn-a:hover{ background: transparent; border: none; text-shadow: none;}
+		
+		.lightbox .lb-dataContainer{ display: none;}
+		.input-txt{ height: 34px; line-height: 34px;}
+		textarea.ui-input-text{ min-height: 80px;}
+		.ul-setting{ padding: .5em 1em;}
+		.ul-setting li{ clear: both;}
+		.cons{ padding: 0 1em;} 
+		.wish-list{ padding: 1em;}
+		.photo-share{ padding: 1em 0;}
+		
+		.share-list{ position: relative; padding: 0; margin: 0; overflow: hidden; clear: both; list-style: none; background: #fff;}
+		.share-list li{ position: relative; display: inline; float: left; margin: 5px 8px; width: 160px; height: 200px; border: 1px solid #ddd; }
+		.share-list li a{ display: block; width: 160px; overflow: hidden; background: #fff; text-align: center;}
+		.share-list li img{ display: inline; width: 160px; height: 200px;}	
+
+		
+		.ui-checkbox, .ui-radio{ position: relative; top: 0;}	
+		.ui-checkbox label, .ui-radio label{ position: absolute; display: inline; cursor: pointer;}
+		.ui-checkbox input, .ui-radio input{ position: absolute;}
+		.ui-checkbox{ left: 0;}
+		.ui-radio{ left: 5em; top: 1.3em;}
+		.ui-checkbox input{ margin: 0; padding: 0; top: .6em; left: .8em;}	
+		.ui-radio label{ position: absolute; top: -1.4em; left: -1em; color: #fff;}
+		.bg-alpha{ position: absolute; top: 0; left: 0; width: 100%; height: 40px; background:rgba(0, 0, 0, 0.5)!important; filter:alpha(opacity=50); background: #000; color: #fff; z-index: 99;}
+		.share{ width: 100%;}
+		.cover-img{ display: inline-block; float: left; margin-right: 10px; width: 100px; height: 100px; border: 1px solid #ddd;}
+		textarea.ui-input-text.desc{ min-height: 100px; max-width: 60%}
+		.ui-input-text input, .ui-input-search input, textarea.ui-input-text{ background: #fff; color: #333; font-weight: 100;}
+		.ui-shadow-inset{ -webkit-box-shadow:none; box-shadow:none}
+		
+		#bg_music-button{ border: 1px solid #ccc;}
+		
+	</style>
+	<script type="text/javascript">
+	var c_count=7;
+	var phoneWidth = parseInt(window.screen.width);
+	var phoneScale = phoneWidth/640;
+	var ua = navigator.userAgent;
+	if (/Android (\d+\.\d+)/.test(ua)){
+	var version = parseFloat(RegExp.$1);
+	// andriod 2.3
+	if(version>2.3){
+	document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+	// andriod 2.3以上
+	}else{
+	document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+	}
+	// 其他系统
+	} else {
+	document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+	}
+	</script>		
+</head>
+<body>
+	<div class="wrapper" data-role="page" id="photo">
+		<header data-role="header"  class="header">
+			<a class="back" href="javascript:history.go(-1);"><span class="icon icon-back"></span></a>
+            <p class="title">分享照片</p>
+		</header>			
+		<section data-role="content" class="photo-content" style="padding-top: 100px;">			
+		    <form method="post" action="">
+            #{xsrf_form_html}
+            <input type="hidden" id="album_id" value="${album_id}"/>
+			    	<fieldset data-role="controlgroup" class="photo-share">
+			    		<legend>请选择要分享的照片</legend>
+			    		<?py if photos:?>
+			    		<ul class="share-list">
+                    <?py for photo in photos:?>
+                        <li>
+                        		<div class="bg-alpha">
+	                            <label for="share-${photo.Fid}">
+                                		<input type="checkbox" name="share-img" id="share-${photo.Fid}" value="${photo.Fid}" class="share-check" checked/>
+                              	</label>
+	                            <label for="cover-${photo.Fid}" class="label-cover" style="color: #fff;">
+                                		<input type="radio" name="cover" id="cover-${photo.Fid}" value="${photo.Fid}" class="cover-radio" checked/>
+                                		设封面
+                              </label>
+                        		</div>
+                            <a class="pt-link" data-lightbox="pt-thumb"  href="${handler.get_show_img_url(photo.Fimage_url,600)}">
+                                <img src="${handler.get_show_img_url(photo.Fimage_url,600)}" id="${photo.Fid}" />
+                            </a>
+                        </li>
+                    <?py #endfor ?>
+                    </ul>
+                        <?py #endif?>
+			    	</fieldset>
+		    </form>	
+		</section>
+		<footer data-role="footer" data-position="fixed">
+			<a href="#share-detail" data-role="button" class="share">分享</a>
+		</footer>
+		
+	</div>
+	
+	<div class="wrapper" data-role="page" id="share-detail">
+		<section data-role="content">
+		    <form method="post" action="">
+			    	<div data-role="fieldcontain">
+			    		<ul class="ul-setting">
+			    			<li>
+					    		<input type="text" name="title" id="title" class="input-txt" placeholder="${album.Fablum_name}的${album.Falbum_type}照新鲜出炉了~~!求祝福！" value="${album.Fablum_name}的${album.Falbum_type}照新鲜出炉了~~!求祝福"/>
+			    			</li>
+			    			<li>
+					    		<img src="${handler.get_show_img_url(photo.Fimage_url,100)}" width="100" height="100" class="cover-img" />
+                                <textarea cols="3" class="desc" style="height: 100px;" id="description" placeholder="${content}">${content}</textarea>
+			    			</li>
+			    			<!--<li>
+					    		<label for="page-type">翻页手势</label>
+					    		<select id="page-type">
+					    			<option value="1">上下滑动</option>
+					    			<option value="2">左右滑动</option>
+					    		</select>			    				
+			    			</li>-->
+			    			<li style="margin-top: 1em;">
+					    		<label for="bgmusic">背景音乐</label>
+					    		<select id="bg_music">
+			                  <?py for m in musics: ?>
+			                  <option value="${m.Fid}">${m.Fmusic_name}</option>
+			                  <?py #endfor ?>
+					    		</select>			    				
+			    			</li>
+			    		</ul>	    		
+			    	</div>			    	
+		    </form>	
+		</section>
+		<footer data-role="footer" data-position="fixed" class="footer">
+			<a href="#" data-role="button" data-inline="true" id="do_preview">预览</a>
+			<a href="#" data-role="button" data-inline="true" id="do_share">分享</a>
+		</footer>			
+	</div>
+	<script src="/static/web/js/plugins/jquery.min.js"></script>
+	<script src="/static/web/js/plugins/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js" ></script>
+	<script src="/static/web/js/plugins/Swiper/swiper.min.js"></script>
+	<script src="/static/web/js/plugins/lightbox/js/lightbox.min.js"></script>
+	<script src="/static/mobile/js/modernizr.js"></script>
+	<script src="/static/mobile/js/main.js"></script>	
+
+  <script type="text/javascript" charset="utf-8">
+  $(function(){
+      var _xsrf = $('input[name="_xsrf"]').val();
+
+      $("#do_preview").click(function(){
+        var _title = $('#title').val();
+        var _description = $('#description').val();
+        var _bg_music = $('#bg_music option:selected').val();
+        var _album_id = $('#album_id').val();
+        var _cover = $('.cover-radio:checked').val();
+        var _share_img = [];
+        $('.share-check:checked').each(function(){
+            _share_img.push($(this).val());
+        })
+
+        $.ajax({
+          type: "post",
+          traditional :true,
+          url:  "/mobile/user/photos/share/",
+          data: {
+            _xsrf: _xsrf,
+            title: _title,
+            share_desc: _description,
+            bg_music: _bg_music,
+            operation: 1, //1 for review
+            album_id: _album_id,
+            cover: _cover,
+            share_img: _share_img,
+
+          },
+          success: function(data){
+            if(data.stat == "ok"){
+              window.location.href = data.url;
+            }
+            else{
+              alert(data.msg);
+            }
+
+              //$("body").html(data);
+              //var newDoc = document.open("text/html", "replace");
+              //newDoc.write(data);
+              //newDoc.close();
+          },
+          error: function(){
+          },
+
+        })
+      })
+
+
+      $("#do_share").click(function(){
+        var _title = $('#title').val();
+        var _description = $('#description').val();
+        var _bg_music = $('#bg_music option:selected').val();
+        var _album_id = $('#album_id').val();
+        var _cover = $('.cover-radio:checked').val();
+        var _share_img = [];
+        $('.share-check:checked').each(function(){
+            _share_img.push($(this).val());
+        })
+        $.ajax({
+          type: "post",
+          traditional :true,
+          url:  "/mobile/user/photos/share/",
+          data: {
+            _xsrf: _xsrf,
+            title: _title,
+            share_desc: _description,
+            bg_music: _bg_music,
+            operation: 2, //2 for share
+            album_id: _album_id,
+            cover: _cover,
+            share_img: _share_img,
+
+          },
+          success: function(data){
+            if(data.stat == "ok"){
+              window.location.href = data.url;
+            }
+            else{
+              alert(data.msg);
+            }
+          },
+          error: function(){
+          },
+
+        })
+      })
+      
+      
+     //$('.label-cover').hasClass("ui-radio-on")
+     $('.label-cover').on('click', function(){
+     	var _value = $(this).attr("for");     	
+     	var _url = $(this).parent().parent().parent().find("img").attr("src");
+     	//console.log(_url);
+     	$('.cover-img').attr('src', _url)
+     })
+     
+//    $('.label-cover').change(function(){
+//    	if($('.label-cover').hasClass("ui-radio-on")){
+//    		var _url = $(this).parent().parent().parent().find("img").attr("src");
+//    		console.log(_url);
+//    		$('.cover-img').attr('src', _url)
+//    	}
+//    })
+     
+
+  })
+  </script>
+
+
+</body>
+</html>

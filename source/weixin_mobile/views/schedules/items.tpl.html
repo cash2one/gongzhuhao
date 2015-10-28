@@ -1,0 +1,21 @@
+<ion-view view-title="排期列表">
+  <ion-content class="items">
+    <dl class="item_info">
+        <dt class="avatar">
+            <img  width="5em" height="5em" alt="avatar" ng-src="{{model.schedule.data.photo_url}}" >
+        </dt>
+        <dd class="avatar_name">{{model.schedule.data.user_name}}</dd>
+        <dd class="order_date light-gray">订单日期：{{model.schedule.data.create_time}}</dd>
+    </dl> 
+      <ion-list>
+      <ion-item ng-repeat="item in model.schedule.list" type="item-text-wrap" href="#/detail/{{model.order_id}}/{{item.schedule_type_id}}">
+         <div class="item_listL">
+            <p class="text_big item_title">{{item.schedule_type}}</p>
+            <p class="text_gray"><i class="icon ion-ios-clock-outline pink" style=""></i>{{item.datetime}}</p>
+            <p class="text_gray"><i class="icon ion-ios-navigate-outline pink"></i>{{item.site}}</p>
+        </div>
+        <div class="item_listR"><i class="icon ion-chevron-right icon-accessory"></i></div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

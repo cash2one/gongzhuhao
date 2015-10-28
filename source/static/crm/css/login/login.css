@@ -1,0 +1,26 @@
+/*
+ * Author: zjgoing@gmail.com
+ * Date: 2015-01-21
+ * Func: login and register css
+ */
+body{ background: #f5f5f5;}
+.login{ margin: 150px auto; padding: 50px; width: 570px; border: 2px solid #4cc25c; border-radius: 8px;}
+.ul-login li{ margin: 10px 0; text-align: left; line-height: 40px;}
+.input-txt{ padding-left: 5px; width: 318px; height: 38px; line-height: 38px; border: 1px solid #ccc; border-radius: 5px; outline: none;}
+.login label{ display: inline-block; font-weight: normal; width: 70px;}
+#auto-login{ margin: 0 5px 0 70px;}
+.btn-login{ margin-left: 75px; width: 120px;}
+.forgot-pwd{ margin-left: 170px;}
+.btn-reg{ margin-left: 60px;}
+.login .btn-green:hover{ color: #fff;}
+
+.btn-rege{  margin-left: 75px; width: 120px;}
+
+#login-box{ padding:22px 20px 20px 20px; background: #f5f5f5;}
+#login-box fieldset{  padding: 1.75em 1em 0.75em 1em; min-height: 210px; border: 1px solid #f5f5f5;}
+.login-box{ position: relative; left: 50%; margin-left: -265px; width: 530px; height: 240px; border-radius: 3px;}
+.login-box .input-prepend{ padding: 5px 0 0 0;}
+.input-group{ margin-bottom: 20px;}
+.center{ text-align: center;}
+.login-box .btn{ margin-top: 0;}
+#login{ position: absolute; left: 50%; margin-left: -80px; width: 160px; height: 40px; font-size: 14px;}

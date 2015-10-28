@@ -1,0 +1,62 @@
+<div class="clearfix row-main">
+    <div class="col-md-2">
+        <div class="leftmenu affix hiddden-xs hidden-sm">
+            <?py include('ops/system/menu.html') ?>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="panel">
+           <div class="panel-heading"><strong><i class="icon-plus"></i>&nbsp;上传程序包 </strong>
+            </div>
+            <div class="panel-body">
+                <form class="form-inline" action="/admin/system/apps/upload.html" id="upload_apps" method="post" enctype="multipart/form-data">
+                        <table class="table table-form">
+                            <tbody>
+                            <tr>
+                                <th class="col-xs-2">APPS类型</th>
+                                <td class="col-xs-6">
+                                    <label class="radio-inline">
+                                      <input type="radio" class="checkbox" checked="checked" value="1" name="apps_type" >PC APPS</label>
+                                   <label class="radio-inline">
+                                       <input type="radio" class="checkbox" value="2" name="apps_type">Android APPS</label>
+                                     <label class="radio-inline">
+                                       <input type="radio" class="checkbox" value="3" name="apps_type">IOS APPS</label>
+                                </td>
+                                <td></td>
+                            </tr>
+
+                             <tr>
+                                <th class="col-xs-2">VERSION版本</th>
+                                <td class="col-xs-6"><input type="text" class="form-control" value="" id="version" name="version">
+                                     <span class="text-error red" for="title" ></span>
+                                </td>
+                                <td></td>
+                            </tr>
+
+                             <tr>
+                                <th>程序包</th>
+                                <td><input type="file" class="form-control" id="appzip" name="appzip" accept="application/ostream">
+                                </td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <th>版本描述</th>
+                                <td colspan="2"><textarea rows="6" class="form-control" id="desc" name="desc"></textarea>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th></th>
+                                <td colspan="2">
+                                    #{xsrf_form_html}
+                                    <input type="submit" data-loading="稍候..." value="保存" class="btn btn-primary" id="user_submit"></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>

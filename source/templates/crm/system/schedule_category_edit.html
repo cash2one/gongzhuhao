@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/static/crm/css/system/member.css" />
+<style>
+	.p-button{ padding-left: 154px;}
+</style>
+<div id="content" class="col-lg-10 col-sm-10">
+	<div class="row-fluid sortable">
+	    <div class="box col-md-12">
+	        <div class="box-inner">
+		        <div class="box-header well" data-original-title>
+		            <h2>修改档期分类</h2>
+		        </div>
+		        <div class="box-content member" id="js_member">
+                    <ul class="ul-action">
+                        <li>
+                            <label for="m-mobile" class="p-name">名称/地点<em class="red">＊</em></label>
+                            <input type="text" value="${schedule_category.Fname}" id="schedule_category_name" class="form-control input-txt" placeholder="请填写名称/地点"/>
+                            <div class="error name-error"></div>
+                        </li>
+                    <div class="p-button">
+                        <button type="button" name="add" class="btn btn-default" id="cancel">取消</button>
+                        <button type="button" name="add" class="btn btn-success" id="save">保存</button>
+                        <div class="error"></div>
+                    </div>
+                        <input type="hidden" name="_xsrf" value="${xsrf_token}">
+                        <input type="hidden" id="schedule_category_id" value="${schedule_category.Fid}" />
+                    </ul>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</div>
+<script src="/static/crm/js/system/category_edit.js"></script>
+<script>
+	$(function(){
+		$(".nav-category").addClass("active");
+	})
+</script>

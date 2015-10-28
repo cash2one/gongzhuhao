@@ -1,0 +1,410 @@
+
+/* ==========================================================================
+   Component: AVG Grid
+ ============================================================================ */
+[class*="gzh-avg-"] {
+  display: block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+[class*="gzh-avg-"]:before,
+[class*="gzh-avg-"]:after {
+  content: " ";
+  display: table;
+}
+[class*="gzh-avg-"]:after {
+  clear: both;
+}
+[class*="gzh-avg-"] > li {
+  display: block;
+  height: auto;
+  float: left;
+}
+@media only screen {
+  .gzh-avg-sm-1 > li {
+    width: 100%;
+  }
+  .gzh-avg-sm-1 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-sm-1 > li:nth-of-type(1n + 1) {
+    clear: both;
+  }
+  .gzh-avg-sm-2 > li {
+    width: 50%;
+  }
+  .gzh-avg-sm-2 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-sm-2 > li:nth-of-type(2n + 1) {
+    clear: both;
+  }
+  .gzh-avg-sm-3 > li {
+    width: 33.33333333%;
+  }
+  .gzh-avg-sm-3 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-sm-3 > li:nth-of-type(3n + 1) {
+    clear: both;
+  }
+  .gzh-avg-sm-4 > li {
+    width: 25%;
+  }
+  .gzh-avg-sm-4 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-sm-4 > li:nth-of-type(4n + 1) {
+    clear: both;
+  }
+  .gzh-avg-sm-5 > li {
+    width: 20%;
+  }
+  .gzh-avg-sm-5 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-sm-5 > li:nth-of-type(5n + 1) {
+    clear: both;
+  }
+  .gzh-avg-sm-6 > li {
+    width: 16.66666667%;
+  }
+  .gzh-avg-sm-6 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-sm-6 > li:nth-of-type(6n + 1) {
+    clear: both;
+  }
+  .gzh-avg-sm-7 > li {
+    width: 14.28571429%;
+  }
+  .gzh-avg-sm-7 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-sm-7 > li:nth-of-type(7n + 1) {
+    clear: both;
+  }
+  .gzh-avg-sm-8 > li {
+    width: 12.5%;
+  }
+  .gzh-avg-sm-8 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-sm-8 > li:nth-of-type(8n + 1) {
+    clear: both;
+  }
+  .gzh-avg-sm-9 > li {
+    width: 11.11111111%;
+  }
+  .gzh-avg-sm-9 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-sm-9 > li:nth-of-type(9n + 1) {
+    clear: both;
+  }
+  .gzh-avg-sm-10 > li {
+    width: 10%;
+  }
+  .gzh-avg-sm-10 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-sm-10 > li:nth-of-type(10n + 1) {
+    clear: both;
+  }
+  .gzh-avg-sm-11 > li {
+    width: 9.09090909%;
+  }
+  .gzh-avg-sm-11 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-sm-11 > li:nth-of-type(11n + 1) {
+    clear: both;
+  }
+  .gzh-avg-sm-12 > li {
+    width: 8.33333333%;
+  }
+  .gzh-avg-sm-12 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-sm-12 > li:nth-of-type(12n + 1) {
+    clear: both;
+  }
+}
+@media only screen and (min-width:641px) {
+  .gzh-avg-md-1 > li {
+    width: 100%;
+  }
+  .gzh-avg-md-1 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-md-1 > li:nth-of-type(1n + 1) {
+    clear: both;
+  }
+  .gzh-avg-md-2 > li {
+    width: 50%;
+  }
+  .gzh-avg-md-2 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-md-2 > li:nth-of-type(2n + 1) {
+    clear: both;
+  }
+  .gzh-avg-md-3 > li {
+    width: 33.33333333%;
+  }
+  .gzh-avg-md-3 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-md-3 > li:nth-of-type(3n + 1) {
+    clear: both;
+  }
+  .gzh-avg-md-4 > li {
+    width: 25%;
+  }
+  .gzh-avg-md-4 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-md-4 > li:nth-of-type(4n + 1) {
+    clear: both;
+  }
+  .gzh-avg-md-5 > li {
+    width: 20%;
+  }
+  .gzh-avg-md-5 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-md-5 > li:nth-of-type(5n + 1) {
+    clear: both;
+  }
+  .gzh-avg-md-6 > li {
+    width: 16.66666667%;
+  }
+  .gzh-avg-md-6 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-md-6 > li:nth-of-type(6n + 1) {
+    clear: both;
+  }
+  .gzh-avg-md-7 > li {
+    width: 14.28571429%;
+  }
+  .gzh-avg-md-7 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-md-7 > li:nth-of-type(7n + 1) {
+    clear: both;
+  }
+  .gzh-avg-md-8 > li {
+    width: 12.5%;
+  }
+  .gzh-avg-md-8 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-md-8 > li:nth-of-type(8n + 1) {
+    clear: both;
+  }
+  .gzh-avg-md-9 > li {
+    width: 11.11111111%;
+  }
+  .gzh-avg-md-9 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-md-9 > li:nth-of-type(9n + 1) {
+    clear: both;
+  }
+  .gzh-avg-md-10 > li {
+    width: 10%;
+  }
+  .gzh-avg-md-10 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-md-10 > li:nth-of-type(10n + 1) {
+    clear: both;
+  }
+  .gzh-avg-md-11 > li {
+    width: 9.09090909%;
+  }
+  .gzh-avg-md-11 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-md-11 > li:nth-of-type(11n + 1) {
+    clear: both;
+  }
+  .gzh-avg-md-12 > li {
+    width: 8.33333333%;
+  }
+  .gzh-avg-md-12 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-md-12 > li:nth-of-type(12n + 1) {
+    clear: both;
+  }
+}
+@media only screen and (min-width:1025px) {
+  .gzh-avg-lg-1 > li {
+    width: 100%;
+  }
+  .gzh-avg-lg-1 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-lg-1 > li:nth-of-type(1n + 1) {
+    clear: both;
+  }
+  .gzh-avg-lg-2 > li {
+    width: 50%;
+  }
+  .gzh-avg-lg-2 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-lg-2 > li:nth-of-type(2n + 1) {
+    clear: both;
+  }
+  .gzh-avg-lg-3 > li {
+    width: 33.33333333%;
+  }
+  .gzh-avg-lg-3 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-lg-3 > li:nth-of-type(3n + 1) {
+    clear: both;
+  }
+  .gzh-avg-lg-4 > li {
+    width: 25%;
+  }
+  .gzh-avg-lg-4 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-lg-4 > li:nth-of-type(4n + 1) {
+    clear: both;
+  }
+  .gzh-avg-lg-5 > li {
+    width: 20%;
+  }
+  .gzh-avg-lg-5 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-lg-5 > li:nth-of-type(5n + 1) {
+    clear: both;
+  }
+  .gzh-avg-lg-6 > li {
+    width: 16.66666667%;
+  }
+  .gzh-avg-lg-6 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-lg-6 > li:nth-of-type(6n + 1) {
+    clear: both;
+  }
+  .gzh-avg-lg-7 > li {
+    width: 14.28571429%;
+  }
+  .gzh-avg-lg-7 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-lg-7 > li:nth-of-type(7n + 1) {
+    clear: both;
+  }
+  .gzh-avg-lg-8 > li {
+    width: 12.5%;
+  }
+  .gzh-avg-lg-8 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-lg-8 > li:nth-of-type(8n + 1) {
+    clear: both;
+  }
+  .gzh-avg-lg-9 > li {
+    width: 11.11111111%;
+  }
+  .gzh-avg-lg-9 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-lg-9 > li:nth-of-type(9n + 1) {
+    clear: both;
+  }
+  .gzh-avg-lg-10 > li {
+    width: 10%;
+  }
+  .gzh-avg-lg-10 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-lg-10 > li:nth-of-type(10n + 1) {
+    clear: both;
+  }
+  .gzh-avg-lg-11 > li {
+    width: 9.09090909%;
+  }
+  .gzh-avg-lg-11 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-lg-11 > li:nth-of-type(11n + 1) {
+    clear: both;
+  }
+  .gzh-avg-lg-12 > li {
+    width: 8.33333333%;
+  }
+  .gzh-avg-lg-12 > li:nth-of-type(n) {
+    clear: none;
+  }
+  .gzh-avg-lg-12 > li:nth-of-type(12n + 1) {
+    clear: both;
+  }
+}
+
+
+
+/* ==========================================================================
+   Component: Thumbnail
+ ============================================================================ */
+.gzh-avg-sm-2 > li:nth-of-type(2n + 1)>a,
+.gzh-avg-sm-2 > li:nth-of-type(2n + 1)>div{
+    margin-right: 1rem;
+}
+
+.gzh-thumbnail {
+  display: block;
+  padding: 2px;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+  border-radius: 0;
+  max-height: 100%;
+}
+.gzh-thumbnail > img,
+.gzh-thumbnail a > img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.gzh-thumbnail a.gzh-thumbnail:hover,
+.gzh-thumbnail a.gzh-thumbnail:focus,
+.gzh-thumbnail a.gzh-thumbnail.active {
+  border-color: #0e90d2;
+  background-color: #ffffff;
+}
+img.gzh-thumbnail,
+.gzh-thumbnail > img,
+.gzh-thumbnail a > img {
+  border: 0px !important;
+  max-width: 100%;
+  width: 100%;
+  /*height: 200px;*/
+  height: 130px;
+}
+/* Image caption */
+.gzh-thumbnail-caption {
+  margin: 0;
+  padding: 0.8rem;
+  color: #333333;
+  font-weight: normal;
+}
+.gzh-thumbnail-caption *:last-child {
+  margin-bottom: 0;
+}
+.gzh-thumbnails {
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+.gzh-thumbnails > li {
+  padding: 0 .5rem 1rem .5rem;
+}

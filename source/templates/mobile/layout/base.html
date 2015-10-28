@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>公主号-个人中心</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<script src="/static/mobile/js/jquery.min.js"></script>
+<link rel="stylesheet" href="/static/mobile/css/common.css" />
+<link rel="stylesheet" href="/static/mobile/css/style.css" />
+<link rel="stylesheet" href="/static/mobile/css/icon.css"  />
+<script type="text/javascript">
+	var phoneWidth = parseInt(window.screen.width);
+	var phoneScale = phoneWidth/640;
+	var ua = navigator.userAgent;
+	if (/Android (\d+\.\d+)/.test(ua)){
+		var version = parseFloat(RegExp.$1);
+		// andriod 2.3
+		if(version>2.3){
+			document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi" />');
+		// andriod 2.3以上
+		}else{
+			document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+		}
+	// 其他系统
+	} else {
+		document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi" />');
+	}
+</script>
+</head>
+<body>
+	<div class="wrapper" data-role="page" data-add-back-btn="true">
+	     #{_content}
+	</div>
+	<script src="/static/mobile/js/modernizr.js"></script>
+	<script src="/static/mobile/js/main.js"></script>
+</body>
+</html>

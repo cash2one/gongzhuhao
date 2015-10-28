@@ -1,0 +1,163 @@
+<link rel="stylesheet" href="/static/mobile/css/schedule/order.css"  />
+<style>
+	.cd-main-content{ padding-top: 100px;}
+	.publish{ margin-top: .6em;}
+	.btn-uploadphoto{ }
+</style>
+    <form method="post" action="/mobile/merchant/orders/add/" id="order-form" enctype="multipart/form-data">
+        #{xsrf_form_html}
+        <input type="hidden" value="" name="user_birth" />
+        <input type="hidden" value="" name="user_birth_ex" />
+        <input type="hidden" value="" name="user_mobi_ex" />
+        <input type="hidden" value="${handler.get_current_user().get('Fid')}" name="uid_stf" />
+        <input type="hidden" value="" name="comment" />
+		<header class="header">
+			<a class="back" href="javascript:history.go(-1);"><span class="icon icon-back"></span></a>
+			<div class="title">录入订单</div>	
+			<a href="javascript:void(0)" id="order-add" class="publish">发表
+				<!--<span class="icon icon-calendar fright"></span>-->
+			</a>
+		</header>	
+		<section class="cd-main-content order">
+    			<input type="hidden" id="order_id" value="" />
+    			<div class="box">
+	    			<div class="form-group">
+	    				<label for="order-type">订单类型：</label>
+	    				<select name="order_type" id="order_type">
+	    					<option value="1" name="bdrde" class="type-bdrde" selected>婚纱</option>
+	    					<option value="3" name="other" class="type-other">孕妇</option>
+	    					<option value="4" name="other" class="type-other">亲子</option>
+	    					<option value="2" name="other" class="type-other">写真</option>
+	    					<option value="0" name="other" class="type-other">其他</option>
+	    				</select>
+	    			</div>
+	    			<div class="form-group">
+	    				<label for="order-name" class="customer-name">新娘：</label>
+	    				<input type="text" name="user_name" id="user_name" />
+	    			</div>
+	    			<div class="form-group" id="js_hide">
+	    				<label for="order-name">新郎：</label>
+	    				<input type="text" name="user_name_ex" id="user_name_ex" />
+	    			</div>
+	    			<div class="form-group">
+	    				<label for="order-num">手机号：</label>
+	    				<input type="number" name="user_mobi" id="user_mobi" />
+	    			</div>
+	    			<div class="form-group">
+	    				<label for="order-num">订单号：</label>
+	    				<input type="number" name="order_id_user" id="order_id_user" />
+	    			</div>
+	    			<div class="form-group">
+	    				<label for="order-amount">订单金额：</label>
+	    				<input type="text" name="amount" id="amount" />
+	    			</div>
+    			</div>
+    			<div class="box">
+                 <div class="form-group">
+	    				<label for="order-schedule" style="margin-top: .8em;">档期分类：</label>
+	                <input type="hidden" name="schedule_category_id" id="schedule_category_id" value="${schedule_category and schedule_category.Fid or '' }">
+	    				<input type="text" name="schedule_type_name" id="schedule_type_name" value="${schedule_category and schedule_category.Fname or '' }" readonly/>
+	    			</div>
+	    			<div class="form-group">
+	    				<label for="order-date">拍摄日期：</label>
+	    				<input type="text" id="start-date" name="shot_date" placeholder="请选择开始日期" value="${shot_date}" readonly/>
+	    			</div>
+	    			<div class="form-group fileupload">
+					<input id="chooseFile" type="button" class="btn-uploadphoto" value="上传图片">
+					 <input type="file" id="uploadfile"  data-clear-btn="false" name="image" accept="image/*" capture="camera" />	
+					<div id="image-preview"></div>
+					<ul id="info" data-role="listview" data-inset="true"></ul>
+	    			</div>
+    			</div>	
+		</section>
+    </form>
+<script type="text/javascript" charset="utf-8">
+$(function(){
+  $("#order-add").on('click', function(){
+      $("#order-form")[0].submit();
+  });
+  
+	$("#order_type").change(function(){
+		if($("select option:selected").attr("name") == "bdrde"){
+			$("#js_hide").show();
+			$(".customer-name").empty().html('新娘');
+		}
+		if($("select option:selected").attr("name") == "other"){
+			$("#js_hide").hide();
+			$(".customer-name").empty().html('客户名称');
+		}
+    });      
+
+	$("#chooseFile").click(function(e){
+		e.preventDefault();
+		$("input[type=file]").trigger("click");
+	});
+	$("input[type=file]").change(function(){
+		var file = $("input[type=file]")[0].files[0];
+		$("#image-preview").empty();
+		displayAsImage3(file, "image-preview");
+	});      
+})
+
+
+function displayAsImage3(file, containerid) {
+	if (typeof FileReader !== "undefined") {
+		var container = document.getElementById(containerid),
+		    img = document.createElement("img"),
+		    reader;
+		container.appendChild(img);
+		reader = new FileReader();
+		reader.onload = (function (theImg) {
+			return function (evt) {
+				theImg.src = evt.target.result;
+			};
+		}(img));
+		reader.readAsDataURL(file);
+	}
+}
+
+function checkForm(event){
+     if($("#order_type option:selected").length < 0){
+    		alert("请选择订单类型");       		
+    		$("#order_type").focus();
+    		//event.preventDefault();
+    		return false;
+    }
+    if($("#user_name").val() == ""){
+    		alert("请填写用户名");
+    		$("#user_name").focus(); 
+    		//event.preventDefault();
+    		return false;
+    }
+    if($("#user_mobi").val() == ""){
+    		alert("请填写手机号");
+    		$("#user_mobi").focus();
+    		//event.preventDefault();
+    		return false;
+    }
+    if($("#order_id_user").val() == ""){
+    		alert("请填写订单号");
+    		$("#order_id_user").focus();
+    		//event.preventDefault();
+    		return false;
+    }
+    if($("#amount").val() == ""){
+    		alert("请填写订单金额");
+    		$("#amount").focus();
+    		//event.preventDefault();
+    		return false;
+    }
+    if($("#uploadfile").val() == '')
+    		alert("请上传图片");
+    		//event.preventDefault();
+    		return false;        
+//      if($("#image-preview").children().length < 0){
+//      		alert("请上传图片");
+//      		$("#preview").focus();
+//      		event.preventDefault();
+//      		return false;
+//      }    		
+}
+
+</script>
+

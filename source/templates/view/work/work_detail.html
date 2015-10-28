@@ -1,0 +1,166 @@
+<link rel="stylesheet" href="/static/skin/css/merchant.css"/>
+<div class="gzh-container bg-white ">
+    <div class="gzh-position w1200">
+        <a href="/api/packages/">首页</a>
+        <span> > </span>
+        <a href="/api/products/">作品列表</a>
+        <span> > </span>
+        <span class="text-red">作品详情</span>
+    </div>
+
+    <div class="main w1200 clear">
+
+        <!--left content start-->
+        <div class="gzh-merchant w900 fl">
+
+            <!--作品详情 start-->
+            <div class="gm-item gm-works m30">
+                <div class="gm-works-title">
+                    <div class="fr gm-works-share">
+                       <div class="bdsharebuttonbox" data-tag="share_1">
+                            <a class="bds_more" data-cmd="more"><i class="iconfont gzh-share"></i>分享</a>
+                       </div>
+                        <script>
+                                    window._bd_share_config = {
+                                        common : {
+                                            bdText : '${product.Fname}',
+                                            bdDesc : '${product.Fdescription}',
+                                            bdUrl : 'http://www.gongzhuhao.com/product/${product.Fid}',
+                                            bdPic : '${product.Fcover_img}'
+                                        },
+                                        share : [{
+                                            "bdSize" : 16
+                                        }],
+                                        slide : [{
+                                            bdImg : 0,
+                                            bdPos : "right",
+                                            bdTop : 100
+                                        }],
+                                        selectShare : [{
+                                            "bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
+                                        }]
+                                    }
+                        </script>
+                    </div>
+                    <div class="fr gm-works-fav">
+                        <a class="bds_more"><i class="iconfont gzh-star"></i>收藏</a>
+                    </div>
+                    <h1 class="f20">${product.Fname}</h1>
+                </div>
+                <p class="gray gm-works-extra f16">
+                    <?py if product.Fproduct_type == 'wedding': ?>
+                        <span>
+                            风格：<strong>${product.Fstyle_name}</strong>
+                        </span>
+                    <?py elif product.Fproduct_type == 'traveling': ?>
+                        <span>
+                            拍摄地：<strong>${product.Fshot_space_name}</strong>
+                        </span>
+                    <?py #endif ?>
+                    <span>
+                        场景：<strong>${product.Fshot_scene_name}</strong>
+                    </span>
+                    <span>
+                        造型特色：<strong>${product.Fmode_style_name}</strong>
+                    </span>
+                </p>
+                <p class="dark-gray">${product.Fdescription}</p>
+                <div class="gm-item-preview">
+                    <div class="preview-inner">
+                    <?py if images:?>
+                        <?py for img in images:?>
+                        <div class="photo">
+                            <!--<a href="${img.Furl}" title="">-->
+                                <img data-lazyload="${img.Furl}" class="gzh-lazy" width="900" height="auto" />
+                            <!--</a>-->
+                        </div>
+                        <?py #endfor ?>
+                    <?py #endif ?>
+                    </div>
+                </div>
+            </div>
+            <!--作品详情 end-->
+
+            <!--作品集 start-->
+            <div class="gm-item gm-works-item m30">
+                <h2 class="gm-item-title f20" id="hot-works"><a href="/merchant/products/${product.Fuser_id}/wedding/" class="more" target="_blank" title="查看全部">查看全部<i class="iconfont gzh-enter"></i></a>作品集</h2>
+                <div class="gm-hot">
+                    <?py if recent_products:?>
+                        <?py for p in recent_products:?>
+                            <div class="gm-hot-item">
+                                <a href="/product/${p.Fid}" class="img-link" target="_blank" title="${p.Fname}">
+                                    <img data-lazyload="${p.Fcover_img}" class="gzh-lazy img-hover" width="300" height="187" alt="${p.Fname}"/>
+                                    <span class="img-cover"></span>
+                                </a>
+                                <p class="gm-hot-title">
+                                    <!--<span class="gm-like text-gray fr">
+                                        <i class="iconfont gzh-like_line"></i>
+                                    </span>-->
+                                    <span><a href="/product/${p.Fid}" title="${p.Fname}">${p.Fname}</a></span>
+                                </p>
+                            </div>
+                        <?py #endfor ?>
+                    <?py #endif ?>
+                </div>
+            </div>
+            <!--作品集 end-->
+        </div>
+        <!--left content end-->
+
+        <!--right content start-->
+        <div class="gzh-side w280 fr" id="gmFixNav">
+            <div class="gzh-side-inner">
+                <h2 class="f20">${company.Fcompany_name}</h2>
+                <p class="text-red gzh-side-star">
+                    <span>
+                        <i class="iconfont gzh-star"></i>
+                        <i class="iconfont gzh-star"></i>
+                        <i class="iconfont gzh-star"></i>
+                        <i class="iconfont gzh-star"></i>
+                        <i class="iconfont gzh-star"></i>
+                    </span>
+                </p>
+                <p class="gm-info-tips f14"><span class="icon icon-gift"></span>
+                     ${company_gift and company_gift.Fcontent or '无'}
+                </p>
+                <p class="gm-info-tips f14"><span class="icon icon-saleoff"></span>
+                    ${order_gift and order_gift.Fcontent or '无'}
+                </p>
+                <p class="gzh-side-btn">
+                    <a href="javascript:;" onclick="orderShow()" class="btn btn-order">预约看店</a>
+                    <a href="/merchant/detail/${company.Fid}" class="btn btn-enter" target="_blank" title="进入店铺">进入店铺</a>
+                </p>
+            </div>
+        </div>
+        <!--right content end-->
+    </div>
+</div>
+
+<?py include('view/merchant/order_alert.html') ?>
+<script src="/static/skin/js/photo-slider.js"></script>
+<script>
+    function orderShow(){
+        $('#order_modal').modal();
+    }
+
+    function showCon(){
+        $('.order-content').fadeOut();
+        $('.order-succcess').fadeIn();
+    }
+
+    $('#nav_merchant').addClass('current');
+    $('#nav_merchant').html('婚纱摄影<i class="iconfont gzh-down"></i>');
+    $('.nav-dropdown').css({left:'0px'})
+    $(function() {
+        var elm = $('#gmFixNav');
+        var startPos = $(elm).offset().top;
+        $.event.add(window, "scroll", function() {
+            var p = $(window).scrollTop();
+            $(elm).css('position',((p) > startPos) ? 'fixed' : 'relative');
+            $(elm).css('top',((p) > startPos) ? '0px' : '');
+            $(elm).css('margin',((p) > startPos) ? 'auto' : '');
+            $(elm).css('right',((p) > startPos) ? '-920px' : '');
+            $(elm).css('left',((p) > startPos) ? '0px' : '');
+        });
+    });
+</script>

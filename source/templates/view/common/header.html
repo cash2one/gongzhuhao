@@ -1,0 +1,217 @@
+<style>
+    .modal-dialog{ width: 450px!important;}
+</style>
+<header class="gzh-top">
+    <nav class="gzh-header clear">
+        <div class="gzh-logo fl">
+            <a class="header-logo" href="/" title="公主号"></a>
+        </div>
+        <div class="gzh-main-nav fl f18">
+            <ul id="nav">
+                <li class="nav-item">
+                    <a href="/" id="nav_index" class="nav-link">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/api/packages/" id="nav_merchant" class="nav-link">备婚<i class="iconfont gzh-down"></i></a>
+                    <div class="nav-dropdown">
+                        <ul class="trending">
+                            <li><a href="/api/packages/">婚纱摄影</a></li>
+                            <li><a href="/weddingdress/series/">婚纱礼服</a></li>
+                            <li><a href="/weddingcompany/series/">婚庆公司</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="/topic" id="nav_topic" class="nav-link">话题</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/share" id="nav_share" class="nav-link">分享</a>
+                </li>
+            </ul>
+        </div>
+        <div class="gzh-login fr">
+      <?py if current_user:?>
+             <div class="gzh-header-nav" id="gzh-header-nav">
+                <div class="nav-avatar">
+                    <img src="${current_user.get('Fphoto_url')}" width="35" height="35" class="img-circle" />
+                </div>
+                <a href="/user/profile" class="gzh-account-name">${current_user.get('Fnick_name')}
+                    <!--<span class="tips"></span>-->
+                </a>
+                <div class="gzh-nav">
+                    <a href="/user/topics">小组话题</a>
+                    <a href="/user/notify">消息通知<span class="text-red"></span></a>
+                    <a href="/user/profile">个人中心</a>
+                    <a href="/logout">退出</a>
+                </div>
+            </div>
+            <div class="gzh-header-nav" id="gzh-header-nav-normal" style="display:none" >
+                <a href="javascript:;" onclick="usernamelogin_model()">登录</a>
+                <span class="gzh-vline red">|</span>
+                <a href="javascript:;" onclick="register_model()">注册</a>
+            </div>
+
+        <?py else:?>
+            <div class="gzh-header-nav" id="gzh-header-nav-normal" >
+                <a href="javascript:;" onclick="usernamelogin_model()">登录</a>
+                <span class="gzh-vline red">|</span>
+                <a href="javascript:;" onclick="register_model()">注册</a>
+            </div>
+            <div class="gzh-header-nav" id="gzh-header-nav" style="display:none">
+                <div class="nav-avatar">
+                    <img id="head_url" src="" width="35" height="35" class="img-circle" />
+                </div>
+                <div class="gzh-account-name" id="nick_name">
+                    <!--<span class="tips"></span>-->
+                </div>
+                <div class="gzh-nav" id="user_center">
+                    <a href="/user/topics">小组话题</a>
+                    <a href="/user/notify">消息通知<span class="text-red"></span></a>
+                    <a href="/user/profile">个人中心</a>
+                    <a href="/logout">退出</a>
+                </div>
+            </div>
+        <?py #endif ?>
+        </div>
+    </nav>
+</header>
+<div id="loginModal" class="modal login-modal hide fade clearfix in" aria-hidden="false" >
+
+</div>
+
+<!-- 手机＋密码登录 -->
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header gzh-dialog-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h2 class="modal-title" id="myModalLabel"><a href="javascript:;" onclick="phonecodelogin_model();" id="mobilecode_login" class="">手机动态码登录</a>登录</h2>
+        </div>
+      <div class="modal-body">
+        <div class="gzh-login-dialog" id="user_login">
+            <div class="gzh-dialog-cons">
+                <ul>
+                    <li>
+                        <input type="text" name="phone" onchange="phone_value_(this);" class="input-txt phone-input" id="loginPhone1"  value="" placeholder="手机号码/用户名"  />
+                    </li>
+                    <li>
+                        <input type="password" name="password" onchange="password_value_(this);" class="input-txt" id="loginPwd" value="" placeholder="密码" />
+                    </li>
+                    <li>
+                        <p class="agreement">
+                            <a href="javascript:;" onclick="phonecodelogin_model();" class="text-pink">忘记密码?</a>
+                            <a href="javascript:;" onclick="register_model();" class="text-pink fright">立即注册</a>
+                        </p>
+                    </li>
+                    <li>
+                        <!--<input type="button" onclick="login_submit();" name="login" class="btn btn-submit btn-login－pwd" id="btnPwdLogin" value="登录" />-->
+                        <input type="button" name="login" class="btn btn-submit btn-login－pwd" id="btnPwdLogin" value="登录" />
+                        <span class="error login-pwd-error"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 手机＋验证码登录 -->
+<div class="modal fade" id="phone_code_modal" tabindex="-1" role="dialog" aria-labelledby="codeLoginLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header gzh-dialog-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h2 class="modal-title" id="codeLoginLabel"><a href="javascript:;" id="mobile_login" onclick="usernamelogin_model();" class="">帐号登录</a>登录</h2>
+        </div>
+      <div class="modal-body">
+        <div class="gzh-login-dialog" id="mobile_code_login">
+            <div class="gzh-dialog-cons">
+                <form name="loginForm" >
+                    <ul>
+                        <li>
+                            <input type="tel" name="phone" class="input-txt phone-input" id="loginCodePhone" placeholder="手机号码" />
+                        </li>
+                        <li>
+                            <input type="text" name="code" class="input-txt code" id="loginCode" placeholder="验证码" />
+                            <input type="button" class="btn btn-code" id="getCode" value="发送验证码"  />
+
+                        </li>
+                        <li>
+                            <input type="button" name="login" class="btn btn-submit btn-login-code" id="btnCodeLogin" value="登录" />
+                            <span class="error login-code-error"></span>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 注册 -->
+<div class="modal fade" id="register_modal" tabindex="-1" role="dialog" aria-labelledby="regLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header gzh-dialog-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h2 class="modal-title" id="regLabel"><a href="javascript:;" id="username_login" onclick="usernamelogin_model();" class="">已有帐号登录</a>注册</h2>
+        </div>
+      <div class="modal-body">
+          <div class="gzh-login-dialog" id="register_div">
+            <div class="gzh-dialog-cons">
+                <form name="registerForm">
+                    <ul>
+                        <li>
+                            <input type="tel" name="phone" class="input-txt" id="regPhone" placeholder="手机号码" value="" />
+                        </li>
+                        <li>
+                            <input type="text" name="code" class="input-txt code" id="regCode" placeholder="验证码" value="" />
+                            <input type="button" class="btn btn-code" id="getRegCode" value="发送验证码"/>
+                        </li>
+                        <li>
+                            <input type="password" name="password" class="input-txt" id="regPwd" placeholder="设置密码" value="" />
+                        </li>
+                        <li>
+                            <input type="checkbox" name="agreement" id="agreement" checked/>
+                            <span class="agreement">我已经阅读并同意<a href="" class="text-pink">《公主号用户协议》</a></span>
+                        </li>
+                        <li>
+                            <input type="button" name="login" class="btn btn-submit btn-reg" id="regSubmit" value="注册" />
+                            <span class="error reg-error"></span>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    function login_alert(){
+        $('#login_modal').modal();
+    }
+
+    function register_model(){
+        $('#register_modal').modal('show');
+         $('#login_modal').modal('hide');
+        $('#phone_code_modal').modal('hide');
+    }
+
+    function phonecodelogin_model(){
+        $('#login_modal').modal('hide');
+        $('#register_modal').modal('hide');
+        $('#phone_code_modal').modal('show');
+    }
+
+    function usernamelogin_model(){
+        $('#login_modal').modal('show');
+        $('#phone_code_modal').modal('hide');
+        $('#register_modal').modal('hide');
+    }
+</script>

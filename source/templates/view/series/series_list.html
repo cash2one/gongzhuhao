@@ -1,0 +1,159 @@
+<link rel="stylesheet" href="/static/skin/css/merchant.css"/>
+<link rel="stylesheet" type="text/css" href="/static/skin/css/less.css">
+<style type="text/css">
+    * {
+          box-sizing: border-box;
+    }
+    body{
+        background-color:#fff !important;
+        font-size: 16px;
+    }
+</style>
+<div class="gzh-main">
+    <div class="col-940" style="width:940px;margin-right:30px;float:left;">
+        <article>
+            <ul class="gzh-tab"><!-- 列表 Start -->
+                <li class="gzh-active"><a href="/api/packages/">套系列表</a></li>
+                <li><a href="/api/merchant/list/">商家列表</a></li>
+                <li><a href="/api/products/">作品列表</a></li>
+            </ul><!-- 列表 End -->
+            
+            <div class="gzh-list gzh-list--list1 gzh-list--list2"><!--价格 Start -->
+                <div class="gzh-list-left"><i class="iconfont gzh-rmb"></i>价格</div>
+                <?py if between_price == '' and start_price == '' and end_price == '': ?>
+                    <div class="gzh-list-center gzh-active"><span>全部</span></div>
+                <?py else: ?>
+                    <div class="gzh-list-center"><a href="/api/packages/?order_by=${order_by}">全部</a></div>
+                <?py #endif ?>
+
+                <ul class="gzh-list-right">
+                <?py for query_price in query_prices: ?>
+                    <?py prices = query_price.split('-')?>
+                    <?py if prices[0] == '': ?>
+                        <?py p = prices[1]+'以下'?>
+                            <?py if between_price == query_price: ?>
+                                <li class="gzh-active"><span>${p}</span></li>
+                            <?py else: ?>
+                                <li><a href="/api/packages/?between_price=${query_price}&order_by=${order_by}">${p}</a></li>
+                            <?py #endif ?>
+                    <?py elif prices[1] == '': ?>
+                        <?py p = prices[0]+'以上'?>
+                            <?py if between_price == query_price: ?>
+                                <li class="gzh-active"><span>${p}</span></li>
+                            <?py else: ?>
+                                 <li><a href="/api/packages/?between_price=${query_price}&order_by=${order_by}">${p}</a></li>
+                            <?py #endif ?>
+                    <?py else: ?>
+                        <?py if between_price == query_price: ?>
+                            <li class="gzh-active"><span>${query_price}</span></li>
+                        <?py else: ?>
+                            <li><a href="/api/packages/?between_price=${query_price}&order_by=${order_by}">${query_price}</a></li>
+                        <?py #endif ?>
+                    <?py #endif ?>
+                <?py #endfor ?>
+                    <li class="gzh-price-filter">
+                        <!--价格过滤 start -->
+                            <form action="" method="get">
+                                <input type="number" name="start_price" value="${start_price}"/>
+                                <span>-</span>
+                                <input type="number" name="end_price" value="${end_price}"/>元
+                                <input type="hidden" name="order_by" value="${order_by}" />
+                                <input type="submit" value="确定" />
+                            </form>
+                        <!--价格过滤 end -->
+                    </li>
+                </ul>
+            </div><!--价格 End-->
+            
+            <!-- 排序栏 Start-->
+            <div class="gzh-filter">
+                <ul class="clearfix">
+                    <?py if order_by == 'Fcreate_time': ?>
+                        <li class="hover">
+                            <a href="/api/packages/?order_by=Fcreate_time&between_price=${between_price}&start_price=${start_price}&end_price=${end_price}">默认排序</a>
+                        </li>
+                    <?py else: ?>
+                        <li>
+                            <a href="/api/packages/?order_by=Fcreate_time&between_price=${between_price}&start_price=${start_price}&end_price=${end_price}">默认排序</a>
+                        </li>
+                    <?py #endif ?>
+                    <li>
+                        <a href="">喜欢最多</a>
+                    </li>
+                    <?py if order_by == 'Fsale_price desc': ?>
+                        <li class="hover">
+                            <a href="/api/packages/?order_by=Fsale_price desc&between_price=${between_price}&start_price=${start_price}&end_price=${end_price}">价格</a>
+                        </li>
+                    <?py else: ?>
+                        <li>
+                            <a href="/api/packages/?order_by=Fsale_price desc&between_price=${between_price}&start_price=${start_price}&end_price=${end_price}">价格</a>
+                        </li>
+                    <?py #endif ?>
+                </ul>
+                <i>为您找到<span>${packages_count}</span>个套系</i>
+            </div>
+            <!-- 排序栏 End-->
+            
+            <!-- 套系列表 Start -->
+            <ul class="gzh-block-grid  gzh-block-grid-3">
+              <?py for package in packages: ?>
+                  <li class="gzh-card gzh-card--300">
+                    <a class="gzh-overlay gzh-overlay-hover" href="/series/${package.Fid}">
+                        <img data-lazyload="${package.Fcover_img}" class="gzh-lazy gzh-thumbnail">
+                        <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                        </figcaption>
+                    </a>
+                    <div class="gzh-caption">
+                        <p class="gzh-label">
+                            <span class="gzh-price">￥${package.Fsale_price}</span>
+                            <del>￥${package.Fprice}</del>
+                            <span class="pull-right"><i class="iconfont gzh-like_line"></i>56</span>
+                        </p>
+                        <a class="gzh-title" href="/series/${package.Fid}">${package.Fpackage_name}</a>
+                        <?py company = handler.get_company(package.Fmerchant_id) ?>
+                        <?py if company: ?>
+                            <p class="gzh-form">${company.get('Fcompany_name')}</p>
+                        <?py else: ?>
+                            <p class="gzh-form"></p>
+                        <?py #endif ?>
+                    </div>
+                  </li>
+              <?py #endfor ?>
+            </ul>   
+            <!-- 套系列表 End -->
+
+            <!-- 分页 Start -->
+            <ul class="gzh-pagination gzh-pagination--center">
+                #{page_html}
+            </ul>
+            <!-- 分页 End  -->
+        </article>
+    </div>
+   <aside class="gzh-side w230 fr">
+        <div class="gzh-ad m30">
+            <a href="${series_banner.get('Flink')}"><img src="${series_banner.get('Fimage_url')}" width="230" height="142"/></a>
+        </div>
+        <div class="gzh-side-pro">
+            <p class="gs-title">
+                <span>精品推荐</span>
+            </p>
+            <?py for series in handler.get_essence_series(): ?>
+                <div class="gs-item">
+                    <a href=""><img src="${series.get('cover_img')}" width="190" height="118" /></a>
+                    <h2 class="f14"><a href="">${series.get('Fpackage_name')}</a></h2>
+                    <p class="gm-price text-red f20">
+                        <i class="price">¥</i>${series.get('price')}
+                    </p>
+                </div>
+            <?py #endfor ?>
+        </div>
+    </aside>
+</div>
+
+
+<script>
+    $('#nav_merchant').addClass('current');
+    $('#nav_merchant').html('婚纱摄影<i class="iconfont gzh-down"></i>');
+    $('.nav-dropdown').css({left:'0px'})
+    
+</script>

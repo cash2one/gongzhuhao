@@ -1,0 +1,30 @@
+<?py include('view/account/_header.html') ?>
+        <div class="col-lg-9 col-md-9">
+            <div class="gzh-well clearfix">
+                <h4 class="h4 pull-left ng-scope">预约清单</h4>
+            </div>
+            <div class="gzh-profile" id="gzhView">
+                <?py if orders:?>
+                    <?py for order in orders:?>
+                        <?py img,name,link = handler.get_name_by_order_id(order.Fmerchant_id,order.Forder_type,order.Frefer_id) ?>
+                        <article class="gzh-article gzh-lists clear">
+                           <a class="gzh-notice-author" href="${link}">
+                                <img src="${img}" alt="" width="65" height="40" />
+                            </a>
+                            <h2 class="gzh-company f16"><a href="${link}">${name}</a></h2>
+                            <span class="gzh-article-time fright f12 dark-gray">预约时间：${order.Fcreate_time}</span>
+                        </article>
+                    <?py #endfor ?>
+                <?py  #endif ?>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<?py include('view/common/footer.html') ?>
+<script>
+	$(function(){
+		$('#user_list').addClass('current');
+	})
+</script>

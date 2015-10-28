@@ -1,0 +1,225 @@
+/*2015/01/27 mele*/
+label,input[type="checkbox"]{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+}
+.zmz-main-box{
+    width: 826px;
+    margin: 39px auto 100px auto;
+    border: 1px #d7d7d7 solid;
+    padding: 40px 62px;
+}
+.cell-left{
+    width: 448px;
+    float: left;
+}
+.cell-left h3,.cell-right h3{
+    font-size: 20px;
+    color: #2a2b2b;
+    height: 36px;
+    line-height: 20px;
+    border-bottom: 1px #e1e1e1 solid;
+}
+.cell-left .message{
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: red;
+    text-indent: 3px;
+}
+
+.input-item{
+    margin-bottom: 16px;
+}
+
+input.username,input.verificationcode,input.password,input.img_check_code{
+    width: 434px;
+    height: 30px;
+    font-size: 14px;
+    border-color: #e1e1e1;
+    border-width: 1px;
+    border-radius: 2px;
+    margin-bottom: 0;
+}
+input.img_check_code{
+    width: 200px;
+}
+input.username:focus,input.verificationcode:focus,input.password:focus,input.img_check_code:focus{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.choose-email{
+    height: 44px;
+    line-height: 30px;
+    text-align: right;
+}
+.choose-email a{
+    color: #494949;
+}
+.choose-email a:hover {
+    text-decoration: none;
+    color: #0078c9;
+}
+input.verificationcode{
+    display: inline-block;
+    width: 152px;
+    margin-right: 22px;
+    vertical-align: top;
+}
+.send-code-tel{
+    display: inline-block;
+    width: 260px;
+    height: 40px;
+    background: #ececec;
+    color: #494949;
+    text-align: center;
+    line-height: 40px;
+}
+.send-code-tel:hover {
+}
+.agreement-part{
+    height: 12px;
+    line-height: 12px;
+    margin-top: 36px;
+}
+input.agreement{
+    vertical-align: top;
+    margin-top: 1px;
+}
+.agreement-label{
+    font-size: 12px;
+    line-height: 100%;
+
+}
+.agreement-part a.xieyi{
+    font-size: 12px;
+    line-height: 100%;
+     color: #0078c9;
+    border-bottom: 1px #0078c9 solid;
+ }
+a.go-login{
+    font-size: 14px;
+    color: #494949;
+    float: right;
+    margin-top: -1px;
+}
+.reg-submit{
+    display: block;
+    width: 448px;
+    height: 40px;
+    margin-top: 40px;
+    color:#fff;
+    text-align: center;
+    line-height: 40px;
+    background: #0078c9;
+}
+.reg-submit:hover,.reg-submit:focus{
+    color: #fff;
+    background: #0171bd;
+    text-decoration: none;
+}
+
+.cell-right{
+    float: right;
+    width: 300px;
+}
+.cell-right .login-group{
+    padding-left: 27px;
+    padding-top: 39px;
+}
+.login-group a{
+    position: relative;
+    display: block;
+    margin-bottom: 11px;
+    width: 218px;
+    height: 50px;
+    font-size: 16px;
+    color: #8d8d8d;
+    line-height: 50px;
+    text-align: center;
+    background: #ececec url("/static/skin/images/reg-icon.png") no-repeat;
+    -webkit-transition: color 600ms;
+    -moz-transition: color 600ms;
+    -ms-transition: color 600ms;
+    -o-transition: color 600ms;
+    transition: color 600ms;
+}
+.login-group a span{
+    position: absolute;
+    z-index: 3;
+    width: 168px;
+    left: 50px;
+}
+.login-group a:before{
+    position: absolute;
+    left: 50px;
+    top: 0;
+    content: "";
+    width: 0;
+    height: 50px;
+    -webkit-transition: width 500ms;
+    -moz-transition: width 500ms;
+    -ms-transition: width 500ms;
+    -o-transition: width 500ms;
+    transition: width 500ms;
+    z-index: 2;
+}
+.login-group a.weibo:before{
+    background-color: #ff4e09;
+}
+.login-group a.qq:before{
+    background-color: #0078c9;
+}
+.login-group a.wechat:before{
+    background-color: #0bb71c;
+}
+.login-group a:hover:before{
+    width: 168px;
+}
+.login-group a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+.login-group a.qq{
+    background-position: 0 -100px;
+}
+.login-group a.wechat{
+    background-position: 0 -200px;
+}
+
+
+/*login*/
+.login .cell-left .message{
+    height: 39px;
+    line-height: 39px;
+}
+.zmz-main-box.login .input-item{
+    margin-bottom: 22px;
+}
+.auto-login-item label{
+    line-height: 12px;
+    font-size: 12px;
+    margin-top: -1px;
+}
+.auto-login-item{
+    padding-top: 30px;
+    padding-left: 2px;
+}
+.reg-submit.login-page-btn{
+    margin-top: 22px;
+}
+
+.fixed-b{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.zmz-main-box.login .login-link{
+    float: right;
+    margin-left: 15px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #333;
+}

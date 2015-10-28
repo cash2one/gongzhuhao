@@ -1,0 +1,103 @@
+
+<div class="clearfix row-main">
+    <?py include('ops/weixin/nav.html') ?>
+
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading">
+                <strong>菜单一览</strong>
+                <div class="panel-actions">
+                     <a href="/admin/weixin/" class="btn btn-primary"><i class="icon-plus"></i> 返回</a>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-form">
+                    <tbody>
+                        <?py if len(error) > 0:?>
+                        <tr>
+                            <th class="w-p20 red">错误提示：</th>
+                            <td class="w-p30 red">${error}</td>
+                            <td class="w-p50"></td>
+                        </tr>
+                        <?py #endif ?>
+                        <tr>
+                            <th class="w-p20">装修公司名称：</th>
+                            <td class="w-p20">${company.Fcompany_name}</td>
+                            <td class="w-p60"></td>
+                        </tr>
+                        <tr>
+                            <th class="w-p20">已绑定菜单：</th>
+                            <td class="w-p20">${company_menu_name if company_menu_name else '无'}</td>
+                            <td class="w-p60"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                <tr class="text-center">
+                    <th>菜单ID</th>
+                    <th>菜单名称</th>
+                    <th>菜单类型</th>
+                    <th>链接</th>
+                    <th>是否已绑定</th>
+                    <th>操作</th>
+                </tr>
+
+                </thead>
+
+                <tbody id="house_type_list">
+                <?py if menus:?>
+                    <?py for menu in menus: ?>
+                    <tr class="text-center">
+                        <td>${menu.id}</td>
+                        <td>${menu.name}</td>
+                        <td>${menu.type}</td>
+                        <td>
+                            <?py if company.Fmenu_codes.find(menu.code) > -1 :?>
+                            <a href="${menu.url}" target="_blank">${menu.url}</a>
+                            <?py else: ?>
+                            &nbsp;
+                            <?py #endif ?>
+                        </td>
+                        <td>
+                            <?py if company.Fmenu_codes.find(menu.code) > -1 :?>
+                                是
+                            <?py else: ?>
+                                否
+                            <?py #endif ?>
+                        </td>
+                        <td>
+                            <?py if company.Fmenu_codes.find(menu.code) > -1 :?>
+                                <a href="/admin/weixin/menu/unbind/${company.Fid}/${menu.code}"><font color="red">解绑</font></a>
+                            <?py else: ?>
+                                <a href="/admin/weixin/menu/bind/${company.Fid}/${menu.code}">绑定</a>
+                            <?py #endif ?>
+                        </td>
+                    </tr>
+                    <?py #endfor ?>
+                <?py #endif ?>
+
+                </tbody>
+                #{page_html}
+            </table>
+        </div>
+    </div>
+</div>
+
+<?py include('ops/common/dialog.html') ?>
+
+<script language="Javascript">
+$(document).ready(function()
+{
+    $('#weixin_nav').addClass('active');
+});
+
+function search(obj){
+    cond = $("#name").val();
+    url = '/admin/weixin/';
+    window.location.href = url + cond + "/";
+}
+</script>

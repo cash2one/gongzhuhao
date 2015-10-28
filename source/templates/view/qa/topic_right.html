@@ -1,0 +1,73 @@
+<div class="topic-right-box">
+    <form action="" method="post" class="search-part hide" id="searchForm">
+        <input type="text" name="searchContent" class="search-input" placeholder="请输入搜索内容">
+        <input type="button" class="topic-icon searchBtn">
+    </form>
+    <p class="hot-topic-title">热门话题</p>
+    <ul class="hot-topic-list">
+        <?py for topic in hot_topic: ?>
+        <li><a href="/topic/detail/${topic.Fid}/${topic.Fuser_id}" class="topic-icon hot-topic" target="_blank" title="${topic.Ftitle}">${topic.Ftitle}</a></li>
+        <?py #endfor ?>
+    </ul>
+    <p class="hot-topic-title">活跃榜</p>
+    <div class="r-list-nav clearfix">
+        <a href="javascript:;" class="hy-tab this-week hy-tab-active">本周</a>
+        <a href="javascript:;" class="hy-tab this-month">本月</a>
+    </div>
+    <ul class="topic-user-list" id="week-list-part">
+        <?py i = 1 ?>
+        <?py for t in top_week: ?>
+        <li class="clearfix">
+            <p class="topic-icon class-mark ${'other-class' if i > 3 else 'first-class' if i == 1 else 'second-class' if i == 2 else 'third-class'}">${i}</p>
+            <a href="/member/index/${t.Fuser_id}" class="user-list-link" title="${user_db.get_user_msg(t.Fuser_id).get('nick')}">
+                <img src="${user_db.get_user_msg(t.Fuser_id).get('photo')}" alt="">
+            </a>
+            <a href="/member/index/${t.Fuser_id}" class="user-list-name" title="${user_db.get_user_msg(t.Fuser_id).get('nick')}">${user_db.get_user_msg(t.Fuser_id).get('nick')}</a>
+            <p class="list-num">${t.user_count if t.user_count else 0}</p>
+        </li>
+        <?py i += 1 ?>
+        <?py #endfor ?>
+    </ul>
+    <ul class="topic-user-list hide" id="month-list-part">
+        <?py i = 1 ?>
+        <?py for t in top_month: ?>
+        <li class="clearfix">
+            <p class="topic-icon class-mark ${'other-class' if i > 3 else 'first-class' if i == 1 else 'second-class' if i == 2 else 'third-class'}">${i}</p>
+            <a href="/member/index/${t.Fuser_id}" class="user-list-link" title="${user_db.get_user_msg(t.Fuser_id).get('nick')}">
+                <img src="${user_db.get_user_msg(t.Fuser_id).get('photo')}" alt="">
+            </a>
+            <a href="/member/index/${t.Fuser_id}" class="user-list-name" title="${user_db.get_user_msg(t.Fuser_id).get('nick')}">${user_db.get_user_msg(t.Fuser_id).get('nick')}</a>
+            <p class="list-num">${t.user_count if t.user_count else 0}</p>
+        </li>
+        <?py i += 1 ?>
+        <?py #endfor ?>
+    </ul>
+</div>
+
+<!-- 上传图片控件 -->
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.ui.widget.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.iframe-transport.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/load-image.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.xdr-transport.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-ui.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-process.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/plug/jquery.qqFace.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/topic.js?v=20"></script>
+
+<script type="text/javascript">
+    var topic = new topic().init();
+
+    $(function(){
+        $('.emotion').qqFace({
+            id: 'facebox',
+            assign:'saytext', //给输入框赋值
+            path:'/static/skin/js/plug/face/',    //表情图片存放的路径
+            tip : 'em_'
+        });
+    });
+
+
+</script>

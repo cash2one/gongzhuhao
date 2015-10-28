@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://demo.chanzhi.org/backend.php?m=article&f=admin -->
+<html class="screen-desktop-wide device-desktop m-article m-article-admin"><head profile="http://www.w3.org/2005/10/profile"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>维护文章 - 蝉知企业门户，开源免费的企业建站系统</title>
+<meta name="keywords" content="企业门户系统 企业建站系统 开源CMS">
+<meta name="description" content="蝉知门户系统（chanzhiEPS）是一款开源免费的企业门户系统，企业建站系统，php开源CMS系统。它专为企业营销设计，功能专业全面，内置了文章发布、会员管理、论坛评论、产品展示、在线销售、客服跟踪等功能。以LGPL协议发布，真开源，真免费。注重SEO，注重营销，支持移动设备。界面简洁大方，使用简单方便，功能专业强大，是企业建站的首选！同时蝉知系统还内置了微信公众平台功能，一个网站，电脑、手机、微信体验俱佳！">
+<script language="Javascript">var config={"webRoot":"\/","cookieLife":30,"requestType":"GET","requestFix":"-","moduleVar":"m","methodVar":"f","viewVar":"t","defaultView":"html","themeRoot":"\/theme\/","currentModule":"article","currentMethod":"admin","clientLang":"zh-cn","requiredFields":"","save":"\u4fdd\u5b58","router":"\/backend.php","runMode":"admin"}
+</script>
+<link rel="stylesheet" href="./files/all.admin.css" type="text/css" media="screen">
+<script src="./files/all.admin.js" type="text/javascript"></script>
+<link rel="icon" href="http://demo.chanzhi.org/data/upload/201408/f_f9dcb3fb6ce5aaff3f548cbe30403a2a.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://demo.chanzhi.org/data/upload/201408/f_f9dcb3fb6ce5aaff3f548cbe30403a2a.ico" type="image/x-icon">
+<link href="http://demo.chanzhi.org/backend.php?m=rss&f=index&t=xml" title="蝉知企业门户，开源免费的企业建站系统" type="application/rss+xml" rel="alternate"><!--[if lt IE 9]>
+<script src='/js/all.ie8.js?v=3.1' type='text/javascript'></script>
+<![endif]-->
+<!--[if lt IE 10]>
+<script src='/js/all.ie9.js?v=3.1' type='text/javascript'></script>
+<![endif]-->
+<script language="Javascript">if(typeof(v) != "object") v = {};v.lang = {"confirmDelete":"\u60a8\u786e\u5b9a\u8981\u6267\u884c\u5220\u9664\u64cd\u4f5c\u5417\uff1f","deleteing":"\u5220\u9664\u4e2d","doing":"\u5904\u7406\u4e2d","loading":"\u52a0\u8f7d\u4e2d","timeout":"\u7f51\u7edc\u8d85\u65f6,\u8bf7\u91cd\u8bd5"};</script>
+</head>
+<body style="zoom: 1;">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="mainNavbar">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="http://demo.chanzhi.org/backend.php?m=admin&f=index" class="navbar-brand">蝉知</a>
+  </div>
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav mainNavbarNav">
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=admin&f=index">首页</a></li>
+<li class="active simple-mode-a"><a href="./files/article_list.html">文章</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=blog">博客</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=product&f=admin">产品</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=book&f=admin">手册</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=page">单页</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=forum&f=admin">论坛</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=site&f=setbasic">站点</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=ui&f=setlogo">界面</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=company&f=setbasic">公司</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=user&f=admin">会员</a></li>
+<li class="simple-mode-b"><a href="http://demo.chanzhi.org/backend.php?m=message&f=admin">反馈</a></li>
+<li class="simple-mode-b"><a href="http://demo.chanzhi.org/backend.php?m=package&f=browse">扩展</a></li>
+</ul>
+    <ul class="nav navbar-nav" id="navbarSwitcher">
+      <li><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin###"><i class="icon-chevron-sign-right icon-large"></i></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin###" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe icon-large"></i> &nbsp;简体<span class="caret"></span></a>
+<ul class="dropdown-menu">
+  <li><a rel="nofollow" href="javascript:selectLang("zh-tw")">繁体</a></li><li><a rel="nofollow" href="javascript:selectLang("en")">English</a></li></ul>
+</li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right"><li><a href="http://demo.chanzhi.org/" target="_blank" class="navbar-link"><i class="icon-home icon-large"></i> 前台</a>
+</li><li class="dropdown"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-large"></i> demo <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="http://demo.chanzhi.org/backend.php?m=user&f=changePassword" data-toggle="modal">修改密码</a>
+</li><li><a href="http://demo.chanzhi.org/backend.php?m=user&f=logout">退出</a>
+</li></ul></li></ul>  </div>
+</nav>
+
+<div class="clearfix row-main">
+      <div class="col-md-2">
+    <div class="leftmenu affix hiddden-xs hidden-sm">
+      <ul class="nav-left nav nav-primary nav-stacked">
+<li class="active"><a href="./files/article_list.html">文章列表<i class="icon-chevron-right"></i></a>
+</li>
+</ul>
+            <div class="panel category-nav">
+        <div class="panel-heading">
+          <strong>类目浏览</strong>
+                    <div class="pull-right"><a href="http://demo.chanzhi.org/backend.php?m=tree&f=browse&type=article">维护类目</a>
+</div>
+                  </div>
+        <div class="panel-body" style="max-height: 669px;"><ul class="tree treeview"><li><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=1" id="category1">蝉知下载</a>
+
+</li>
+<li><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=2" id="category2">蝉知动态</a>
+
+</li>
+<li><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=3" id="category3">商业支持</a>
+
+</li>
+<li class="collapsable lastCollapsable"><div class="hitarea collapsable-hitarea lastCollapsable-hitarea"></div><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=11" id="category11">知识改进</a>
+<ul><li><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=12" id="category12">一二三</a>
+
+</li>
+<li><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=13" id="category13">四五六</a>
+
+</li>
+<li class="last"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=14" id="category14">七八九</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</div>
+      </div>
+          </div>
+  </div>
+  <div class="col-md-10">
+  <script language="javascript">$(function() {$(".tree").treeview({collapsed: false, unique: false}) })</script>
+<script language="Javascript">v.categoryID = 0;</script>
+<div class="panel">
+  <div class="panel-heading">
+    <strong><i class="icon-list-ul"></i> 文章列表</strong>
+  <div class="panel-actions"><a href="http://demo.chanzhi.org/backend.php?m=article&f=create&type=article&category=0" class="btn btn-primary"><i class="icon-plus"></i> 发布文章</a>
+</div>
+    </div>
+  <table class="table table-hover table-striped tablesorter">
+    <thead>
+      <tr>
+                <th class="text-center w-60px"><div class="headerSortUp"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=0&orderBy=id_asc&recTotal=10&recPerPage=20">编号</a>
+</div></th>
+        <th class="text-center"><div class="header"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=0&orderBy=title_asc&recTotal=10&recPerPage=20">标题</a>
+</div></th>
+                <th class="text-center w-200px"><div class="header"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=0&orderBy=category_asc&recTotal=10&recPerPage=20">类目</a>
+</div></th>
+                <th class="text-center w-160px"><div class="header"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=0&orderBy=addedDate_asc&recTotal=10&recPerPage=20">发布时间</a>
+</div></th>
+        <th class="text-center w-60px"><div class="header"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=0&orderBy=views_asc&recTotal=10&recPerPage=20">阅读</a>
+</div></th>
+        <th class="text-center w-220px">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+            <tr>
+        <td class="text-center">12</td>
+        <td>
+          明天还是明天                  </td>
+                <td class="text-center">一二三 </td>
+                <td class="text-center">2014-10-08 17:44:00</td>
+        <td class="text-center">5</td>
+        <td class="text-center">
+          <a href="http://demo.chanzhi.org/backend.php?m=article&f=edit&articleID=12&type=article">编辑</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=12&isImage=0" data-toggle="modal">附件</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=12&isImage=1" data-toggle="modal">图片</a>
+<a href="http://demo.chanzhi.org/article/12.html" target="_blank">预览</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=delete&articleID=12" class="deleter">删除</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setcss&articleID=12" data-toggle="modal">CSS</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setjs&articleID=12" data-toggle="modal">JS</a>
+        </td>
+      </tr>
+            <tr>
+        <td class="text-center">10</td>
+        <td>
+          蝉知企业门户系统2.1正式版发布                  </td>
+                <td class="text-center">蝉知下载 蝉知动态 </td>
+                <td class="text-center">2014-03-03 09:50:00</td>
+        <td class="text-center">9</td>
+        <td class="text-center">
+          <a href="http://demo.chanzhi.org/backend.php?m=article&f=edit&articleID=10&type=article">编辑</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=10&isImage=0" data-toggle="modal">附件</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=10&isImage=1" data-toggle="modal">图片</a>
+<a href="http://demo.chanzhi.org/download/10_chanzhieps2.1.html" target="_blank">预览</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=delete&articleID=10" class="deleter">删除</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setcss&articleID=10" data-toggle="modal">CSS</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setjs&articleID=10" data-toggle="modal">JS</a>
+        </td>
+      </tr>
+            <tr>
+        <td class="text-center">9</td>
+        <td>
+          蝉知企业门户2.2版本发布，全面集成微信！                  </td>
+                <td class="text-center">蝉知下载 蝉知动态 </td>
+                <td class="text-center">2014-03-24 16:00:00</td>
+        <td class="text-center">9</td>
+        <td class="text-center">
+          <a href="http://demo.chanzhi.org/backend.php?m=article&f=edit&articleID=9&type=article">编辑</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=9&isImage=0" data-toggle="modal">附件</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=9&isImage=1" data-toggle="modal">图片</a>
+<a href="http://demo.chanzhi.org/download/9_chanzhieps2.2.html" target="_blank">预览</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=delete&articleID=9" class="deleter">删除</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setcss&articleID=9" data-toggle="modal">CSS</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setjs&articleID=9" data-toggle="modal">JS</a>
+        </td>
+      </tr>
+            <tr>
+        <td class="text-center">8</td>
+        <td>
+          蝉知企业门户2.2.1版本发布                  </td>
+                <td class="text-center">蝉知下载 蝉知动态 </td>
+                <td class="text-center">2014-04-01 10:40:00</td>
+        <td class="text-center">9</td>
+        <td class="text-center">
+          <a href="http://demo.chanzhi.org/backend.php?m=article&f=edit&articleID=8&type=article">编辑</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=8&isImage=0" data-toggle="modal">附件</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=8&isImage=1" data-toggle="modal">图片</a>
+<a href="http://demo.chanzhi.org/download/8_chanzhieps2.2.1.html" target="_blank">预览</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=delete&articleID=8" class="deleter">删除</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setcss&articleID=8" data-toggle="modal">CSS</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setjs&articleID=8" data-toggle="modal">JS</a>
+        </td>
+      </tr>
+            <tr>
+        <td class="text-center">7</td>
+        <td>
+          蝉知企业门户2.3正式版发布                  </td>
+                <td class="text-center">蝉知下载 蝉知动态 </td>
+                <td class="text-center">2014-05-16 10:10:00</td>
+        <td class="text-center">9</td>
+        <td class="text-center">
+          <a href="http://demo.chanzhi.org/backend.php?m=article&f=edit&articleID=7&type=article">编辑</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=7&isImage=0" data-toggle="modal">附件</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=7&isImage=1" data-toggle="modal">图片</a>
+<a href="http://demo.chanzhi.org/download/7_chanzhi2.3.html" target="_blank">预览</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=delete&articleID=7" class="deleter">删除</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setcss&articleID=7" data-toggle="modal">CSS</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setjs&articleID=7" data-toggle="modal">JS</a>
+        </td>
+      </tr>
+            <tr>
+        <td class="text-center">6</td>
+        <td>
+          蝉知企业门户2.4正式版发布                  </td>
+                <td class="text-center">蝉知下载 蝉知动态 </td>
+                <td class="text-center">2014-06-25 14:10:00</td>
+        <td class="text-center">8</td>
+        <td class="text-center">
+          <a href="http://demo.chanzhi.org/backend.php?m=article&f=edit&articleID=6&type=article">编辑</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=6&isImage=0" data-toggle="modal">附件</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=6&isImage=1" data-toggle="modal">图片</a>
+<a href="http://demo.chanzhi.org/download/6.html" target="_blank">预览</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=delete&articleID=6" class="deleter">删除</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setcss&articleID=6" data-toggle="modal">CSS</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setjs&articleID=6" data-toggle="modal">JS</a>
+        </td>
+      </tr>
+            <tr>
+        <td class="text-center">5</td>
+        <td>
+          蝉知企业门户2.5beta版本发布                  </td>
+                <td class="text-center">蝉知下载 蝉知动态 </td>
+                <td class="text-center">2014-08-06 11:10:00</td>
+        <td class="text-center">13</td>
+        <td class="text-center">
+          <a href="http://demo.chanzhi.org/backend.php?m=article&f=edit&articleID=5&type=article">编辑</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=5&isImage=0" data-toggle="modal">附件</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=5&isImage=1" data-toggle="modal">图片</a>
+<a href="http://demo.chanzhi.org/download/5.html" target="_blank">预览</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=delete&articleID=5" class="deleter">删除</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setcss&articleID=5" data-toggle="modal">CSS</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setjs&articleID=5" data-toggle="modal">JS</a>
+        </td>
+      </tr>
+            <tr>
+        <td class="text-center">4</td>
+        <td>
+          多处改进，蝉知2.5.1正式版发布                  </td>
+                <td class="text-center">蝉知下载 蝉知动态 </td>
+                <td class="text-center">2014-08-19 15:15:00</td>
+        <td class="text-center">12</td>
+        <td class="text-center">
+          <a href="http://demo.chanzhi.org/backend.php?m=article&f=edit&articleID=4&type=article">编辑</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=4&isImage=0" data-toggle="modal">附件</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=4&isImage=1" data-toggle="modal">图片</a>
+<a href="http://demo.chanzhi.org/download/4_chanzhi2.5.1.html" target="_blank">预览</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=delete&articleID=4" class="deleter">删除</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setcss&articleID=4" data-toggle="modal">CSS</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setjs&articleID=4" data-toggle="modal">JS</a>
+        </td>
+      </tr>
+            <tr>
+        <td class="text-center">3</td>
+        <td>
+          ZUI文档更新                  </td>
+                <td class="text-center">蝉知动态 </td>
+                <td class="text-center">2014-06-09 14:30:00</td>
+        <td class="text-center">5</td>
+        <td class="text-center">
+          <a href="http://demo.chanzhi.org/backend.php?m=article&f=edit&articleID=3&type=article">编辑</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=3&isImage=0" data-toggle="modal">附件</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=3&isImage=1" data-toggle="modal">图片</a>
+<a href="http://demo.chanzhi.org/dynamic/3.html" target="_blank">预览</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=delete&articleID=3" class="deleter">删除</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setcss&articleID=3" data-toggle="modal">CSS</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setjs&articleID=3" data-toggle="modal">JS</a>
+        </td>
+      </tr>
+            <tr>
+        <td class="text-center">1</td>
+        <td>
+          安全升级，蝉知2.5.2发布                  </td>
+                <td class="text-center">蝉知下载 蝉知动态 </td>
+                <td class="text-center">2014-08-21 13:55:00</td>
+        <td class="text-center">26</td>
+        <td class="text-center">
+          <a href="http://demo.chanzhi.org/backend.php?m=article&f=edit&articleID=1&type=article">编辑</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=1&isImage=0" data-toggle="modal">附件</a>
+<a href="http://demo.chanzhi.org/backend.php?m=file&f=browse&objectType=article&objectID=1&isImage=1" data-toggle="modal">图片</a>
+<a href="http://demo.chanzhi.org/download/1_chanzhi2.5.2.html" target="_blank">预览</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=delete&articleID=1" class="deleter">删除</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setcss&articleID=1" data-toggle="modal">CSS</a>
+<a href="http://demo.chanzhi.org/backend.php?m=article&f=setjs&articleID=1" data-toggle="modal">JS</a>
+        </td>
+      </tr>
+          </tbody>
+    <tfoot><tr><td colspan="7"><div style="float:right; clear:none;" class="page form-inline">共 <strong>10</strong> 条记录，每页 <strong><select name="_recPerPage" id="_recPerPage" onchange="submitPage(&quot;changeRecPerPage&quot;);" class="w-60px">
+<option value="5">5</option>
+<option value="10">10</option>
+<option value="15">15</option>
+<option value="20" selected="selected">20</option>
+<option value="25">25</option>
+<option value="30">30</option>
+<option value="35">35</option>
+<option value="40">40</option>
+<option value="45">45</option>
+<option value="50">50</option>
+<option value="100">100</option>
+<option value="200">200</option>
+<option value="500">500</option>
+<option value="1000">1000</option>
+</select>
+</strong> 条，页面：<strong>1/1</strong> 首页 上页 下页 末页 <input type="hidden" id="_recTotal" value="10">
+<input type="hidden" id="_pageTotal" value="1">
+<input type="text" id="_pageID" value="1" style="text-align:center;width:30px;"> 
+<input type="button" id="goto" value="Go!" onclick="submitPage(&quot;changePageID&quot;);" class="btn btn-default btn-xs">        <script language="Javascript">
+        vars = 'type=article&categoryID=0&orderBy=id_desc&recTotal=_recTotal_&recPerPage=_recPerPage_&pageID=_pageID_';
+        pageCookie = 'pagerArticleAdmin';
+        function submitPage(mode)
+        {
+            pageTotal  = parseInt(document.getElementById('_pageTotal').value);
+            pageID     = document.getElementById('_pageID').value;
+            recPerPage = document.getElementById('_recPerPage').value;
+            recTotal   = document.getElementById('_recTotal').value;
+            $.cookie(pageCookie, recPerPage, {expires:config.cookieLife, path:config.webRoot});
+            if(mode == 'changePageID')
+            {
+                if(pageID > pageTotal) pageID = pageTotal;
+                if(pageID < 1) pageID = 1;
+            }
+            else if(mode == 'changeRecPerPage')
+            {
+                pageID = 1;
+            }
+
+            vars = vars.replace('_recTotal_', recTotal)
+            vars = vars.replace('_recPerPage_', recPerPage)
+            vars = vars.replace('_pageID_', pageID);
+            location.href=createLink('article', 'admin', vars);
+        }
+        </script></div></td></tr></tfoot>
+  </table>
+</div>
+</div></div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom hidden-sm hidden-xs" role="navigation">
+  <div class="collapse navbar-collapse navbar-ex6-collapse">
+    <div class="navbar-text pull-right"> <span id="poweredBy"><a href="http://www.chanzhi.org/?v=3.1" target="_blank" title="蝉知门户，微网站专家！"><i class="icon icon-bell"></i> 蝉知 3.1</a></span></div>
+  </div>
+</nav>
+
+<script language="Javascript">$(document).ready(function()
+{
+    /* Set the orginal and copySite, copyURL fields. */
+    $('#source').change(function()
+    {
+        $('#copyBox').hide().find(':input').attr('disabled', true);
+        if($(this).val() != 'original') $('#copyBox').show().find(':input').attr('disabled', false);
+    });
+
+    $('#isLink').change(function()
+    {   
+        if($(this).prop('checked'))
+        {   
+            $('.articleInfo').hide();
+            $('.link').show();
+        }   
+        else
+        {   
+            $('.articleInfo').show();
+            $('.link').hide();
+        }   
+    }); 
+    
+    /* Set current active topNav. */
+    if(v.path && v.path.length)
+    {
+        var hasActive = false;
+        $.each(v.path, function(index, category) 
+        { 
+            if(!hasActive)
+            {
+                if($('.nav-article-' + category).length >= 1) hasActive = true;
+                $('.nav-article-' + category).addClass('active');
+            }
+        });
+        if(!hasActive) $('.nav-article-0').addClass('active');
+    }
+
+    if(v.categoryID !== 0) $('.tree #category' + v.categoryID).addClass('active');
+});
+
+</script>
+
+
+</body></html>

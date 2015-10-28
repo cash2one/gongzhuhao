@@ -1,0 +1,18 @@
+<ion-view view-title="档期列表">
+  <ion-content class="service">
+    <div class="item">
+        <p class="schedule_type">{{model.list.data.schedule_category_name}}</p>
+        <p class="order_date">{{model.list.data.start_date}}~{{model.list.data.end_date}}</p>
+    </div>
+    <ion-list>
+    		<ion-item ng-repeat="item in model.list.list">
+	        <a href="#/add/{{model.list.data.schedule_category_id}}/{{item.date}}/{{model.list.data.schedule_category_name}}">
+	            <i class="icon icon-arrow fright"></i>
+	            <span class="sl-date">{{item.date}}</span>
+	            <span class="sl-week">{{item.week_day}}</span>
+	            <span class="sl-totle">剩余<i class="text-purple">{{item.total}}</i></span>
+	        </a>    		
+    		</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

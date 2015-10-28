@@ -1,0 +1,150 @@
+html{
+	overflow: auto;
+}
+body{
+	overflow: auto;
+}
+
+
+.wrapper{ margin: 0; padding: 0}
+.gray{ color: #666}
+.fright{ float: right}
+.tcenter{ text-align: center;}
+.tright{ text-align: right;}
+.clear{ clear: both}
+.bg-gray{ background: #f7f7f7}
+.gzh-header{ position: fixed; height: 40px;}
+.gzh-header h2{ margin: 0; padding: 0; line-height: 40px; width: 100%; }
+.gzh-header .back{ position: absolute; top: .5em; left: 0}
+
+header.gzh-header .button i,
+header.gzh-header .title{
+	color:#ff6577!important;
+	font-size: 1.4em!important;
+}
+
+.gzh-cons{ padding: 0}
+.topic-item{ margin-bottom: 1em; padding: 1em; border: 1px solid #ddd; background-color: #fff;}
+.topic-item a{ display: inline-block; width: 100%; text-decoration: none}
+.topic-item a:hover{ text-decoration: none; color: #ff6577}
+.topic-item-list{ overflow: hidden; margin: 0; padding: 0;}
+.topic-thumb{ overflow: hidden; display: inline-block; float: left; margin-right: 1em; height: 80px; background: #fff;}
+.topic-item-list h2{ margin-top: 0; margin-bottom: .2em; font-size: 1.4em; font-weight: normal; color: #333;}
+.topic-item-list h3 { margin-top: .4em; margin-bottom: .2em; font-size: 1.2em; font-weight: normal; color: #666;} 
+.topic-item-list p{ margin: .4em 0 0 0; padding: 0;  }
+.topic-item-list p.topic-extr{ margin: 0; padding: .5em 0 0 0; line-height: 1.5; font-size: .9em}
+.topic-item-list p.topic-extr em{ font-style: normal; margin-left: .2em;}
+.topic-item-list .topic-total{ padding: .1em .4em; line-height: 1.5; border: 1px solid #ff6577; color: #ff6577; font-size: 1.1em}
+.topic-item-list .topic-view{ float: right; color: #999; font-size: 1.1em}
+.topic-item-list a:hover{ text-decoration: none}
+.topic-item.bg-gray{ margin-bottom: 0; background: #f7f7f7; border-bottom: none}
+.topic-item-nav{ display: inline-block; padding: 0; width: 100%; background: #f7f7f7; font-size: 1.2em}
+.topic-item-nav a{float: left; display: inline-block; width: 33.333%; height: 40px; line-height: 40px; text-align: center; border-bottom: 2px solid #f7f7f7; color: #333}
+.topic-item-nav a:hover{ color: #ff6577; text-decoration: none}
+.topic-item-nav a:active{ color: #333; text-decoration: none}
+.topic-item-nav a.current{ border-bottom: 2px solid #ff6577; color: #ff6577}
+
+.topic-lists{ margin-top: -0.3em; background: #fff}
+.topic-list{ padding: 1em; margin: 0; overflow: hidden; border-color: #e5e5e5; background-color: none; background: none; border-bottom: 1px solid #e5e5e5;}
+.topic-list a{color: #333; }
+.topic-list a:hover{ text-decoration: none;}
+.topic-list-title {}
+.topic-list-title h2{ margin: 0; padding: 0; font-size: 1.2em; font-weight: normal}
+.topic-list-title a{ text-decoration: none; color: #333;}
+.topic-list-title a:hover{ color: #333;}
+.topic-list-title .icon{ margin-left: .2em; font-size: 1.2em; vertical-align: middle; color: #999;}
+.topic-list-title .icon.ion-images{ color: #ff6577;}
+.topic-info{ margin-top: .5em; clear: both; height: 36px; line-height: 36px; color: #333;}
+.topic-info img{ width: 36px; height: 36px; border-radius: 18px; vertical-align: middle;}
+.topic-list-publisher{ margin-left: .4em; font-size: 1em}
+.topic-list-msg{ font-size: 1.2em; color: #999}
+.topic-list-msg .icon{ color: #999}
+.topic-list-msg span{ font-size: .8em}
+.topic-list-date{ margin-right: .8em; font-size: 1em;}
+
+.topic-detail{ padding: 0; background: #fff}
+.topic-top{ width: 100%; overflow: hidden; text-overflow: ellipsis;}/* white-space: nowrap */
+.topic-top h1{ margin: 0; padding: 0; line-height: 30px; font-size: 1.4em; font-weight: normal}
+.topic-top .iconfont{ font-size: 1.2em; vertical-align: middle; color: #ff6577}
+.posts-list{ padding: .5em; border-bottom: 1px solid #ddd}
+.posts-profile{ margin-bottom: .5em; clear: both; overflow: hidden;}
+.posts-profile img{ float: left; margin-right: .8em; vertical-align: middle; border-radius: 50%}
+.posts-profile p{ margin: 0; padding: 0}
+.posts-profile h5{ margin: 0; padding: 0}
+.posts-profile a{ color: #333}
+.posts-profile .icon{ font-size: 1.4em; color: #999}
+.posts-info .posts-txt{ font-size: 1em; line-height: 1.5}
+.posts-reply-item img,
+.posts-info img {
+    max-width: 100% !important;
+}
+.posts-thumbs{ overflow: hidden}
+.posts-thumbs .posts-thumbs-list{ display:inline-block;overflow:hidden;position:relative; width: 33.33%}
+.posts-thumbs-list img{ width:100%;min-height:100px;}
+.posts-author{ overflow: hidden; float: left; display: inline-block; }
+.posts-author p{ vertical-align: middle}
+.posts-author .posts-name{ color: #ff6577; font-size: 1.2em}
+.level{ padding: .1em .4em; background: #4fa6ff; color: #fff; border: none; border-radius: 3px;}
+.posts-author h5{ color: #666}
+
+.posts-extra{ height: 50px; line-height: 50px; border-bottom: 1px solid #ddd; vertical-align: middle}
+.posts-extra a{ color: #666}
+.posts-extra img{ display: inline-block; width: 32px; height: 32px; border-radius: 50%}
+.posts-extra-avatar{ display: inline-block; width: 85%; float: left}
+.posts-extra-avatar img{ vertical-align: middle}
+.posts-extra-total{ display: inline-block; width: 15%; text-align: right; float: right}
+.posts-extra-comment{ color: #999}
+.posts-extra-comment .icon{ font-size: 1.2em; color: #999}
+.posts-extra-num{ margin-right: .5em; font-size: 1.2em; color: #999}
+
+
+.posts-reply{ margin: 0; padding: 1em 0; border-bottom: 1px dashed #ddd}
+.posts-reply-list{ padding: .5em 0}
+.posts-reply-list p.posts-reply-subject{display: inline-block; margin: 0}
+.posts-replay-author{ display: inline-block; float: left; margin: 0 .2em; color: #ff6577}
+.posts-reply-subject{ display: inline-block; margin: 0; padding: 0}
+.posts-reply-reply{ margin: 0 .2em; float: left; color: #999}
+.posts-reply-float{ margin-right: .4em; color: #999}
+.posts-reply-time{ color: #999;}
+.posts-lists-items{ padding: 1em 0; border-bottom: 1px dashed #ddd}
+.posts-lists-items:last-child{ border-bottom: none}
+.posts-lists-items p.posts-txt{ margin-bottom: 0}
+.gzh-cons .btn-more{ height: 50px; width: 100%; background: transparent; color: #999; border: none}
+.swiper-container {
+    width: 100%;
+    height: 180px;
+}
+.swiper-slide {
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.swiper-slide img{ width: 100%; height: 180px}
+
+.gzh-top,
+.gzh-essence{
+    padding:4px 8px;
+    color:white;
+    font-size:0.85em;
+    line-height:2em;
+    border-radius:2px;
+    margin-right:3px;
+}
+
+.gzh-top{
+    background-color: #ffc029;
+}
+
+.gzh-essence{
+    background-color: #4fa6ff;
+}

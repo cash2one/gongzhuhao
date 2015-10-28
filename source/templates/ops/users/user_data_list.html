@@ -1,0 +1,160 @@
+<table class="table table-bordered">
+    <thead>
+    <tr role="row">
+        <th class="center sorting_disabled" role="columnheader" rowspan="1" colspan="1" style="width: 57px;"
+            aria-label="">
+            <label>
+                <input type="checkbox" class="ace">
+                <span class="lbl"></span>
+            </label>
+        </th>
+        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1"
+            style="width: 159px;" aria-label="Domain: activate to sort column ascending">UID
+        </th>
+        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1"
+            style="width: 109px;" aria-label="Price: activate to sort column ascending">用户名
+        </th>
+        <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1"
+            colspan="1" style="width: 118px;" aria-label="Clicks: activate to sort column ascending">Email
+        </th>
+        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1"
+            style="width: 178px;" aria-label="Update:activate to sort column ascending">
+            <i class="icon-time bigger-110 hidden-480"></i>
+            登录时间
+        </th>
+        <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1"
+            colspan="1" style="width: 153px;" aria-label="Status: activate to sort column ascending">活跃度
+        </th>
+        <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" style="width: 163px;" aria-label="">
+            操作
+        </th>
+    </tr>
+    </thead>
+
+    <tbody role="alert" aria-live="polite" aria-relevant="all">
+    {%if userService.user_list%}
+    {% for user in userService.user_list%}
+    <tr class="odd">
+        <td class="center  sorting_1">
+            <label>
+                <input type="checkbox" class="ace">
+                <span class="lbl"></span>
+            </label>
+        </td>
+        <td class=" ">
+            <a target="_blank" href="/admin/user?operation=show&user_id={{user.id}}">{{user.uid}}</a>
+        </td>
+        <td class=" ">{{user.user_name }}</td>
+        <td class="hidden-480 ">{{user.email}}</td>
+        <td class=" ">{{user.last_visit}}</td>
+        <td class="hidden-480 ">
+            <span class="label label-sm label-warning">{{user.status}}</span>
+        </td>
+        <td class=" ">
+            <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                <a class="blue cursor">
+                    <i class="icon-zoom-in bigger-130 cursor"></i>
+                </a>
+
+                <a class="green cursor">
+                    <i class="icon-pencil bigger-130 cursor"></i>
+                </a>
+                <a onclick="user_delete_dialog({{user.id}})" id="user_{{user.id}}" class="md-trigger red cursor"
+                   data-modal="modal-13">
+                    <i class="icon-trash bigger-130 cursor"></i>
+                </a>
+            </div>
+            <div class="visible-xs visible-sm hidden-md hidden-lg">
+                <div class="inline position-relative">
+
+                    <button data-toggle="dropdown" class="btn btn-minier btn-yellow dropdown-toggle">
+                        <i class="icon-caret-down icon-only bigger-120"></i>
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
+                        <li>
+                            <a title="" data-rel="tooltip" class="tooltip-info cursor" data-original-title="View">
+								<span class="blue">
+									<i class="icon-zoom-in bigger-120 cursor"></i>
+								</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a title="" data-rel="tooltip" class="tooltip-success cursor" data-original-title="Edit">
+                                <span class="green">
+									<i class="icon-edit bigger-120 cursor"></i>
+								</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a title="" data-rel="tooltip" class="tooltip-error cursor"
+                               onclick="user_delete_dialog({{user.id}})" data-original-title="Delete">
+								<span class="red">
+									<i class="icon-trash bigger-120 cursor"></i>
+								</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </td>
+    </tr>
+    {%end%}
+    {%else%}
+    <tr>
+        <td colspan="7">没有数据</td>
+    </tr>
+    {%end%}
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="dataTables_info" id="sample-table-2_info">Showing {{userService.STARTS}} to {{userService.ENDS}} of
+            {{userService.TOTAL_COUNTS}}entries
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="dataTables_paginate paging_bootstrap">
+            <ul class="pagination">
+                <li class="prev"><a href="/admin/user?{{paras}}&page=0">首页</a>
+                </li>
+                {%if userService.CURRENT_PAGE>0%}
+                <li class="prev "><a href="/admin/user?{{paras}}&page={{userService.CURRENT_PAGE-1}}">前一页</a>
+                </li>
+                {%end%}
+                <li class="active"><a href="#">{{userService.CURRENT_PAGE+1}}</a></li>
+                </li>
+                {%if userService.CURRENT_PAGE+1 < userService.TOTAL_PAGES %}
+                <li class="next"><a href="/admin/user?{{paras}}&page={{userService.CURRENT_PAGE+1}}">后一页</a>
+                </li>
+                {%end%}
+                <li class=""><a href="/admin/user?{{paras}}&page={{userService.TOTAL_PAGES-1}}">尾页</a>
+            </ul>
+        </div>
+    </div>
+</div></div>
+</div>
+
+
+<div role="dialog" id="user_dialog" tabindex="-1" class="bootbox modal fade in" style="display:none;"
+     aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button id="dialog_close_img" class="bootbox-close-button close" type="button"
+                        style="margin-top: -10px;">×
+                </button>
+                <div class="bootbox-body">Are you sure?</div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" data-bb-handler="cancel" id="user_delete_cancel_btn">
+                    Cancel
+                </button>
+                <button class="btn btn-primary" type="button" data-bb-handler="confirm" id="user_delete_submit_btn">OK
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+<?py from services.company.company_services import CompanyServices?>
+<?py company_service = CompanyServices(handler.db)?>
+
+<html class="G_N"><head>
+		<title>公主号-海岛旅拍</title>
+	    <meta charset="UTF-8">
+	    <link href="/static/crm/css/header.min.css" rel="stylesheet" type="text/css">
+	    <link href="/static/crm/css/pc.min.css" rel="stylesheet" type="text/css">
+	    <style type="text/css">
+	    .icon-bottom,
+	    .icon-top{
+	    	background-image: none;
+	    }
+	    .book,.symbol,.cost{
+	    	color: #ff6577 !important;
+	    }
+	    .book{
+	    	margin-bottom: 20px;
+	    }
+	    .content li{
+	    	margin-left: 0px;
+	    }
+	    .summary{
+	    	margin-left: 0px;
+	    }
+	    .button{
+	    	background-color: #ff6577;
+	    	margin-bottom: 20px;
+	    }
+	    .block{
+	    	margin-bottom: 40px;
+	    }
+	    .block .img-box img{
+	    	height: 300px;
+	    }
+	    .banner{
+	    	height: 580px;
+	    }
+	    .content ul{
+	    	height: 80px;
+	    	overflow: hidden;
+	    }
+	    .rule{
+	    	margin-top: -35px;
+	    	margin-left: 45px;
+	    }
+	    .main{
+	    	border-color: 1px solid #eee;
+	    }
+	    </style>
+	<script>
+    var _hip = [
+        [ '_setPageId' , 4000011],
+        [ '_setCityId' , 1],
+        [ '_setShopType', 55]
+    ];
+</script>
+	</head>
+	<body id="top">
+		<a href="/topic/detail/1302/7204"><div class="banner" style="background:url('/static/crm/images/qixi_banner.jpg') no-repeat center; margin-bottom:40px;">
+		</div>
+        </a>
+		<div class="main">
+			<div class="column">
+<!--list-->
+                <?py for s in activities: ?>
+                    <div class="block">
+                        <a class="img-box" href="/series/${s.Fproduct_id}" target="_blank" oncick="_hip.push(['mv',{module:'wed_event_mv_all',action:'click', index:1}]);"><img src="${s.Fcover_img}"></a>
+                        <div class="content">
+                            <?py company = company_service.get_company_by_uid(s.Fmerchant_id)?>
+                            <a href="/merchant/detail/${company.Fid}" target="_blank"><h2>${company.Fcompany_name}</h2></a>
+                            <h3 class="book">现价:<span class="symbol">￥</span><span class="cost">${s.Fsale_price}</span>
+                            <span class="spent">原价:￥${s.Fprice}</span>
+                            </h3>
+                            <ul>
+                                <li>${s.Fcompany_gift}</li>
+                                <li>${s.Forder_gift}</li>
+
+                            </ul>
+                            <div class="btn-icon">
+                                <h6><span class="icon-top"></span><span class="summary">底片全送</span></h6>
+                                <h6><span class="icon-bottom"></span><span class="summary">无隐形消费</span></h6>
+                                <a href="/merchant/detail/${company.Fid}" target="_blank" oncick="_hip.push(['mv',{module:'wed_event_mv_all',action:'click', index:1}]);"><span class="button">立即预约</span></a>
+                            </div>
+                        </div>
+				    </div>
+                <?py #endfor ?>
+
+<!--end of list-->				
+			</div>
+		</div>
+		<a class="toTop" href="#top">返回顶部</a>
+		<div class="footer">
+			<h2><span class="write"></span><span class="rule">【活动规则】</span></h2>
+			<p>1.<i>进入产品详情页面点击“预约看店”即会有商家服务专员来为您服务。</i></p>
+			<p>2.<i>页面显示套系为商户七夕专属特惠，更多优惠点击进入商户页立即预约。</i></p>
+			<p>3.<i>获奖名单将于8月18日在“公主号”网站及微信公众号公布。</i></p>
+			<p>4.<i>本活动最终解释权归“公主号”所有。</i></p>
+		</div>
+		<script>
+			var DATA = {
+		        cityId: '1',
+		        eventId:'43',
+		        source:'1',
+			};
+			_hip.push(['mv', {module: 'wed_event_mv_all', action: 'browser',index: 0}]);
+		</script>
+		<script type="text/javascript" src="//j2.s2.dpfile.com/hls/hippo2.min.376e5aee201f773050a4842e4fd097c4.js"></script>
+		<script src="//j2.s2.dpfile.com/s/j/app/ewedding/common/jquery.min.08c235d357750c657ac1db7d1cf656a9.js" type="text/javascript"></script>
+		<script src="//j1.s2.dpfile.com/s/j/app/ewedding/wedding/travel2.min.39c6b9ba1f4b541694256c6a444b5e73.js" type="text/javascript"></script>
+</body></html>

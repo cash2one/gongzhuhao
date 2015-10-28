@@ -1,0 +1,172 @@
+<?py include('view/common/head.html') ?>
+<body>
+<link rel="stylesheet" href="/static/skin/css/zmz-merchant.css?v=0441">
+<link rel="stylesheet" href="/static/skin/css/header-footer.css?v=0424">
+<!-- 头部开始 -->
+<div class="merchant-center-header">
+    <div class="header-putCenter clearfix">
+        <a href="/"  class="icon manage-logo">商户管理中心</a>
+        <div class="header-info">
+
+            <div class="zmz-header-person-center logining clearfix">
+                <img src="${current_user.get('photo')}" class="user-head"/>
+                <a href="/merchant/index/product" class="zmz-header-login" seed="zmz-login" title="${current_user.get('nick')}">${current_user.get('nick',current_user.get('user_name',current_user.get('id')))}</a>
+            </div>
+            <div class="set-info-layer" id="J-info-layer">
+                <ul>
+                    <?py if current_user.get('role_codes', '') and 'merchant' in current_user['role_codes']: ?>
+                    <li>
+                        <a href="/merchant/index/product" target="_top" class="header-icon hf-merchant-center">商户中心</a>
+                    </li>
+                    <li>
+                        <a href="/merchants/index/${current_user.get('id')}" target="_top" class="header-icon hf-shop">进入店铺</a>
+                    </li>
+                    <?py else: ?>
+                    <li>
+                        <a href="/member/index/#{current_user.get('id')}" target="_top" class="header-icon hf-home-page">个人主页</a>
+                    </li>
+                    <li>
+                        <a href="/member/setting" target="_top" class="header-icon hf-person-reason">个人资料</a>
+                    </li>
+                    <?py #endif ?>
+
+                    <?py if current_user.get('is_employee', '') and current_user['is_employee']==1: ?>
+                    <li>
+                        <a href="/admin/index" target="_top" class="header-icon hf-ht-manage">后台管理</a>
+                    </li>
+                    <?py #endif ?>
+                    <li>
+                        <hr>
+                    </li>
+                    <li>
+                        <a href="/loginout" class="header-icon hf-out zmz-header-registration" title="退出">退出</a>
+                    </li>
+                </ul>
+            </div>
+            <!--<span> | </span>-->
+            <!--<a href="">${company.name if company else ''}</a>-->
+            <!--<span> | </span>-->
+            <!--<a href="">消息(0)</a>-->
+
+        </div>
+    </div>
+</div>
+<!-- 头部结束 -->
+
+<div class="zmz-main-box">
+    <!-- 面包屑位置 -->
+    <ul class="breadcrumb">
+        <li><a href="/" class="icon house">首页</a> <span class="divider"> > </span></li>
+        <li><a href="/merchant/index/product">商户管理中心</a></li>
+    </ul>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <p class="icon m-logo">商户管理中心</p>
+                <div class="menu-part">
+                    <a href="javascript:void(0)" class="menu clearfix">
+                        <span class="icon basic-info">基本信息</span>
+                        <span class="icon menu-open"></span>
+                    </a>
+                    <ul class="menu-list">
+
+                        <li>
+                            <a href="/member/pwd" data-id="" class="${'menu-active' if type_class == 'password' else ''}">修改密码</a>
+                        </li>
+                        <!--<li>-->
+                            <!--<a href="#" data-id="" class="">找回密码</a>-->
+                        <!--</li>-->
+                        <li>
+                            <a href="#" data-id="" class="">订单提醒</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-part">
+                    <a href="javascript:void(0)" class="menu clearfix">
+                        <span class="icon shop-manage">店铺管理</span>
+                        <span class="icon menu-open"></span>
+                    </a>
+                    <ul class="menu-list">
+
+                        <li>
+                            <a href="/merchant/index/product" data-id="" class="${'menu-active' if type_class == 'product' else ''}">案例中心</a>
+                        </li>
+                        <li>
+                            <a href="/merchant/index/preferential" data-id="" class="${'menu-active' if type_class == 'preferential' else ''}">优惠中心</a>
+                        </li>
+                        <li>
+                            <a href="/merchant/index/owner_share" data-id="" class="${'menu-active' if type_class == 'diary' else ''}">业主分享</a>
+                        </li>
+                        <li>
+                            <a href="/merchant/index/order" data-id="" class="${'menu-active' if type_class == 'order' else ''}">订单中心</a>
+                        </li>
+                        <li>
+                            <a href="/merchant/company/edit" data-id=""  class="${'menu-active' if type_class == 'base_setting' else ''}">店铺信息</a>
+                        </li>
+                        <li>
+                            <a href="/merchant/branch/list" data-id=""  class="${'menu-active' if type_class == 'branch' else ''}">分店设置</a>
+                        </li>
+                        <?py if company: ?>
+                            <li>
+                                <a href="/merchant/present" data-id=""  class="${'menu-active' if type_class == 'present' else ''}">到店礼</a>
+                            </li>
+                            <li>
+                                <a href="/merchants/index/${current_user['id']}" data-id="" target="_blank">进入店铺</a>
+                            </li>
+                            <!--
+                            <li>
+                                <a href="/weixin/merchants/info/index" data-id="" class="${'menu-active' if type_class == 'weixin_setting' else ''}">微信相关</a>
+                            </li>
+                            -->
+                        <?py #endif ?>
+                    </ul>
+                </div>
+                <div class="menu-part">
+                    <a href="javascript:void(0)" class="menu clearfix">
+                        <span class="icon project-manage">工程管理</span>
+                        <span class="icon menu-open"></span>
+                    </a>
+                    <ul class="menu-list">
+                        <li>
+                            <a href="/merchant/project" data-id="" class="${'menu-active' if type_class == 'project' else ''}">云端监理</a>
+                        </li>
+                        <li>
+                            <a href="/merchant/project_staff_manage" data-id="" class="${'menu-active' if type_class == 'staff' else ''}">人员管理</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-part">
+                    <a href="javascript:void(0)" class="menu clearfix">
+                        <span class="icon project-manage">移动端管理</span>
+                        <span class="icon menu-open"></span>
+                    </a>
+                    <ul class="menu-list">
+                        <li><a href="/activity/company/basic_info" class="${'menu-active' if type_class == 'ac-basic' else ''}">移动端商户主页</a></li>
+                        <li><a href="/activity/company/pyq" class="${'menu-active' if type_class == 'ac-pyq' else ''}">朋友圈最具人气装修公司活动</a></li>
+                    </ul>
+                </div>
+                <div class="publish-btn-part">
+                    <a href="/merchant/product/create" class="publish-btn-left" id="J-toPublish">产品发布</a>
+                </div>
+            </div>
+            #{_content}
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    //左边菜单的收拢展开操作
+    $('.menu').click(function(){
+        $(this).closest(".menu-part").find(".menu-list").slideToggle();
+        var stat = $(this).find("span:last-child");
+        if(stat.hasClass("menu-open")){
+            stat.removeClass("menu-open").addClass("menu-close");
+        }else{
+            stat.removeClass("menu-close").addClass("menu-open");
+        }
+    });
+
+</script>
+</body>
+</html>

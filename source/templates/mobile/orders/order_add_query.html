@@ -1,0 +1,48 @@
+
+<link rel="stylesheet" href="/static/mobile/css/schedule/schedule.css"  />
+<style>
+	.header{ height: 140px;}
+	.container{ padding: 1em;}
+	.fright{ float: right;}
+	.cd-main-content{padding-top: 140px; height: 100%;}
+	.username{ padding: 0; margin: 0 0 0 3em;}
+	.username p{ margin: 0; padding: 0;}
+	.container{ width: 100%; } 
+	.ui-btn{ padding: .3em .5em; font-size: 14px; font-weight: 100;}
+	.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a{ font-weight: 100;}
+	.ui-shadow{ box-shadow: none;}
+</style>
+<form action="/mobile/order/add_by_query_schedule/" method="post" id="mobile_order_create">
+    <label>档期分类</label>
+    #{xsrf_form_html}
+    <select name="category" id="category">
+        <?py for s in schedules:?>
+            <option value="${s.Fid}">${s.Fname}</option>
+        <?py #endfor?>
+    </select>
+    <label>开始时间</label>
+        <input type="text" class="form-control datatime" name="start_date" value=""/>
+    <label>截至时间</label>
+        <input type="text" class="form-control datatime" name="end_date" value=""/>
+        <input type="hidden" name="operation" id="operation" value="">
+        <input type="button"  id="create_indirect" onclick="return create_mobile_order('1');" value="查询档期录入订单">
+        <input type="button" id="create_direct" onclick="return create_mobile_order('0');" value="直接录入订单">
+</form>
+
+<?py include('web/calender/commoncalender.html')?>
+<script>
+
+    function  create_mobile_order(operation){
+         $('#operation').val(operation);
+         $('#mobile_order_create').submit();
+    }
+
+    $(function(){
+	$('.datatime').datetimepicker({
+	    lang:'ch',
+		timepicker:false,
+		format:'Y-m-d'
+	});
+	})
+
+</script>

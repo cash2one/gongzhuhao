@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <?py include("views/assets/styles.html") ?>
+    </head>
+    <body>
+        <div class="work-container">
+            <header class="bar bar-header bar-light">
+                <button ng-click="$ionicGoBack($event)" class="button back-button buttons  button-clear header-item">
+                <i class="icon ion-ios-arrow-back"></i> 
+                <span class="back-text">
+                    <span class="default-title hide">返回</span>
+                </span>
+                </button>
+                <div class="title title-center header-item">发帖</div>
+                <a class="publish" ng-click="onPush(model)" ng-disabled="model.clicked">发布</a>
+            </header>
+            <div class="content">
+            	<div class="list">
+            	  <label class="item item-input">
+            	    <input type="text" placeholder="请输入标题" ng-model="model.title">
+            	  </label>
+            	  <label class="item item-input">
+            	    <textarea placeholder="请输入话题内容" rows=4 ng-model="model.content"></textarea>
+            	  </label>
+            	</div>
+                <div class="list">
+                    <div class="col col-33"  style="display:inline-block;position:relative;overflow:hidden;" ng-repeat="item in uploader.queue">
+                        <div class="progress" style="margin-bottom: 0;width:100px;position:absolute">
+                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div></div>   
+                          <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 , width:100 }"></div>
+                    </div>
+             
+                    <div class="col col-33"  style="display:inline-block;position:relative;overflow:hidden;" >
+                        <input type="file" style="display:none" 
+                          id="file_post" multiple nv-file-select="" uploader="uploader"/>
+                        <img ng-click="onTriggerClick()" src="/static/images/photo.png"/>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <?py include("views/assets/javascripts.html") ?>
+        <script type="text/javascript" src="/static/scripts/work/works.js"></script>
+    </body>
+</html>
+

@@ -1,0 +1,72 @@
+.cd-main-content{ padding-top: 100px;}
+
+.form-group{ position: relative; margin: 0 0 .5em 0;}
+
+.upload{ position: relative; display: inline-block; width: 12em; height: 3em; line-height: 3em; text-align: center; background: #fdc5df;}
+/*.fileupload input{ position: absolute; top: 0; left: 0; width: 12em; height: 3em; background: transparent; filter: alpha(opacity=0); -moz-opacity: 0; opacity: 0;  cursor: pointer;}
+.fileupload .ui-input-text input{ display: inline-block; width: 12em; height: 3em; line-height: 3em; }
+.fileupload .ui-input-text, 
+.fileupload .ui-input-search{ border-style: none;}*/
+
+#preview { width: 80%; max-width: 300px;}
+#preview img {width: 100%;}
+.hiddenfile { width: 0px; height: 0px; overflow: hidden; }
+
+
+/*schedule query*/
+.schedule{ }
+.schedule .schedult-item{ margin: 0; padding: 0; list-style: none; /*border: 1px solid #e5e5e5;*/ border-bottom: none;}
+.schedule .schedult-item li{ margin: 0; padding: .8em 0;  border-bottom: 1px solid #e5e5e5; vertical-align: middle;} 
+.schedule .schedult-item label{ display: inline-block; padding-left: 20px; width: 180px; color: #666; font-size: 2em;}
+.schedule .schedult-item input, .schedule .schedult-item select{ display: inline-block; padding-right: 20px; width: 420px; color: #333; text-align: right; vertical-align: middle; font-size: 2em;}
+.schedule .schedult-item input{ padding-right: 5%; height: 80px; line-height: 80px; border: 1px solid #e5e5e5;}
+.schedule .schedult-item select{ height: 80px; line-height: 80px; background: #fff; border: 1px solid #e5e5e5;}
+
+.schedule .schedule-list{ margin: 0; padding: 0; list-style: none; }
+.schedule .schedule-list li{ padding: 0 1em; height: 100px; line-height: 100px; border-bottom: 1px solid #e5e5e5; vertical-align: middle; font-size: 2em;} 
+.schedule .schedule-list li a{ display: inline-block; width: 100%; height: 100%; text-decoration: none; cursor: pointer; color: #666;}
+.schedule .schedule-list li span{ display: inline-block;}
+.sl-date{ width: 30%;}
+.sl-datetime{ width: 60%;}
+.sl-week{ width: 20%;}
+.sl-totle{ width: 40%;}
+.sl-totle i{ margin-left: .2em; font-style: normal;}
+.btn{ margin: 1em;}
+.btn-share{ height: 80px; line-height: 80px; font-size: 2em; text-align: center;}
+.bg-gray{ padding: 0 1em; height: 100px; line-height: 100px; font-size: 2em;}
+.bg-gray span{ display: inline-block;}
+.icon.fright{ margin-top: 1.3em;}
+
+/*add order*/
+
+.order .box{ margin: 1em; border: 1px solid #e5e5e5; border-bottom: none; font-size: 1.8em;}
+.order .form-group{position: relative; margin: 0 0 .5em 0; border-bottom: 1px solid #e5e5e5;}
+.order .form-group label{ display: inline-block; /*margin-top: .5em;*/ padding-left: 1%; width: 24%;}
+.order .form-group input, .order .form-group select{ padding-right: 1%; width: 74%; height: 40px; line-height: 40px; font-size: 1em}
+.order .form-group input{margin-bottom: .5em; border: none;}
+.order .form-group select{ margin: .5em 0; border: 1px solid #e5e5e5; background: #fff;}
+.order .form-group input.btn-uploadphoto{ padding: 0; margin: 0 1%; width: 98%;}
+#image-preview { margin: 3.6em auto 0 auto; max-width: 300px;}
+#image-preview img {width: 100%;}
+.hiddenfile { width: 0px; height: 0px; overflow: hidden; }
+.form-group.fileupload{ overflow: hidden; margin: 0 0 1em 0; min-height: 50px;}
+
+.description{ min-height: 100px; width: 100%; border: 1px solid #ddd; border-radius: 3px; font-size: 1.6em;}
+.upload-box{ position: relative; width: 100%; margin:1em auto;}
+.upload-main{ position: relative; overflow: hidden;}
+.btn-upload{ display: inline-block; width: 12em; height: 3em; border: 1px solid #cf4156; background: #cf4156; color: #fff;}
+.upload-preview{ overflow: hidden; padding: 1em 0;}
+.upload-append-list{ overflow: hidden; width: 100px; height: 200px; margin: 0 1em 0 0; float:left; position:relative;}
+.upload-delete{  position: absolute; top: 0; right: 0; width: 26px; height: 26px; display: inline-block; background:url(/static/mobile/images/delete.png) no-repeat center;}
+.upload-image{ overflow: hidden; width: 100px; height: 100px;}
+/*.upload-submit{padding-top:1em; padding-left:1em; overflow: hidden; height: 80px;} */
+.btn-confirm{display:none; }
+.upload-loading{ height:100px; background:url(/static/mobile/images/loading.gif) no-repeat center;}
+.upload-progress{display:none; padding:5px; border-radius:10px; color:#fff; background-color:rgba(0,0,0,.6); position:absolute; left:25px; top:45px;}
+.ui-shadow-inset{ box-shadow: none; -webkit-box-shadow:none; -moz-box-shadow:none}
+#chooseFile{ position: absolute; top: 0; left: 0; background: #ed32a4; color: #fff; font-size: 1em; height: 60px; line-height: 60px;}
+.fileupload{ margin-top: 1em;}
+#uploadfile{ position: absolute; top: 0; left: 0; padding: 0; margin: 0 1%; filter: alpha(opacity=0); -moz-opacity: 0; opacity: 0; width: 98%; height: 60px; line-height: 60px; cursor: pointer;}
+.bg-alpha{ background:rgba(0, 0, 0, 0.5)!important; filter:alpha(opacity=50); background: #000; color: #fff; z-index: 99;}
+
+.publish{ top: .6em; font-size: 2em; text-decoration: none; color: #ed32a4; cursor: pointer;}

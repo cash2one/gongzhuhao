@@ -1,0 +1,73 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>套系列表</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <?py include("views/assets/styles.html") ?>
+        <style type="text/css">
+        body{
+          font-size: 9px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="work-container">
+          <header class="bar bar-header bar-light">
+            <div class="row">
+              <div class="col">
+                  <?py if price: ?>
+                    <?py if price.endswith('-'):?>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        ${price.split('-')[0]}以上<span class="caret"></span>
+                        </button>
+                    <?py elif price.startswith('-'): ?>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        ${price.split('-')[1]}以下<span class="caret"></span>
+                        </button>
+                    <?py else: ?>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        ${price}<span class="caret"></span>
+                        </button>
+                    <?py #endif ?>
+                  <?py else: ?>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        价格筛选<span class="caret"></span>
+                    </button>
+                  <?py #endif ?>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/api/mobile/series/query/1/?price=" data-value="">全部</a></li>
+                    <?py for query_price in query_status: ?>
+                        <?py prices = query_price.split('-')?>
+                        <?py if prices[0] == '': ?>
+                            <?py p = prices[1]+'以下'?>
+                            <li><a href="/api/mobile/series/query/1/?price=${query_price}" data-vaule="">${p}</a></li>
+                        <?py elif prices[1] == '': ?>
+                            <?py p = prices[0]+'以上'?>
+                            <li><a href="/api/mobile/series/query/1/?price=${query_price}" data-vaule="">${p}</a></li>
+                        <?py else: ?>
+                            <li><a href="/api/mobile/series/query/1/?price=${query_price}" data-vaule="">${query_price}</a></li>
+                        <?py #endif ?>
+                    <?py #endfor ?>
+                  </ul>
+              </div>
+            </div>
+          </header>
+          <div class="content">
+              #{_content}
+          </div>
+          <?py if has_next: ?>
+            <div class="list">
+                <input type="hidden" value="${price}" id="price" />
+                <button type="button" class="btn btn-more"> 点击获取更多数据>></button>
+            </div>
+          <?py #endif ?>
+        </div>
+        <?py include("views/assets/javascripts.html") ?>
+        <script type="text/javascript" src="/static/scripts/series/index.js"></script>
+    </body>
+</html>
+

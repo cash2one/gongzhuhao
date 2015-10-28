@@ -1,0 +1,16 @@
+Index: apps_mobile/topics/topic_handler.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- apps_mobile/topics/topic_handler.py	(revision 77bb0eb9612a7b060af90fbc65724e219d4460e6)
++++ apps_mobile/topics/topic_handler.py	(revision )
+@@ -294,7 +294,7 @@
+             for expression in re.findall(r'\[em\_\d*\]',content):
+                 content = content.replace(expression,'<img src="/static/images/faces/'+re.findall(r'\d+',expression)[0]+'.gif" border="0" />')
+ 
+-            self.set_page_view('t_topics',topic.Fid,0)#浏览数据写入memcache
++            self.set_page_view('t_topics',topic.get('Fid'),0)#浏览数据写入memcache
+             #微信-配置
+             page_cache = PageDataCache(self.db)
+             access_token = page_cache.get_access_token(WX_GZH_AppID,WX_GZH_AppSecret)

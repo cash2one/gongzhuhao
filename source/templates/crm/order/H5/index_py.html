@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+<meta charset="utf-8">
+<title>公主号 －－ 客片管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+ 
+	<link rel="stylesheet" href="../../../../static/web/css/reset.css" />
+	<link rel="stylesheet" href="../../../../static/web/css/common.css" />
+	<link rel="stylesheet" href="../../../../static/web/css/plugins/bootstrap.min.css" />
+	<link rel="stylesheet" id="bs-css" href="../../../../static/web/css/plugins/bootstrap-cerulean.min.css"/>
+	<script src="../../../../static/web/js/plugins/jquery.min.js"></script>
+	<script src="../../../../static/web/js/plugins/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="../../../../static/web/js/plugins/bootstrap.min.js"></script> 
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="/static/apps_crm/js/plugins/html5.js"></script>
+	<![endif]-->
+	<style>
+		.h-profile{ padding: 20px 0; text-align: center; }
+		.h-schedu{ padding: 15px 0; border-bottom: 1px solid #ddd;}
+		.h-schedu a{ width: 100%; height: 100%;}
+		.h-schedu:hover{ background: #dff0d8;}
+		.row p{ margin: 0;}
+		.bg-pink{ background: #f69; color: #fff;}
+		.bg{ background: #efefef;}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<div class="container bg-pink">
+				<div class="row h-profile">
+					<div class="col-sm-12">
+						<p>公主号</p>
+                        <p>${order.Fuser_name}</p>
+                        <p>订单日期${order.Fcreate_time}</p>
+					</div>
+				</div>
+			</div>
+		</header>	
+		<section>
+			<div class="container">
+				<div class="row h-schedu">
+					<a href="0/">
+						<div class="col-xs-1 col-md-1 col-sm-1">
+							<span>试衣</span>
+						</div>
+						<div class="col-xs-9 col-md-9 col-sm-9">
+                            <p>时间：${items[0].Fdatetime}</p>
+                            <p>地点：${"待定" if items[0].Fsite=="" else items[0].Fsite}</p>
+						</div>
+						<div class="col-xs-1 col-md-1 col-sm-1">
+							<span class="glyphicon glyphicon-menu-right"></span>
+						</div>
+					</a>
+				</div>
+				<div class="row h-schedu bg">
+					<a href="1/">
+						<div class="col-xs-1 col-md-1 col-sm-1">
+							<span>摄影</span>
+						</div>
+						<div class="col-xs-9 col-md-9 col-sm-9">
+                            <p>时间：${items[1].Fdatetime}</p>
+                            <p>地点：${"待定" if items[1].Fsite=="" else items[1].Fsite}</p>
+						</div>
+						<div class="col-xs-1 col-md-1 col-sm-1">
+							<span class="glyphicon glyphicon-menu-right"></span>
+						</div>
+					</a>
+				</div>
+				<div class="row h-schedu">
+					<a href="2/">
+						<div class="col-xs-1 col-md-1 col-sm-1">
+							<span>选样</span>
+						</div>
+						<div class="col-xs-9 col-md-9 col-sm-9">
+                            <p>时间：${items[2].Fdatetime}</p>
+                            <p>地点：${"待定" if items[2].Fsite=="" else items[2].Fsite}</p>
+						</div>
+						<div class="col-xs-1 col-md-1 col-sm-1">
+							<span class="glyphicon glyphicon-menu-right"></span>
+						</div>
+					</a>
+				</div>
+				<div class="row h-schedu bg">
+					<a href="3/">
+						<div class="col-xs-1 col-md-1 col-sm-1">
+							<span>定稿</span>
+						</div>
+						<div class="col-xs-9 col-md-9 col-sm-9">
+                            <p>时间：${items[3].Fdatetime}</p>
+                            <p>地点：${"待定" if items[3].Fsite=="" else items[3].Fsite}</p>
+						</div>
+						<div class="col-xs-1 col-md-1 col-sm-1">
+							<span class="glyphicon glyphicon-menu-right"></span>
+						</div>
+					</a>
+				</div>
+				<div class="row h-schedu">
+					<a href="4/">
+						<div class="col-xs-1 col-md-1 col-sm-1">
+							<span>取件</span>
+						</div>
+						<div class="col-xs-9 col-md-9 col-sm-9">
+                            <p>时间：${items[4].Fdatetime}</p>
+                            <p>地点：${"待定" if items[4].Fsite=="" else items[4].Fsite}</p>
+						</div>
+						<div class="col-xs-1 col-md-1 col-sm-1">
+							<span class="glyphicon glyphicon-menu-right"></span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

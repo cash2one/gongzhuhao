@@ -1,0 +1,274 @@
+<link rel="stylesheet" href="/static/crm/css/member/member.css" />
+<link rel="stylesheet" href="/static/crm/js/plugins/dataTime/jquery.datetimepicker.css" />
+<link rel="stylesheet" href="/static/crm/js/plugins/jstree/themes/default/style.min.css" />
+				
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->		
+	<div class="row-fluid sortable">
+		<div class="col-lg-3 col-md-3">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>部门管理</h2>
+				</div>
+				<div class="box-content department">
+                    <div id="jstree_depart"></div>
+				</div>
+			</div><!--/span-->
+		</div>
+        <div class="col-lg-9 col-md-9">
+            <div class="box-inner">
+                <div class="box-header well">
+					<h2>人员管理</h2>
+				</div>
+				<div class="box-content">
+                    <button class="btn btn-primary btn-setting fright" type="button" value="添加员工" onclick="edit_staff('')"><span class="glyphicon glyphicon-plus"></span>添加员工</button>
+				</div>
+				<div class="box-content member-list">
+					<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						<thead>
+							<tr>
+								<th class="ml-avatar">员工姓名</th>
+							    <th class="ml-mobile">手机号</th>
+								<th class="ml-group">隶属部门</th>
+								<th class="ml-lastlogin">创建时间</th>
+								<th class="ml-role">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+			            <?py if staffers:?>
+			                <?py for stf in staffers:?>
+							<tr>
+								<input type="hidden" value="${stf.Fid}" id="staff-id"/>
+								<td class="ml-avatar">
+									<!--<img src="" width="45" height="45" alt="avatar" class="fleft"/>-->
+									${stf.Fname}
+								</td>
+								<td class="ml-mobile">
+									${stf.Fmobi}
+								</td>
+								<td class="ml-group">
+									${stf.Fdepartment_name}
+								</td>
+								<td class="ml-lastlogin">
+                                    <span>${stf.Fcreate_time}</span>
+								</td>
+								<td class="ml-role">
+                                    <button class="btn btn-success btn-sm btn-edit" type="button" value="编辑" onclick="edit_staff(${stf.Fid})"><span class="glyphicon glyphicon-edit"></span>编辑</button>
+									<a href="javascript:;" data-id="${stf.Fid}" class="btn btn-danger btn-sm btn-del"><span class="glyphicon glyphicon-trash"></span>删除</a>
+								</td>
+							</tr>
+			                <?py #endfor ?>
+			                <?py #endif?>
+						</tbody>
+					</table>
+				</div>
+            </div>
+        </div>
+    </div>
+</div><!--/row-->
+
+<div class="modal fade" id="addMemModal" tabindex="-1" role="dialog" aria-labelledby="addMemModalLabel" aria-hidden="true" data-backdrop="false">
+	<div class="modal-dialog">
+		<form method="">
+			<div class="modal-content addMember">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="addMemModalLabel">添加/编辑员工</h4>
+				</div>
+				<div class="modal-body">
+					<ul>
+						<li>
+							<label for="staff-name">姓名<em class="red">*</em></label>
+							<input type="text" name="staff-name" id="staff-name" class="input-txt" />
+						</li>
+						<li>
+							<label for="staff-derapt">所在部门</label>
+							<select id="staff-derapt">
+                                <?py if departments:?>
+                                    <?py for d in departments:?>
+                                        <?py if dpt_id and int(dpt_id)==d.Fid: ?>
+                                            <option value="${d.Fid}" selected = "selected">${d.Ffull_department_name}</option>
+                                        <?py else: ?>
+                                            <option value="${d.Fid}">${d.Ffull_department_name}</option>
+                                        <?py #endif?>
+                                     <?py #endfor?>
+                                <?py #endif?>
+							</select>
+						</li>
+						<li>
+							<label for="staff-title">职称</label>
+							<select id="staff-title">
+                                <?py for t in _MERCHANG_DEPARTMENT_TITLES:?>
+                                    <option value="${t}">${t}</option>
+                                <?py #endfor?>
+							</select>
+						</li>
+                        	<li>
+							<label for="staff-mobile">手机号<em class="red">*</em></label>
+							<input type="tel" name="staff-mobile" id="staff-mobile" class="input-txt" />
+						</li>
+						<!--li>
+							<label for="staff-email">邮箱</label>
+							<input type="email" name="staff-email" id="staff-email" class="input-txt" />
+						</li-->
+
+					</ul>
+				</div>
+                <input type="hidden" name="m-staff-id" id="m-staff-id" value="">
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-green" id="js_staffer_add">保存</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<script src="/static/crm/js/plugins/jstree/jstree.js"></script>
+<!--gzh func js-->
+<script src="/static/crm/js/member/department.js"></script>
+<script src="/static/crm/js/member/member.js"></script>
+<script>
+    var default_name = '部门名称';
+	$('#jstree_depart').jstree({
+		'core' : {
+		    "animation" : 0,
+		    "check_callback" : true,
+			"themes" : {},
+			'focused' : true,
+			'strings' : {
+                            'New node' : ' ',
+                        },
+            'data' : {
+                    'url' : '/merchant/departments/get/depart/' + '${dpt_id}',
+                    "dataType" : "json",
+
+                },
+
+		},
+		"plugins" : [
+            "contextmenu", "types",
+         ],
+	});
+	//创建
+	$('#jstree_depart').on("create_node.jstree",function(e,data){
+        $.ajax({
+            type: 'post',
+            async: false,
+            url: '/merchant/departments/add/',
+            data: {"_xsrf": $('input[name="_xsrf"]').val(),
+                   "dpt_pre_id":parseInt(data.parent),
+                   "dpt_name":default_name},
+            dataType: "json",
+            success: function(response){
+                var new_id = response.id;
+                var ref = $('#jstree_depart').jstree(true);
+                var cur_node = ref.get_node(data.node, false);
+
+                ref.set_id(cur_node, new_id);
+
+                ref.select_node(cur_node);
+                ref.open_node(cur_node);
+                ref.edit(cur_node);
+            },
+            error: function(error){ }
+        });
+    });
+    //去除字符串前后的空格
+    function trim(str) {
+      return str.replace(/(^\s+)|(\s+$)/g, "");
+    }
+    //重命名
+    $('#jstree_depart').on("rename_node.jstree",function(e,data){
+        if(trim(data.node.text) == '' || data.node.text==default_name){
+            alert('请输入部门名称！');
+            var ref = $('#jstree_depart').jstree(true);
+            var cur_node = ref.get_node(data.node, true);
+            ref.open_node(cur_node);
+            ref.edit(cur_node);
+            return;
+        }
+
+        $.ajax({
+            type: 'post',
+            url: '/merchant/departments/rename/',
+            data: {"_xsrf": $('input[name="_xsrf"]').val(),
+                   "dpt_id":parseInt(data.node.id),
+                   "dpt_old_name":trim(data.old),
+                   "dpt_name":trim(data.node.text)},
+            dataType: "json",
+            success: function(response){ },
+            error: function(error){ }
+        })
+    });
+    //删除
+	$('#jstree_depart').on("delete_node.jstree",function(e,data){
+	    //删除确认提示放在jstree.js的5215行,不能放在此处。
+        $.ajax({
+            type: 'post',
+            url: '/merchant/departments/delete/'+data.node.id+'/',
+            data: {"_xsrf": $('input[name="_xsrf"]').val()},
+            dataType: "json",
+            success: function(response){
+                if(response.stat == 'err'){
+                    alert(response.msg);
+                    window.location.href = "/merchant/departments/" + data.node.id;
+                }
+            },
+            error: function(error){
+            }
+        })
+    });
+    //选择
+	$('#jstree_depart').on("select_node.jstree",function(e,data){
+	    if(data.event.type == 'click'){
+            window.location.href = "/merchant/departments/" + data.node.id;
+        }
+        return true;
+    });
+
+    function edit_staff(staff_id){
+        if(staff_id == ''){//新增
+            //设置页面值
+            $('#staff-name').val('');
+            $('#staff-derapt').val(${dpt_id});
+            $('#staff-title').val('无职称');
+            $('#staff-email').val('');
+            $('#staff-mobile').val('');
+            $('#m-staff-id').val('0');
+
+            $('#addMemModal').modal('show');
+        }else{//编辑
+            //获取员工信息
+            $.ajax({
+                type: 'get',
+                url: '/merchant/staffers/edit/'+staff_id+'/',
+                data: {},
+                dataType: "json",
+                success: function(response){
+                    if(response.stat == 'succ'){
+                        //设置页面值
+                        $('#staff-name').val(response.Fname);
+                        $('#staff-derapt').val(response.Fdepartment_id);
+                        $('#staff-title').val(response.Ftitle);
+                        $('#staff-email').val(response.Femail);
+                        $('#staff-mobile').val(response.Fmobi);
+                        $('#m-staff-id').val(response.Fid);
+
+                        $('#addMemModal').modal('show');
+                    }else{
+                        alert(response.msg);
+                    }
+                },
+                error: function(error){
+                    alert('err!');
+                }
+            })
+         }
+    } 
+    
+	$(function(){
+		$(".nav-dep").addClass("active");
+	})
+</script>

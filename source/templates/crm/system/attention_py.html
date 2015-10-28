@@ -1,0 +1,79 @@
+<link href='/static/crm/css/order/order.css' rel='stylesheet' />
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>服务设置 - 温馨提示</h2>
+				</div>
+				<div class="box-content">
+					<div class="work-tab">
+						<a class="current" href="/merchant/schedule/edit/template/msg/">温馨提示设置</a>
+						<a href="/merchant/schedule/edit/template/site/">地址设置</a>
+                        <a href="/merchant/system/gift/1">到店礼</a>
+                        <a href="/merchant/system/gift/2">订单礼</a>
+					</div>					
+				</div>
+				<div class="box-content schedule tips">
+					<form method="">
+		                <table class="table">
+		                    <thead>
+		                        <tr>
+		                            <th class="schedule-item">选项</th>
+		                            <th class="schedule-tips">温馨提示</th>
+		                        </tr>
+		                    </thead>
+		                    <input type="hidden" name="sch_orderId" id="sch_orderId" />
+		                    <input type="hidden" name="sch_sellerId" id="sch_sellerId" />
+		                    <tbody>
+		                        <tr>
+		                            <td class="schedule-item">试衣</td>
+		                            <td class="schedule-tips">
+                                        <textarea class="form-control tips" cols="3" id="tip0">${'' if len(items)<1 else items[0].Fdescription}</textarea>
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                            <td class="schedule-item">摄影</td>
+		                            <td class="schedule-tips">
+                                        <textarea class="form-control tips" cols="3" id="tip1">${'' if len(items)<2 else items[1].Fdescription}</textarea>
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                            <td class="schedule-item">选样</td>
+		                            <td class="schedule-tips">
+                                        <textarea class="form-control tips" cols="3" id="tip2">${'' if len(items)<3 else items[2].Fdescription}</textarea>
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                            <td class="schedule-item">定稿</td>
+		                            <td class="schedule-tips">
+                                        <textarea class="form-control tips" cols="3" id="tip3">${'' if len(items)<4 else items[3].Fdescription}</textarea>
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                            <td class="schedule-item">取件</td>
+		                            <td class="schedule-tips">
+                                        <textarea class="form-control tips" cols="3" id="tip4">${'' if len(items)<5 else items[4].Fdescription}</textarea>
+		                            </td>
+		                        </tr>
+		                    </tbody>
+			                    <tfoot>
+			                    		<tr>
+			                    			<td colspan="2" class="tcenter">
+				            					<button type="button" class="btn btn-green save" id="save" style="margin-top: 10px;">保存</button>
+				            					<input type="hidden" value="" id="merchant_id" />
+			                    			</td>
+			                    		</tr>
+			                    </tfoot>
+		                </table>
+					</form>
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+<script src="/static/crm/js/system/tip.js"></script>

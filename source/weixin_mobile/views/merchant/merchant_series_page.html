@@ -1,0 +1,11 @@
+<?py for package in series.result: ?>
+  <div class="md-item">
+      <a href="/api/mobile/series/${package.Fid}"><img class="gzh-thumbnail" src="${package.Fcover_img}"></a>
+      <h3>${package.Fpackage_name}</h3>
+      <p class="md-extra">
+          <span class="gray fr"><i class="iconfont">&#xe600;</i>60</span>
+          <span class="text-red"><i class="price">¥</i>${package.Fsale_price}</span>
+          <del class="dark-gray"><i class="price">¥</i>${package.Fprice}</del>
+      </p>
+  </div>
+<?py #endfor ?>

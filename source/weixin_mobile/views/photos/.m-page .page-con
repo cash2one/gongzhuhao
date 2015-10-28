@@ -1,0 +1,26 @@
+'use strict';
+
+angular.module('zenmezApp')
+  .controller('PhotosShareCtrl', function ($scope,$http) {
+  	$scope.model = {};
+    var promise = ;
+    promise.success(function(data ,state ){
+      
+    });
+
+    promise.error(function(data , state){
+      console.log("error");
+    });
+  })
+  .config(function($stateProvider) {
+  $stateProvider
+	  .state('zenmez.photoshare', {
+	    url: "/photoshare",
+	    views: {
+	      'menuContent': {
+	        templateUrl: "/static/views/photos/photoshare.tpl.html",
+	        controller : 'PhotosShareCtrl'
+	      }
+	    }
+	  });
+});

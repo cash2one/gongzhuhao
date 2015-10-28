@@ -1,0 +1,31 @@
+<ion-view view-title="服务列表">
+  <ion-content class="service">
+  	<div class="list">
+  		<div class="item" ng-repeat="item in model.service.list">
+ 			<p class="fa-2x">
+				<span class="order-name"><i class="icon ion-ios-person-outline pink"></i>{{item.user_name}}</span>
+				<span class="order-tel"><i class="icon ion-ios-telephone-outline pink"></i>{{item.user_mobi}}</span>
+			</p>
+			<p class="fa-lg">
+				<span class="order-type">{{item.type}}</span>
+				<i>|</i>
+				<span class="schedule-type">档期分类</span>
+				<i>|</i>
+				<span class="order-money">{{item.order_amount}}元</span>
+				<i>|</i>
+				<span accesskey="photo-time">拍照时间：2015-04-15 </span>
+			</p>
+			<p class="gray">
+				<span class="order-no">订单号：{{item.order_id}}</span>
+				<span class="order-time">订单时间：{{item.create_time}}</span>
+			</p> 			
+  		</div>
+  	</div>
+  </ion-content>
+  <div class="bar bar-footer bar-service">
+	<div class="button-bar">
+	  <button class="button" ng-click="onSkipOrder()">直接录入</button>
+	  <button class="button" ng-click="onAddOrder()">查询录入</button>
+	</div>
+</div>
+</ion-view>

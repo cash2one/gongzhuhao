@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/static/crm/css/system/setting.css" />
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>分享推广信息设置</h2>
+				</div>
+
+				<div class="box-content">
+					<div class="work-tab">
+                        <a class="current" href="/merchant/system/edit/shareextendinfo/">分享推广信息设置</a>
+						<a href="/merchant/system/edit/shareprizeinfo/">分享奖励信息设置</a>
+                        <a href="/merchant/share/wishes/">祝福设置</a>
+					</div>
+				</div>
+
+				<div class="box-content member" id="js_member">
+	                <input type="hidden" value="${info.Fid if info else 0}" id="Fid"/>
+	                <div class="setcons">
+	                    会在分享页的最后显示，让商户来推广产品或者通知优惠。
+	                </div>
+                		<div class="setcons">
+                        <textarea name="m-extend-info" id="description" class="form-control textarea">${info.Finfo if info else ''}</textarea>
+                        <p id="txt-count"></p>
+                    </div>
+	
+	                <div class="setcons tright">
+	                    <!--<button type="button" name="add" class="btn btn-default" id="js_cancel_x">取消</button>-->
+	                    <span class="error info-error"></span>
+	                    <button type="button" name="add" class="btn btn-success" id="js_save_x">保存</button>
+	                </div>
+				</div>
+
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+<script src="/static/crm/js/system/setting.js"></script>
+<script>
+	$(function(){
+		$(".nav-share").addClass("active");
+		$(".nav-share").parent().css("display","block");
+	})
+</script>

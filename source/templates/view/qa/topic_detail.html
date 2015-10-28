@@ -1,0 +1,162 @@
+<link rel="stylesheet" href="/static/skin/css/first-page.css">
+
+<!-- 页面信息存储 -->
+<div class="hide">
+    <input type="hidden" name="pageType" value="DETAIL">
+    <input type="hidden" name="topic_id" value="${topic.Fid}">
+    <input type="hidden" name="_xsrf" value="${xsrf_token}">
+</div>
+<div class="topic-nav">
+    <div class="main-topic clearfix">
+        <a href="/topic" class="crumbs">首页</a>
+        <span class="crumbs"> > </span>
+        <a href="/topic/${topic_cate.Fid}/" class="crumbs ">${topic_cate.Fname}</a>
+        <span class="crumbs"> > </span>
+        <a href="" class="crumbs crumbs-active">${topic.Ftitle}</a>
+    </div>
+</div>
+<div class="main-topic mb100 clearfix">
+    <div class="topic-left-box">
+        <div class="topic-top-part clearfix">
+            <a href="/member/index/${topic.Fuser_id}" class="topic-owner-head">
+                <img src="${user_photo}" alt="">
+            </a>
+            <div class="topic-owner-info">
+                <p class="topic-title">${topic.Ftitle}</p>
+                <div class="o-t-msg">
+                    <a href="/member/index/${topic.Fuser_id}" class="topic-user-name">${nick_name}</a>
+                    <span class="time">${topic.Fcreate_time}</span>
+                </div>
+            </div>
+            <div class="data-show">
+                <a href="#topicPublishForm" class="topic-thread">跟帖</a>
+                <div class="data-view-comment clearfix">
+                    <span class="topic-icon topic-toComment">${topic.Ftotal_assess}</span>
+                    <span class="topic-icon topic-view">${handler.get_page_view('t_topics',topic.Fid,topic.Fpage_view)}</span>
+                </div>
+            </div>
+        </div>
+        <div class="topic-list topic_detail louzhu-part" data-id="0" data-name="${nick_name}">
+            <div class="topic-detail-content">${topic.Fcontent}</div>
+            <div class="top-detail-descImg clearfix">
+                <?py for img in topic_images: ?>
+                <img src="${img['topic_img']}" class="showBigImg" alt="">
+                <?py #endfor ?>
+            </div>
+            <div class="top-detail-operating clearfix">
+                <a href="javascript:;" class="topic-icon vote ${'voteNO' if vote_judge else 'voteYES'}" data-vote="${vote_judge}">赞 (<ins class="approval">${topic.Fpraise}</ins>)</a>
+                <a href="#topicPublishForm" class="reply">回复</a>
+                <a href="" class="report">举报</a>
+
+            </div>
+        </div>
+        <ul class="topic-part topic_detail" id="detail_topic_comment">
+            <?py for reply in reply_list: ?>
+            <li class="topic-list" data-id="${reply['Fid']}" data-name="${reply['nick_name']}">
+                <div class="topic-detail-topInfo clearfix">
+                    <a href="/member/index/${reply['Fuser_id']}" class="topic-user-head">
+                        <img src="${reply['head_url']}" alt="">
+                    </a>
+                    <div class="topic-nameDate">
+                        <a href="/member/index/${reply['Fuser_id']}" class="topic-user-name">${reply['nick_name']}</a>
+                        <p class="topic-list-date">${reply['time']}</p>
+                    </div>
+                    <p class="topic-floor">${reply['index']}L</p>
+                </div>
+                <?py if reply.get('parent', ''): ?>
+                <div class="comment-object">
+                    <div class="topic-detail-topInfo clearfix">
+                        <a href="/member/index/${reply['parent']['user_id']}" class="c-o-user-name">${reply['parent']['nick_name']}</a>
+                        <p class="c-o-date">${reply['parent']['time']} </p>
+                        <p class="c-o-floor">${reply['parent']['parent_index']}L</p>
+                    </div>
+                    <div class="topic-detail-content">${reply['parent']['parent_content']}</div>
+                    <div class="top-detail-descImg clearfix">
+                        <?py for img in reply['parent']['images']: ?>
+                        <img src="${img['img']}" class="showBigImg" alt="">
+                        <?py #endfor ?>
+                    </div>
+                </div>
+                <?py #endif ?>
+                <div class="topic-detail-content">${reply['content']}</div>
+                <div class="top-detail-descImg clearfix">
+                    <?py for img in reply['images']: ?>
+                    <img src="${img['img']}" class="showBigImg" alt="">
+                    <?py #endfor ?>
+                </div>
+                <div class="top-detail-operating clearfix">
+                    <a href="javascript:;" class="topic-icon vote ${'voteNO' if reply['vote_judge'] else 'voteYES'}" data-vote="${reply['vote_judge']}">赞 (<ins class="approval">${reply['Fpraise']}</ins>)</a>
+                    <a href="#topicPublishForm" class="reply">回复</a>
+                    <a href="" class="report">举报</a>
+                </div>
+            </li>
+            <?py #endfor ?>
+        </ul>
+
+        <!-- 翻页部分在此 -->
+        <div class="page-part">
+            <!--页面信息保存-->
+            <input type="hidden" name="page" value="1">
+            <input type="hidden" name="total_page" value="${total_page}">
+            <div class="page" id="J-manage-page"></div>
+        </div>
+
+        <div class="topic-publish-part" id="topicPublishForm">
+            <h3 class="publish-title">跟帖</h3>
+            <div class="topic-main-desc">
+                <div class="desc-other-mark">
+                    <a href="javascript:;" class="topic-icon emotion face"></a>
+                    <form action="/album/photo/qa/upload/" method="post" enctype="multipart/form-data" class="topic-form" id="J-topic-formFile">
+                        <input type="hidden" name="_xsrf" value="${xsrf_token}">
+                        <p class="topic-icon uploadImg"></p>
+                        <input id="fileupload_topic" type="file" name="files" data-url="" title="请选择图片" multiple>
+                    </form>
+                </div>
+                <textarea class="topic-desc-content" id="saytext" name="saytext" placeholder="请输入跟帖内容，至少5个字"></textarea>
+            </div>
+            <ul class="upload-descImg-list clearfix"></ul>
+        </div>
+        <input type="hidden" name="commentedObject" value="0">
+        <input type="button" class="commentBtn" value="发表">
+        <span class="err"></span>
+    </div>
+
+    <!--话题右半公用部分  热门话题和活跃榜-->
+    <?py include('view/qa/topic_right.html') ?>
+
+</div>
+
+<script type="text/html" id="J-model-topic-comment">
+    <li class="topic-list" data-id="{{id}}" data-name="{{name}}">
+        <div class="topic-detail-topInfo clearfix">
+            <a href="/member/index/{{user_id}}" class="topic-user-head">
+                <img src="{{head_url}}" alt="">
+            </a>
+            <div class="topic-nameDate">
+                <a href="/member/index/{{user_id}}" class="topic-user-name">{{name}}</a>
+                <p class="topic-list-date">{{time}}</p>
+            </div>
+            <p class="topic-floor">{{floor}}L</p>
+        </div>
+        {{commented_object}}
+        <div class="topic-detail-content">{{content}}</div>
+        {{descImg}}
+        <div class="top-detail-operating clearfix">
+            <a href="javascript:;" class="topic-icon vote {{vote}}" data-vote="{{vote_judge}}">赞 (<ins class="approval">{{assist}}</ins>)</a>
+            <a href="#topicPublishForm" class="reply">回复</a>
+            <a href="" class="report">举报</a>
+        </div>
+    </li>
+</script>
+
+<script type="text/html" id="J-model-topic-comment2">
+    <div class="comment-object">
+        <div class="topic-detail-topInfo clearfix">
+            <a href="/member/index/{{user_id}}" class="c-o-user-name">{{name}}</a>
+            <p class="c-o-date">{{time}}</p>
+            <p class="c-o-floor">{{floor}}L</p>
+        </div>
+        <div class="topic-detail-content">{{content}}</div>
+        {{descImg}}
+    </div>
+</script>

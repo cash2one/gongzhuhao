@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/static/mobile/css/schedule/schedule.css"  />
+<header class="header">
+	<a class="back" href="javascript:history.go(-1);"><span class="icon icon-back"></span></a>
+	<p class="title">我的排期</p>
+</header>		
+<section class="cd-main-content items">
+	<div class="container">
+		<div class="info">
+			<dl>
+				<dt class="avatar">
+                    <a target="_blank" href="" class="avatar-box">
+                        <img  width="80" height="80" alt="avatar" src="/static/mobile/images/avatar.png" >
+                        <em class="avatar-cover"></em>
+                    </a>
+                </dt>
+				<dd class="avatar-name">${order.Fuser_name}</dd>
+				<dd class="text-gray">订单日期：${order.Fcreate_time}</dd>
+			</dl>
+		</div>					
+        <?py if items:?>
+            <?py for item in items:?>
+            <div class="h-schedu">
+                <a href="/mobile/schedule/detail/${order.Fid}/${items.index(item)}/" data-ajax="false">
+                    <div class="hs-left">
+                    		<p class="text-big">${_SCHEDULE_TYPE[item.Fid]}</p>
+                        <p class="text-gray"><i class="icon icon-time"></i>${item.Fdatetime if item.Fdatetime else _schedule_word}</p>
+                        <p class="text-gray"><i class="icon icon-location"></i>${"" if not item.Fdatetime else item.Fsite}</p>
+                    </div>
+                    <div class="hs-right">
+                        <span class="icon icon-arrow fright"></span>
+                    </div>
+                </a>
+            </div>
+            <?py #endfor?>
+        <?py #endif?>				
+	</div>
+</section>

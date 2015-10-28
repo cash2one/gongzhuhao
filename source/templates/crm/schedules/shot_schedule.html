@@ -1,0 +1,317 @@
+<link href='/static/crm/css/system/schedule.css' rel='stylesheet' />
+<?py include('crm/calender/doublecalender.html') ?>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+      $('#reservation').daterangepicker({
+       minDate:'${start_date}',
+      }, function(start, end, label) {
+        console.log(start.toISOString(), end.toISOString(), label);
+      });
+   });
+ </script>
+<div id="content" class="col-lg-10 col-sm-10">
+<div class="row-fluid sortable">
+    <div class="box col-md-12">
+        <div class="box-inner">
+        <div class="box-header well" data-original-title>
+            <h2>档期管理</h2>
+        </div>
+        <div class="box-content orders">
+        		<div class="form-group">
+
+                <label for="">档期分类:</label>
+                <select id="schedule_categeory" name="schedule_categeory">
+                    <option value="">所有档期</option>
+                    <?py if schedule_category:?>
+                        <?py for c in schedule_category:?>
+                            <?py if input_category_id and input_category_id==c.Fid:?>
+                                <option value="${c.Fid}" selected="selected">${c.Fname}</option>
+                            <?py else:?>
+                                    <option value="${c.Fid}">${c.Fname}</option>
+                            <?py #endif ?>
+                        <?py #endfor ?>
+                    <?py #endif ?>
+                </select>
+
+				<label for="schedule_pan">选择时间:</label>
+                <input type="text" name="schedule_month_selecte" id="reservation"  class="form-control input-txt" value="${start_date} - ${end_date}" placeholder=""/>
+
+                <input type="button" id="schedule_plan_btn" class="btn btn-primary btn-schedule" value="查询" />
+                <?py role_codes = handler.get_current_user().get('Frole_codes')?>
+                <?py permission = handler.get_current_user().get('Fpermission')?>
+                <?py if role_codes or 'plans_edit' in permission: ?>
+                    <input type="button" id="schedule_set_btn" onclick="Schedule.set_schedule();" class="btn btn-success btn-schedule" value="设置档期" />
+                <?py #endif ?>
+
+			</div>
+
+            <form class="form-horizontal" id="schedule_content_html">
+                <table class="table">
+
+                    <thead>
+                        <tr>
+                            <th class="" width="8%"><input type="checkbox" id="all_schedule" name="all_schedule" >全选</th>
+                            <th class="" width="20%">日期</th>
+                            <th class="" width="20%">分类</th>
+                            <th class="sc-num">可拍摄量</th>
+                            <th class="sc-num">已排期量</th>
+                            <th class="sc-num">可排期量</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                     <?py import datetime ?>
+                     <?py current_day=datetime.datetime.strftime(datetime.datetime.now(),'%Y-%m-%d')?>
+
+                     <?py if schedule_plans:?>
+                         <?py for s in schedule_plans:?>
+                                <?py if str(s.Fschedule_day)==current_day:?>
+                                    <tr class="">
+                                    <td class=""><input type="checkbox" name="schedule_check" value="${s.Fid}"> </td>
+                                    <td class="">${s.Fschedule_day}   ${week_day_dict[s.Fschedule_day.weekday()]}</td>
+                                <?py else:?>
+                                    <tr>
+
+                                    <td class=""><input type="checkbox" name="schedule_check" value="${s.Fid}"> </td>
+                                    <td class="">${s.Fschedule_day} ${week_day_dict[s.Fschedule_day.weekday()]}</td>
+                                <?py #endif?>
+                                    <td class="">${category_dict[s.Fschedule_category_id]}</td>
+                                    <td class="">${s.Ftotal_per_day}</td>
+                                     <?py a,b=handler.get_complete_plan(s.Fschedule_day,s.Ftotal_per_day,s.Fschedule_category_id) ?>
+                                    <td class="sc-num">#{a}</td>
+                                    <td class="sc-num">${b}</td>
+                                    <!--<td><a href="javascript:Schedule.update_day_schedule(${s.Fid},${s.Ftotal_per_day})">修改档期</a></td>-->
+                                </tr>
+                         <?py #endfor?>
+                     <?py #endif ?>
+
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div><!--/span-->
+</div>
+</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+<script language="Javascript">
+
+	function check_all_schedule(){
+
+		    if ($('#all_schedule').checked) {
+	            alert('checked');
+	            $("input[name='schedule_check']:checkbox").each(function() {
+	            		$(this).prop('checked', true);
+	                    //alert("t");
+	            })
+	        } else {   //反之 取消全选
+	        	alert('unchecked');
+	            $("input[name='schedule_check']:checkbox").each(function() {
+	            		$(this).prop('checked', false);
+	             })
+	        }
+	}
+
+
+
+$(document).ready(function(){
+
+
+    $("#schedule_plan_btn").click(function() {
+
+       /* if ($('#schedule_categeory').val()==''){
+                $('#schedule_set_btn').hide();
+        }else{
+            $('#schedule_set_btn').show();
+        }**/
+
+        $.get('/merchant/get/schedule/by_month/',{date_time:$("#reservation").val(),category:$('#schedule_categeory').val()},function(data){
+            $('#schedule_content_html').html(data);
+        })
+    });	
+
+
+	$(document).on("click","#all_schedule",function(){
+          if (this.checked) {
+
+                    $("input[name='schedule_check']:checkbox").each(function() {
+                            $(this).prop('checked', true);
+                                //alert("t");
+                    })
+                } else {   //反之 取消全选
+
+                    $("input[name='schedule_check']:checkbox").each(function() {
+                            $(this).prop('checked', false);
+                     })
+	        }
+	});
+
+/**	$('').on('change', function() {
+	    if (this.checked) {
+	            alert('OK');
+	            $("input[name='schedule_check']:checkbox").each(function() {
+	            		$(this).prop('checked', true);
+	                        //alert("t");
+	            })
+	        } else {   //反之 取消全选
+	        	alert('OK');
+	            $("input[name='schedule_check']:checkbox").each(function() {
+	            		$(this).prop('checked', false);
+	             })
+	        }
+	});
+*/
+    $('#user_schedule_btn').click(function(){
+            var ids = "";
+            var params = false;
+            $("input[name='schedule_check']:checkbox:checked").each(function(){
+                    ids+=$(this).val()+',';
+                    params=true
+            })
+            if(!params){
+                alert('选择设置档期时间');
+                return ;
+            }
+            if($('#times').val()==''){
+                alert('请输入设置档期次数');
+                return;
+            }
+            $("#update_schedule_ids").val(ids);
+            $('#myModal').modal('hide')
+            $.get('/merchant/set/schedule/plan/',{update_schedule_ids:$('#update_schedule_ids').val(),times:$('#times').val()},function(data){
+                   var obj = $.parseJSON(data);
+                   if(obj.stat=='ok'){
+                        show_dialog_none_reload('设置档期','设置成功');
+                        url = 'http://'+window.location.host+window.location.pathname+'?month_date='+$("#reservation").val()+'&input_category_id='+$("#schedule_categeory").val();
+                        window.location.href=url;
+                        //window.location.href = window.location.host+window.location.pathname+'?month_date='+$('#schedule_month_selecte').val()
+                       }
+                   else{
+                            show_dialog_none_reload('设置档期',obj.info);
+                        }
+           })
+    })
+
+    $('#user_update_schedule_btn').click(function(){
+            $('#update_schedule').modal('hide')
+            $.get('/merchant/update/schedule/plan/',$('#update_schedule').serialize(),function(data){
+                           var obj = $.parseJSON(data);
+                           if(obj.stat=='ok'){
+                                show_dialog_reload('设置档期','设置成功');
+                            }
+                           else
+                                show_dialog_none_reload('设置档期',obj.info);
+           })
+    })
+    
+});
+
+var Schedule = {
+　　　　set_schedule:function(){
+            $('#myModal').modal()
+
+        /**
+        $.get('/admin/users/delete/',{},function(data){
+                               var obj = $.parseJSON(data);
+                             //  User.user_dialog(obj.info);
+                               if(obj.status=='success'){
+                                     $('#').remove();
+                                }
+
+         })*/
+
+　　　　},
+
+       update_schedule:function(schedule_id){
+            $('#myModal').modal()
+   },
+
+   update_day_schedule:function(schedule_id,count){
+        $('#schedule_count').val(count);
+        $('#update_schedule_id').val(schedule_id);
+        $('#update_schedule').modal()
+   },
+
+
+
+
+   user_dialog:function(info){
+         $('#delete_model_content').html(info);
+         $("#user_delete_model").dialog({
+            modal: !0,
+            minWidth: 500,
+            minHeight: 150,
+            dialogClass: "no-shadow",
+            buttons: {
+                OK: function() {
+                        $(this).dialog("close");
+                }
+            },
+            show: "fadeIn"
+        }),
+        $(".ui-widget-overlay").addClass("bg-black opacity-80")
+       }
+};
+
+</script>
+
+
+<!-- Button trigger modal -->
+<!-- Modal -->
+<!--<div class="modal fade" id="update_schedule" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+  <!--<div class="modal-dialog">-->
+    <!--<div class="modal-content">-->
+      <!--<div class="modal-header">-->
+        <!--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>-->
+        <!--<h4 class="modal-title" id="myModalLabel">设置档期</h4>-->
+      <!--</div>-->
+      <!--<div class="modal-body">-->
+         <!--<form id="update_schedule_form">-->
+            <!--<div class="box-content shot_schedule">-->
+                <!--<span>数量-->
+                    <!--<input type="hidden" id="update_schedule_id" value=""/>-->
+                    <!--档期拍摄次数:<input type="text" name="schedule_count" id="schedule_count" class="form-control" value="" placeholder="" />-->
+                <!--</span>-->
+            <!--</div>-->
+          <!--</form>-->
+      <!--</div>-->
+      <!--<div class="modal-footer">-->
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        <!--<button type="button" class="btn btn-primary" id="user_update_schedule_btn">提交</button>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+
+
+        <!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="ModalLabel">设置档期</h4>
+      </div>
+      <div class="modal-body">
+         <form id="set_schedule_form">
+                <div class="box-content shot_schedule">
+                    <div class="form-group">
+                        <input type="hidden" id="update_schedule_ids" value=""/>
+                        档期拍摄次数:<input type="text" name="times" id="times" class="form-control iput-txt" value="" placeholder="" />
+                    </div>
+                </div>
+              #{xsrf_form_html}
+         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="user_schedule_btn">提交</button>
+      </div>
+    </div>
+  </div>
+</div>

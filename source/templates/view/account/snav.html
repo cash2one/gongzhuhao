@@ -1,0 +1,35 @@
+<div class="gzh-side-avatar">
+	<img src="${current_user.get('Fphoto_url')}" width="128" height="128" alt="avatar" class="img-circle" />
+	<p class="title">${current_user.get('Fnick_name')}</p>
+</div>
+
+<ul class="gzh-side-item f16">
+	<li>
+		<a id="user_list" href="/user/orders/list/" title="小组话题">
+			<i class="iconfont gzh-list"></i>预约清单
+		</a>
+	</li>
+	<li>
+		<a id="user_fav" href="" title="小组话题">
+			<i class="iconfont gzh-collect"></i>我的收藏
+		</a>
+	</li>
+	<li>
+		<a id="user_topics" href="/user/topics/" title="小组话题">
+			<i class="iconfont gzh-reply_2"></i>小组话题
+		</a>
+	</li>
+
+	<li>
+		<a id="user_notify" href="/user/notify" title="消息通知">
+			<i class="iconfont gzh-notice"></i>消息通知
+		</a>
+	</li>
+
+	<li>
+		<a id="user_profile" href="/user/profile" title="修改资料">
+			<i class="iconfont gzh-setting"></i>修改资料
+		</a>
+	</li>
+</ul>
+

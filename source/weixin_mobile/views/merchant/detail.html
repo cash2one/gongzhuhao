@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>商家详情</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/styles/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/styles/common.css"/>
+    <link rel="stylesheet" href="/static/styles/ionic.css" />
+    <link rel="stylesheet" type="text/css" href="/static/styles/iconfont.css" />
+    <link rel="stylesheet" href="/static/styles/merchant/merchant.css"/>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="bar bar-header gzh-header bar-light">
+             <button class="button back-button buttons  button-clear header-item" onclick="javascript:history.go(-1)">
+                <i class="icon ion-ios-arrow-back"></i>
+                <span class="back-text">
+                    <span class="default-title hide">返回</span>
+                </span>
+            </button>
+            <div class="title title-center header-item">商家详情</div>
+        </header>
+        <div class="gzh-cons">
+            <section class="merchant-detail">
+                <div class="md-detail">
+                    <div class="md-banner">
+                        <img src="${merchant.Fphoto_url}" alt="${merchant.Fcompany_name}"/>
+                        <i class="md-banner-cover"></i>
+                        <p class="md-title">${merchant.Fcompany_name}</p>
+                    </div>
+                    <div class="md-items md-price bg-white">
+                        <!--<span class="md-l text-red"><i class="price">¥</i>${merchant.Fcheapest} 起</span>-->
+                        <span class="md-l text-red"><i class="price">¥</i>${merchant.Fcheapest}~${merchant.Fmost_expensive}</span>
+                        <a href="/mobile/bespeak_order/1/${merchant.Fid}/${merchant.Fuser_id}" class="btn btn-order">立即预约</a>
+                    </div>
+                    <div class="md-items bg-white">
+                        <span class="md-l">
+                            <a href="tel:${merchant.Fphone}"><i class="iconfont gzh-phone"></i>${merchant.Fphone}</a>
+                        </span>
+                        <a href="tel:${merchant.Fphone}" class="md-r dark-gray">
+                            立即咨询
+                            <i class="iconfont gzh-right-thin"></i>
+                        </a>
+                    </div>
+                    <div class="md-items md-address bg-white">
+                        <span class="md-l">
+                            <i class="iconfont gzh-address">;</i>
+                            ${merchant.Fdetail_address}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="md-series bg-white">
+                    <h2>热门套系
+                        <a href="/api/mobile/series/query/1/${merchant.Fuser_id}" class="dark-gray">查看全部<span>${series.total}</span>个套系<i class="iconfont gzh-right-thin"></i></a>
+                    </h2>
+                    <?py for s in series.result:?>
+                        <div class="md-item">
+                            <a href="/api/mobile/series/${s.Fid}"> <img src="${s.Fcover_img}" /></a>
+                            <h3>${s.Fpackage_name}</h3>
+                            <p class="md-extra">
+                                <span class="gray fr"><i class="iconfont gzh-like"></i>60</span>
+                                <span class="text-red"><i class="price">¥</i>${s.Fsale_price}</span>
+                                <del class="dark-gray"><i class="price">¥</i>${s.Fprice}</del>
+                            </p>
+                        </div>
+                    <?py #endfor ?>
+                </div>
+
+                <div class="md-series bg-white">
+                    <h2>热门作品
+                        <a href="/api/mobile/works/query/1/${merchant.Fuser_id}" class="dark-gray">查看全部<span>${works.total}</span>个作品<i class="iconfont gzh-right-thin"></i></a>
+                    </h2>
+                    <?py for w in works.result:?>
+                        <div class="md-item">
+                            <a href="/api/mobile/work/${w.Fid}"> <img src="${w.Fcover_img}" /></a>
+                            <h3>${w.Fname}</h3>
+                        </div>
+                    <?py #endfor ?>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

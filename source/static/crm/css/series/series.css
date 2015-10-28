@@ -1,0 +1,64 @@
+.form-control{ font-size: 12px;}
+.series{ overflow: hidden;}
+.series .series-extra{ display: inline-block; }
+.series .form-group{ margin-bottom: 10px;}
+.series .form-group label{ display: inline-block; text-align: left;}
+.series .form-group label.label-title{ width: 100px;}
+.series .form-group .form-control{ width: 300px; display: inline-block;}
+.series .form-group label.radio-inline{ margin-right: 10px;}
+.series .v-top{ vertical-align: top;}
+.series .ml{ margin-left: 104px;}
+.series .form-group .tags{ display: inline-block; margin: 0 5px 10px 0; line-height: 30px; text-decoration: none;}
+.tags:hover{ text-decoration: none;}
+.series .form-group label.checkbox-inline{ margin-right: 20px;}
+.box-content.series-publish{ padding: 10px 10px 0 0; height: 40px;}
+.series-publish .btn-success{  display: inline-block; height: 30px;}
+/*
+ * 自己写
+ */
+.write{ display: inline; cursor: pointer; text-decoration: underline;}
+.series .form-control.input-write{ margin-right: 5px; width: 100px; height: 30px; vertical-align: middle;}
+.write .btn-write{ margin-left: -8px;}
+.write-box{ display: none;}
+.series-extra .tags{ cursor: pointer; padding: 0 8px; border: 1px solid #ddd; border-radius: 5px;}
+.series-extra .tags.current{ display: inline-block; padding: 0px 8px; background: #4cc25c; border: 1px solid #4cc25c; color: #fff; border-radius: 5px;}
+
+
+/*
+ * 上传图片
+ */
+.series-upload{ position: relative; display: inline-block;}
+.btn-uploadphoto{ position: relative; width: 120px; height: 30px;}
+#fileupload{ position: absolute;top: 0; left: 0; filter: alpha(opacity=0); -moz-opacity: 0; opacity: 0; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; width: 120px; height: 30px; cursor: pointer;}
+
+.photo-thumb{ margin-left: 104px; margin-top: 15px;}
+.photo-item{ position: relative; float: left; overflow: hidden; margin: 0 20px 20px 0;}
+.photo-item:hover{ cursor: move;}
+.up-photo{ float: left; position: relative; overflow: hidden; width: auto; height: 180px; text-align: center; vertical-align: middle;} 
+/*.up-photo span{ display: table-cell; vertical-align: middle;}*/
+.up-photo a{ text-decoration: none; z-index: -1;}
+.up-photo img{ height: 180px; width: auto;}
+.pt-total{ position: absolute; bottom: 0; left: 0; padding: 5px 10px; width: 100%;}
+.pt-total span{ margin: 0 2px;}
+.pi-img a{ display: inline-block; width: 180px; height: 220px;}
+.pi-img img{ width: 100%; height: auto; overflow: hidden;}
+.pi-state{ position: absolute; right: 10px; top: 10px; z-index: 999; display: inline-block; padding: 8px 0; width: 50px; text-align: center;} 
+.tab-pane{ overflow: hidden; padding: 10px 0;}
+.photo-upload{ overflow: hidden; padding: 10px 10px 20px 30px;}
+.photo-desc{ padding: 5px; border: 1px solid #ddd; border-top: none; border-bottom: none; width: 570px; height: 118px;}
+.delete-photo{ position: absolute; top: 0; right: 0; margin:0; width: 30px; height: 30px; text-align: center; vertical-align: middle; background:rgba(0, 0, 0, 0.5)!important; filter:alpha(opacity=50); background: #000; color: #fff; z-index: -1;}
+.delete-photo i{ margin: 8px 0 0 2px;}
+.photo-item:hover .delete-photo{ z-index: 99;}
+.series .form-group span.add{ display: inline-block; cursor: pointer;}
+.series .form-group .form-control.wtextarea{ width: 405px;}
+/*
+ * 封面图
+ */
+.btn-uploadcover{ display: inline-block; width: 120px; height: 160px; border: 1px dashed #ddd; text-align: center; line-height: 160px;}
+#coverupload{ position: absolute;top: 0; left: 0; filter: alpha(opacity=0); -moz-opacity: 0; opacity: 0; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; width: 120px; height: 160px; cursor: pointer;}
+.cover{ display: none; position: absolute; left: 0; top: 0; display: inline-block; width: 120px; height: 160px;}
+.cover-img{ display: inline-block; width: 130px;}
+.cover-desc{ display: inline-block; min-width: 500px; vertical-align: middle;}
+.cover-desc p{ margin: 0; padding: 0;}
+.series .form-group .form-control.textarea{ width: 600px;}
+.mt{ margin-top: 15px;}

@@ -1,0 +1,33 @@
+<?py for topic in topics: ?>
+<div class="topic-list">
+    <a href="/mobile/topic/detail/${topic.get('Fid')}/1/${type_num}/${category_id}">
+        <div class="topic-list-title">
+            <h2>
+                <?py if topic.get('Fis_top'): ?>
+                    <span class="gzh-top">顶</span>
+                <?py #endif ?>
+                <?py if topic.get('Fis_essence'): ?>
+                    <span class="gzh-essence">精</span>
+                <?py #endif ?>
+                <span>${topic.get('Ftitle')}</span>
+                <?py if topic.get('has_img'): ?>
+                    <i class="iconfont red-text">&#xe609;</i>
+                <?py #endif ?>
+            </h2>
+        </div>
+        <div class="topic-info">
+            <img alt="" src= "${handler.get_user_info(str(topic.get('Fuser_id'))).get('photo_url')}" />
+            <span class="topic-list-publisher">${handler.get_user_info(str(topic.get('Fuser_id'))).get('nick_name')}</span>
+            <span class="topic-list-msg gray fright">
+                <i class="iconfont">&#xe60b;</i>
+                <span>${topic.get('Ftotal_assess')}</span>
+            </span>
+            <?py if type_num == '2': ?>
+                <span class="topic-list-date gray fright">${topic.get('last_reply_time')}</span>
+            <?py else: ?>
+                <span class="topic-list-date gray fright">${topic.get('time')}</span>
+            <?py #endif ?>
+        </div>
+    </a>
+</div>
+<?py #endfor?>

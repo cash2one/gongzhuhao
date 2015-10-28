@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/static/mobile/css/schedule/order.css"  />
+<header class="header">
+	<a class="back" href="javascript:history.go(-1);"><span class="icon icon-back"></span></a>
+	<p class="title">查询档期</p>
+</header>		
+<section class="cd-main-content schedule">
+	<div class="bg-gray">
+		<span class="sl-date">苏州园林</span>
+		<span class="sl-datetime">${start_date} ~ ${end_date}</span>
+	</div>
+	<ul class="schedule-list">
+
+    <?py week_day_dict = {
+                0: '星期一',
+                1: '星期二',
+                2: '星期三',
+                3: '星期四',
+                4: '星期五',
+                5: '星期六',
+                6: '星期天',
+            }?>
+         <?py for schedule in _schedules:?>
+                <li>
+                    <a href="/mobile/merchant/orders/add/?shot_date=${schedule[0]}&schedule_category=${category_id}">
+                        <span class="icon icon-arrow fright"></span>
+                        <span class="sl-date">${schedule[0]}</span>
+                        <span class="sl-week">${week_day_dict[schedule[0].weekday()]}</span>
+                        <span class="sl-totle">剩余<i class="text-purple">${schedule[2]}</i></span>
+                    </a>
+        		</li>
+         <?py #endfor ?>
+	</ul>
+</section>
+
+
+
+
+
+
+

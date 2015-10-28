@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- The styles -->
+	<link rel="stylesheet" href="/static/web/js/plugins/dataTime/jquery.datetimepicker.css" />
+
+	<script src="/static/web/js/plugins/jquery.min.js"></script>
+    <script language="javascript">
+        $(document).ready(function(){
+            $(".scene-traveling").hide();
+            $(".shot-site-traveling").hide();
+            $("#merchant_work_nav").addClass('active');
+        });
+    </script>
+    <style>
+        .tr-l{ display: inline-block; width: 10%;}
+        .tr-r{ display: inline-block; width: 90%}
+    </style>
+</head>
+
+<body>
+
+<?py include('ops/works/work_base.html') ?>
+
+<div class="col-md-10">
+    <div class="panel">
+        <div class="panel-heading"><strong><i class="icon-globe"></i>作品发布</strong></div>
+        <div class="panel-body order-infos">
+            <form class="form-inline" action="" id="user_ajax_form" method="post">
+                <table class="table table-form">
+                    <tbody>
+                    <tr>
+                        <td class="tr-l">作品类型</td>
+                        <td class="tr-r">
+                            <label class="radio-inline">
+                                <input type="radio" name="work-type" value="wedding" class="wedding" checked/>婚纱摄影
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="work-type" value="traveling" class="travel"/>旅游婚纱
+                            </label>
+                        </td>
+                    </tr>
+                    <tr class="product-name">
+                        <td class="tr-l">作品名称</td>
+                        <td class="tr-r">
+                            <input type="text"  class="form-control" id="product_name" />
+                        </td>
+                    </tr>
+
+                    <tr class="work-style">
+                        <td class="tr-l">作品风格</td>
+                        <td class="tr-r">
+                            <?py for work_style in work_styles: ?>
+                                <label class="radio-inline">
+                                    <input type="radio" name="work_style" value="${work_style[0]}" />${work_style[1]}
+                                </label>
+                            <?py #endfor?>
+                            <input type="text" id="work_style_name" class="form-control" style="width:150px"/>
+                        </td>
+                    </tr>
+                    <tr class="scene-wedding">
+                        <td class="tr-l">拍摄场景</td>
+                        <td class="tr-r">
+                            <label class="radio-inline">内景</label>
+                            <?py for key in shooting_scenes.get('indoor').keys(): ?>
+                                <?py if key == 'user_writing_indoor': ?>
+                                    <?py continue ?>
+                                <?py #endif ?>
+                                <label class="radio-inline">
+                                    <input type="radio" name="shot_scene_code" value="${key}"/>${shooting_scenes.get('indoor')[key]}
+                                </label>
+                            <?py #endfor?>
+                            <label class="radio-inline">
+                                <input type="radio" name="shot_scene_code" value="user_writing_indoor" />自己写
+                            </label>
+                            <input type="text" id="indoor_site" style="width:65px" />
+                        </td>
+                    </tr>
+                    <tr class="scene-wedding">
+                        <td class="tr-l"></td>
+                        <td class="tr-r">
+                            <label class="radio-inline">外景</label>
+                            <?py for key in shooting_scenes.get('outdoor').keys(): ?>
+                                <?py if key == 'user_writing_outdoor': ?>
+                                    <?py continue ?>
+                                <?py #endif ?>
+                                <label class="radio-inline">
+                                    <input type="radio" name="shot_scene_code" value="${key}"/>${shooting_scenes.get('outdoor')[key]}
+                                </label>
+                            <?py #endfor?>
+                            <label class="radio-inline">
+                                <input type="radio" name="shot_scene_code" value="user_writing_outdoor"/>自己写
+                            </label>
+                            <input type="text" id="outdoor_site" style="width:150px" />
+                        </td>
+                    </tr>
+                    <tr class="scene-traveling">
+                       <td class="tr-l">拍摄场景</td>
+                       <td class="tr-r">
+                           <?py for photograph_site_2 in photograph_sites_2: ?>
+                               <label class="radio-inline">
+                                   <input type="radio" name="shot_scene_code_2" value="${photograph_site_2[0]}" />${photograph_site_2[1]}
+                               </label>
+                           <?py #endfor?>
+                           <input type="text" id="scene_content_traveling" style="width:30px" />
+                       </td>
+                    </tr>
+                    <tr class="shot-site-traveling">
+                       <td class="tr-l">拍摄地</td>
+                       <td class="tr-r">
+                           <?py for shot_site in shot_sites: ?>
+                             <label class="radio-inline">
+                                 <input type="radio" name="shot_site" value="${shot_site[0]}" />${shot_site[1]}
+                             </label>
+                           <?py #endfor ?>
+                           <input type="text" id="site_content_traveling" style="30px"/>
+                       </td>
+                    </tr>
+                    <tr>
+                        <td class="tr-l">造型特色</td>
+                        <td class="tr-r">
+                            <?py for mode_style in mode_styles: ?>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="mode_style" value="${mode_style[0]}"/>${mode_style[1]}
+                                </label>
+                            <?py #endfor ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tr-l">起拍价</td>
+                        <td class="tr-r">
+                            <input type="text" class="form-control" id="sell_price"/>
+                        </td>
+                    </tr>
+                        <td class="tr-l">作品描述</td>
+                        <td class="tr-r">
+                           <textarea class="form-control" rows="3" id="product_description"></textarea>
+                        </td>
+                    <tr>
+                        <td colspan="2">
+                            #{xsrf_form_html}
+                        <input type="button" data-loading="稍候..." value="保存" class="btn btn-primary" id="user_submit"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                    <input type="hidden" id="user_id" value="${user_id}" />
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/static/web/js/plugins/bootstrap.min.js"></script>
+<script src="/static/web/js/plugins/jquery.cookie.js"></script>
+<script src="/static/web/js/plugins/responsive-tables.js"></script>
+<script src="/static/web/js/plugins/jquery.autogrow-textarea.js"></script>
+<script src="/static/web/js/plugins/jquery.history.js"></script>
+<script src="/static/web/js/plugins/dataTime/jquery.datetimepicker.js" ></script>
+<script src="/static/web/js/common.js"></script>
+<!--gzh func js-->
+
+</body>
+<script language="Javascript">
+    $(".travel").click(function(){
+        $(".work-style").hide();
+        $(".scene-wedding").hide();
+        $(".scene-traveling").show();
+        $(".shot-site-traveling").show();
+    });
+
+    $(".wedding").click(function(){
+        $(".scene-traveling").hide();
+        $(".shot-site-traveling").hide();
+        $(".work-style").show();
+        $(".scene-wedding").show();
+    });
+
+    $('#user_submit').click(function(){
+        var _merchant_id = $('#user_id').val();
+        var _work_type = $('input[name="work-type"]:checked').val();
+        var _product_name = $('#product_name').val(); //产品名称
+        var _work_style = $('input[name="work_style"]:checked').val();
+        var _work_style_self = $('#work_style_name').val();
+        var _shot_scene_code = $('input[name="shot_scene_code"]:checked').val();
+        var _indoor_site_self = $('#indoor_site').val();
+        var _outdoor_site_self = $('#outdoor_site').val();
+        var _scene_traveling_code = $('input[name="shot_scene_code_2"]:checked').val();
+        var _shot_site_traveling_code = $('input[name="shot_site"]:checked').val();
+        var _scene_traveling_self = $('#scene_content_traveling').val();
+        var _site_traveling_self = $('#site_content_traveling').val();
+
+        var _mode_style_array = new Array(); //造型
+        $('input:checkbox:checked[name="mode_style"]').each(function(i) {_mode_style_array[i] = this.value; });
+        var _str = ''
+        for(var i=0;i<_mode_style_array.length;i++){
+            _str += _mode_style_array[i]+',';
+        }
+        var _mode_style = _str.slice(0,-1);
+
+        var _sell_price = $('#sell_price').val();
+        var _product_description = $('#product_description').val();
+        var _xsrf = "#{xsrf_token}";
+
+        /*
+        alert('类型:'+_work_type);
+        alert('产品名称:'+_product_name);
+        alert('产品风格'+_work_style);
+        alert('自己写的产品风格'+_work_style_self);
+        alert('拍摄场景1code'+_shot_scene_code);
+        alert('内景自己写'+_indoor_site_self);
+        alert('外景自己写'+_outdoor_site_self);
+        alert('拍摄场景2code'+_scene_traveling_code);
+        alert('拍摄地code'+_shot_site_traveling_code);
+        alert('拍摄场景2自己写'+_scene_traveling_self);
+        alert('拍摄地自己写'+_site_traveling_self);
+        */
+
+        $.ajax({
+            type:"post",
+            url:"/gzh/ops/create/work/"+_merchant_id,
+            data:{
+                product_type:_work_type,
+                product_name:_product_name,
+                style_code:_work_style,
+                style_self:_work_style_self,
+                shot_scene_code_wedding:_shot_scene_code,
+                shot_scene_wedding_indoor_self : _indoor_site_self,
+                shot_scene_wedding_outdoor_self : _outdoor_site_self,
+                shot_scene_code_traveling:_scene_traveling_code,
+                shot_space_site_code:_shot_site_traveling_code,
+                scene_traveling_self:_scene_traveling_self,
+                site_traveling_self:_site_traveling_self,
+                mode_style_code:_mode_style,
+                sale_price:_sell_price,
+                description:_product_description,
+                _xsrf:_xsrf,
+            },
+            success:function(data){
+                var obj = $.parseJSON(data);
+                if(obj.stat == 'success'){
+                    alert('发布成功!');
+                    location.href = '/gzh/ops/works/company/list/';
+                }else{
+                    alert('发布失败!');
+                }
+            },
+            error:function(){
+
+            }
+        });
+
+    });
+
+</script>
+</html>

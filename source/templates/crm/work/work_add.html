@@ -1,0 +1,267 @@
+<link href='/static/crm/css/dragula.min.css' rel='stylesheet' />
+<link href='/static/crm/css/work/work.css' rel='stylesheet' />
+<!--<form action="/merchant/work/add/" method="post" name="myForm" onSubmit="return checkForm();">-->
+<input type="hidden" name="_xsrf" value="${xsrf_token}" />
+<input type="hidden" name="work_id" value="${work_id}" id="work-id" />
+<div id="content" class="col-lg-10 col-sm-10">	
+    <div class="row-fluid sortable">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title>
+                    <h2>作品发布</h2>
+                </div>
+                <div class="box-content series">
+                    <div class="form-group">
+                        <label class="label-title">类型</label>
+                        <label class="radio-inline">
+                            <?py if not work or work.Fproduct_type == 'wedding': ?>
+                                <input type="radio" name="product_type" value="wedding" checked />婚纱摄影
+                            <?py else: ?>
+                                <input type="radio" name="product_type" value="wedding" />婚纱摄影
+                            <?py #endif ?>
+                        </label>
+                        <label class="radio-inline">
+                            <?py if work and work.Fproduct_type == 'traveling': ?>
+                                <input type="radio" name="product_type" value="traveling" checked />旅游婚纱
+                            <?py else: ?>
+                                <input type="radio" name="product_type" value="traveling"/>旅游婚纱
+                            <?py #endif ?>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title">名称<em>*</em></label>
+                        <input type="text" name="name" class="form-control" id="series-name" value="${work.Fname if work else ''}" placeholder="请填写作品名称" />
+                        <div class="error name-error"></div>
+                    </div>
+
+                    <div class="form-group work-style" id="work-style" style="display:${'block' if not work or work.Fproduct_type == 'wedding' else 'none'}">
+                        <label class="label-title">风格</label>
+                        <div class="series-extra">
+                            <?py for style in work_style: ?>
+                                <?py if work and work.Fstyle_code == style[0]: ?>
+                                		<a href="javascript:;" class="tags current" data-value="${style[0]}">${style[1]}</a>
+                                <?py else: ?>
+                                 	<a href="javascript:;" class="tags" data-value="${style[0]}">${style[1]}</a>
+                                <?py #endif ?>
+                            <?py #endfor ?>
+                                <?py if work and work.Fstyle_code=='user_writing':?>
+                            	    		<input type="text" style="display:inline-block" name="style_name" class="form-control input-write" value="${work.Fstyle_name}" />
+                                <?py else:?>
+                            	    		<input type="text" name="style_name" class="form-control input-write" value="" />
+                                <?py #endif?>
+                        </div>
+                    </div>
+
+                    <div class="form-group work-shooting" id="work-shooting" style="display:${'none' if not work or work.Fproduct_type == 'wedding' else 'block'}">
+                    		<label class="label-title">拍摄地</label>
+                    		<div class="series-extra">
+                    			
+                                <?py for site in shoot_site:?>
+                                		 <?py if work and work.Fshot_space==site[0]:?>
+                                		 	<a href="javascript:;" class="tags current" data-value="${site[0]}" >${site[1]}</a>
+                    			    		 <?py else:?>
+                    			    		 	<a href="javascript:;" class="tags" data-value="${site[0]}" >${site[1]}</a>
+                    			    		 <?py #endif ?>
+                    				<?py #endfor ?>
+                    			
+                                <?py if work and work.Fshot_space=='user_writing':?>
+                            	    		<input type="text" style="display:inline-block" name="shot_space_name" class="form-control input-write" value="${work.Fshot_space_name}" />
+                                <?py else:?>
+                            	    		<input type="text" name="shot_space_name" class="form-control input-write" value="" />
+                                <?py #endif?>
+
+                    		</div>
+                    </div>
+
+                    <!--<div class="form-group scene scene-weeding" id="scene-weeding" style="display:${'block' if not work or work.Fproduct_type == 'wedding' else 'none'}">-->
+                    <div class="form-group scene-weeding" id="scene">
+                        <label class="label-title v-top">拍摄场景</label>
+                            <div class="series-extra" id="scene-weeding">
+
+                                    <label class="radio-inline">内景</label>
+                                    <?py indoor_shoot_sence = shooting_scene.get('indoor') ?>
+                                    <?py outdoor_shoot_sence = shooting_scene.get('outdoor') ?>
+                                    <?py keys = indoor_shoot_sence.keys()?>
+                                    <?py keys.sort()?>
+
+                                    <?py for key in keys: ?>
+                                        <?py if work and work.Fshot_scene_code == key: ?>
+                                            <a href="javascript:;" class="tags current" data-value="${key}">${indoor_shoot_sence[key]}</a>
+                                        <?py else: ?>
+                                            <a href="javascript:;" class="tags" data-value="${key}">${indoor_shoot_sence[key]}</a>
+                                        <?py #endif ?>
+                                    <?py #endfor ?>
+
+                                    <?py if work and work.Fshot_scene_code =='z_indoor_user_writing':?>
+                                        <input type="text" style="display:inline-block" name="shot_scene_name_indoor" class="form-control input-write" value="${work.Fshot_scene_name}" />
+                                    <?py else:?>
+                                        <input type="text" name="shot_scene_name_indoor" class="form-control input-write" value="" />
+                                    <?py #endif?>
+                                <br />
+
+                                    <label class="radio-inline">外景</label>
+                                    <?py keys = outdoor_shoot_sence.keys()?>
+                                    <?py keys.sort()?>
+
+                                    <?py for key in keys: ?>
+                                        <?py if work and work.Fshot_scene_code == key: ?>
+                                        <a href="javascript:;" class="tags current" data-value="${key}">${outdoor_shoot_sence[key]}</a>
+                                        <?py else: ?>
+                                        <a href="javascript:;" class="tags" data-value="${key}">${outdoor_shoot_sence[key]}</a>
+                                        <?py #endif ?>
+
+                                    <?py #endfor ?>
+                                    <!--
+                                    <input type="text" name="shot_scene_name_outdoor" class="form-control input-write" value="${work and work.Fshot_scene_name or '' }" />-->
+
+                                    <?py if work and work.Fshot_scene_code =='z_outdoor_user_writing':?>
+                                        <input type="text" style="display:inline-block" name="shot_scene_name_outdoor" class="form-control input-write" value="${work.Fshot_scene_name}" />
+                                    <?py else:?>
+                                        <input type="text" name="shot_scene_name_outdoor" class="form-control input-write" value="" />
+                                    <?py #endif?>
+                             </div>
+
+                    		<div class="series-extra" id="scene-traveling" style="display: none;">
+                                <?py for scene in shooting_scene_traveling: ?>
+                                    <?py if work and work.Fshot_scene_code == scene[0]: ?>
+                    			        <a href="javascript:;" class="tags current" data-value="${scene[0]}">${scene[1]}</a>
+                                    <?py else: ?>
+                                        <a href="javascript:;" class="tags" data-value="${scene[0]}">${scene[1]}</a>
+                                    <?py #endif ?>
+                    			<?py #endfor ?>
+
+                                <?py if work and work.Fshot_scene_code == 'user_writing': ?>
+							        <input type="text" style="display:inline-block" name="scene_traveling_name" class="form-control input-write" value="${work.Fshot_scene_name}"/>
+                                <?py else:?>
+                                    <input type="text" name="scene_traveling_name" class="form-control input-write" value="" />
+                                <?py #endif?>
+
+                    		</div>
+                    </div>
+                    <div class="form-group" id="work-mode">
+                        <label class="label-title">造型特色</label>
+                        <div class="series-extra">
+                            <?py for mode in mode_style: ?>
+                                <?py if work and work.Fmode_style_code and work.Fmode_style_code.find(mode[0])>-1: ?>
+                                    <label class="checkbox-inline"><input type="checkbox" class="check-mode"  name="mode_style_${mode[0]}" value="${mode[0]}" checked="checked"/><span>${mode[1]}</span></label>
+                                <?py else: ?>
+                                    <label class="checkbox-inline"><input type="checkbox" class="check-mode" name="mode_style_${mode[0]}" value="${mode[0]}" /><span>${mode[1]}</span></label>
+                                <?py #endif ?>
+                            <?py #endfor ?>
+                            <span>（最多可选2项）</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title">起拍价<em>*</em></label>
+                        <input type="text" name="sale_price" id="sale-price" class="form-control" value="${work.Fsale_price if work else ''}" placeholder="请填写起拍价格"/>
+                        （高于此价格的套餐可拍摄本主题，默认不显示）
+                        <div class="error sale-price-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="v-top label-title">作品描述</label>
+                        <textarea name="description" class="form-control textarea" id="description" cols="3" placeholder="请填写作品描述">${work.Fdescription if work else ''}</textarea>
+                        <span class="txt-count text-gray v-top" id="txt-count" style="margin-left: 5px;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title v-top">封面图</label>
+                        <div class="series-upload">
+                        		<div class="cover-img">
+                                 <form action="/merchant/product/upload/product" method="post" id="js_cover"  enctype="multipart/form-data">
+                                		<input type="hidden" name="_xsrf" value="${xsrf_token}" />
+                                    <div class="btn-uploadcover" value="" >上传封面图</div>
+                                    <img title="封面图" alt="" data-id="" src="${work.Fcover_img if work else ''}" id="cover" class="cover" />
+                                    <input id="coverupload" type="file" name="files" title="请选择图片" />
+                                </form>                                   			
+                        		</div>
+                            <div class="cover-desc v-top">
+                            		<p>图片宽度和高度940X580px,单张图片不要超过5M,</p>
+                            		<p>图片上不要有任何文字及Logo；</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt">
+                        <label class="label-title">上传作品</label>
+                        <div class="series-upload">
+                    		<div class="cover-img">
+                                <form action="/merchant/product/upload/product" method="post" enctype="multipart/form-data" id="J-formFile">
+                                    <input type="hidden" name="_xsrf" value="${xsrf_token}" />
+                                    <input type="button" class="btn btn-sm btn-success btn-uploadphoto" value="上传图片" />
+                                    <input id="fileupload" type="file" name="files" data-url="#"  title="请选择图片" multiple />
+                                </form>
+                            </div>
+                        	<div class="cover-desc">
+                        		<p>单张图片不要超过5M, 建议上传8张图片及以上;</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="series-extra">
+                            <ul id="J-append-photo" class="photo-thumb">
+                                <input type="hidden" id="js-photo">
+                                 <?py if images:?>
+                                    <?py for img in images:?>
+                                        <li class="photo-item" sort-id="">
+                                            <div class="up-photo">
+                                                <img src="${img.Furl}" alt="" title="" data-id="${img.Fimg_id}"/>
+                                            </div>
+                                            <!--<textarea name="photo_desc" class="photo-desc" placeholder="请填写图片描述">${img.Fdescription}</textarea>-->
+                                            <span class="delete-photo" data-id="${img.Fid}">
+									        		<i class="glyphicon glyphicon-trash"></i>
+									        </span>
+                                        </li>
+                                    <?py #endfor?>
+                                <?py #endif ?>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group tcenter">
+                        <input type="button" class="btn btn-success" id="save" value="提交" />
+                        <a href="/merchant/work/" class="btn btn-default" id="cancel">取消</a>
+                    </div>                                
+                </div>
+            </div><!--/span-->
+        </div>
+    </div><!--/row-->
+</div><!--/#content.span10-->
+
+<!--<script type="text/html" id="J-model-cover">
+	<img src="/static/apps_crm/js/plugins/uploadify/img/user-loading.gif" alt="" title="" data-id=""/>
+</script>-->
+
+<script type="text/html" id="J-model-photo">
+	<li class="photo-item">
+        <div class="up-photo">
+            <img src="/static/crm/js/plugins/uploadify/img/user-loading.gif" alt="" title="" data-id=""/>
+        </div>
+        <span class="v-top delete-photo">
+        		<i class="glyphicon glyphicon-trash"></i>
+        </span>
+	</li> 
+</script>
+
+<!--gzh func js-->
+
+<script src="/static/crm/js/plugins/uploadify/js/jquery.ui.widget.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.iframe-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/load-image.min.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.xdr-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-ui.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-process.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-image.js"></script>
+<script src="/static/crm/js/dragula.min.js"></script>
+
+
+<script src="/static/crm/js/work/add.js"></script>
+<script>
+	$(function(){
+		$(".nav-work").addClass("active");
+        dragula([$('#J-append-photo')[0]]);
+	})
+	 <?py if work and work.Fproduct_type == 'traveling': ?>
+	    $('#scene-weeding').hide();
+	    $('#scene-traveling').show();
+	 <?py #endif?>
+</script>
+

@@ -1,0 +1,51 @@
+<head >
+    <meta charset="utf-8" />
+    <?py if not handler.title:?>
+         <title>公主号</title>
+    <?py else:?>
+        <title>#{handler.title}</title>
+    <?py #endif?>
+    <meta name="baidu-site-verification" content="A0UFL6P2xH" />
+    <meta name="keywords" content="#{handler.keywords if handler.keywords else '公主号'}">
+    <?py if not handler.description:?>
+        <meta name="description" content="公主号">
+    <?py else:?>
+        <meta name="description" content="#{handler.description}">
+    <?py #endif?>
+
+     <link rel="shortcut icon" href="/static/skin/images/favicon.ico"/>
+    <!--<meta name="baidu-site-verification" content="A0UFL6P2xH" /> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta property="qc:admins" content="2443666707625655263757"/>
+    <meta property="wb:webmaster" content="94872554fadf941d" />
+
+    <script type="text/javascript" src="/static/skin/js/plugins/jQuery/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/static/skin/css/common.css" />
+    <link rel="stylesheet" href="/static/skin/css/gzh-base.css" />
+    <link rel="stylesheet" href="/static/skin/css/header-footer.css">
+    <link rel="stylesheet" href="/static/skin/css/login.css" />
+    <link rel="stylesheet" href="/static/skin/css/pages.css" />
+    <link rel="stylesheet" href="/static/skin/css/icon.css" />
+    <link rel="stylesheet" href="/static/skin/css/iconfont.css" />
+    <link href="/static/skin/js/plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!--[if lte IE 8]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20140204/json2.min.js"></script>
+    <![endif]-->
+<script>
+    <?py if current_user:?>
+        window.login_user={
+            'nick':'${current_user.get('Fnick_name')}',
+            'id':'${current_user.get('Fid')}',
+            'uid':'${current_user.get('Fuid')}',
+            'head':'${current_user.get('Fphoto_url')}'
+        }
+    <?py #endif ?>
+</script>
+</head>

@@ -1,0 +1,212 @@
+<?py import re ?>
+<link rel="stylesheet" href="/static/skin/css/topic.css">
+<style type="text/css">
+    /*新增话题发表页面*/
+    .topic-publish-part .topic-main-desc .topic-desc-content{
+        height: 350px;
+        width: 962px;
+        max-width: 962px;
+        margin: 0;
+    }
+    form{
+        margin: 0;
+    }
+    .main{
+        margin: 0 auto 20px;
+    }
+    .topic-publish-part{
+        width: 980px;
+    }
+    .back-topic-list{
+        background-color: #f8f8f8;
+        width: 100px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        font-size: 16px;
+        color: #666;
+        float: left;
+        margin-left: 20px;
+    }
+    .face2{
+        float: left;
+        background-position: -111px -161px;
+        width: 25px;
+        height: 25px;
+        margin: 0 10px 0 0;
+    }
+</style>
+<div class="main">
+    <div class="topic-publish-part" id="topicPublishForm">
+        <h3 class="publish-title">发布话题</h3>
+        <div class="publish-condition clearfix">
+            <select class="topicType" disabled>
+                <option value="-1">请选择话题</option>
+                <?py for c in topic_cate: ?>
+                <option value="${c['id']}" ${'selected="selected"' if c['id'] == topic.Fcotegory_id else ''}>${c['name']}</option>
+                <?py #endfor ?>
+            </select>
+            <a href="javascript:;" class="topic_icon emotion face2"></a>
+            <input type="text" name="title" id="saytext2" class="topicTitle" maxlength="25" placeholder="请输入标题， 2-25个字" disabled value="${re.sub(r'<img src="/static/skin/js/plug/face/', '[em_', re.sub(r'\.gif" border="0">', ']', topic.Ftitle))}">
+        </div>
+        <div class="topic-main-desc">
+            <textarea class="topic-desc-content" id="saytext" name="saytext" placeholder="请输入话题内容，至少5个字">${re.sub(r'<img src="/static/skin/js/plug/face/', '[em_', re.sub(r'\.gif" border="0">', ']',re.sub(r'<br/>', '\n', topic.Fcontent)))}</textarea>
+            <div class="desc-other-mark">
+                <a href="javascript:;" class="topic_icon emotion face"></a>
+                <form action="/album/photo/qa/upload/" method="post" enctype="multipart/form-data" class="topic-form" id="J-topic-formFile">
+                    <input type="hidden" name="_xsrf" value="">
+                    <p class="topic_icon uploadImg"></p>
+                    <input id="fileupload_topic" type="file" name="files" data-url="" title="请选择图片" multiple="">
+                </form>
+            </div>
+
+        </div>
+        <ul class="upload-descImg-list clearfix">
+            <?py for img in topic_image: ?>
+            <li data-id="${img['img_id']}">
+                <a href="javascript:;" onclick="$(this).closest('li').remove()" class="upload-descImg-close"></a>
+                <img src="${img['url']}" data-size="${img['img_size']}" alt="">
+            </li>
+            <?py #endfor ?>
+        </ul>
+    </div>
+    <div class="p-btn-part clearfix">
+        <input type="button" class="publishBtn" value="发布">
+        <a href="/topic/detail/${topic.Fid}/${topic.Fuser_id}" class="back-topic-list">返回</a>
+        <span class="err"></span>
+    </div>
+</div>
+
+<!-- 上传图片控件 -->
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.ui.widget.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.iframe-transport.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/load-image.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.xdr-transport.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-ui.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-process.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-image.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/plug/jquery.qqFace.js"></script>
+
+
+<script type="text/javascript">
+    var h = (parseInt($(window).height())-215) + 'px';
+    $('.main').css("min-height", h);
+
+    $(function(){
+        $('.emotion').qqFace({
+            id: 'facebox',
+            assign:'saytext', //给输入框赋值
+            path:'/static/skin/js/plug/face/',    //表情图片存放的路径
+            tip : 'em_'
+        });
+    });
+
+    //话题list页，提交话题
+    $(".publishBtn").click(function() {
+        var _self = $(this);
+        _self.attr("disabled", true);
+
+        var topic = $('.topicType').val(),
+            title = $('input[name="title"]').val().replace(/\s+/g, ""),
+            title = replace_em(title),
+            content = $('.topic-desc-content').val(),
+            content = replace_em(content),
+            img = $('.upload-descImg-list li'),
+            result = true;
+
+        //话题内容校验
+        if (content.length < 5) {
+            $('.topic-desc-content').focus();
+            $('.err').text("请输入话题内容, 最少5个字！");
+            result = false;
+        }
+
+        //描述图片的校验
+        if (result) {
+            if (img.length > 0) {
+                var add_img = [];
+                img.each(function (i) {
+                    var list = new Object();
+                    list.id = $(this).attr("data-id");
+                    list.url = $(this).find("img").attr("src");
+                    list.size = $(this).find("img").attr("data-size");
+                    add_img[i] = list;
+                });
+            }
+        }
+
+        if (result) {
+            $('.err').empty();
+
+            var data_list = new Object();
+            data_list.title = title;
+            data_list.content = content;
+            data_list.img = JSON.stringify(add_img);
+            data_list._xsrf = $('input[name="_xsrf"]').val();
+            data_list.cogetory_id = topic;
+            data_list.clicked = true;
+
+            jQuery.ajax({
+                type: "POST",
+                url: window.location.href,
+                data: data_list,
+                dataType: "JSON",
+                success: function (data) {
+                    var stat = data.stat;
+
+                    if (stat == "ok") {
+                        window.location.href = "/topic/detail/" + data.topic_id + "/" + data.topic_user_id;
+                    } else {
+                        alert(data.msg);
+                    }
+                    _self.attr("disabled", false);
+                },
+                error: function () {
+                    _self.attr("disabled", false);
+                }
+            });
+        } else {
+            _self.attr("disabled", false);
+        }
+    });
+
+    function replace_em(content){
+        content = content.replace(/</g, '&lt;');
+        content = content.replace(/>/g, '&gt;');
+        content = content.replace(/\n+/g, '<br/>');
+        content = content.replace(/\[em_([0-9]*)\]/g, '<img src="/static/skin/js/plug/face/$1.gif" border="0">');
+        return content;
+    }
+
+    //上传图片
+    $('#fileupload_topic').click(function(){
+        var uploader = $("#J-topic-formFile");
+        var i = $('.upload-descImg-list li').length;
+        addPhotos(uploader, i);
+    });
+
+    function addPhotos(uploader, i){
+        uploader.fileupload({
+            dataType: 'json',
+            autoUpload: true,
+            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+            //maxNumberOfFiles : 10,
+            maxFileSize: 5000000,
+            done: function (e, data) {
+                $.each(data.result.files, function (index, file) {
+                    $('.upload-descImg-list li:eq(' + i + ')').attr("data-id", file.id);
+                    $('.upload-descImg-list li:eq(' + i + ')').find("img").attr({"src": file.url, "data-size": file.size});
+                    i++;
+                });
+            },
+            send: function (e, data) {
+                var close = '<a href="javascript:;" onclick="$(this).closest(\'li\').remove()" class="upload-descImg-close"></a>',
+                        img = '<img src="/static/skin/images/user-loading.gif" data-size="" alt="">';
+                var li = '<li data-id="">'+ close + img +'</li>';
+                $('.upload-descImg-list').append(li);
+            }
+        });
+        uploader.find("input:file").removeAttr('disabled');
+    }
+</script>

@@ -1,0 +1,140 @@
+<div class="clearfix row-main">
+    <?py include('ops/weixin/nav.html') ?>
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading">
+                <strong><i class="icon-group"></i> 微信绑定 - ${company.Fcompany_name}</strong>
+                <div class="panel-actions">
+                     <a href="/admin/weixin/" class="btn btn-primary"><i class="icon-plus"></i> 返回</a>
+                </div>
+            </div>
+            <div class="panel-body">
+            <form id="ajaxForm" role="form" method="post">
+                #{xsrf_form_html}
+                <table class="table table-form">
+                    <tbody>
+                    <tr>
+                        <th class="w-p20"></th>
+                        <td class="w-p20">公司信息</td>
+                        <td class="w-p60"></td>
+                    </tr>
+                    <tr>
+                        <th class="w-p20">编号</th>
+                        <td class="w-p20"><input type="text" class="form-control" value="${company.Fid}" id="id" name="id" disabled></td>
+                        <td class="w-p60"></td>
+                    </tr>
+                    <tr>
+                        <th class="w-p20">装修公司名称</th>
+                        <td class="w-p20"><input type="text" class="form-control" value="${company.Fcompany_name}" id="name" name="name" disabled></td>
+                        <td class="w-p60"></td>
+                    </tr>
+
+                    <tr>
+                        <th class="w-p20"></th>
+                        <td class="w-p20"></td>
+                        <td class="w-p60"></td>
+                    </tr>
+                    <tr>
+                        <th class="w-p20"></th>
+                        <td class="w-p20"><font color="red">第一步：将下面信息配置到微信后台页面</font></td>
+                        <td class="w-p60"></td>
+                    </tr>
+                    <tr>
+                        <th class="w-p20">微信URL(服务器地址)</th>
+                        <td class="w-p20"><input type="text" class="form-control" value="${app_url}" id="app_url" name="app_url" readonly></td>
+                        <td class="w-p60"></td>
+                    </tr>
+                    <tr>
+                        <th class="w-p20">微信Token(令牌)</th>
+                        <td class="w-p20"><input type="text" class="form-control" value="${app_token}" id="app_token" name="app_token" readonly></td>
+                        <td class="w-p60"></td>
+                    </tr>
+
+                    <tr>
+                        <th class="w-p20"></th>
+                        <td class="w-p20"></td>
+                        <td class="w-p60"></td>
+                    </tr>
+                    <tr>
+                        <th class="w-p20"></th>
+                        <td class="w-p20"><font color="red">第二步：从微信后台页面获取信息配置到下面</font></td>
+                        <td class="w-p60"></td>
+                    </tr>
+                    <tr>
+                        <th class="w-p20">微信AppID(应用ID)</th>
+                        <td class="w-p20"><input type="text" class="form-control" value="${company.Fapp_id}" id="app_id" name="app_id"></td>
+                        <td class="w-p60"></td>
+                    </tr>
+                    <tr>
+                        <th class="w-p20">微信AppSecret(应用密钥)</th>
+                        <td class="w-p20"><input type="text" class="form-control" value="${company.Fapp_secret}" id="app_secret" name="app_secret"></td>
+                        <td class="w-p60"><input type="button" data-loading="稍候..." value="验证" class="btn btn-primary" id="check" onclick="check_app(this)"></td>
+                    </tr>
+                    <tr>
+                        <th class="w-p20"></th>
+                        <td class="w-p20"><font color="red">第三步：保存并验证</font></td>
+                        <td class="w-p60"></td>
+                    </tr>
+                    <tr>
+                      <th></th>
+                      <td class="w-p50">
+                          <input type="button" data-loading="稍候..." value="保存" class="btn btn-primary" id="submit" onclick="save(this)">&nbsp;
+                          <a href="/admin/weixin/" class="btn btn-primary">返回</a>
+                      </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script language="Javascript">
+function check_app(obj){
+    if($("#app_id").val() == ""){
+        alert("请输入微信AppID！");
+        $("#app_id").focus();
+        return;
+    }
+    if($("#app_secret").val() == ""){
+        alert("请输入微信AppSecret！");
+        $("#app_secret").focus();
+        return;
+    }
+
+    $.post("/admin/weixin/check/",
+        $("#ajaxForm").serialize(),
+        function(data){
+            var result = $.parseJSON(data)
+            if("ok" == result.stat){
+                alert("验证成功");
+            }else{
+                alert("验证失败");
+            }
+            return result.status;
+        }
+    );
+}
+function save(obj){
+    if($("#app_id").val() == ""){
+        alert("请输入微信AppID！");
+        $("#app_id").focus();
+        return;
+    }
+    if($("#app_secret").val() == ""){
+        alert("请输入微信AppSecret！");
+        $("#app_secret").focus();
+        return;
+    }
+
+    $.post('/admin/weixin/detail/' + ${company.Fid} + "/", $("#ajaxForm").serialize(), function(data){
+            var result = $.parseJSON(data)
+            if("ok" == result.stat){
+                alert("验证并保存成功，点击确认返回一览页面。");
+                window.location.href = "/admin/weixin/";
+            }else{
+                alert(result.msg);
+            }
+        });
+}
+</script>

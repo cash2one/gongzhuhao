@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="/static/skin/css/merchant/reserve.css?v=0421end"/>
+<div id="reserveModal" class="modal hide fade reserve-modal">
+    <div class="reserve-modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <p>预约服务</p>
+    </div>
+    <div class="reserve-merchant-info">
+        <p class="merchant-name"></p>
+        <div class="merchant-gift"><span>订单礼</span><p class="order"></p></div>
+        <div class="merchant-gift"><span>到店礼</span><p class="visit"></p></div>
+    </div>
+    <form action="" method="post" class="reserve-modal-body" id="reserve-form">
+        <input type="hidden" name="_xsrf" value="${xsrf_token}">
+        <p>请留下您的联系方式，我们将通知商户尽快与您联系，请确保电话畅通</p>
+        <p class="reserve-error hide"></p>
+        <div class="input-item tel-item">
+            <?py if current_user:?>
+            <input type="hidden" name="is_login" id="is_login" value="1">
+            <label for="tel" class="required">手机号:</label><input type="text" id="tel" value="${current_user.get('phone','')}"  maxlength="11" name="tel" class="tel" placeholder="">
+            <?py else:?>
+            <input type="hidden" name="is_login" id="is_login" value="0">
+            <label for="tel" class="required">手机号:</label><input type="text" id="tel" value=""  maxlength="11" name="tel" class="tel" placeholder="">
+            <?py #endif ?>
+        </div>
+        <div class="reserve-btn-wrap">
+            <input type="submit" name="reserve-btn" class="reserve-submit" value="提 交"><a class="reserve-cancel close" data-dismiss="modal" aria-hidden="true" href="javascript:">取消</a>
+        </div>
+    </form>
+    <div class="success-message hide">恭喜您预约成功！</div>
+</div>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/merchant/reserve.js?v=042404"></script>

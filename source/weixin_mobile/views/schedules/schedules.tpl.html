@@ -1,0 +1,12 @@
+<ion-view view-title="我的排期">
+  <ion-content class="schedule">
+    <div class="list">
+      <a class="item item-thumbnail-left" href="#/items/{{item.id}}" ng-repeat="item in model.order.list">
+        <img src="/static/images/m_logo.png" ng-src="{{item.merchant_logo_url}}" alt="avatar"/>
+        <h2 class="order-title">{{item.user_name}}</h2>
+        <h3 class="order-no light-gray">订单号：{{item.order_id_user}}</h3>
+        <h3 class="order-time light-gray">{{item.create_time}}</h3>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

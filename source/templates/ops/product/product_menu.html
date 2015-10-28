@@ -1,0 +1,105 @@
+<?py if 'admin' in current_user.get('role_codes'): ?>
+<div class="col-md-2">
+    <div class="leftmenu affix hiddden-xs hidden-sm">
+        <ul class="nav-left nav nav-primary nav-stacked">
+
+            <li id="user_menu_list"  ><a href="/admin/m/product/product_index.html/1 ">全部产品案例<i class="icon-chevron-right"></i></a>
+
+            <li id="user_menu_new_register"><a href="/admin/m/product/product_index.html/2">最新上线<i class="icon-chevron-right"></i></a>
+            </li>
+            <li id="user_menu_active"><a href="/admin/m/product/product_index.html/3" >评论最多<i class="icon-chevron-right"></i></a>
+            </li>
+            </li>
+            <li id="user_menu_blist"><a href="/admin/m/product/product_index.html/4" >优秀案例<i class="icon-chevron-right"></i></a>
+            </li>
+
+             <li id="user_menu_employee"><a href="/admin/m/product/product_index.html/5" >推荐案例<i class="icon-chevron-right"></i></a>
+            </li>
+        </ul>
+        <div class='panel category-nav'>
+            <div class='panel-heading'>
+                <strong>优惠</strong>
+            </div>
+           <ul class="nav-left nav nav-primary nav-stacked">
+
+            <li id="product_preferential_list_all"  ><a href="/admin/preferential/list/all">全部优惠<i class="icon-chevron-right"></i></a>
+
+            <li id="product_preferential_list_pass"><a href="/admin/preferential/list/pass">审核通过的优惠<i class="icon-chevron-right"></i></a>
+            </li>
+               <li id="product_preferential_list_recommended"><a href="/admin/preferential/recommend/list">推荐优惠列表<i class="icon-chevron-right"></i></a>
+            </li>
+             <li id="product_preferential_list_ready"><a href="/admin/preferential/list/ready">待审核的优惠<i class="icon-chevron-right"></i></a>
+            </li>
+
+
+            <!--<li id="product_preferential_check_refuse"><a href="/admin/m/product/preferential_product_index.html/2">审核未通过的优惠<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+            <!--<li id="product_preferential_list_new"><a href="/admin/m/product/preferential_product_index.html/2">最新优惠<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+            <!--<li id="product_preferential_list_commentnumber_fist"><a href="/admin/m/product/preferential_product_index.html/3" >最受欢迎优惠<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+            <!--</li>-->
+            <!--<li id="product_preferential_list_best_model"><a href="/admin/m/product/preferential_product_index.html/4" >大乐惠<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+             <!--<li id="product_preferential_list_recommend"><a href="/admin/m/product/preferential_product_index.html/5" >每天优惠<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+        </ul>
+
+        </div>
+    </div>
+</div>
+<?py elif 'operater' in current_user.get('role_codes'): ?>
+<div class="col-md-2">
+    <div class="leftmenu affix hiddden-xs hidden-sm">
+        <ul class="nav-left nav nav-primary nav-stacked">
+
+            <li id="user_menu_list"  ><a href="/admin/m/product/product_index.html/1 ">全部产品案例<i class="icon-chevron-right"></i></a>
+
+            <!--<li id="user_menu_new_register"><a href="/admin/m/product/product_index.html/2">最新上线<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+            <!--<li id="user_menu_active"><a href="/admin/m/product/product_index.html/3" >评论最多<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+            <!--</li>-->
+            <!--<li id="user_menu_blist"><a href="/admin/m/product/product_index.html/4" >优秀案例<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+
+             <li id="user_menu_employee"><a href="/admin/m/product/product_index.html/5" >首页推荐案例<i class="icon-chevron-right"></i></a>
+            </li>
+        </ul>
+        <div class='panel category-nav'>
+            <div class='panel-heading'>
+                <strong>优惠</strong>
+            </div>
+           <ul class="nav-left nav nav-primary nav-stacked">
+
+            <!--<li id="product_preferential_list_all"  ><a href="/admin/preferential/list/all">全部优惠<i class="icon-chevron-right"></i></a>-->
+            <li id="product_preferential_list_pass"><a href="/admin/preferential/list/pass">审核通过的优惠<i class="icon-chevron-right"></i></a>
+            </li>
+               <li id="product_preferential_list_recommended"><a href="/admin/preferential/recommend/list">首页优惠&优惠一级页面列表<i class="icon-chevron-right"></i></a>
+            </li>
+             <!--<li id="product_preferential_list_ready"><a href="/admin/preferential/list/ready">待审核的优惠<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+
+
+            <!--<li id="product_preferential_check_refuse"><a href="/admin/m/product/preferential_product_index.html/2">审核未通过的优惠<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+            <!--<li id="product_preferential_list_new"><a href="/admin/m/product/preferential_product_index.html/2">最新优惠<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+            <!--<li id="product_preferential_list_commentnumber_fist"><a href="/admin/m/product/preferential_product_index.html/3" >最受欢迎优惠<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+            <!--</li>-->
+            <!--<li id="product_preferential_list_best_model"><a href="/admin/m/product/preferential_product_index.html/4" >大乐惠<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+             <!--<li id="product_preferential_list_recommend"><a href="/admin/m/product/preferential_product_index.html/5" >每天优惠<i class="icon-chevron-right"></i></a>-->
+            <!--</li>-->
+        </ul>
+
+        </div>
+    </div>
+</div>
+        <?py #endif ?>
+<script type="text/javascript">
+    $(document).ready(function(){
+            $('#product_nav').addClass('active');
+    })
+</script>

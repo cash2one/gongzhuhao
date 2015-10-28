@@ -1,0 +1,73 @@
+<link href='/static/crm/css/system/setting.css' rel='stylesheet' />
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>服务设置 - 地址</h2>
+				</div>
+				<div class="box-content">
+					<div class="work-tab">
+						<a href="/merchant/schedule/edit/template/msg/">温馨提示设置</a>
+						<a class="current" href="/merchant/schedule/edit/template/site/">地址设置</a>
+                        <a href="/merchant/system/gift/1">到店礼</a>
+                        <a href="/merchant/system/gift/2">订单礼</a>
+					</div>					
+				</div>
+				<div class="box-content setting">
+					<form method="">
+		                <table class="table">
+		                    <thead>
+		                        <tr>
+		                            <th class="tip-item">选项</th>
+									<th class="tip-address">地址</th>
+		                        </tr>
+		                    </thead>
+		                    <tbody>
+                                <?py for name in _SCHEDULE_TYPE: ?>
+		                        <tr>
+                                    <td class="tip-item">${name}</td>
+		                            <td class="tip-address">
+                                        <input type="hidden" value="${_SCHEDULE_TYPE.index(name)}" class="Ftype_id" />
+                                        <button type="submit" name="add" class="btn btn-success btn-sm add">添加</button>
+
+                                        <ul class="ul-address">
+                                        <?py for item in items: ?>
+                                            <?py if item.Fschedule_type_id == _SCHEDULE_TYPE.index(name): ?>
+                                            <li>
+                                                <input type="hidden" value="${item.Fid}" class="Fid" />
+                                                <span class="addtxt">${item.Fsite}</span>
+                                                <input type="text" class="form-control input-txt" />
+                                                <span class="glyphicon glyphicon-edit edit" title="修改"></span>
+                                                <span class="glyphicon glyphicon-ok save" title="保存" style="display:none"></span>
+                                                <span class="glyphicon glyphicon-trash delete" title="删除"></span>
+                                                <span class="glyphicon glyphicon-cog set-default" title="设为默认"></span>
+                                                <?py if item.Fisdefault: ?>
+                                                <span> 默认</span>
+                                                <?py #endif ?>
+                                            </li>
+                                            <?py #endif ?>
+                                        <?py #endfor ?>
+                                        </ul>
+		                            </td>
+		                        </tr>
+                                <?py #endfor ?>
+		                    </tbody>
+		                </table>
+					</form>
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+<script src="/static/crm/js/system/address.js"></script>
+<script>
+	$(function(){
+		$(".nav-service").addClass("active");
+		$(".nav-service").parent().css("display","block");
+	})
+</script>

@@ -1,0 +1,201 @@
+
+<div class="clearfix row-main">
+
+<?py include('ops/users/user_menu.html') ?>
+
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading"><strong><i class="icon-globe"></i>新增用户</strong></div>
+            <div class="panel-body">
+                <form class="form-inline" action="" id="user_ajax_form" method="post">
+                    <table class="table table-form">
+                        <tbody>
+
+                        <tr>
+                            <th class="col-xs-2">用户名</th>
+                            <td class="col-xs-6">
+                                <input type="text"  class="form-control" value="" id="user_name" name="user_name">
+                                <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th class="col-xs-2">密码</th>
+                            <td class="col-xs-6"><input type="password" class="form-control" value="" id="user_pwd" name="user_pwd">
+                                 <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th class="col-xs-2">昵称</th>
+                            <td class="col-xs-6"><input type="text" class="form-control" value="" id="nick" name="nick">
+                                 <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="col-xs-2">用户类型</th>
+                                  <td class="col-xs-6">
+                                     <label for="type1" class="radio-inline">
+                                          <input type="radio" class="checkbox" value="1" name="is_employee" id="type1">员工
+                                     </label>
+                                     <label for="type2" class="radio-inline">
+                                          <input type="radio" class="checkbox" checked="checked" value="0" name="is_employee" id="type2">非员工
+                                     </label>
+                                  </td>
+                            <td></td>
+                         </tr>
+                         <tr>
+                            <th>角色</th>
+                            <td>
+                                <?py if roles:?>
+                                <?py for r in roles:?>
+                                    <?py if r.Fcode == 'user': ?>
+                                    <?py continue ?>
+                                    <?py #endif ?>
+                                    <label class="checkbox">
+                                        <input type="checkbox" value="${r.Fid}" name="roles" id="role_id">${r.Fname}</label>
+                                    <?py #endfor?>
+                                <?py #endif ?>
+                            </td>
+                            <td></td>
+                         </tr>
+                         <tr id="merchant_name_tr">
+                            <th class="col-xs-2">商户名称</th>
+                            <td class="col-xs-6"><input type="merchant_name" class="form-control" value="" id="merchant_name" name="merchant_name">
+                                 <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th class="col-xs-2">商户地址</th>
+                            <td>
+                                <select class="province" id="province" name="Fprovince">
+                                    <option value="-1">请选择</option>
+                                    <?py for province in provinces: ?>
+                                        <option value="${province.Fid}">${province.Fprovince_name}</option>
+                                    <?py #endfor ?>
+                                </select>
+                                <select class="city" id="city" name='Fcity'>
+                                    <option value="-1">请选择</option>
+                                </select>
+                                <select class="area" id="area" name="Farea">
+                                    <option value="-1">请选择</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr id="merchant_addr_tr">
+                            <th class="col-xs-2">详细地址</th>
+                            <td class="col-xs-6"><input type="merchant_addr" class="form-control" value="" id="merchant_addr" name="merchant_addr">
+                                <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th>邮箱</th>
+                            <td><input type="text" class="form-control" value="" id="email" name="email">
+                                 <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th>手机</th>
+                            <td><input type="text" class="form-control" value="" id="phone" name="phone">
+                                 <span class="text-error red" for="title"></span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td colspan="2">
+                                #{xsrf_form_html}
+                                <input type="button" data-loading="稍候..." value="保存" class="btn btn-primary" id="user_submit"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<?py include('ops/common/dialog.html') ?>
+<script language="Javascript">
+
+
+$(document).ready(function()
+{
+    $('#user_role_nav').addClass('active');
+    $('#user_menu_new').addClass('active');
+
+    $('#user_submit').click(function(){
+        $.post('',$('#user_ajax_form').serialize(),function(data){
+            var obj = $.parseJSON(data);
+            if(obj.status=='success'){
+                $('#user_ajax_form')[0].reset();
+            }
+            show_dialog_none_reload('添加用户',obj.info);
+        })
+    });
+
+    $('.province').change(function(){
+        var province_id = $(this).val();
+        jQuery.ajax({
+            type:'GET',
+            url:'/gzh/ops/change/province/'+province_id,
+            data:{},
+            success:function(data){
+                var obj = $.parseJSON(data);
+                if(obj.stat == 'success'){
+                    loadSelect.addCity(obj.city);
+                    loadSelect.addArea(obj.area);
+                }
+            },
+            error:function(){
+            }
+        });
+});
+
+    $('.city').change(function(){
+        var city_id = $(this).val();
+        jQuery.ajax({
+            type:'GET',
+            url:'/gzh/ops/change/city/'+city_id,
+            data:{},
+            success:function(data){
+                var obj = $.parseJSON(data);
+                if(obj.stat == 'success'){
+                    loadSelect.addArea(obj.area);
+                }
+            },
+            error:function(){}
+        });
+    });
+
+var loadSelect = {
+    addCity:function(city){
+        $('.city').empty();
+        $.each(city,function(i){
+            var option = '<option value = "'+city[i].Fid+'">'+city[i].Fcity_name+'</option>';
+            $('.city').append(option)
+        });
+    },
+    addArea:function(area){
+        $('.area').empty();
+        $.each(area,function(i){
+            var option = '<option value = "'+area[i].Fid+'">'+area[i].Farea_name+'</option>'
+            $('.area').append(option);
+        });
+    }
+}
+});
+
+
+
+
+</script>
+
+<?py include('ops/common/datetime_html.html') ?>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>公主号 － 话题</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>公主号,结婚社区</title>
+    <link rel="stylesheet" href="/static/scripts/plugins/swiper/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/common.css" />
+    <?py include("views/assets/styles.html") ?>
+    <link rel="stylesheet" type="text/css" href="/static/styles/topic/topic.css" />
+    <style>
+        .swiper-pagination-bullet{ width: 10px; height: 10px}
+        .swiper-pagination-bullet-active{opacity: 1; background: #ff6577;}
+    </style>
+</head>
+<body>
+    <div class="work-container">
+        <header class="bar bar-header bar-light gzh-header">
+             <button class="button back-button buttons  button-clear header-item" onclick="javascript:history.go(-1)">
+                <i class="icon ion-ios-arrow-back"></i>
+                <span class="back-text">
+                    <span class="default-title hide">返回</span>
+                </span>
+            </button>
+            <div class="title title-center header-item">话题</div>
+        </header>
+        <div class="gzh-banner">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <?py for banner in banners: ?>
+                        <!--<img  src="${banner.Fimg_url}" />-->
+                        <div class="swiper-slide">
+                            <img  src="${banner.Fimg_url}" width="180" />
+                        </div>
+                    <?py #endfor ?>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="content padding">
+            <div class="gzh-cons">
+                <?py for topic_category in topic_categorys: ?>
+                    <div class="topic-item">
+                        <a href="/mobile/topics/query/${topic_category.Fid}/2/1" style="border:0px; ">
+                            <img class="topic-thumb" src="${topic_category.Fimg_url}" alt="" width="80" height="80"/>
+                            <div class="topic-item-list fn">
+                                <h2 class="topic-title">${topic_category.Fname}</h2>
+                                <h3 class="topic-desc gray">${topic_category.Fdescription}</h3>
+                                <p class="topic-extr">
+                                    <span class="topic-total">话题<em>${topic_category.Ftopic_count}</em></span>
+                                    <span class="topic-view gray fright">浏览量<em>${handler.get_page_view('t_topic_category',topic_category.Fid,topic_category.Fpage_view)}</em></span>
+                                </p>
+                            </div>
+                         </a>
+                    </div>
+                <?py #endfor ?>
+            </div>
+        </div>
+    </div>
+    <?py include("views/assets/javascripts.html") ?>
+    <script src="/static/scripts/plugins/swiper/swiper.min.js"></script>
+    <script src="/static/scripts/plugins/swiper/swiper.jquery.min.js"></script>
+  <script>
+    $(function(){
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        loop: true
+    });
+    });
+  </script>
+<div style="display:none">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255477685'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1255477685%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>

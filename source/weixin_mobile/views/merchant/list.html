@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>公主号-商家列表</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/styles/common.css"/>
+    <?py include("views/assets/styles.html") ?>
+    <link rel="stylesheet" href="/static/styles/merchant/merchant.css"/>
+    <style>
+        .work-container header .btn-default{ padding: 0; font-size: .8em;}
+        .work-container header .btn-default:hover{ box-shadow: none; -webkit-box-shadow: none;}
+        .bar.bar-light{ padding: 5px 0; height: 50px; box-shadow: none}
+        .work-container header .col:first-child{ border-right: 1px solid #e5e5e5}
+        .work-container header li a{ padding: 0 1em; height: 40px; line-height: 40px;}
+        .work-container header .dropdown-menu{ border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5}
+        .work-container header .dropdown-menu li{ border: none}
+        .work-container header li a{ padding: 0; text-align: center}
+        .work-container header .dropdown-menu > li > a:hover, .work-container header .dropdown-menu > li > a:focus{color: #ff6577; background: #f5f5f5}
+        .work-container header .dropdown-menu > li > a.active{  color: #ff6577; background: #f5f5f5}
+    </style>
+</head>
+
+
+<body style="background: #fff!important;">
+    <div class="wrapper work-container" style="margin-top: 50px">
+        <header class="merchant-filter bar bar-header bar-light tcenter">
+            <div class="row">
+                <div class="col mf-item">
+                      <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+
+                           <?py if selected_area:?>
+                            ${area_dict[int(selected_area)]}
+                          <?py else:?>
+                            全部区域
+                         <?py #endif?>
+                          <i class="iconfont gzh-down-thin"></i>
+                      </span>
+
+                      <ul class="dropdown-menu" role="menu" style="width: 100%">
+                          <?py if not selected_area:?>
+                            <li><a href="${base_url}?style=${my_style}&price=${price_between}&area=">全部地区</a></li>
+                            <?py for e in areas:?>
+                                <li><a href="${base_url}?style=${my_style}&price=${price_between}&area=${e.Fid}" data-value="${e.Farea_name}">${e.Farea_name}</a></li>
+                            <?py #endfor?>
+                          <?py else:?>
+                              <li><a href="${base_url}?style=${my_style}&price=${price_between}&area=">全部地区</a></li>
+                              <?py for e in areas:?>
+                                    <?py if int(selected_area)==e.Fid:?>
+                                        <li><a class="active" href="${base_url}?style=${my_style}&price=${price_between}&area=${e.Fid}" data-value="${e.Farea_name}">${e.Farea_name}</a></li>
+                                    <?py else:?>
+                                        <li><a href="${base_url}?style=${my_style}&price=${price_between}&area=${e.Fid}" data-value="${e.Farea_name}">${e.Farea_name}</a></li>
+                                    <?py #endif?>
+                              <?py #endfor?>
+                          <?py #endif?>
+                      </ul>
+                </div>
+            </div>
+        </header>
+        <div class="gzh-cons">
+            #{_content}
+        </div>
+        <?py if has_next: ?>
+          <div class="list">
+              <button type="button" class="btn btn-more"> 点击获取更多数据>></button>
+          </div>
+        <?py #endif ?>
+    </div>
+
+<script src="/static/vendor/jquery.min.js"></script>
+<script src="/static/scripts/plugins/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/scripts/merchant/list.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+## 公主号目录结构
+
++ apps 各模块业务逻辑代码
+    + orders 订单管理
+    + login 登陆
+    + signup 注册
+    + schedules 排期
+    + staffer 员工管理
+    + albums 相册
++ common 公共模块
+
++ doc 文档说明
+
++ models 数据库表定义
+
++ services DB代理服务
+
++ static 页面资源
+
++ templates 页面模板
+
++ utils 公用代码
+
+- server.py 启动服务
+
+
+

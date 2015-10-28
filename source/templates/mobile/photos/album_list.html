@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/static/mobile/css/photo/photo.css" />
+<header class="header">
+		<a id="cd-menu-trigger" href="#0"><span class="cd-menu-icon"></span></a>
+    <p class="title">我的相册</p>
+</header>		
+<section class="album cd-main-content">
+     <ul class="share-list">
+    <?py for album in albums: ?>
+        <?py company_name, order_id_user = handler.get_company_order_info(album.Forder_id) ?>
+        <li>
+        		<a class="pt-link" href="/mobile/user/album/list/${album.Fid}/">
+                <img src="${default_url if not album.Furl_pic_cover else handler.get_show_img_url(album.Furl_pic_cover,600)}"/>
+            </a>
+            <p>${order_id_user}</p>
+            <p>${company_name}</p>
+        </li>
+    <?py #endfor ?>
+    </ul>
+</section>  
+<?py include('mobile/layout/menu_nav.html')?>
+<script>
+	$(function(){
+		$('.nav_photo').addClass('current');
+	})
+</script>

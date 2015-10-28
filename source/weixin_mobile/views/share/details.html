@@ -1,0 +1,300 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>详情</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="/static/styles/ionic.css" />
+        <link rel="stylesheet" href="/static/styles/font-awesome.css" />
+        <link rel="stylesheet" href="/static/styles/bootstrap.min.css" />
+        <link rel="stylesheet" href="/static/styles/iconfont.css" />
+        <link rel="stylesheet" href="/static/styles/work/work.css" />
+        <link rel="stylesheet" href="/static/styles/block-grid.css">
+        <link rel="stylesheet" href="/static/styles/common.css"/>
+        <link rel="stylesheet" href="/static/styles/merchant/merchant.css"/>
+        <link rel="stylesheet" href="/static/scripts/plugins/swiper/swiper.min.css">
+        <style type="text/css">
+        body{
+            font-size: 9px;
+            padding-bottom: 64px;
+        }
+        .work-container .content  p{
+          line-height: 1;
+          margin-top: 20px;
+          color:#666;
+          text-decoration: none;
+        }
+        .work-container .work-item .media-date{
+          color: #999;
+          font-size: 1.25em;
+        }
+        .work-container .content .media{
+          padding: 0px;
+        }
+        .work-container .content a p>span:first-child{
+          margin-right: 20px;
+        }
+        .accordion .acccordion-comment .iconfont,
+        .accordion .accordion-step .iconfont{
+          color: #ff6577;
+          margin-right: 10px;
+        }
+        .accordion .accordion-toggle{
+          color: #333;
+          font-size: 1.5em;
+          display: block;
+          padding: 10px 0px;
+        }
+        .accordion .accordion-heading{
+          border-top: 1px solid #e5e5e5;
+          border-bottom: 1px solid #e5e5e5;
+        }
+        .accordion .accordion-step{
+          border:none;
+        }
+        .accordion .accordion-heading:not(.accordion-step) .badge{
+          background-color: #53aefb;
+          margin-right: 10px;
+        }
+        .accordion .accordion-inner{
+          padding: 12px 0px;
+        }
+        .accordion .accordion-inner p{
+          font-size: 1.5em;
+          color: #333;
+          line-height: 1.5;
+        }
+        .accordion .accordion-inner .text-red{
+          color:#ff6577;
+        }
+        .accordion-inner .text-red span{
+          color:#333;
+        }
+        .work-container .panel .panel-header{
+          margin-left: auto;
+          margin-right: auto;
+          font-size: 1.5em;
+          color: #333;
+          padding: 8.25px 0px;
+          border-bottom: 1px solid #e5e5e5;
+          margin: 0px 15px;
+        }
+        .swiper-slide{
+          width: 95%;
+        }
+        .button-clear{
+          padding: 0px 8px;
+        }
+        .button-clear + .button-clear{
+          margin-left: 5px;
+        }
+        .footer{
+            display:block;
+            background:#fff;
+            height:44px;
+            width:100%;
+            position:fixed;
+            bottom:0px;
+            z-index:9999;
+            border-top:1px solid #e5e5e5;
+            font-size:1.625em;
+            padding:0 10px;
+        }
+        .footer .title{
+            padding:15px 0px;
+            display:inline-block;
+            width: 40%;
+            text-overflow:hidden;
+            white-space:nowrap;
+           
+        }
+        .footer .button-enter{
+         border-radius:5px;
+          border:1px solid #e5e5e5;
+          color:#666;
+        }
+        .footer .button-order{
+            border-radius:5px;
+            color:#fff;
+            background-color:#ff6577;
+        }
+        .work-container .work-item span{
+          padding-left: 5px;
+        }
+       .buttonshare { height: 32px;
+          line-height: 32px;
+          font-size: 1em;
+          border-radius: 3px;
+          margin: 6px 0px ;
+          display: inline-block;
+          padding: 0 10px;
+        }
+        .margintop{ margin-top:10px;}
+        .zq-fonts{ font-size: 1.6em; margin-bottom: 0px;}
+        </style>
+    </head>
+    <?py from services.schedules.schedules_service import ScheduleService ?>
+    <?py schedule_service = ScheduleService(handler.db)?>
+    <body style="background-color:#fff !important;">
+        <header class="bar bar-header bar-light" style="box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);">
+            <button class="button back-button buttons  button-clear header-item" onclick="javascript:history.go(-1)">
+                <i class="icon ion-ios-arrow-back"></i>
+                <span class="back-text">
+                    <span class="default-title hide">返回</span>
+                </span>
+            </button>
+            <div class="title title-center header-item">分享详情</div>
+            <button class="button button-clear header-item right-button">
+                <i class="iconfont gzh-reply_2"></i>
+            </button>
+        </header>
+        <div class="work-container">
+            <div class="content padding">
+                <div class="list work-item">
+                    <a class="media work-media" style="text-decoration:none;" href="#">
+                     <!-- <div class="media-left">
+                        <?py if user.get('photo_url'): ?>
+                            <img class="media-object img-circle"  style="width:60px;height:60px;" src="${user.get('photo_url')}" alt="">
+                        <?py else: ?>
+                            <img class="media-object img-circle"  style="width:60px;height:60px;" src="/static/images/avatar.png" alt="">
+                        <?py #endif ?>
+                      </div>
+                      <div class="media-body media-middle">
+                        <h2 style="display:inline-block;">${user.get('nick_name')}</h2>
+                        <span class="pull-right media-date">${time}</span>
+                      </div>-->
+                      <!--分享头部标题-->
+                     <div>
+                           <h4 class="zqmedia-tittle">${title}</h4>
+                     </div>
+                    <?py if company: ?>
+                        <p class="zq-fonts">服务商：<span>${company.get('Fcompany_name')}</span><!--状态：<span>${order_status}</span>--></p>
+                    <?py else: ?>
+                        <p class="zq-fonts">服务商：<span></span><!--状态：<span>${order_status}</span>--></p>
+                    <?py #endif ?>
+                    </a>
+                </div>
+            </div>
+            <div class="work-divider"></div>
+            <div class="content panel">
+              <div class="panel-header">
+                <i class="iconfont gzh-photo"></i>
+                服务成果
+                <span class="pull-right swiper-wrapper-number"></span>
+              </div>
+              <div class="panel-body">
+                  <div>
+                  <div>
+                      <?py for img_url in share_images: ?>
+                        <div class="margintop">
+                          <a href="weixin://viewimage/${img_url}">
+                            <img src="${img_url}" style="width:100%;" />
+                          </a>
+                        </div>
+                      <?py #endfor ?>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="work-divider"></div>
+            <div class="accordion padding" id="accordion2">
+                <?py if len(evaluations): ?>
+                    <div class="accordion-group">
+                      <div class="accordion-heading accordion-step">
+                        <a class="accordion-toggle">
+                          <i class="iconfont gzh-camera"></i>拍摄过程分享
+                        </a>
+                      </div>
+                    </div>
+                <?py #endif ?>
+
+                <?py for evaluation in evaluations: ?>
+
+                    <div class="accordion-group">
+                      <div class="accordion-heading">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                          <span class="badge">1</span>${evaluation.get('Fcategory_name')}<i class="iconfont gzh-up-thin pull-right"></i>
+                        </a>
+                      </div>
+                      <div id="collapseOne" class="accordion-body collapse in" aria-expanded="true">
+                          <div class="accordion-inner">
+                            <?py for score in evaluation.get('Fscore'): ?>
+                                <p class="gm-item-star text-red">
+                                  <span>${score.get('tag')}</span>
+                                  <?py for star in xrange(int(score.get('score'))): ?>
+                                    <i class="iconfont gzh-star"></i>
+                                  <?py #endfor ?>
+                                </p>
+                            <?py #endfor ?>
+
+                            <p>${evaluation.get('Fcontent')}</p>
+                            <ul class="gzh-avg-sm-3">
+                              <?py for img_url in evaluation.get('images'): ?>
+                                <li><img src="${img_url}" class="gzh-thumbnail"/></li>
+                              <?py #endfor ?>
+                            </ul>
+                            <?py for staffer in evaluation.get('Fstaffer_name'): ?>
+                                <p><span>${staffer.get('title')}：</span>${staffer.get('name')}</p>
+                            <?py #endfor ?>
+
+                          </div>
+                      </div>
+                    </div>
+                <?py #endfor ?>
+
+                <?py if len(evaluations) == 5: ?>
+                    <div class="accordion-group">
+                      <div class="accordion-heading">
+                        <a class="accordion-toggle acccordion-comment" data-toggle="collapse" data-parent="#accordion2" href="#collapseSix">
+                          <i class="iconfont gzh-reply_1"></i>总体评价<i class="iconfont gzh-up-thin pull-right"></i>
+                        </a>
+                      </div>
+                      <div id="collapseSix" class="accordion-body collapse in" aria-expanded="true">
+                        <div class="accordion-inner">
+                            <p class="gm-item-star text-red">
+                                <span>总评</span>
+                                <?py for star in xrange(5): ?>
+                                    <i class="iconfont gzh-star"></i>
+                                <?py #endfor ?>
+                            </p>
+                            <p>这次服务基本还算满意~~<br>作品基本达到我们当时的马斯，特别表杨一下<br>服务到位，特别有心</p>
+                        </div>
+                      </div>
+                    </div>
+                <?py else: ?>
+
+                <?py #endif ?>
+            </div>
+        </div>
+        <div class="footer">
+            <?py company_name = company.get('Fcompany_name')[0:8]?>
+            <span class="title">${company_name}</span>
+            <div class="pull-right">
+            <a class="buttonshare button-clear button-enter" href="/mobile/merchant/detail/${company.get('Fuser_id')}">进入店铺</a>
+            <a class="buttonshare button-clear button-order" href="/mobile/bespeak_order/1/${company.get('Fid')}/${company.get('Fuser_id')}">立即预约</a>
+            </div>
+        </div>
+        <script src="/static/vendor/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/scripts/plugins/bootstrap.min.js"></script>
+        <script src="/static/scripts/plugins/swiper/swiper.min.js"></script>
+        <script src="/static/scripts/plugins/swiper/swiper.jquery.min.js"></script>
+        <script src="/static/scripts/plugins/WeixinApi.js"></script>
+         <!--注销真人秀图片轮播事件-->
+        <!--<script type="text/javascript">
+        $(function(){
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                onInit : function(_swiper){
+                  $('.swiper-wrapper-number').html("1/"+_swiper.slides.length);
+                },
+                onSlideChangeStart : function(_swiper){
+                   $('.swiper-wrapper-number').html((_swiper.activeIndex + 1) +"/"+_swiper.slides.length);
+                }
+            });
+        });
+        </script>-->
+    </body>
+</html>

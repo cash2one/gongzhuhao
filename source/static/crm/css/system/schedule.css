@@ -1,0 +1,28 @@
+.sc-choose{ width: 10%;}
+.sc-date{ width: 30%;}
+.sc-num{ width: 20%;}
+
+
+.visitor{ }
+.visitor .v-mobile{ width: 15%;}
+.visitor .v-come{ width: 25%;}
+.visitor .v-date{ width: 15%;}
+.visitor .v-level{ width: 15%;}
+.visitor .v-time{ width: 15%;}
+.visitor .v-action{ width: 15%; border-right: 1px solid #ddd;}
+
+
+/*
+ *  潜客管理
+ */
+.orders{ margin: 0;}
+.orders .form-group{ display: inline-block; margin-bottom: 10px;}
+.orders .form-group .form-control{ display: inline-block; width: 200px;}
+.orders .form-group input{ vertical-align: middle;}
+.orders select{ height: 32px; width: 100px; border: 1px solid #ddd;}
+.orders .iput-txt{ margin: 0 5px 0 10px;}
+/*.orders .btn-schedule{ position: absolute; top: 10px; right: 10px;}*/
+
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th{ border-bottom: none;}
+
+.btn-success{ position: absolute; top: 10px; right: 10px;}

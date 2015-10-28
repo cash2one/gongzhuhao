@@ -1,0 +1,80 @@
+<div class="clearfix row-main">
+<?py include('ops/topic/base.html') ?>
+ <div class="col-md-10">
+   <div class="panel">
+     <div class="panel-heading"><strong><i class="icon-globe"></i>创建话题分类</strong></div>
+       <div class="panel-body">
+         <form class="form-inline" action="" id="user_ajax_form" method="post" onsubmit="return saveReport();">
+           <table class="table table-form">
+             <tbody>
+              <tr>
+                <th class="col-xs-2">话题分类名称</th>
+                <td class="col-xs-6">
+                    <?py if topic_category: ?>
+                        <input type="text"  class="form-control" value="${topic_category.Fname}" id="category_name" name="category_name">
+                    <?py else: ?>
+                        <input type="text"  class="form-control" value="" id="category_name" name="category_name">
+                    <?py #endif ?>
+                </td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <th class="col-xs-2">描述信息</th>
+                <td class="col-xs-6">
+                    <?py if topic_category: ?>
+                        <textarea class="form-control" id="category_description" name="category_description">${topic_category.Fdescription}</textarea>
+                    <?py else:?>
+                        <textarea class="form-control" id="category_description" name="category_description"></textarea>
+                    <?py #endif ?>
+                </td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <th>分类图片</th>
+                 <td>
+                   <input type="file" class="form-control" id="category_img" name="category_img" accept="application/ostream" multiple/>
+                   <?py if topic_category: ?>
+                        <?py tc = topic_category.Fimg_url?>
+                        <?py img_url = handler.get_show_img_url(tc,150).replace(' ','%20')?>
+                        <img src=${img_url} />
+                   <?py #endif ?>
+                 </td>
+              </tr>
+
+              <tr>
+                <th></th>
+                <td colspan="2">
+                    <input type="submit" data-loading="稍候..." value="保存" class="btn btn-primary" id="user_submit">
+                </td>
+              </tr>
+             </tbody>
+           </table>
+             #{xsrf_form_html}
+         </form>
+       </div>
+   </div>
+ </div>
+</div>
+<?py include('ops/common/dialog.html') ?>
+<script language="Javascript">
+    $(document).ready(function(){
+        $('#topic_tag_nav').addClass('active');
+        $('#create_topic_category').addClass('active');
+    });
+
+    function saveReport(){
+        $('#user_ajax_form').ajaxSubmit(function(data){
+           var obj = $.parseJSON(data);
+           if(obj.stat == '1000'){
+                alert('创建成功!');
+                location.href = "/gzh/ops/query/topic/categorys/";
+           }else{
+                alert('error');
+           }
+        });
+        return false;
+    }
+
+</script>

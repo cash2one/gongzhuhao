@@ -1,0 +1,67 @@
+
+	<link rel="stylesheet" href="/static/mobile/css/order/order.css"/>
+		<header class="header">
+			<a class="back" href="javascript:history.go(-1);"><span class="icon icon-back"></span></a>
+			<p class="title">发表心情</p>
+			<div id="js_publish" class="publish">服务评价</div>
+		</header>
+		<section class="cd-main-content share">
+			<div class="box">
+		        #{xsrf_form_html}
+		        <input type="hidden" value="${order_id}" name="order_id" id="order_id"/>
+		        <input type="hidden" value="${shd_no}" name="shd_no" id="shd_no"/>
+		        <input type="hidden" value="" name="pic_ids" id="pic_ids" />
+	    			<div class="form-group">
+	    				<p class="share-title">发表心情：</p>
+	    				<textarea id="description" class="description"></textarea>
+	    			</div>
+	    			<div class="form-group fileupload"></div>
+			</div>
+	      <div class="upload-box">
+		      <form id="js_form" action="" method="post" enctype="multipart/form-data">
+		          #{xsrf_form_html}
+		          <div class="upload-main">
+						<input id="js_upload" type="button" class="btn-uploadphoto" value="" />
+						<input id="js_btn_upload" type="file" name="files" name="fileselect[]" capture="camera" accept="image/*" multiple />
+		              <div id="js_preview" class="upload-preview"></div>
+		          </div>
+		          
+		          <div class="upload-submit">
+		              <button type="button" id="js_submit" class="btn-confirm">确认上传图片</button>
+		          </div>
+		          <div id="js_info" class="upload-inf"></div>
+		      </form>
+	      </div>
+		</section>
+	</div>
+	<script src="/static/mobile/js/order/h5File.js" ></script>
+	<script src="/static/mobile/js/order/upload.js"></script>
+	<script language="Javascript">
+	    $('#js_publish').click(function(){
+	        var _order_id = $('#order_id').val();
+	        var _shd_id = $('#shd_no').val(); //排期id
+	        var _xsrf = "#{xsrf_token}";
+	        var _comment = $('#description').val(); //评论内容
+	        $.ajax({
+	            type:"post",
+				url:"/mobile/schedule/experience/"+_order_id+"/"+_shd_id+"/",
+	            data:{
+	                order_id:_order_id,
+	                shd_no:_shd_id,
+	                comment:_comment,
+	                _xsrf:_xsrf
+	            },
+	            success:function(data){
+	                var obj = $.parseJSON(data);
+	                if(data.stat == 'ok'){
+	                    location.href = '/mobile/schedule/detail/'+_order_id+'/'+_shd_id+'/';
+	                }else{
+
+	                }
+	            },
+	            error:function(){
+
+	            }
+	        });
+	    });
+	</script>

@@ -1,0 +1,198 @@
+<link rel="stylesheet" href="/static/skin/css/merchant.css"/>
+<link rel="stylesheet" type="text/css" href="/static/skin/css/less.css">
+<style type="text/css">
+    * {
+          box-sizing: border-box;
+    }
+    body{
+        background-color:#fff !important;
+        font-size: 16px;
+    }
+    .gzh-badge-second{
+        background-color: #ff5daa;
+    }
+</style>
+<?py from services.company.company_services import CompanyServices ?>
+<?py company_service = CompanyServices() ?>
+<?py company_service.set_db(handler.db) ?>
+<div class="gzh-main">
+    <div class="col-940" style="width:940px;margin-right:30px;float:left;">
+        <article>
+            <ul class="gzh-tab"><!-- 列表 Start -->
+                <li><a href="/weddingdress/series/">套系列表</a></li>
+                <li class="gzh-active"><a href="/weddingdress/merchant/">商家列表</a></li>
+                <li><a href="/weddingdress/work/">作品列表</a></li>
+            </ul><!-- 列表 End -->
+
+
+            <div class="gzh-list gzh-list--list1"><!--价格 Start -->
+                <div class="gzh-list-left"><i class="iconfont gzh-rmb"></i>价格</div>
+                <?py if between_price == '': ?>
+                    <div class="gzh-list-center gzh-active"><span>全部</span></div>
+                <?py else: ?>
+                    <div class="gzh-list-center"><a href="/weddingdress/merchant/?area=${area}&order=${order}">全部</a></div>
+                <?py #endif ?>
+
+                <ul class="gzh-list-right">
+                <?py for query_price in query_price: ?>
+                    <?py prices = query_price.split('-')?>
+                    <?py if prices[0] == '': ?>
+                        <?py p = prices[1]+'以下'?>
+                        <?py if between_price == query_price: ?>
+                            <li class="gzh-active"><span>${p}</span></li>
+                        <?py else: ?>
+                            <li><a href="/weddingdress/merchant/?between_price=${query_price}&area=${area}&order=${order}">${p}</a></li>
+                        <?py #endif ?>
+                    <?py elif prices[1] == '': ?>
+                        <?py p = prices[0]+'以上'?>
+                        <?py if between_price == query_price: ?>
+                            <li class="gzh-active"><span>${p}</span></li>
+                        <?py else: ?>
+                            <li><a href="/weddingdress/merchant/?between_price=${query_price}&area=${area}&order=${order}">${p}</a></li>
+                        <?py #endif ?>
+                    <?py else: ?>
+                        <?py if between_price == query_price: ?>
+                            <li class="gzh-active"><span>${query_price}</span></li>
+                        <?py else: ?>
+                            <li><a href="/weddingdress/merchant/?between_price=${query_price}&area=${area}&order=${order}">${query_price}</a></li>
+                        <?py #endif ?>
+                    <?py #endif ?>
+                <?py #endfor ?>
+                </ul>
+            </div><!--价格 End-->
+
+            <div class="gzh-list gzh-list--list2"><!--区域 Start -->
+                <div class="gzh-list-left"><i class="iconfont gzh-adress_1"></i>区域</div>
+                <?py if area == '': ?>
+                    <div class="gzh-list-center gzh-active"><span>全部</span></div>
+                <?py else: ?>
+                    <div class="gzh-list-center"><a href="/weddingdress/merchant/?between_price=${between_price}&order=${order}">全部</a></div>
+                <?py #endif ?>
+                <ul class="gzh-list-right">
+                <?py for qa in query_area: ?>
+                    <?py if str(qa.Fid) == area: ?>
+                        <li class="gzh-active"><span>${qa.Farea_name}</span></li>
+                    <?py else: ?>
+                        <li><a href="/weddingdress/merchant/?between_price=${between_price}&area=${qa.Fid}&order=${order}">${qa.Farea_name}</a></li>
+                    <?py #endif ?>
+                <?py #endfor ?>
+                </ul>
+                
+            </div><!--区域 End-->
+            
+            <!-- 排序栏 Start-->
+            <div class="gzh-filter">
+                <ul class="clearfix">
+                    <?py if order == 'Fcreate_time': ?>
+                        <li class="hover">
+                            <a href="/weddingdress/merchant/?order=Fcreate_time&between_price=${between_price}&area=${area}">默认排序</a>
+                        </li>
+                    <?py else: ?>
+                        <li>
+                            <a href="/weddingdress/merchant/?order=Fcreate_time&between_price=${between_price}&area=${area}">默认排序</a>
+                        </li>
+                    <?py #endif ?>
+                    <?py if order == 'level desc': ?>
+                        <li class="hover">
+                            <a href="/weddingdress/merchant/?order=level desc&between_price=${between_price}&area=${area}">评价</a>
+                        </li>
+                    <?py else: ?>
+                        <li>
+                            <a href="/weddingdress/merchant/?order=level desc&between_price=${between_price}&area=${area}">评价</a>
+                        </li>
+                    <?py #endif ?>
+                </ul>
+                <i>为您找到<span>${company_count}</span>个商家</i>
+            </div>
+
+            <!-- 排序栏 End-->
+            
+            <!-- 商家列表 Start -->
+            <?py for company in companys.result: ?>
+                <div class="gzh-media gzh-media--hover gzh-media--258">
+                    <div class="gzh-media-left">
+                        <a href="/weddingdress/merchant/${company.Fid}">
+                            <img data-lazyload="${company.Fphoto_url}" class="gzh-lazy gzh-media-object" alt="" />
+                        </a>
+                    </div>
+                    <div class="gzh-media-body">
+                        <h4 class="title">
+                            <a href="/weddingdress/merchant/${company.Fid}">${company.Fcompany_name}</a>
+                            <span class="gzh-badge gzh-badge-success">惠</span>
+                            <span class="gzh-badge gzh-badge-warning">返</span>
+                            <?py if company.Fis_activity: ?>
+                                <span class="gzh-badge gzh-badge-second">七夕特惠</span>
+                            <?py #endif ?>
+                        </h4>
+                        <div class="price text-red">￥${company.Fcheapest}~${company.Fmost_expensive}</div>
+                        <?py company_gift = company_service.get_gift(company.Fuser_id,1).scalar() ?>
+                        <?py order_gift = company_service.get_gift(company.Fuser_id,2).scalar() ?>
+                        <?py if order_gift: ?>
+                            <p class="favour"><span class="text-red">优惠：</span><a href="">${order_gift.Fcontent}</a></p>
+                        <?py else: ?>
+                            <p class="favour"><span class="text-red">优惠：</span><a href=""></a></p>
+                        <?py #endif ?>
+
+                        <?py if company_gift: ?>
+                            <p class="gift"><span class="text-red">到店礼：</span><a href="">${company_gift.Fcontent}</a></p>
+                        <?py else: ?>
+                            <p class="gift"><span class="text-red">到店礼：</span><a href=""></a></p>
+                        <?py #endif ?>
+                    </div>
+                    <div class="gzh-media-right">
+                        <p class="text-red gm-info-star">
+                            <?py for index in range(company.level): ?>
+                                <i class="iconfont gzh-star"></i>
+                            <?py #endfor ?>
+                        </p>
+                        <p class="works">
+                            <a href="">套系<span class="text-red">${handler.get_count('package',company.Fuser_id)}</span></a>
+                            <a href="">作品<span class="text-red">${handler.get_count('product',company.Fuser_id)}</span></a>
+                        </p>
+                        <p class="area">区域:&nbsp;${handler.get_area(company.Farea)}</p>
+                        <div class="gzh-media-fade">
+                            <span class="fr gm-works-share">
+                                <i class="iconfont gzh-share"></i>分享
+                            </span>
+                            <span class="fr gm-works-share">
+                                <i class="iconfont gzh-star"></i>收藏
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            <?py #endfor ?>
+            <!-- 商家列表 End -->
+
+            <!-- 分页 Start -->
+            <ul class="gzh-pagination gzh-pagination--center">
+                #{page_html}
+            </ul>
+            <!-- 分页 End  -->
+        </article>                
+    </div>
+    <aside class="gzh-side w230 fr">
+        <div class="gzh-ad m30">
+            <a href="${top_banner.get('Flink')}"><img src="${top_banner.get('Fimage_url')}" width="230" height="142"/></a>
+        </div>
+        <div class="gzh-side-pro">
+            <p class="gs-title">
+                <span>精品推荐</span>
+            </p>
+            <?py for series in handler.get_essence_series(): ?>
+                <div class="gs-item">
+                    <a href=""><img src="${series.get('cover_img')}" width="190" height="118" /></a>
+                    <h2 class="f14"><a href="">${series.get('Fpackage_name')}</a></h2>
+                    <p class="gm-price text-red f20">
+                        <i class="price">¥</i>${series.get('price')}
+                    </p>
+                </div>
+            <?py #endfor ?>
+        </div>
+    </aside>
+</div>
+<script>
+    $('#nav_merchant').addClass('current');
+    $('#nav_merchant').html('婚纱礼服<i class="iconfont gzh-down"></i>');
+     $('.nav-dropdown').css({left:'0px'})
+
+</script>

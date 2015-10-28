@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--chosen  选择组件-->
+    <link rel="stylesheet" href="/static/ops/css/min.css" type="text/css" media="screen">
+    <script src="/static/ops/js/min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/static/ops/datetime/bootstrap-datetimepicker.min.css" type="text/css" media="screen">
+    <script src="/static/ops/datetime/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function(){
+            $('.search_date').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+            $(".chosen-select").chosen({allow_single_deselect:true});
+            $("#user_order_nav").addClass('active');
+            $("#orders_list_show").addClass('active');
+        });
+    </script>
+</head>
+<body>
+ <div class="clearfix row-main">
+ <?py include('ops/albums/albums_base.html') ?>
+    <div class="col-md-10">
+      <div class="panel">
+        <div class="panel-heading">
+          <strong><i class="icon-group"></i>订单列表</strong>
+          <div class="panel-actions">
+
+          </div>
+        </div>
+
+        <form id="user_search_form" action="" method="get">
+          <table class="table table-form">
+            <tbody>
+               <tr>
+                 <th>创建时间</th>
+                 <td>
+                    <div class="input-append date">
+                        <input type="text" class="form-control search_date" value="" id="start_date" name="start_date"/>
+                        <span class="add-on"><button type="button" class="btn btn-default"><i class="icon-calendar"></i></button></span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-append date">
+                        <input type="text" class="form-control search_date" value="" name="end_date" id="end_date"/>
+                        <span class="add-on"><button type="button" class="btn btn-default"><i class="icon-calendar"></i></button></span>
+                    </div>
+                  </td>
+                 <th>订单类型</th>
+                 <td>
+                    <select class="form-control chosen-select" name="order_type" id="order_type" style="width:100px">
+                        <option></option>
+                        <option value="0">其他</option>
+                        <option value="1">婚纱</option>
+                        <option value="2">写真</option>
+                        <option value="3">孕妇</option>
+                        <option value="4">亲子</option>
+                    </select>
+                 </td>
+                 <th>订单状态</th>
+                 <td>
+                    <select class="form-control chosen-select" name="order_status" id="order_status" >
+                        <option></option>
+                        <option value="0">初始状态</option>
+                        <option value="1">已通知试衣</option>
+                        <option value="2">已通知摄影</option>
+                        <option value="3">已通知选样</option>
+                        <option value="4">已通知定稿</option>
+                        <option value="5">已通知取件</option>
+                    </select>
+                 </td>
+               </tr>
+               <tr>
+                 <th>客户姓名</th>
+                 <td colspan="2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="" id="user_name" name="user_name" >
+                    </div>
+                 </td>
+                 <td>
+                     <input type="submit" data-loading="稍候..." value="搜索" class="btn btn-primary" id="house_type_submit">
+                 </td>
+               </tr>
+            </tbody>
+          </table>
+        </form>
+        <table class="table table-hover table-striped table-bordered">
+          <thead>
+            <tr class="text-center">
+                <th><input type="checkbox" name="order_ids" value="all"></th>
+                <th>订单号</th>
+                <th>订单类型</th>
+                <th>客户姓名</th>
+                <th>联系电话</th>
+                <th>接单人</th>
+                <th>订单金额</th>
+                <th>状态</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?py for order in page_data.result: ?>
+             <tr class="text-center" id="${order.Fid}">
+                <td><input type="checkbox" name="order_id" value="${order.Fid}" ></td>
+                <td>${order.Fid}</td>
+                <td>${order_type[order.Forder_type]}</td>
+                <td>${order.Fuser_name}</td>
+                <td>${order.Fuser_mobi}</td>
+                <?py if handler.get_staffer_by_id(order.Fuid_stf): ?>
+                    <td>${handler.get_staffer_by_id(order.Fuid_stf).Fname}</td>
+                <?py else: ?>
+                    <td></td>
+                <?py #endif ?>
+
+                <td>${order.Famount}</td>
+                <td>${order_status[order.Fstatus]}</td>
+                <td>${order.Fcreate_time}</td>
+                <td>
+                  <a href="/gzh/ops/photo/list/${handler.get_album_by_order_id(order.Fid).Fid}/${merchant_id}">查看相片</a>
+                </td>
+             </tr>
+            <?py #endfor ?>
+          </tbody>
+            #{page_html}
+        </table>
+      </div>
+    </div>
+ </div>
+</body>
+<?py include('ops/common/dialog.html') ?> <!--引入弹出框组件-->
+<script language="Javascript">
+
+</script>
+</html>

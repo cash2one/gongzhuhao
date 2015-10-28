@@ -1,0 +1,202 @@
+.m30{ margin: 0 0 30px 0}
+a{ text-decoration: none}
+h1, h2, h3, h4{ font-weight: normal}
+.gzh-container{ min-height: 800px}
+.gzh-position{ margin: 0 auto; height: 70px; line-height: 70px}
+.gzh-position a{ color: #333; text-decoration: none}
+.gzh-position a:hover{ color: #ff6577; text-decoration: none}
+.gzh-position span{ margin: 0 5px; vertical-align: top}
+.gzh-position .text-red{ color: #ff6577}
+.gzh-merchant{ float: left; position: relative; left: 0; right: 0}
+.gm-item{ border: 1px solid #ddd;}
+.p20{ padding: 20px;}
+.gm-info{ clear: both; display: inline-block; margin: 0; padding: 0; height: 319px; overflow: hidden}
+.gm-info-img{ display: inline-block; width: 459px; height: 279px; float: left; margin: 20px 30px 20px 20px}
+.gm-info-extra{ float: left; margin: 20px 20px 20px 0; width: 405px}
+.gm-info-extra h1{ margin: 0; padding: 12px 0; font-weight: normal; line-height: 1}
+.gm-info-extra p{ padding: 0}
+.gm-info-star{ margin: 0 0 32px 0}
+.gm-info-star i{ margin: 0}
+.gm-info-extra .gm-gift{ margin-left: 5px; padding: 3px 5px; border-radius: 3px; font-size: 12px; color: #fff; vertical-align: middle}
+.gm-info-tips{ margin: 0 0 12px 0; color: #333}
+.gm-info-style{margin: 12px 0 5px 0 }
+.gm-info-style span{ margin-right: 10px;}
+.gm-info-action{ margin-top: 14px;}
+.btn-order{ display: inline-block; width: 180px; height: 40px; line-height: 1.8; font-weight: normal; font-size: 16px; background: #ff6577; color: #fff; text-align: center; border-radius: 3px}
+.btn-enter{ display: inline-block; width: 180px; height: 40px; line-height: 1.8; font-weight: normal; font-size: 16px; background: #fff; border: 1px solid #ddd; color: #333; text-align: center; border-radius: 3px}
+.btn-order:hover{ background: #f8596b; color: #fff}
+.btn-order:active{ background: #f8596b; color: #fff}
+.btn-enter:hover{ background: #f2f2f2; color: #333}
+
+
+.gm-location{ padding: 0 20px; width: 940px; height: 60px; line-height: 60px; color: #333; background: #fafafa; z-index: 99}
+.gm-location a{ display: inline-block; margin-right: 40px; text-align: center; line-height: 58px; text-decoration: none; color: #333;}
+.gm-location a.current{ border-bottom: 2px solid #ff6577; color: #ff6577}
+
+.gm-item-title{ margin: 0; padding: 0 20px; height: 60px; line-height: 60px; background: #fafafa; font-weight: normal}
+.gm-item-title a{ float: right; font-size: 14px; color: #999; text-decoration: none;}
+.gm-item-title a:hover{ color: #ff6577}
+.gm-hot{ padding: 20px 0 0 20px; width: 940px; margin-right: -20px; clear: both; overflow: hidden}
+.gm-hot-item{ float: left; width: 286px; padding-bottom: 20px; margin-right: 20px;}
+.gm-hot-item p{ margin: 0; }
+.gm-hot-extra{ padding: 0 0 12px 0}
+.gm-hot-title a{ display: inline-block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; color: #333; }
+.gm-hot-item a{ display: inline-block; width: 100%}
+.gm-hot-item img{ margin: 0 0 16px 0; width: 286px; height: 178px}
+.gm-hot-item:hover a{ color: #ff6577}
+.gm-hot-item i{ font-style: normal; margin-right: 5px;}
+.gm-hot-item del{ margin-left: 10px; color: #999}
+.gm-hot-item .gm-hot-title a{ display: inline-block; width: 85%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap}
+.gm-reviews{ }
+.gm-reviews-item{ display: inline-block; padding: 24px 20px; width: 938px; min-height: 140px;border-top: 1px solid #ddd;}
+.gm-reviews-item:first-child{ border-top: none}
+.gm-reviews-l{ width: 90px; text-align: center}
+.gm-reviews-l img{ margin-bottom: 10px}
+.gm-reviews-l:hover img{ background-color: rgba(255,255,255,0.1)}
+.gm-reviews-l p{ font-size: 14px}
+.gm-reviews-cons{ margin-left: 28px; width: 780px}
+.gm-reviews-cons p{ margin: 0;}
+.gm-reviews-top{ padding: 0 0 20px 0; color: #999; font-weight: normal;}
+.gm-reviews-top strong{ margin: 0 10px 0 0px; color: #333; font-weight: normal}
+.gm-reviews-text{ line-height: 26px; color: #666}
+.gm-reviews-thumb{margin-top: 15px;}
+.gm-reviews-thumb img{ margin-right: 10px}
+.gm-reviews-thumb:hover img{ background-color: rgba(255,255,255,0.1)}
+.gm-reviews-bottom{ padding-top: 15px; color: #999}
+.gm-reviews-bottom i{ font-style: normal; margin-left: 5px; color: #999}
+
+.gzh-side{ position: relative;}
+.gzh-side-pro{ padding: 24px 20px; background: #fafafa; border: 1px solid #ddd}
+.gs-title{ position: relative; border-top: 1px solid #ddd}
+.gs-title span{ position: absolute; top: 0; left: 50%; margin: -20px 0 0 -44px; display: inline-block; padding: 10px 4px; width: 80px; background: #fafafa;text-align: center}
+
+.gs-item{ position: relative; padding-top: 10px;}
+.gs-item h2{ margin: 0; padding: 12px 0 6px 0;}
+.gs-item p{ margin: 0; padding: 0 0 12px 0}
+.gs-item p i{ font-style: normal; margin-right: 5px}
+.gs-item a{ display: inline-block; width: 100%; color: #333; font-weight: normal}
+.gs-item img{ }
+.gs-item:hover h2 a{ color: #ff6577}
+
+.gzh-side-pro .gs-item{ width: 190px}
+
+.gm-series-info{ clear: both; display: inline-block; margin: 0; padding: 0 0 20px 0}
+.gm-series-info .gm-info-img{ display: inline-block; margin: 20px 0 0 20px; width: 459px; height: 279px; float: left}
+.gm-series-info .gm-info-extra{ float: left; padding: 20px 0 0 0; margin: 0; width: 459px}
+.gm-series-info .gm-info-extra h1{ margin: 0; padding: 12px 0 12px 30px; font-weight: normal}
+.gm-series-info .gm-info-extra p{ padding-left: 30px; padding-right: 30px}
+.gm-series-info .gm-info-style{ margin: 12px 0 5px 30px }
+.gm-series-info .gm-info-extra p.gm-item-price{ margin: 12px 0 20px 0;}
+.gm-info-btn{ margin-top: 24px; padding: 0 30px}
+.gm-info-btn .btn-order{ margin-left: 0px}
+.gm-works-share{ margin-top: 7px; color: #999}
+.gm-works-share .bds_more,
+.gm-works-fav .bds_more{ font-size: 14px; color: #999; background: none}
+.gm-works-share .bds_more:hover,
+.gm-works-fav .bds_more:hover{ text-decoration: none; color: #ff6577}
+.gm-works-fav{ margin-left: 20px; margin-top:10px; color: #999}
+
+
+.gm-series .gm-item-title{ position: relative; margin: 0; padding: 0 20px; width: 938px; height: 80px; background: #fafafa; font-weight: normal}
+.gm-series .gm-item-title h2{ margin: 0; padding: 20px 0 5px 0; font-weight: normal; }
+.gm-series .gm-item-star{ margin: 0; padding: 0; line-height: 20px}
+.gm-series .gm-item-title .btn{position: absolute; top: 20px; width: 98px; height: 38px; line-height: 1.8; text-align: center; border-radius: 3px; }
+.gm-series .gm-item-title .btn-enter{  right: 20px; color: #333}
+.gm-series .gm-item-title .btn-order{ right: 130px; color: #fff}
+.gm-item-star i{ margin: 0}
+
+.gm-item-price{ margin: 0; padding: 0; height: 70px; line-height: 70px; background: #fafafa; font-size: 22px; color: #ff6577}
+.gm-item-price span{ line-height: 70px; vertical-align: middle}
+.gm-item-price i{ font-style: normal; margin-right: 5px;}
+.gm-item-price del{ margin-left: 10px; line-height: 70px; font-size: 14px; color: #999}
+.gm-item-preview{ margin-top: 30px; padding: 0 20px 20px 20px;}
+.preview-inner{ width: 900px; text-align: center}
+.preview-inner a{ display: inline-block; width: 900px; height: auto}
+.gm-item-preview img{ margin-top: 10px; max-width: 900px; height: auto; object-fit: cover}
+.gm-item-preview:hover img{ background-color: rgba(255,255,255,0.1)}
+.gm-item-detail ul{ overflow: hidden; margin: 0; padding: 0 20px; height: 185px}
+.gm-item-detail ul li{ clear: both; overflow: hidden; padding: 16px 0; line-height: 28px; border-bottom: 1px dashed #ddd; list-style: none}
+.gm-item-detail ul li p{ width: 45%; float: left; margin-right: 4%; margin-bottom: 0; padding: 0; color: #666 }
+.gm-item-detail ul li p strong{ margin-left: 10px; color: #333; font-weight: normal}
+.gm-view-more{ padding: 20px 0 6px 0; text-align: center; cursor: pointer }
+.gm-item-show-all{ height: 100%}
+
+.gm-filter{}
+.gm-filter span{ margin-right: 20px;}
+.gm-filter i{ font-style: normal; margin-right: 10px}
+.gm-filter a{ padding: 3px 10px; display: inline-block; margin-right: 20px; text-align: center; line-height: 25px; color: #333}
+.gm-filter a.current{ padding: 3px 10px; border-radius: 3px; background: #ff6577; color: #fff}
+
+.gm-series-item{}
+.gm-series-item a{ color: #333}
+.gm-series-item .gm-hot{ padding: 20px 0 0 0; width: 960px; margin-right: -20px; clear: both; overflow: hidden}
+.gm-series-item .gm-hot-item{ width: 300px; padding-bottom: 20px; margin-right: 20px;}
+.gm-series-item .gm-hot-item img{ margin: 0 0 16px 0; width: 300px; height: 187px}
+
+.gm-works{ padding: 30px 20px 20px 20px; font-weight: normal}
+.gm-works h1, .gm-worksh2{ margin: 0; padding: 0; font-weight: normal}
+.gm-works-title{ font-weight: normal; margin: 0 0 24px 0}
+.gm-works-extra span{ font-weight: normal; margin-right: 40px;}
+.gm-works-extra strong{ color: #333; font-weight: normal}
+.gm-filter-works{}
+.gm-filter-works a{ padding: 0; display: inline-block; text-align: center; height: 25px; color: #333}
+.gm-filter-works a:hover{ text-decoration: none; color: #ff6577}
+.gm-vline{ margin: 0 5px}
+.gm-filter-works a.current{ border-bottom: 2px solid #ff6577}
+
+.gm-hot-extra a.gm-works-company{ display: inline-block; width: 100%; padding: 0 0 12px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #666}
+.gm-hot-extra a.gm-works-company{ display: inline-block; width: 80%;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #333}
+.gm-hot-item:hover .gm-works-company{ color: #ff6577}
+.gm-series-item .gm-hot-item .gm-hot-title a.gm-works-company{ color: #666}
+.gm-series-item .gm-hot-item:hover .gm-hot-title a.gm-works-company{ color: #ff6577}
+
+.gm-works-item .gm-hot-item{ float: left; width: 272px; padding-bottom: 32px; margin-right: 20px;}
+.gm-hot-item .gm-hot-title a{ display: inline-block; width: 85%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap}
+
+.gm-works .gm-item-preview{ margin-top: 30px; padding: 0; width: 860px; overflow: hidden}
+.gm-works .gm-item-preview img{ margin-top: 10px; max-width: 860px; height: auto; object-fit: cover}
+.gm-works .gm-item-preview:hover img{ background-color: rgba(255,255,255,0.1)}
+.gm-works .preview-inner{ width: 860px; text-align: center}
+.gm-works .preview-inner a{ display: inline-block; width: 860px; height: auto}
+.gzh-side-inner{ padding: 30px 20px 50px 20px; border: 1px solid #ddd}
+.gzh-side-inner h2{ margin: 0; padding: 0 0 10px 0}
+.gzh-side-star{ margin: 0 0 32px 0}
+.gzh-side-btn{ margin: 32px 0 0 0}
+.gzh-side-btn .btn-order{ width: 100px}
+.gzh-side-btn .btn-enter{ margin-left: 10px; width: 100px}
+
+
+#order_modal .gzh-order-dialog{ position: relative; margin: 0 auto; width: 600px;}
+#order_modal .gzh-order-dialog .compang-title{margin-top: 10px; margin-bottom: 30px}
+.order-content{ position: relative}
+.order-content li{ position: relative}
+.order-content li .iconfont{ position: absolute; left: 10px; font-size: 26px; color: #999}
+.order-content .input-txt{ padding-left: 25px;}
+.order-succcess{ padding: 40px 30px}
+.order-succcess dt{ float: left; margin-right: 20px}
+.order-succcess dd{ padding-top: 5px;}
+.order-succcess dd p{ margin: 0; padding: 0}
+.order-succcess a{ color: #ff6577;}
+.order-succcess a:hover{ text-decoration: none}
+#order_modal .modal-header{ padding: 15px 20px}
+#order_modal .modal-header .close{ margin-top: 12px; margin-right: 10px;}
+#order_modal .modal-header .modal-title{ font-weight: 100;}
+#order_modal .modal-body{ padding: 0 15px;}
+#order_modal .gzh-dialog-cons{ padding: 20px 50px}
+.countdown{ padding-top: 0px; text-align: center}
+.countdown span{ margin-right: 5px;}
+.modal-content{ box-shadow: 0px 1px 5px 0px rgba(12, 4, 8, 0.1);}
+/*.opacityImg{ background:rgba(0, 0, 0, 0.5)!important; filter: alpha(opacity=60); opacity:0.6; }*/
+/*.opacityImg .img-hover{ position: relative;}*/
+
+
+.gm-hot-item{ position: relative}
+.img-link .img-cover{ display: none; position: absolute; top: 0; left: 0; margin: 0 0 16px 0; width: 286px; height: 178px;
+    /*background-image: -moz-linear-gradient( 90deg, rgba(0,0,0,0.30196) 0%, rgba(0,0,0,0) 100%);*/
+	/*background-image: -webkit-linear-gradient( 90deg, rgba(0,0,0,0.30196) 0%, rgba(0,0,0,0) 100%);*/
+	/*background-image: -ms-linear-gradient( 90deg, rgba(0,0,0,0.30196) 0%, rgba(0,0,0,0) 100%);*/
+    background-color: rgba(0,0,0,0.3)
+}
+.gzh-side-pro .img-link .img-cover{ margin: 10px 0 0 0; width: 190px; height: 118px;}
+.gzh-ad .img-link .img-cover{ width: 230px; height: 141px;}
+.gm-series-item .gm-hot-item .img-link .img-cover{ margin: 0; width: 300px; height: 187px;}

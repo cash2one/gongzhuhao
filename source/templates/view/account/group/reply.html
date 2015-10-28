@@ -1,0 +1,55 @@
+<?py include('view/account/_header.html') ?>
+<div class="col-lg-9 col-md-9">
+    <div class="gzh-well clearfix">
+        <h4 class="h4 pull-left ng-scope">小组话题</h4>
+        <ul class="pull-left nav-profile">
+      		<li><a href="/user/topics/">我的话题</a></li>
+            <li><a href="/user/topics/reply.html" class="current">我的回复</a></li>
+            <li><a href="#">关注的话题</a></li>
+        </ul>
+    </div>
+    <div class="gzh-profile">
+
+         <?py if topics:?>
+        <?py for t in topics.result:?>
+                <?py topic_title,parent_content = handler.get_topic_title_and_parent_content(t.Ftopic_id,t.Fparent_id)?>
+                <article class="gzh-article">
+                   <header class="gzh-article-header">
+                    <h2 class="f16">
+                        <i class="iconfont gzh-topic text-gray"></i>
+                        <a href="">${topic_title}</a>
+                    </h2>
+                   </header>
+                    <?py if parent_content:?>
+                        <div class="gzh-article-cons">
+                            <p class="gzh-article-reply">${parent_content}</p>
+                        </div>
+                    <?py #endif ?>
+                   <div class="gzh-article-cons">
+                        <p class="gzh-article-reply">#{t.Fcontent}</p>
+                   </div>
+                    <footer class="">
+                        <p class="text-right">
+                            <span class="gzh-article-date text-gray">${t.Fcreate_time}</span>
+                        </p>
+                    </footer>
+                </article>
+            <?py #endfor ?>
+        <?py #endif ?>
+            <?py if topics.page_num>1:?>
+                <ul class="gzh-pagination gzh-pagination--center">
+                   #{topics.render_admin_html_web()}
+                </ul>
+            <?py #endif ?>
+    </div>
+</div>
+</div>
+</section>
+
+<?py include('view/account/_footer.html') ?>
+<script>
+    $(function(){
+        $('#user_topics').addClass('current');
+    })
+</script>
+

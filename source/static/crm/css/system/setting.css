@@ -1,0 +1,27 @@
+.tip-item{ width: 13%; text-align: center;}
+.tip-address{ width: 86%;}
+th.tip-address{ text-align: center;}
+td.tip-address{ text-align: left;}
+.tip-action{ width: 20%; text-align: center;}
+.add-item{ margin: 15px 0 10px 0}
+
+.input-txt{ display: inline-block; width: 500px;}
+.add-input{ display: inline-block; margin-left: 5px;}
+.ul-address{ position: relative; overflow: hidden; margin: 0; padding: 0;}
+.ul-address li{ position: relative; margin: 10px 0;}
+.ul-address a, .ul-address span{ margin: 0 5px; text-decoration: none; cursor: pointer;}
+.setting .table>thead>tr>th{ border-bottom: 1px solid #ddd; vertical-align: middle;}
+.table-bordered>thead>tr>td, .table-bordered>thead>tr>th{ border-bottom-width: 1px;}
+
+.add{ float: right; display: inline-block; cursor: pointer;}
+.addtxt{ }
+.input-txt{ display: none;}
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th{ text-align: left;}
+.table-bordered>tbody>tr>td.tip-item{ text-align: center;}
+
+.setcons{ margin-bottom: 10px; width: 800px;}
+.textarea.form-control{ min-height: 80px;}
+.setcons p{ margin: 0; height: 30px; line-height: 30px;}
+.error{ margin-right: 10px;}
+
+.table>tbody>tr>td.tip-address, .table>tbody>tr>th.tip-address{ text-align: left;}

@@ -1,0 +1,145 @@
+
+<div class="clearfix row-main">
+
+<?py include('ops/company/companys_base.html') ?>
+
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading"><strong><i class="icon-globe"></i>添加可登录用户</strong></div>
+            <div class="panel-body">
+                <form class="form-inline" action="" id="user_ajax_form" method="post">
+                    <table class="table table-form">
+                        <tbody>
+                        <tr>
+                            <th class="col-xs-2">商户名</th>
+                            <td class="col-xs-6">
+                                <input type="text"  class="form-control" id="company_name" name="company_name" value="${company_name}" disabled/>
+                                <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th class="col-xs-2">用户名</th>
+                            <td class="col-xs-6">
+                                <input type="text"  class="form-control" value="" id="user_name" name="user_name">
+                                <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th class="col-xs-2">密码</th>
+                            <td class="col-xs-6"><input type="password" class="form-control" value="" id="user_pwd" name="user_pwd">
+                                 <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th class="col-xs-2">昵称</th>
+                            <td class="col-xs-6"><input type="text" class="form-control" value="" id="nick" name="nick">
+                                 <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+                         <tr>
+                            <th>权限</th>
+                            <td>
+                                <?py if permissions:?>
+                                <?py for permission in permissions:?>
+                                    <label class="checkbox">
+                                        <input type="checkbox" value="${permission.Fid}" name="permission" id="permission">${permission.Fname}</label>
+                                    <?py #endfor?>
+                                <?py #end?>
+                            </td>
+                            <td></td>
+                         </tr>
+
+                        <tr>
+                            <th>邮箱</th>
+                            <td><input type="text" class="form-control" value="" id="email" name="email">
+                                 <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th>手机</th>
+                            <td><input type="text" class="form-control" value="" id="phone" name="phone">
+                                 <span class="text-error red" for="title"></span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td colspan="2">
+                              <input type="button" data-loading="稍候..." value="保存" class="btn btn-primary" id="user_submit">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    #{xsrf_form_html}
+                </form>
+            </div>
+        </div>
+    </div>
+<?py include('ops/common/dialog.html') ?>
+<script language="Javascript">
+
+    function showRequest() {
+        var params=["user_name","user_pwd","nick","phone"];
+
+        for(var i = 0;i<params.length;i++){
+            if($('#'+params[i]).val()==""){
+                $('#'+params[i]).parent().find('span').html("不能为空！");
+                return false;
+            }else{
+                $('#'+params[i]).parent().find('span').html('');
+            }
+        }
+        return true;
+    }
+
+    function showResponse(responseText, statusText)  {
+                alert(responseText);
+                alert(statusText);
+              BootstrapDialog.show({
+                    title: '创建用户',
+                    message: '保存成功!',
+                    buttons: [{
+                        label: 'Close',
+                        action: function(dialogItself){
+                            dialogItself.close();
+                        }
+                    }]
+                });
+    }
+
+
+$(document).ready(function()
+{
+    $('#company_nav').addClass('active');
+
+    $('#user_submit').click(function(){
+        var is_validate = showRequest();
+        if(is_validate){
+            $.post('',$('#user_ajax_form').serialize(),function(data){
+                var obj = $.parseJSON(data);
+                if(obj.stat=='success'){
+                    alert('添加成功!');
+                    $('#user_ajax_form')[0].reset();
+                }else{
+                    show_dialog_none_reload('添加用户',obj.info);
+                }
+            })
+        }
+
+    });
+
+});
+
+
+</script>
+
+<?py include('ops/common/datetime_html.html') ?>

@@ -1,0 +1,125 @@
+<div class="col-sm-2 col-lg-2 main-menu-span" id="side-nav">
+	<div class="sidebar-nav">
+		<ul class="nav nav-pills nav-stacked main-menu">
+            <?py role_codes = handler.get_current_user().get('Frole_codes', '') ?>
+            <?py permission = handler.get_current_user().get('Fpermission', '') ?>
+            <?py company_role = handler.get_current_user().get('company_role', '') ?>
+			<li><a class="ajax-link" style="border-top: none;" href="/"><i class="glyphicon glyphicon-home"></i><span>首页</span></a></li>
+
+            <?py if 'merchant_weddingdress' in role_codes or 'merchant_weddingdress' in company_role: ?>
+            <li class="accordion" id="shop">
+				<a href="#"><i class="glyphicon glyphicon-plus"></i><span>店铺管理</span></a>
+				<ul class="nav nav-pills nav-stacked">
+                    <?py if role_codes or ('merchant_information_view' in permission): ?>
+					<li><a href="/merchant/edit/">商户信息</a></li>
+                    <?py #endif ?>
+                    <?py if role_codes or ('work_view' in permission): ?>
+                    <li class="nav-work"><a href="/merchant/weddingdress/work/list/">商家作品</a></li>
+                    <?py #endif ?>
+                    <?py if role_codes or ('series_view' in permission): ?>
+                    <li class="nav-series"><a href="/merchant/weddingdress/series/list/">套系管理</a></li>
+                    <?py #endif ?>
+				</ul>
+			</li>
+            <?py elif 'merchant_weddingcompany' in role_codes or 'merchant_weddingcompany' in company_role:?>
+            <li class="accordion" id="shop">
+				<a href="#"><i class="glyphicon glyphicon-plus"></i><span>店铺管理</span></a>
+				<ul class="nav nav-pills nav-stacked">
+                    <?py if role_codes or ('merchant_information_view' in permission): ?>
+					<li><a href="/merchant/edit/">商户信息</a></li>
+                    <?py #endif ?>
+                    <?py if role_codes or ('work_view' in permission): ?>
+                    <li class="nav-work"><a href="/merchant/weddingcompany/work/list/">商家作品</a></li>
+                    <?py #endif ?>
+                    <?py if role_codes or ('series_view' in permission): ?>
+                    <li class="nav-series"><a href="/merchant/weddingcompany/series/list/">套系管理</a></li>
+                    <?py #endif ?>
+				</ul>
+			</li>
+            <?py elif role_codes or ('work_view' in permission) or ('series_view' in permission): ?>
+			<li class="accordion" id="shop">
+				<a href="#"><i class="glyphicon glyphicon-plus"></i><span>店铺管理</span></a>
+				<ul class="nav nav-pills nav-stacked">
+                    <?py if role_codes or ('merchant_information_view' in permission): ?>
+					<li><a href="/merchant/edit/">商户信息</a></li>
+                    <?py #endif ?>
+                    <?py if role_codes or ('work_view' in permission): ?>
+                    <li class="nav-work"><a href="/merchant/work/">商家作品</a></li>
+                    <?py #endif ?>
+                    <?py if role_codes or ('series_view' in permission): ?>
+                    <li class="nav-series"><a href="/merchant/series/">套系管理</a></li>
+                    <?py #endif ?>
+				</ul>
+			</li>
+            <?py #endif ?>
+
+            <?py if role_codes or ('orders_view' in permission): ?>
+                <li class="accordion" id="orders">
+                    <a href="#"><i class="glyphicon glyphicon-list"></i><span>服务管理</span></a>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="all_orders"><a href="/merchant/orders/list/7">所有订单</a></li>
+                        <li class="all_break_orders"><a href="/merchant/bespeak_order">预约订单</a></li>
+                        <li class="shot_orders"><a href="/merchant/orders/list/0">摄影未排期</a></li>
+                        <li class="fitting_orders"><a href="/merchant/orders/list/1">试衣排期</a></li>
+                        <li class="select_orders"><a href="/merchant/orders/list/2">选片排期</a></li>
+                        <li class="certain_orders"><a href="/merchant/orders/list/3">定稿排期</a></li>
+                        <li class="abtain_orders"><a href="/merchant/orders/list/4">取件排期</a></li>
+                        <li class="waiting_orders"><a href="/merchant/orders/list/5">待取件订单</a></li>
+                        <li class="close_orders"><a href="/merchant/orders/list/6">已完成订单</a></li>
+                        <li class="delete_orders"><a href="/merchant/orders/list/8">已退单</a></li>
+                        <li class="orders_backup"><a href="/merchant/orders/backup/">数据备份</a></li>
+                    </ul>
+                </li>
+            <?py #endif ?>
+
+            <?py if role_codes or ('photos_view' in permission): ?>
+			<li class="nav-photo"><a class="ajax-link" href="/merchant/albums/"><i class="glyphicon glyphicon-picture"></i><span>客片管理</span></a></li>
+            <?py #endif ?>
+
+            <!--<li class="accordion" >-->
+                <!--<a href="#"><i class="glyphicon glyphicon-list-alt"></i><span>预约订单</span></a>-->
+				<!--<ul class="nav nav-pills nav-stacked">-->
+                    <!--<li><a href="/merchant/brespeaker/orders/">待处理订单</a></li>-->
+                    <!--<li><a href="/merchant/schedule/query/detail/">已处理订单</a></li>-->
+				<!--</ul>-->
+            <!--</li>-->
+
+            <?py if role_codes or ('plans_view' in permission): ?>
+            <li class="accordion">
+                <a href="#"><i class="glyphicon glyphicon-cog"></i><span>档期管理</span></a>
+				<ul class="nav nav-pills nav-stacked">
+                    <li><a href="/merchant/schedule/plan/">档期一览</a></li>
+                    <li><a href="/merchant/schedule/query/detail/">档期明细</a></li>
+				</ul>
+            </li>
+            <?py #endif ?>
+
+            <?py if role_codes or ('share_view' in permission): ?>
+            <li><a class="ajax-link" href="/merchant/shares/"><i class="glyphicon glyphicon-signal"></i><span>分享统计</span></a></li>
+            <?py #endif ?>
+
+            <?py if role_codes or ('potential_view' in permission): ?>
+            <li><a class="ajax-link" href="/merchant/potential_customer/list/"><i class="glyphicon glyphicon-user"></i><span>潜客管理</span></a></li>
+            <?py #endif ?>
+
+			<li class="accordion">
+				<a href="#"><i class="glyphicon glyphicon-cog"></i><span>系统设置</span></a>
+				<ul class="nav nav-pills nav-stacked">
+                    <?py if handler.get_current_user().get('Frole_codes'): ?>
+                        <li class="nav-user"><a href="/merchant/edit/listrole/">用户管理</a></li>
+                    <?py #endif ?>
+                    <?py if handler.get_current_user().get('Frole_codes') or ('system_operation') in handler.get_current_user().get('Fpermission'): ?>
+                        <li class="nav-dep"><a href="/merchant/departments/">部门&人员</a></li>
+                        <li class="nav-service"><a href="/merchant/schedule/edit/template/msg/">服务设置</a></li>
+                        <li><a href="/merchant/system/order_from/list/">订单来源设置</a></li>
+                        <li class="nav-share"><a href="/merchant/system/edit/shareextendinfo/">分享设置</a></li>
+                        <li class="nav-category"><a href="/merchant/schedule/category/list/">拍摄档期分类</a></li>
+                    <?py #endif ?>
+
+                    <li><a href="/merchant/resetinfo/">个人信息</a></li>
+				</ul>
+			</li>
+		</ul>
+		<!--</div>-->
+	</div>
+</div>

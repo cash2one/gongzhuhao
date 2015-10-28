@@ -1,0 +1,420 @@
+
+<div class="clearfix row-main">
+<?py include('ops/users/user_menu.html') ?>
+<div class="col-md-10">
+<div class="panel">
+<div class="panel-heading"><strong><i class="icon-globe"></i>预约商户DecorateCompany</strong></div>
+<?py if company_data_info:?>
+<?py for data_info in company_data_info:?>
+<table class="table table-form">
+    <thead>
+    <tr>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'parent_title' else 'header'}" order_name="parent_title">商户
+            </div>
+        </th>
+        <th class="text-center  w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'user_name' else 'header'}" order_name="user_name" >名称
+            </div>
+        </th>
+        <th class="text-center  w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'answer' else 'header'}" order_name="answer" >地址
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'is_accept' else 'header'}" order_name="is_accept">电话号码
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'gmt_created' else 'header'}" order_name="gmt_created">级别
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'review_status' else 'header'}" order_name="review_status">信用级别
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'review_status' else 'header'}" order_name="review_status">创建日期
+            </div>
+        </th>
+
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'review_status' else 'header'}" order_name="review_status">QQ或者email
+            </div>
+        </th>
+        <th class="text-center w-40px">状态</th>
+    </tr>
+    </thead>
+    <?py if data_info['company_data']:?>
+    <tbody>
+    <tr>
+        <td class="text-center">${data_info['company_data'].user_id}</td>
+        <td class="text-center">${data_info['company_data'].name}</td>
+        <td class="text-center">${data_info['company_data'].address}</td>
+        <td class="text-center">${data_info['company_data'].phone}</td>
+        <td class="text-center">${data_info['company_data'].level}</td>
+        <td class="text-center">${data_info['company_data'].is_honesty}</td>
+        <td class="text-center">${data_info['company_data'].gmt_created}</td>
+        <td class="text-center">${data_info['company_data'].email}</td>
+        <?py if data_info['status']==0: ?>
+        <td class="text-center">已下单</td>
+        <?py #endif ?>
+        <?py if data_info['status']==1: ?>
+        <td class="text-center">已确认</td>
+        <?py #endif ?>
+    </tr>
+    </tbody>
+    <?py #endif ?>
+</table>
+<?py #endfor ?>
+<?py #endif ?>
+
+<div class="panel-heading"><strong><i class="icon-globe"></i>预约优惠</strong></div>
+<table class="table table-form">
+    <thead>
+    <tr>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'id' else 'header'}" order_name="id">id
+            </div>
+        </th>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'parent_title' else 'header'}" order_name="parent_title">标题
+            </div>
+        </th>
+        <th class="text-center  w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'user_name' else 'header'}" order_name="user_name" >展示地址(URL)
+            </div>
+        </th>
+        <th class="text-center  w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'answer' else 'header'}" order_name="answer" >优惠类型
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'is_accept' else 'header'}" order_name="is_accept">价格
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'gmt_created' else 'header'}" order_name="gmt_created">实际价格
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'review_status' else 'header'}" order_name="review_status">描述
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'review_status' else 'header'}" order_name="review_status">结束日期
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'review_status' else 'header'}" order_name="review_status">商户经纬度
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'review_status' else 'header'}" order_name="review_status">QQ或者email
+            </div>
+        </th>
+        <th class="text-center w-40px">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+    </tr>
+    </tbody>
+</table>
+<div class="panel-heading"><strong><i class="icon-globe"></i>装修分享</strong></div>
+<table class="table table-form">
+    <thead>
+    <tr>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'id' else 'header'}" order_name="id">户型
+            </div>
+        </th>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'parent_title' else 'header'}" order_name="parent_title">设计风格
+            </div>
+        </th>
+        <th class="text-center  w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'user_name' else 'header'}" order_name="user_name" >施工方式
+            </div>
+        </th>
+        <th class="text-center  w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'answer' else 'header'}" order_name="answer" >标题
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'is_accept' else 'header'}" order_name="is_accept">描述
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'gmt_created' else 'header'}" order_name="gmt_created">审核状态
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'review_status' else 'header'}" order_name="review_status">是否为精华
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'review_status' else 'header'}" order_name="review_status">精华过期时间
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'review_status' else 'header'}" order_name="review_status">是否置顶
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'review_status' else 'header'}" order_name="review_status">置顶过期时间
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'review_status' else 'header'}" order_name="review_status">装修公司
+            </div>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+    </tr>
+    </tbody>
+</table>
+<div class="panel-heading"><strong><i class="icon-globe"></i>回答过的装修问题</strong></div>
+<table class="table table-form">
+    <thead>
+    <tr>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'id' else 'header'}" order_name="id">问题类型
+            </div>
+        </th>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'parent_title' else 'header'}" order_name="parent_title">问题标题
+            </div>
+        </th>
+        <th class="text-center  w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'user_name' else 'header'}" order_name="user_name" >回答内容
+            </div>
+        </th>
+        <th class="text-center  w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'answer' else 'header'}" order_name="answer" >是否有用
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'is_accept' else 'header'}" order_name="is_accept">创建日期
+            </div>
+        </th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+    </tr>
+    </tbody>
+</table>
+<div class="panel-heading"><strong><i class="icon-globe"></i>提出的装修问题</strong></div>
+<table class="table table-form">
+    <thead>
+    <tr>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'id' else 'header'}" order_name="id">问题类型
+            </div>
+        </th>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'parent_title' else 'header'}" order_name="parent_title">问题标题
+            </div>
+        </th>
+        <th class="text-center  w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'user_name' else 'header'}" order_name="user_name" >回答内容
+            </div>
+        </th>
+        <th class="text-center  w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'answer' else 'header'}" order_name="answer" >审核状态
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'is_accept' else 'header'}" order_name="is_accept">创建日期
+            </div>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+    </tr>
+    </tbody>
+</table>
+<div class="panel-heading"><strong><i class="icon-globe"></i>赞过的日志</strong></div>
+<table class="table table-form">
+    <thead>
+    <tr>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'id' else 'header'}" order_name="id">日志信息
+            </div>
+        </th>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'parent_title' else 'header'}" order_name="parent_title">结束日期
+            </div>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+    </tr>
+    </tbody>
+</table>
+<div class="panel-heading"><strong><i class="icon-globe"></i>装修宝典</strong></div>
+<table class="table table-form">
+    <thead>
+    <tr>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'id' else 'header'}" order_name="id">标题
+            </div>
+        </th>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'parent_title' else 'header'}" order_name="parent_title">作者
+            </div>
+        </th>
+        <th class="text-center  w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'user_name' else 'header'}" order_name="user_name" >宝典地址
+            </div>
+        </th>
+        <th class="text-center  w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'answer' else 'header'}" order_name="answer" >文件大小
+            </div>
+        </th>
+        <th class="text-center w-40px">
+            <div class="#{order_info[1] if order_info[0] == 'is_accept' else 'header'}" order_name="is_accept">创建日期
+            </div>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+    </tr>
+    </tbody>
+</table>
+<div class="panel-heading"><strong><i class="icon-globe"></i>关注/粉丝/角色</strong></div>
+<table class="table table-form">
+    <thead>
+    <tr>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'id' else 'header'}" order_name="id">关注数目
+            </div>
+        </th>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'parent_title' else 'header'}" order_name="parent_title">粉丝数目
+            </div>
+        </th>
+        <th class="text-center w-40px choose-header" >
+            <div class="#{order_info[1] if order_info[0] == 'parent_title' else 'header'}" order_name="parent_title">角色
+            </div>
+        </th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+        <td class="text-center">3</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+
+<?py include('ops/common/dialog.html') ?>
+<script language="Javascript">
+
+    function showRequest() {
+        var params=["user_name","user_pwd","nick","email","phone"];
+
+        for(var i = 0;i<params.length;i++){
+            if($('#'+params[i]).val()==""){
+                $('#'+params[i]).parent().find('span').html("不能为空！");
+                return false;
+            }else{
+                $('#'+params[i]).parent().find('span').html('');
+            }
+        }
+        return true;
+    }
+
+    function showResponse(responseText, statusText)  {
+        alert(responseText);
+        alert(statusText);
+        BootstrapDialog.show({
+            title: '创建用户',
+            message: '保存成功!',
+            buttons: [{
+                label: 'Close',
+                action: function(dialogItself){
+                    dialogItself.close();
+                }
+            }]
+        });
+    }
+
+
+    $(document).ready(function()
+    {
+
+
+
+        $('#user_submit').click(function() {
+            var is_validate = showRequest();
+
+            if(is_validate){
+
+                $.post('',$('#user_ajax_form').serialize(),function(data){
+
+                    var obj = $.parseJSON(data);
+                    if(obj.status=='success'){
+                        $('#user_ajax_form')[0].reset();
+                    }
+                    show_dialog_none_reload('添加用户',obj.info);
+
+                })
+            }
+
+        });
+
+    });
+</script>
+<?py include('ops/common/datetime_html.html') ?>

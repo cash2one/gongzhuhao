@@ -1,0 +1,88 @@
+
+@media (min-width: 1200px){
+    .container { width: 1200px; padding-left: 0; padding-right: 0; margin: 0 auto; }
+    .col-md-3{ padding-left: 0; padding-right: 0}
+}
+.mr40{ margin-right: 40px}
+.gzh-container{ margin: 40px auto 0 auto}
+.gzhshare{ padding: 0; margin: 0 -20px 0 0 }
+.gzh-share-item{ display: inline-block; float: left; margin-right: 20px; width: 285px; height: 300px; }
+.gzh-share-img{ display: inline-block; }
+.gzh-share-avatar{ margin: 12px 0 8px 0; height: 24px; line-height: 24px;}
+.gzh-share-avatar .ga-avatar{ margin-right: 12px; width: 24px; height: 24px; border-radius: 50%; vertical-align: top}
+.gzh-share-avatar .gz-name{ }
+.gzh-share-avatar .ga-fav .iconfont{ font-size: 20px; vertical-align: middle }
+.gzh-share-merchant{ width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap}
+.gzh-share-merchant a:hover{ color: #ff6577; }
+.gzh-share-item .img-link .img-cover{ width: 285px; height: 210px;}
+.gs-share .img-link .img-cover{ width: 190px; height: 140px;}
+
+.gs-item-preview{ margin: 0 auto; padding: 20px;}
+.preview-inner{ width: 900px; text-align: center}
+.preview-inner a{ display: inline-block; width: 900px; height: auto}
+.gs-item-preview img{ margin-top: 10px; max-width: 900px; height: auto; object-fit: cover}
+.gs-item-preview:hover img{ background-color: rgba(255,255,255,0.1)}
+
+.gs-header{ padding: 0; height: 80px}
+.gs-profile{ display: inline-block; width: 70%;}
+.gs-profile dt{ float: left; margin-right: 20px}
+.gs-profile dt img{ border-radius: 50%}
+.gs-profile dd{ line-height: 1}
+.gs-name{ margin: 15px 0 20px 0}
+.gs-extra a{ margin-right: 40px}
+.gs-extra span{ margin-right: 40px}
+.gm-works-fav{ margin-top: 47px}
+.gm-works-share{ margin-top: 47px; margin-left: 20px}
+
+.step{ padding: 20px 0 30px 0; border-bottom: 1px solid #eee}
+.step h2{ margin: 0; padding: 0; font-weight: normal; line-height: 20px;}
+.bg-cercle, .bg-yellow{ display: inline-block; margin-right: 10px; width: 20px; height: 20px; text-align: center; }
+.step h2 .iconfont{ font-size: 22px;}
+.step .gm-info-star{ padding: 24px 0 20px 0; margin: 0 0 0 28px; vertical-align: middle}
+.step .gm-info-star span{ margin-left: 20px; color: #333}
+.step .gs-text{ margin: 0 0 20px 28px}
+.gs-thumb{ display: inline-block; clear: both; overflow: hidden; margin: 0 0 0 28px}
+.gs-thumb .photo{ display: inline-block; width: 80px; height: 80px; float: left; margin-right: 10px}
+.gs-thumb .photo img{ display: inline-block; margin-top: 0; max-width: 80px; width: 80px; height: 80px; vertical-align: middle;}
+.step .gs-worker{ margin: 20px 0 0 28px}
+.step .gs-worker span{ margin-right: 40px; color: #333}
+.text-yellow{ color: #ffc029}
+.text-blue{ color: #4fa6ff}
+.gm-location-share .btn{ line-height: 26px; margin-top: 9px; width: 100px}
+.gm-location-share .btn-order{ color: #fff}
+.gm-location a.btn-order{ margin-right: 10px}
+.gm-location a.btn-enter{ margin-right: 0px}
+.appraise-cons{ width: 100%; min-height: 100px; border: none; outline: none}
+.text-count{ margin-top: -10px; height: 36px;}
+.text-count .btn-order{ width: 100px;}
+.appraise-list{ margin-top: 0; }
+.al-item{ overflow: hidden; display: inline-block; padding: 20px 0; border-bottom: 1px dashed #eee; }
+.al-item p{ margin: 0}
+.al-avatar{ display: inline-block; width: 70px}
+.al-avatar img{ border-radius: 50%}
+.al-extra{ margin: 0; width: 870px; }
+.al-extra .al-desc{ margin: 10px 0 0 0; line-height: 28px }
+
+/*page*/
+.gzh-pagination {padding: 0; margin: 40px auto; list-style: none;text-align: center;}
+.gzh-pagination:before,
+.gzh-pagination:after {content: ""; display: table;  }
+.gzh-pagination:after { clear: both; }
+
+.gzh-pagination > li {  display: inline-block; vertical-align: top; }
+.gzh-pagination > li:nth-child(n+2) { margin-left: 10px; }
+.gzh-pagination > li > a,
+.gzh-pagination > li > span { display: inline-block; padding: 10px 15px; line-height: 1.4em; text-decoration: none;
+    border: 1px solid #dddddd; -moz-box-sizing: content-box;  box-sizing: content-box; text-align: center;  }
+.gzh-pagination > li > a { background: #fff;color: #333; }
+
+.gzh-pagination > li > a:hover,
+.gzh-pagination > li > a:focus { background-color: #ff6577; color: #ffffff; border: 1px solid transparent; outline: none; }
+.gzh-pagination > li > a:active {  background-color: #ddd; color: #333;  border: 1px solid transparent; }
+.gzh-pagination > .gzh-active > span { background: #ff6577; color: #fff; border: 1px solid transparent; }
+.gzh-pagination > .gzh-disabled > span { cursor: not-allowed}
+.gzh-pagination-previous { }
+.gzh-pagination-next { }
+.gzh-pagination--left {text-align: left;  }
+.gzh-pagination--right { text-align: right;  }
+.gzh-pagination--center { text-align: center; }

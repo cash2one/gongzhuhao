@@ -1,0 +1,126 @@
+<link rel="stylesheet" href="/static/skin/css/topic.css">
+<link rel="stylesheet" href="/static/skin/css/redactor.css">
+<style type="text/css">
+    /*新增话题发表页面*/
+    body{ background: #fff!important;}
+    .topic-publish-part .topic-main-desc .topic-desc-content{  height: 300px;  width: 978px;  max-width: 978px;  margin: 0; padding: 10px;  }
+    form{  margin: 0;  }
+    .main{  margin: 0 auto 20px; }
+    .topic-publish-part{ width: 980px;  }
+    .back-topic-list{  background-color: #f8f8f8;  width: 100px;  height: 36px;  line-height: 36px;  text-align: center; font-size: 16px;  color: #666;  float: left;  margin-left: 20px;  }
+    .face2{ float: left;  background-position: -111px -161px;  width: 25px;  height: 25px;  margin: 0 10px 0 0;  }
+        .htnr img {
+        margin: 0 10px 10px 0 !important;
+        max-width: 100% !important;
+    }
+    .redactor_toolbar{
+        overflow: visible !important;
+        height: 40px !important;
+    }
+    .redactor_toolbar li{
+        margin-right: 15px !important;
+    }
+    .redactor_toolbar li a{
+        background-image: none;
+        position: relative;
+        text-indent: 0;
+        top:4px;
+    }
+    .redactor_toolbar li a>i,
+    .redactor_toolbar li a:after{
+        color: rgb(102, 102, 102);
+        cursor: pointer;
+        display: inline;
+        font-family: iconfont;
+        font-size: 26px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        height: auto;
+        line-height: 23.1428604125977px;
+        width: auto;
+    }
+    .redactor_toolbar li .redactor_btn_image:after{
+        content: "\e603"
+    }
+
+    .redactor_toolbar li a>i{
+        content: "\e601"
+    }
+    .redactor_editor{
+        min-height: 200px;
+    }
+</style>
+
+<div class="main">
+    <div class="topic-publish-part" id="topicPublishForm">
+        <h3 class="publish-title">发布话题</h3>
+        <div class="publish-condition clearfix">
+            <select class="topicType">
+                <option value="-1">请选择话题</option>
+                <?py for c in topic_cate: ?>
+                <option value="${c['id']}">${c['name']}</option>
+                <?py #endfor ?>
+            </select>
+            <div class="publish-condition-title">
+                <a href="javascript:;" class="topic_icon emotion face2"><i class="iconfont">&#xe601;</i></a>
+                <input type="text" name="title" id="saytext2" class="topicTitle" maxlength="25" placeholder="请输入标题， 2-25个字">
+            </div>
+        </div>
+        <div class="topic-main-desc">
+            <textarea class="topic-desc-content" id="saytext" name="saytext" placeholder="请输入话题内容，至少5个字"></textarea>
+        </div>
+    </div>
+    <div class="p-btn-part clearfix">
+        <input type="button" class="publishBtn" value="发布">
+        <a href="${handler.request.headers.get('Referer')  if handler.request.headers.get('Referer') else '/topic'}" class="back-topic-list">返回</a>
+        <span class="err"></span>
+    </div>
+</div>
+
+<!-- 上传图片控件 -->
+<!-- <script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.ui.widget.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.iframe-transport.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/load-image.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.xdr-transport.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-ui.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-process.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-image.js"></script>
+ --><script type="text/javascript" charset="utf-8" src="/static/skin/js/plug/jquery.qqFace.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/topic_v2.js?v=5"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/redactor.js"></script>
+
+<script type="text/javascript">
+    var h = (parseInt($(window).height())-215) + 'px';
+    $('.main').css("min-height", h);
+    
+    var topic = new topic().init();
+
+    $(function(){
+        $("#saytext").redactor({
+            buttons: ['image' , 'qqface'],
+            imageUpload: '/album/photo/topic/upload/',
+            callback: function(){
+                $(".redactor_toolbar").append('<li class="emotion"><a href="javascript:void(null);" title="Insert qqface" class="redactor_btn_qqface" tabindex="-1"><i class="iconfont">&#xe601;</i></a></li>');
+                $('.redactor_editor').attr('id' , 'redactor_editor');
+
+                $('.emotion').qqFace({
+                    id: 'facebox',
+                    assign:'redactor_editor', //给输入框赋值
+                    path:'/static/skin/js/plug/face/',    //表情图片存放的路径
+                    tip : 'em_'
+                });
+            }
+        });
+        jQuery.fn.extend({ 
+        insertAtCaret: function(str){ 
+        var textObj = $('#redactor_editor').get(0);
+        str = str.replace(/\[em_([0-9]*)\]/g,'<img src="/static/skin/js/plug/face/$1.gif" border="0"/>'); 
+        textObj.innerHTML = textObj.innerHTML + str;
+        return ; 
+        }
+        });
+    });
+</script>

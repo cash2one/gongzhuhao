@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)http://demo.chanzhi.org/backend.php?m=tree&f=browse&type=article -->
+<html class="screen-desktop-wide device-desktop m-tree m-tree-browse"><head profile="http://www.w3.org/2005/10/profile"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类目 - 蝉知企业门户，开源免费的企业建站系统</title>
+<meta name="keywords" content="企业门户系统 企业建站系统 开源CMS">
+<meta name="description" content="蝉知门户系统（chanzhiEPS）是一款开源免费的企业门户系统，企业建站系统，php开源CMS系统。它专为企业营销设计，功能专业全面，内置了文章发布、会员管理、论坛评论、产品展示、在线销售、客服跟踪等功能。以LGPL协议发布，真开源，真免费。注重SEO，注重营销，支持移动设备。界面简洁大方，使用简单方便，功能专业强大，是企业建站的首选！同时蝉知系统还内置了微信公众平台功能，一个网站，电脑、手机、微信体验俱佳！">
+<script language="Javascript">var config={"webRoot":"\/","cookieLife":30,"requestType":"GET","requestFix":"-","moduleVar":"m","methodVar":"f","viewVar":"t","defaultView":"html","themeRoot":"\/theme\/","currentModule":"tree","currentMethod":"browse","clientLang":"zh-cn","requiredFields":"","save":"\u4fdd\u5b58","router":"\/backend.php","runMode":"admin"}
+</script>
+<link rel="stylesheet" href="./files/all.admin.css" type="text/css" media="screen">
+<script src="./files/all.admin.js" type="text/javascript"></script>
+<style>.tree .alert {margin-top: 5px; padding: 8px 15px; margin-bottom: 10px;}
+.jsoner{margin-right: 10px;}
+#childList .sort-handle {cursor: move; color: #666}
+#childList .category.dragging {opacity: 0.35; background-color: #FFF4E5;}
+#childList .category.drag-shadow {border: 1px solid #ddd; padding: 5px 0; box-shadow:0 1px 8px rgba(0,0,0,.15); background-color: #fff; z-index: 9999}
+</style><link rel="icon" href="http://demo.chanzhi.org/data/upload/201408/f_f9dcb3fb6ce5aaff3f548cbe30403a2a.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://demo.chanzhi.org/data/upload/201408/f_f9dcb3fb6ce5aaff3f548cbe30403a2a.ico" type="image/x-icon">
+<link href="http://demo.chanzhi.org/backend.php?m=rss&f=index&t=xml" title="蝉知企业门户，开源免费的企业建站系统" type="application/rss+xml" rel="alternate"><!--[if lt IE 9]>
+<script src='/js/all.ie8.js?v=3.1' type='text/javascript'></script>
+<![endif]-->
+<!--[if lt IE 10]>
+<script src='/js/all.ie9.js?v=3.1' type='text/javascript'></script>
+<![endif]-->
+<script language="Javascript">if(typeof(v) != "object") v = {};v.lang = {"confirmDelete":"\u60a8\u786e\u5b9a\u8981\u6267\u884c\u5220\u9664\u64cd\u4f5c\u5417\uff1f","deleteing":"\u5220\u9664\u4e2d","doing":"\u5904\u7406\u4e2d","loading":"\u52a0\u8f7d\u4e2d","timeout":"\u7f51\u7edc\u8d85\u65f6,\u8bf7\u91cd\u8bd5"};</script>
+<link href="http://demo.chanzhi.org/js/kindeditor/themes/default/default.css" rel="stylesheet"></head>
+<body style="zoom: 1;">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="mainNavbar">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="http://demo.chanzhi.org/backend.php?m=admin&f=index" class="navbar-brand">蝉知</a>
+  </div>
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav mainNavbarNav">
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=admin&f=index">首页</a></li>
+<li class="active simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin">文章</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=blog">博客</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=product&f=admin">产品</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=book&f=admin">手册</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=page">单页</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=forum&f=admin">论坛</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=site&f=setbasic">站点</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=ui&f=setlogo">界面</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=company&f=setbasic">公司</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=user&f=admin">会员</a></li>
+<li class="simple-mode-b"><a href="http://demo.chanzhi.org/backend.php?m=message&f=admin">反馈</a></li>
+<li class="simple-mode-b"><a href="http://demo.chanzhi.org/backend.php?m=package&f=browse">扩展</a></li>
+</ul>
+    <ul class="nav navbar-nav" id="navbarSwitcher">
+      <li><a href="http://demo.chanzhi.org/backend.php?m=tree&f=browse&type=article###"><i class="icon-chevron-sign-right icon-large"></i></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown"><a href="http://demo.chanzhi.org/backend.php?m=tree&f=browse&type=article###" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe icon-large"></i> &nbsp;简体<span class="caret"></span></a>
+<ul class="dropdown-menu">
+  <li><a rel="nofollow" href="javascript:selectLang("zh-tw")">繁体</a></li><li><a rel="nofollow" href="javascript:selectLang("en")">English</a></li></ul>
+</li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right"><li><a href="http://demo.chanzhi.org/" target="_blank" class="navbar-link"><i class="icon-home icon-large"></i> 前台</a>
+</li><li class="dropdown"><a href="http://demo.chanzhi.org/backend.php?m=tree&f=browse&type=article#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-large"></i> demo <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="http://demo.chanzhi.org/backend.php?m=user&f=changePassword" data-toggle="modal">修改密码</a>
+</li><li><a href="http://demo.chanzhi.org/backend.php?m=user&f=logout">退出</a>
+</li></ul></li></ul>  </div>
+</nav>
+
+<div class="clearfix row-main">
+      <div class="col-md-2">
+    <div class="leftmenu affix hiddden-xs hidden-sm">
+      <ul class="nav-left nav nav-primary nav-stacked">
+<li><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin">文章列表<i class="icon-chevron-right"></i></a>
+</li>
+</ul>
+          </div>
+  </div>
+  <div class="col-md-10">
+  <link rel="stylesheet" href="./files/min.css" type="text/css" media="screen">
+<script src="./files/min.js" type="text/javascript"></script>
+
+<script language="javascript"> 
+$(document).ready(function()
+{
+    $(".chosen").chosen({no_results_text: '没有匹配的选项', placeholder_text:' ', disable_search_threshold: 10, width: '100%'});
+    $('select.chosen-icons').chosenIcons({lang: 'zh-cn'});
+});
+</script>
+<script language="Javascript">v.root = 0;</script>
+<script language="Javascript">v.type = "article";</script>
+<script language="Javascript">v.isWechatMenu = false;</script>
+<script language="Javascript">v.lang = {"confirmDelete":"\u60a8\u786e\u5b9a\u8981\u6267\u884c\u5220\u9664\u64cd\u4f5c\u5417\uff1f","deleteing":"\u5220\u9664\u4e2d","doing":"\u5904\u7406\u4e2d","loading":"\u52a0\u8f7d\u4e2d","timeout":"\u7f51\u7edc\u8d85\u65f6,\u8bf7\u91cd\u8bd5"};</script>
+<script language="Javascript">v.currency = "\u8d27\u5e01\u8bbe\u7f6e";</script>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel">
+      <div class="panel-heading"><strong><i class="icon-sitemap"></i> 类目</strong></div>
+      <div class="panel-body">
+        <div id="treeMenuBox"><ul class="tree treeview"><li>蝉知下载 <a href="http://demo.chanzhi.org/backend.php?m=tree&f=edit&category=1&type=article" class="ajax">编辑</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=children&type=article&category=1" class=" ajax">子类目</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=delete&category=1" class="deleter">删除</a>
+
+</li>
+<li>蝉知动态 <a href="http://demo.chanzhi.org/backend.php?m=tree&f=edit&category=2&type=article" class="ajax">编辑</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=children&type=article&category=2" class=" ajax">子类目</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=delete&category=2" class="deleter">删除</a>
+
+</li>
+<li>商业支持 <a href="http://demo.chanzhi.org/backend.php?m=tree&f=edit&category=3&type=article" class="ajax">编辑</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=children&type=article&category=3" class=" ajax">子类目</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=delete&category=3" class="deleter">删除</a>
+
+</li>
+<li class="collapsable lastCollapsable"><div class="hitarea collapsable-hitarea lastCollapsable-hitarea"></div>知识改进 <a href="http://demo.chanzhi.org/backend.php?m=tree&f=edit&category=11&type=article" class="ajax">编辑</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=children&type=article&category=11" class=" ajax">子类目</a>
+ 
+<ul><li>一二三 <a href="http://demo.chanzhi.org/backend.php?m=tree&f=edit&category=12&type=article" class="ajax">编辑</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=children&type=article&category=12" class=" ajax">子类目</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=delete&category=12" class="deleter">删除</a>
+
+</li>
+<li>四五六 <a href="http://demo.chanzhi.org/backend.php?m=tree&f=edit&category=13&type=article" class="ajax">编辑</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=children&type=article&category=13" class=" ajax">子类目</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=delete&category=13" class="deleter">删除</a>
+
+</li>
+<li class="last">七八九 <a href="http://demo.chanzhi.org/backend.php?m=tree&f=edit&category=14&type=article" class="ajax">编辑</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=children&type=article&category=14" class="ajax">子类目</a>
+ <a href="http://demo.chanzhi.org/backend.php?m=tree&f=delete&category=14" class="deleter">删除</a>
+
+</li>
+</ul>
+</li>
+</ul>
+</div>
+              </div>
+    </div>
+  </div>
+  <div class="col-md-8" id="categoryBox"><link rel="stylesheet" href="./files/min.css" type="text/css" media="screen">
+<script src="./files/min.js" type="text/javascript"></script>
+
+<script language="javascript"> 
+$(document).ready(function()
+{
+    $(".chosen").chosen({no_results_text: '没有匹配的选项', placeholder_text:' ', disable_search_threshold: 10, width: '100%'});
+    $('select.chosen-icons').chosenIcons({lang: 'zh-cn'});
+});
+</script>
+<script language="Javascript">if(typeof(v) != "object") v = {};v.jsRoot = "\/js\/";</script>
+<script language="Javascript">v.webRoot = "\/";</script>
+<script language="Javascript">v.editors = {"id":["desc"],"tools":"simple"};</script>
+<script language="Javascript">v.errorUnwritable = "\u4e0a\u4f20\u76ee\u5f55\u4e0d\u53ef\u5199\uff0c\u65e0\u6cd5\u4e0a\u4f20\u9644\u4ef6\u3002";</script>
+<script language="Javascript">v.editorLang = "zh_CN";</script>
+<link rel="stylesheet" href="./files/default.css" type="text/css" media="screen">
+<script src="./files/kindeditor-min.js" type="text/javascript"></script>
+<script src="./files/zh_CN.js" type="text/javascript"></script>
+<script language="Javascript">v.uid = "54585d477ec01";</script>
+
+<script>
+var simple = 
+[ 'formatblock', 'fontsize', '|', 'bold', 'italic','underline', '|', 
+'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|',
+'emoticons', 'image', 'link', '|', 'removeformat','undo', 'redo', 'source' ];
+
+var full = 
+[ 'formatblock', 'fontsize', 'lineheight', '|', 'forecolor', 'hilitecolor', '|', 'bold', 'italic','underline', 'strikethrough', '|',
+'justifyleft', 'justifycenter', 'justifyright', '|',
+'emoticons', 'image', '|', 'link', 'unlink', 'anchor', 'flash', 'media', 'baidumap', '/',
+'undo', 'redo', '|', 'cut', 'copy', '|', 'plainpaste', 'wordpaste', '|', 'removeformat', 'clearhtml','quickformat', '|',
+'indent', 'outdent', 'subscript', 'superscript', 'insertorderedlist', 'insertunorderedlist', '|',
+'table', 'code', 'hr', '|',
+'fullscreen', 'source', 'about'];
+
+$(document).ready(initKindeditor);
+function initKindeditor(afterInit)
+{
+    $(':input[type=submit]').after("<input type='hidden' id='uid' name='uid' value=" + v.uid + ">");
+
+    $.each(v.editors.id, function(key, editorID)
+    {
+        if(typeof(v.editors.filterMode) == 'undefined') v.editors.filterMode = true;
+        editorTool = eval(v.editors.tools);
+        var K = KindEditor;
+        keEditor = K.create('#' + editorID,
+        {
+            width:'100%',
+            items:editorTool,
+            cssPath:[v.webRoot + 'zui/css/min.css'],
+            bodyClass:'article-content',
+            urlType:'absolute', 
+            uploadJson: createLink('file', 'ajaxUpload', 'uid=' + v.uid),
+                        fileManagerJson : createLink('file', 'fileManager'),
+                        imageTabIndex:1,
+            filterMode:v.editors.filterMode,
+            allowFileManager:true,
+            langType:v.editorLang,
+            htmlTags:{font:["id","class","color","size","face",".background-color"],span:["id","class",".color",".background-color",".font-size",".font-family",".background",".font-weight",".font-style",".text-decoration",".vertical-align",".line-height"],div:["id","class","align",".border",".margin",".padding",".text-align",".color",".background-color",".font-size",".font-family",
+            ".font-weight",".background",".font-style",".text-decoration",".vertical-align",".margin-left"],table:["id","class","border","cellspacing","cellpadding","width","height","align","bordercolor",".padding",".margin",".border","bgcolor",".text-align",".color",".background-color",".font-size",".font-family",".font-weight",".font-style",".text-decoration",".background",".width",".height",".border-collapse"],"td,th":["id","class","align","valign","width","height","colspan","rowspan","bgcolor",".text-align",
+            ".color",".background-color",".font-size",".font-family",".font-weight",".font-style",".text-decoration",".vertical-align",".background",".border"],a:["id","class","href","target","name"],embed:["id","class","src","width","height","type","loop","autostart","quality",".width",".height","align","allowscriptaccess"],img:["id","class","src","width","height","border","alt","title","align",".width",".height",".border"],"p,ol,ul,li,blockquote,h1,h2,h3,h4,h5,h6":["id","class","align",".text-align",".color",
+            ".background-color",".font-size",".font-family",".background",".font-weight",".font-style",".text-decoration",".vertical-align",".text-indent",".margin-left"],pre:["id","class"],hr:["id","class",".page-break-after"],"br,tbody,tr,strong,b,sub,sup,em,i,u,strike,s,del":["id","class"],iframe:["id","class","src","frameborder","width","height",".width",".height"],style:[]},
+            afterBlur: function(){this.sync();$('#' + editorID).prev('.ke-container').removeClass('focus');},
+            afterFocus: function(){$('#' + editorID).prev('.ke-container').addClass('focus');},
+            afterChange: function(){$('#' + editorID ).change().hide();},
+            afterCreate : function()
+            {
+                var doc = this.edit.doc; 
+                var cmd = this.edit.cmd; 
+                /* Paste in chrome.*/
+                /* Code reference from http://www.foliotek.com/devblog/copy-images-from-clipboard-in-javascript/. */
+                if(K.WEBKIT)
+                {
+                    $(doc.body).bind('paste', function(ev)
+                    {
+                        var $this = $(this);
+                        var original =  ev.originalEvent;
+                        var file =  original.clipboardData.items[0].getAsFile();
+                        var reader = new FileReader();
+                        reader.onload = function (evt) 
+                        {
+                            var result = evt.target.result; 
+                            var result = evt.target.result;
+                            var arr = result.split(",");
+                            var data = arr[1]; // raw base64
+                            var contentType = arr[0].split(";")[0].split(":")[1];
+
+                            html = '<img src="' + result + '" alt="" />';
+                            $.post(createLink('file', 'ajaxPasteImage', 'uid=' + v.uid), {editor: html}, function(data)
+                            {
+                                if(data) return cmd.inserthtml(data);
+
+                                alert(v.errorUnwritable);
+                                return cmd.inserthtml(html);
+                            });
+                        };
+
+                        reader.readAsDataURL(file);
+                    });
+                }
+
+                /* Paste in firefox.*/
+                if(K.GECKO)
+                {
+                    K(doc.body).bind('paste', function(ev)
+                    {
+                        setTimeout(function()
+                        {
+                            var html = K(doc.body).html();
+                            if(html.search(/<img src="data:.+;base64,/) > -1)
+                            {
+                                $.post(createLink('file', 'ajaxPasteImage', "uid=" + v.uid), {editor: html}, function(data)
+                                {
+                                    if(data) return K(doc.body).html(data);
+
+                                    alert(v.errorUnwritable);
+                                    return K(doc.body).html(data);
+                                });
+                            }
+                        }, 80);
+                    });
+                }
+                /* End */
+            }
+        });
+    });
+
+    if($.isFunction(afterInit)) afterInit();
+}
+</script>
+<script language="Javascript">v.type = "article";</script>
+<script language="Javascript">v.link = "\u94fe\u63a5";</script>
+<form method="post" class="form-horizontal" id="editForm" action="http://demo.chanzhi.org/backend.php?m=tree&f=edit&categoryID=2">
+  <div class="panel">
+    <div class="panel-heading"><strong><i class="icon-pencil"></i> 编辑</strong></div>
+    <div class="panel-body">
+      <div class="form-group"> 
+        <label class="col-md-2 control-label">上级类目</label>
+        <div class="col-md-4"><select name="parent" id="parent" class="chosen form-control" style="display: none;">
+<option value="0" selected="selected">/</option>
+<option value="1">/蝉知下载</option>
+<option value="3">/商业支持</option>
+<option value="11">/知识改进</option>
+<option value="12">/知识改进/一二三</option>
+<option value="13">/知识改进/四五六</option>
+<option value="14">/知识改进/七八九</option>
+</select><div class="chosen-container chosen-container-single chosen-container-single-nosearch" style="width: 100%;" title="" id="parent_chosen"><a class="chosen-single" tabindex="-1"><span>/</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" readonly=""></div><ul class="chosen-results"></ul></div></div>
+</div>
+      </div>
+      <div class="form-group"> 
+        <label class="col-md-2 control-label">类目名称</label>
+        <div class="col-md-9 required">
+          <div class="input-group">
+            <input type="text" name="name" id="name" value="蝉知动态" class="form-control">
+                        <span class="input-group-addon w-70px">
+              <label class="checkbox">
+                                <input type="checkbox" name="isLink" id="isLink" value="1"><span>跳转</span>              </label>
+            </span>
+                      </div>
+        </div>
+      </div>
+            <div class="form-group link" style="display: none;"> 
+        <label class="col-md-2 control-label">链接</label>
+        <div class="col-md-9 required"><input type="text" name="link" id="link" value="" class="form-control" placeholder="输入链接，可以是站外链接">
+</div>
+      </div>
+            <div class="categoryInfo">
+        <div class="form-group"> 
+          <label class="col-md-2 control-label">别名</label>
+          <div class="col-md-9">
+            <div class="input-group">
+              <span class="input-group-addon">http://demo.chanzhi.org/</span>
+              <input type="text" name="alias" id="alias" value="dynamic" class="input-xsm form-control" placeholder="搜索引擎优化使用，可使用英文或数字">
+              <span class="input-group-addon w-70px">.html</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group"> 
+          <label class="col-md-2 control-label">关键词</label>
+          <div class="col-md-9"><input type="text" name="keywords" id="keywords" value="" class="form-control">
+</div>
+        </div>
+      </div>
+      <div class="form-group"> 
+        <label class="col-md-2 control-label">描述</label>
+        <div class="col-md-9"><div class="ke-container ke-container-default" style="width: 100%;"><div style="display:block;" class="ke-toolbar" unselectable="on"><span class="ke-outline" data-name="formatblock" title="段落" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-formatblock" unselectable="on"></span></span><span class="ke-outline" data-name="fontsize" title="文字大小" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="bold" title="粗体(Ctrl+B)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span><span class="ke-outline" data-name="italic" title="斜体(Ctrl+I)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span><span class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="justifyleft" title="左对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft" unselectable="on"></span></span><span class="ke-outline" data-name="justifycenter" title="居中" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter" unselectable="on"></span></span><span class="ke-outline" data-name="justifyright" title="右对齐" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright" unselectable="on"></span></span><span class="ke-outline" data-name="insertorderedlist" title="编号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span><span class="ke-outline" data-name="insertunorderedlist" title="项目符号" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="emoticons" title="插入表情" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-emoticons" unselectable="on"></span></span><span class="ke-outline" data-name="image" title="图片" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span><span class="ke-outline" data-name="link" title="超级链接" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span class="ke-outline" data-name="removeformat" title="删除格式" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span><span class="ke-outline" data-name="undo" title="后退(Ctrl+Z)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-undo" unselectable="on"></span></span><span class="ke-outline" data-name="redo" title="前进(Ctrl+Y)" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-redo" unselectable="on"></span></span><span class="ke-outline" data-name="source" title="HTML代码" unselectable="on"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-source" unselectable="on"></span></span></div><div style="display: block; height: 100px;" class="ke-edit"><iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" tabindex="" style="width: 100%; height: 100px;"></iframe><textarea class="ke-edit-textarea" hidefocus="true" tabindex="" style="width: 100%; height: 100px; display: none;"></textarea></div><div class="ke-statusbar"><span class="ke-inline-block ke-statusbar-center-icon"></span><span class="ke-inline-block ke-statusbar-right-icon"></span></div></div><textarea name="desc" id="desc" class="form-control" rows="3&#39;" style="display: none;"></textarea>
+</div>
+      </div>
+      <div class="categoryInfo">
+              </div>
+      <div class="form-group">
+        <label class="col-md-2"></label>
+        <div class="col-md-4"> <input type="submit" id="submit" class="btn btn-primary" value="保存" data-loading="稍候..."><input type="hidden" id="uid" name="uid" value="54585d477ec01"> <input type="hidden" name="type" id="type" value="article">
+</div>
+      </div>
+    </div>
+  </div>
+  <script language="Javascript">$(document).ready(function()
+{
+    $.setAjaxForm('#editForm', function()
+    {
+        /* After the form posted, refresh the treeMenuBox content. */
+        source = createLink('tree', 'browse', 'type=' + v.type) + ' #treeMenuBox';
+        $('#treeMenuBox').parent().load(source, function()
+        {
+            /* Rebuild the tree menu after treeMenuBox refreshed. */
+            $(".tree").treeview({collapsed: false, unique: false});
+
+            /* enable palceholder for ie8 */
+            if($.fn.placeholder) $('[placeholder]').placeholder();
+        });
+    });
+
+    $('#isLink').change(function()
+    {   
+        if($(this).prop('checked'))
+        {   
+            $('.categoryInfo').hide();
+            $('.link').show();
+        }   
+        else
+        {   
+            $('.categoryInfo').show();
+            $('.link').hide();
+        }   
+    }); 
+
+    $('#isLink').change();
+});
+
+</script>
+</form>
+</div>
+</div>
+<script language="javascript">$(function() {$(".tree").treeview({collapsed: false, unique: false}) })</script>
+</div></div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom hidden-sm hidden-xs" role="navigation">
+  <div class="collapse navbar-collapse navbar-ex6-collapse">
+    <div class="navbar-text pull-right"> <span id="poweredBy"><a href="http://www.chanzhi.org/?v=3.1" target="_blank" title="蝉知门户，微网站专家！"><i class="icon icon-bell"></i> 蝉知 3.1</a></span></div>
+  </div>
+</nav>
+
+<script language="Javascript">$(document).ready(function()
+{
+    /* Load the children of current category when page loaded. */
+    var link = createLink('tree', 'children', 'type=' + v.type + '&root=' + v.root);
+    $('#categoryBox').load(link, function(){if($.fn.placeholder) $('[placeholder]').placeholder();});
+    $('#treeMenuBox li:has(ul)').each(function()
+    {
+        $(this).children('.deleter').remove();
+    });
+
+    $.setAjaxLoader('#treeMenuBox .ajax', '#categoryBox', function(){if($.fn.placeholder) $('[placeholder]').placeholder();});
+
+    $('a.jsoner').click(function()
+    {
+        url = $(this).attr('href');
+        var button = $(this);
+        $.getJSON(url, function(response)
+        {
+            if(response.result == 'success')
+            {
+                 button.popover({trigger:'manual', content:response.message, placement:'right'}).popover('show');
+                 button.next('.popover').addClass('popover-success');
+                 function distroy(){button.popover('destroy')}
+                 setTimeout(distroy,2000);
+            }
+            else
+            {
+                bootbox.alert(response.message);
+            }
+        });
+        return false;
+    });
+
+    $(document).on('click', '.btn-plus', function()
+    {
+        $(this).parents('.form-group').after($('.child').html());
+    })
+
+    $(document).on('click', '.btn-remove', function()
+    {
+        if($(this).parents('#childForm').find('.form-group').not('.hide .form-group').find(':input[value=new]').size() == 1)
+        {
+            $(this).parents('.form-group').find('input').not('input[type=hidden]').val('');
+            return false;
+        }
+        $(this).parents('.form-group').remove();
+    })
+
+    if(v.isWechatMenu) $(".leftmenu a[href*='wechat']").parent().addClass('active');
+
+    if(v.type == 'product' && (!$('#setCurrency').length))
+    {
+        var currencyLink = createLink('product', 'currency');
+        var currencyMenu = '<li><a id="setCurrency" href="' + currencyLink + '">';
+        currencyMenu += v.currency + '<i class="icon-chevron-right"></i>';
+        currencyMenu += '</li>';
+
+        $('.nav-left').append(currencyMenu);
+        $('#setCurrency').modalTrigger();
+    }
+})
+
+</script>
+
+
+</body></html>

@@ -1,0 +1,41 @@
+<div class="clearfix row-main">
+    <div class="col-md-2">
+        <div class="leftmenu affix hiddden-xs hidden-sm">
+            <?py include('ops/system/menu.html') ?>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="panel">
+
+                <table class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th>id</th>
+                        <th>version</th>
+                        <!--<th>url</th>-->
+                        <th>size</th>
+                        <th>oss下载</th>
+                        <th>创建时间</th>
+                        <th>描述</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?py if apps: ?>
+                        <?py for app in apps: ?>
+                            <tr class="text-center" >
+                                <td>${app.id}</td>
+                                <td>${app.app_version}</td>
+                                <!--<td>${app.app_url}</td>-->
+                                <td>${app.app_size/1024}K</td>
+                                <td>osscmd get oss://admingongzhuhao/${app.app_url}   ${app.file_name}</td>
+                                <td>${app.gmt_created}</td>
+                                <td>${app.app_desc}</td>
+                            </tr>
+                        <?py #endfor ?>
+                    <?py #endif ?>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

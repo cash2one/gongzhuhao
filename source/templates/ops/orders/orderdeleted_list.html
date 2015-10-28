@@ -1,0 +1,167 @@
+<div class="clearfix row-main">
+    <?py include('ops/orders/orders_base.html')?>
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading">
+                <strong><i class="icon-group"></i>预约订单列表</strong>
+            </div>
+
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+
+                <tr class="text-center">
+                    <th>预约订单类型</th>
+                    <th>用户昵称</th>
+                    <th>状态</th>
+                    <th>客户电话</th>
+                    <th>地址</th>
+                    <th>描述</th>
+                    <th>订单标题</th>
+                    <th>公司名称</th>
+                    <th>联系方式</th>
+                    <th>质量保证</th>
+                    <th>诚信保证</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?py if data_info: ?>
+                <?py for data in data_info: ?>
+                <tr>
+
+                    <?py if data['query'].order_type==0:?>
+                    <td>案例</td>
+                    <?py #endif ?>
+                    <?py if  data['query'].order_type==1:?>
+                    <td>优惠</td>
+                    <?py #endif ?>
+                    <?py if  data['query'].order_type==2:?>
+                    <td>商户</td>
+                    <?py #endif ?>
+                    <?py if data['query'].user_nick:?>
+                    <td>${data['query'].user_nick}</td>
+                    <?py else: ?>
+                    <td> </td>
+                    <?py #endif ?>
+                    <?py if data['query'].status==0:?>
+                    <td>已下单</td>
+                    <?py #endif ?>
+                    <?py if data['query'].status==1:?>
+                    <td>已确认</td>
+                    <?py #endif ?>
+                    <?py if not data['query'].phone=='':?>
+                    <td>${data['query'].phone}</td>
+                    <?py else: ?>
+                    <td> </td>
+                    <?py #endif ?>
+                    <?py if not data['query'].address=='':?>
+                    <td>${data['query'].address}</td>
+                    <?py else: ?>
+                    <td> </td>
+                    <?py #endif?>
+                    <?py if not data['query'].description=='':?>
+                    <td>${data['query'].description}</td>
+                    <?py else: ?>
+                    <td> </td>
+                    <?py #endif ?>
+                    <?py if not data['query'].product_title=='':?>
+                    <td>${data['query'].product_title}</td>
+                    <?py else: ?>
+                    <td> </td>
+                    <?py #endif ?>
+
+                    <?py if not data['query'].merchant_name=='':?>
+                    <td>${data['query'].merchant_name}</td>
+                    <?py else: ?>
+                    <td> </td>
+                    <?py #endif ?>
+
+                    <?py if not data['data']=='':?>
+                    <?py for query_data in data['data']:?>
+                    <?py if not query_data.phone=='':?>
+                    <td>${query_data.phone}</td>
+                    <?py else:?>
+                    <td> 成为菜市场</td>
+                    <?py #endif ?>
+                    <?py #endfor ?>
+                    <?py else:?>
+                    <td> 成为菜市场</td>
+                    <?py #endif?>
+
+
+                    <?py if not data['data']=='':?>
+                    <?py for query_data in data['data']:?>
+                    <?py if not query_data.is_quality=='':?>
+                    <td>质量信得过</td>
+                    <?py #endif ?>
+                    <?py #endfor ?>
+                    <?py else:?>
+                    <td>无认证</td>
+                    <?py #endif?>
+
+                    <?py if not data['data']=='':?>
+                     <?py for query_data in data['data']:?>
+                    <?py if not query_data.is_honesty=='':?>
+                    <td>产品信得过</td>
+                    <?py #endif ?>
+                    <?py #endfor ?>
+                    <?py else:?>
+                    <td>无认证</td>
+                    <?py #endif?>
+                    <td>
+                        <a href="javascript:Order.Recover(${data['query'].id})">恢复</a>
+                    </td>
+                </tr>
+                <?py #endfor ?>
+                <?py #endif ?>
+                 #{page_html}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<?py include('ops/common/dialog.html') ?> <!--引入弹出框组件-->
+<script language="Javascript" type="text/javascript">
+
+     window.onload=function(){
+
+      $('#orderdeleted_list_show').addClass('active');
+
+ }
+
+     var Order =
+     {
+         Recover:function(order_id)
+         {
+             BootstrapDialog.show
+             (
+                     {
+                         title: '提示',
+                         message: '你确定恢复该订单?',
+                         buttons:
+                                 [
+                                     {
+                                         label: 'Cancle',
+                                         action: function(dialogItself){
+                                             dialogItself.close()
+                                         }
+                                     },
+                                     {
+                                         label: 'OK',
+                                         action: function(dialogItself){
+                                             dialogItself.close()
+                                             $.get('/admin/m/order/orderdeleted/'+order_id,{},function(data){
+
+                                                 window.location.href='/admin/m/order/orderdeleted_list_show'
+
+                                             })
+                                         }
+                                     }
+                                 ]
+                     }
+             )
+
+         }
+     }
+</script>
+

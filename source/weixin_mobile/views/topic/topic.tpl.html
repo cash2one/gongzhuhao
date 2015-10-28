@@ -1,0 +1,25 @@
+<ion-header-bar class="bar-positive bar bar-header disable-user-behavior" align-title="center">
+    <div class="title title-center header-item">话题</div>
+</ion-header-bar>
+<ion-view view-title="话题">
+  <ion-content class="topic">
+	<ion-slide-box slide-interval="4000" does-continue="true" auto-play="true" style="height:180px;">
+	  <ion-slide ng-repeat="item in model.topic.list_banner">
+	    <div class="banner">                
+	    		<img ng-src="{{item.url}}" />
+	    </div>
+	  </ion-slide>
+	</ion-slide-box>	
+	<div class="list">
+	  <a class="item item-thumbnail-left" href="#/topic_list/{{item.id}}" ng-repeat="item in model.topic.list">
+	    <img ng-src="{{item.url}}" alt="{{item.name}}"/>
+	    <h2 class="topic-title" ng-bind="item.name"></h2>
+	    <h3 class="topic-desc" ng-bind="item.desc"></h3>   
+	    <p class="topic-extra">
+			<span class="topic-total">话题数<em ng-bind="item.topic_count"></em></span>
+			<span class="topic-view">浏览量<em ng-bind="item.page_view"></em></span>
+	    </p>
+	  </a>
+	</div>  
+  </ion-content>
+</ion-view>	

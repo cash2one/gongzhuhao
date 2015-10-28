@@ -1,0 +1,566 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>照片分享</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <?py include("views/assets/styles.html") ?>
+        <style type="text/css">
+        html{
+          overflow:scroll;
+        }
+
+        body{
+          font-size: 9px;
+          width:100%;
+          max-width:640px;
+          margin:0 auto;
+          background-color:#f2f2f2;
+        }
+        .content>.sub-title>a{
+          text-decoration: none;
+          color:#ff6577;
+        }
+        .content>.info{
+          font-size: 1.25em;
+        }
+        .content>.form-order{
+          position: relative;
+          overflow: auto;
+        }
+        .content>.form-order>div{
+          padding: 0px;
+        }
+        .content>.form-order input{
+          height: 42px;
+        }
+        .content>.form-order button{
+          color:#333;
+          background-color: #fff;
+          border-color: #e5e5e5;
+        }
+        .content>.form-order .iconfont{
+          font-size: 2em;
+          margin-right: 10px;
+        }
+
+        .content>.form-order>div:first-child{
+          padding-right: 10px;
+        }
+        /*== wrapper textarea ==*/
+        .wrapper-textarea{
+          padding-top: 15px;
+        }
+        .wrapper-textarea textarea{
+          border-color: transparent;
+        }
+        .wrapper-textarea button,
+        .wrapper-textarea button:hover{
+          background-color: #ff6577;
+          color:#fff;
+          font-size: 1.5em;
+          border-color: transparent;
+        }
+        .inner-addon {
+            position: relative;
+        }
+        /* style icon */
+        .inner-addon .glyphicon {
+          position: absolute;
+          padding: 10px;
+          pointer-events: none;
+        }
+        /* align icon */
+        .left-addon .glyphicon { left:  0px;}
+        .right-addon .glyphicon{ right: 0px;}
+        /* add padding  */
+        .left-addon textarea{ padding-left:  30px;}
+
+
+        /*== comment list  ==*/
+        .content ul li+li{
+          border-top:1px solid #e5e5e5;
+        }
+        .media-left .img-circle{
+          width:60px;
+          height:60px;
+        }
+        .content .media {
+          margin-top: 0px;
+          padding: 15px 10px;
+        }
+        .media .title{
+          font-size: 1.5em;
+          color:#999;
+          line-height: 1;
+          margin-top: 0px;
+          margin-bottom: 6px;
+        }
+        .media .content{
+          font-size: 1.5em;
+          color:#333;
+          line-height:1.6;
+      margin-bottom:4px;
+        }
+        .media .time{
+          color:#999;
+          font-size: 1.2em;
+        }
+        .fix-mask{
+          width: 100%;
+          position: fixed;
+          z-index: 9999;
+          top: 0px;
+          left: 0px;
+          right: 0px;
+          bottom: 0px;
+          background-image:url("/static/images/share.png");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          display: none;
+        }
+
+      /*音乐开关样式*/
+    .music_box{
+      width:30px;
+      height:30px;
+      position:fixed;
+      right:14px;
+      top:30px;
+      background-color:rgba(0,0,0,0.3);
+      border-radius:50%;
+      z-index:999;
+      cursor: pointer;
+
+    }
+    @keyframes mymove
+    {
+      from {-webkit-transform: rotate(0deg);}
+      to {-webkit-transform: rotate(360deg);}
+    }
+    @-webkit-keyframes mymove /*Safari and Chrome*/
+    {
+      from {-webkit-transform: rotate(0deg);}
+      to {-webkit-transform: rotate(360deg);}
+    }
+    .music_box img{
+      width:100%;
+      height:100%;
+    }
+    .music_box img.play{
+      animation:mymove 3s linear infinite;
+      -webkit-animation:mymove 3s linear infinite; /*Safari and Chrome*/
+    }
+
+    /*图片展示样式*/
+    .padding{
+      width:100%;
+      background-color:#fff;
+      margin:0px;
+      padding:14px 14px 20px 14px;
+    }
+    .content>.title{
+      font-size:20px;
+      line-height:24px;
+      color:#333;
+    }
+    .content>.sub-title{
+      font-size:12px;
+      color:#999;
+    }
+    .content>.sub-title>a{
+      color:#666;
+    }
+    .content>.body{
+      width:100%;
+      color:#666;
+      font-size:14px;
+      line-height:22px;
+      width:100%;
+      background-color:#fff;
+      padding:20px 20px 20px 20px;
+      box-shadow:0px 1px 4px 0px rgba(0,0,0,0.2);
+      margin:20px 0px 20px 0px;
+    }
+    .padding .card{
+      width:100%;
+      overflow:hidden;
+      background-color:#fff;
+      border:1px solid #d6d6d6;
+      box-shadow:0px 1px 4px 0px rgba(0,0,0,0.2);
+      padding:14px 14px 14px 14px;
+      margin:0px 0px 20px 0px;
+    }
+    .padding .card a{
+      width:100%;
+      overflow:hidden;
+      background-color:#eee;
+    }
+    .padding .card a img{
+      width:100%;
+    }
+    .content>.info{
+      margin:0px 0px 10px 10px;
+      font-size:12px;
+      color:#333;
+    }
+    /*填写手机号码样式*/
+    .form-group{
+      margin:0px;
+      padding:0px;
+    }
+    .content>.form-order>div{
+
+    }
+    .content>.form-order input{
+      border:1px solid #ddd;
+      box-shadow:none;
+      padding:0px 0px 0px 10px;
+      border-radius:3px;
+      width:100%;
+      height:36px;
+
+    }
+    .content>.form-order button{
+      background-color:#fff;
+      border:1px solid #ddd;
+      box-shadow:none;
+      border-radius:3px;
+      color:#333;
+      margin:0px;
+      padding:0px;
+      height:36px;
+      line-height:36px;
+    }
+    .content>.form-order button:active{
+      background-color:#ddd;
+    }
+    .content>.form-order button:after{
+      position:static;
+    }
+    /*编辑送祝福样式*/
+    .content-comment{
+      width:100%;
+      margin:0px;
+      padding:14px 14px 30px 14px;
+    }
+    .wrapper-textarea{
+      margin:0px;
+      padding:10px 0px 10px 0px;
+    }
+    .write_title{
+      width:40%;
+      margin:0 auto;
+      text-align:center;
+      margin-bottom:0px;
+      color:#666;
+      font-size:13px;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(.5, transparent), color-stop(.5, #ddd), to(#ddd)) left bottom repeat-x;
+      background-size: 100% 1px;
+      background-position:50%;
+    }
+    .write_title span{
+      padding:0px 10px 0px 10px;
+      background-color:#f2f2f2;
+    }
+    .left-addon textarea{
+      padding:14px 10px 14px 10px;
+      border:none 0;
+      border-radius:3px;
+    }
+    .form-control:focus{
+      box-shadow:none;
+      border:none 0;
+    }
+    .wrapper-textarea button{
+      width:100%;
+      height:36px;
+      min-height:100%;
+      line-height:36px;
+      background-color:#ff6577;
+    }
+    .wrapper-textarea button:active{
+      background-color:#e75e6e;
+    }
+    .button.button-block{
+
+    }
+    .button:after{
+      position:static;
+    }
+    /*用户留言样式*/
+    .content .media{
+      padding:15px 0px 15px 0px;
+      border:none 0;
+      /*
+        background-image: linear-gradient(0deg, #ddd, #ddd 50%, transparent 50%);
+        background-position: bottom;
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+      */
+    }
+    .media-left .img-circle{
+      width:36px;
+      height:36px;
+    }
+        </style>
+    </head>
+    <body>
+        <div class="music_box">
+          <img src="/static/images/music.png" class="play">
+          <audio id="mini_audio" autoplay style="dispaly:none;">
+            <source src="http://media.gongzhuhao.com/music/201508061614/1614539Cd李健 - 当你老了.mp3" type="audio/mp3"/>
+          </audio>
+        </div>
+        <div class="content padding" style="padding-top:0px;">
+            <h3 class="title">${user_photos_share.Ftitle}</h3>
+            <h4 class="sub-title">婚纱照由<a href="#">"${company.Fcompany_name}"</a>提供</h4>
+            <p class="body">${user_photos_share.Fdescription}</p>
+            <?py for img in share_images: ?>
+                <div class="list card work-item">
+                  <div class="item item-image">
+                    <a href="#">
+                        <img src="${img.Fimg_url}">
+                    </a>
+                  </div>
+                </div>
+            <?py #endfor ?>
+            <input type="hidden" value="${user_photos_share.Fuser_id}" id="user_id" />
+            <input type="hidden" value="${user_photo_share_id}" id="share_id" />
+            <p class="info">通过本页面预约可以享受优惠</p>
+            <div class="form-group form-order">
+              <div class="col-sm-9 col-xs-9">
+                <input type="text" class="form-control" id="potential_phone" placeholder="输入手机号码">
+              </div>
+              <button class="col-sm-3 col-xs-3 button" id="pot-send">预约</button>
+            </div>
+        </div>
+
+        <div class="content content-comment" style="clear:both;background-color:#f2f2f2;">
+            <?py if (not is_self) and (not share_wish): ?>
+              <div class="col-xs-12 col-sm-12 wrapper-textarea">
+                <div class="inner-addon left-addon">
+                  <i class="glyphicon iconfont gzh-write"></i>
+                  <textarea class="form-control" rows="4" id="btn-content" placeholder="快点送上祝福"></textarea>
+                </div>
+                <button class="button button-block" id="btn-send">发送祝福</button>
+              </div>
+            <?py #endif ?>
+          <ul style="clear:both">
+            <?py for wish in share_wishs: ?>
+                <li class="media work-media">
+                    <div class="media-left">
+                      <img class="media-object img-circle" src="${wish.Fweixin_photos}" alt="" />
+                    </div>
+                    <div class="media-body">
+                      <h4 class="title">${wish.Fsend_user}</h4>
+                      <p class="content">${wish.Fwish_content}</p>
+                      <span class="time">${handler.execute_datetime(wish.Fcreate_time)}</span>
+                    </div>
+                </li>
+            <?py #endfor ?>
+          </ul>
+        </div>
+        <div class="fix-mask"></div>
+        <?py include("views/assets/javascripts.html") ?>
+        <script type="text/javascript">
+        $(function(){
+          var user_id = "${user_photos_share.Fuser_id}",
+            share_id = "${user_photo_share_id}";
+            $('#btn-send').on('click' , function(e){
+              var content = ""+$("#btn-content").val();
+              if((content.trim()).length > 0){
+                $("#btn-content").val(" ");
+                var promise =$.ajax({
+                  type: "POST",
+                  url: '/mobile/create/share/comment',
+                  data: {
+                    "Fuser_id" : user_id,
+                    "Fshare_id": share_id,
+                    "Fcontent" : content
+                  },
+                  success : function(rs){
+                    rs = JSON.parse(rs);
+                    if(rs.data){
+                    $(".content-comment>ul").append(rs.data);
+                  }
+                  }
+                });
+              }
+            });
+
+            $(".form-order .button-block").on('click' , function(e){
+              $('.fix-mask').show();
+            });
+            $('.fix-mask').on('click' , function(e){
+              $(this).hide();
+            })
+
+          var play_status = true;
+          $('.music_box').on('click' , function(e){
+            if(play_status){
+              $(this).find("img").removeClass('play');
+              $("#mini_audio")[0].pause();
+              play_status = false;
+            }else{
+              $(this).find("img").addClass('play');
+              $("#mini_audio")[0].play();
+              play_status = true;
+            }
+          });
+
+        });
+
+        $(function(){
+          var user_id = "${user_photos_share.Fuser_id}",
+            share_id = "${user_photo_share_id}";
+            merchant_id = "${company.Fuser_id}";
+            company_id = "${company.Fid}";
+            $('#pot-send').on('click' , function(e){
+                var promise =$.ajax({
+                  type: "POST",
+                  url: '/mobile/create/potential/cust',
+                  data: {
+                    "Fshare_id": share_id,
+                    "Fuser_id" : user_id,
+                    "Fmerchant_id" : merchant_id,
+                    "Fcompany_id" : company_id,
+                    "Fcust_phone" : $('#potential_phone').val()
+                  },
+                  success : function(rs){
+                    rs = JSON.parse(rs);
+                    if(rs.data){
+
+                  }
+                  }
+                });
+            });
+        });
+        </script>
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script>
+            wx.config({
+            debug: false,
+            appId: '${dic_sign.get('appId')}',
+            timestamp: ${dic_sign.get('timestamp')},
+            nonceStr: '${dic_sign.get('nonceStr')}',
+            signature: '${dic_sign.get('signature')}',
+            jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'translateVoice',
+                'startRecord',
+                'stopRecord',
+                'onRecordEnd',
+                'playVoice',
+                'pauseVoice',
+                'stopVoice',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard'
+            ]
+            });
+
+            wx.ready(function () {
+                // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+                wx.checkJsApi({
+                  jsApiList: [
+                    'previewImage',
+                    'onMenuShareTimeline',
+                    'onMenuShareAppMessage',
+                    'onMenuShareQQ',
+                    'onMenuShareWeibo'
+                  ],
+                  success: function (res) {
+                    //alert(JSON.stringify(res));
+                  }
+                });
+
+                // 5.2 图片预览
+                //分享到朋友圈
+                wx.onMenuShareTimeline({
+                    title: '${user_photos_share.Ftitle}', // 分享标题
+                    link: '${share_url}', // 分享链接
+                    imgUrl: '${handler.get_show_img_url(user_photos_share.Fcover_img,300)}', // 分享图标
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                });
+
+                //分享给朋友
+                wx.onMenuShareAppMessage({
+                    title: '${user_photos_share.Ftitle}', // 分享标题
+                    desc: '${user_photos_share.Fdescription}', // 分享描述
+                    link: '${share_url}', // 分享链接
+                    imgUrl: '${handler.get_show_img_url(user_photos_share.Fcover_img,300)}', // 分享图标
+                    type: '', // 分享类型,music、video或link，不填默认为link
+                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                });
+
+                //分享到QQ
+                wx.onMenuShareQQ({
+                    title: '${user_photos_share.Ftitle}', // 分享标题
+                    desc: '${user_photos_share.Fdescription}', // 分享描述
+                    link: '${share_url}', // 分享链接
+                    imgUrl:'${handler.get_show_img_url(user_photos_share.Fcover_img,300)}', // 分享图标
+                    success: function () {
+                       // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                       // 用户取消分享后执行的回调函数
+                    }
+                });
+
+                //分享到腾讯微博
+                wx.onMenuShareWeibo({
+                    title: '${user_photos_share.Ftitle}', // 分享标题
+                    desc: '${user_photos_share.Fdescription}', // 分享描述
+                    link: '${share_url}', // 分享链接
+                    imgUrl: '${handler.get_show_img_url(user_photos_share.Fcover_img,300)}', // 分享图标
+                    success: function () {
+                       // 用户确认分享后执行的回调函数
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                });
+
+            });
+        </script>
+    </body>
+</html>
+

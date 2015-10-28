@@ -1,0 +1,134 @@
+<link rel="stylesheet" href="/static/skin/css/merchant.css"/>
+
+<div class="gzh-container bg-white ">
+
+    <div class="gzh-position w1200">
+        <a href="">首页</a>
+        <span> > </span>
+        <a href="/api/merchant/list/">商家列表</a>
+        <span> > </span>
+        <span class="text-red">${company.Fcompany_name}</span>
+    </div>
+
+    <div class="main w1200 clear">
+        <!--left content start-->
+        <section class="gzh-merchant w940 fl">
+
+            <!--商家详情 start-->
+            <div class="gm-item m30">
+                <div class="gm-series">
+                    <div class="gm-item-title f20">
+                        <a href="javascript:;" onclick="orderShow();" class="btn btn-order">预约看店</a>
+                        <a href="/merchant/detail/${company.Fid}" class="btn btn-enter" target="_blank" title="进入店铺">进入店铺</a>
+                        <h2 class="f18">${company.Fcompany_name}</h2>
+                        <p class="gm-item-star text-red">
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                            <i class="iconfont gzh-star"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--商家详情 end-->
+
+            <!-- 筛选 start -->
+            <div class="gm-filter">
+                <span>
+                    <i class="price">¥</i>价格
+                </span>
+
+                <?py if not between_price:?>
+                    <a href="?price=" class="current">全部</a>
+                <?py else:?>
+                    <a href="?price=">全部</a>
+                <?py #endif ?>
+
+                <?py for p in prices:?>
+                    <?py if between_price==p:?>
+                            <a href="?price=${p}" class="current">
+                                <?py if p=='-4999':?>
+                                    小于4999
+                                <?py elif p=='13000-':?>
+                                    大于13000
+                                <?py else:?>
+                                    ${p}
+                                <?py #endif ?>
+                            </a>
+                    <?py else:?>
+                        <a href="?price=${p}">
+                              <?py if p=='-4999':?>
+                                    小于4999
+                                <?py elif p=='13000-':?>
+                                    大于13000
+                                <?py else:?>
+                                    ${p}
+                                <?py #endif ?>
+                        </a>
+                    <?py #endif ?>
+                <?py #endfor ?>
+            </div>
+            <!-- 筛选 end -->
+
+            <!--热门套系 start-->
+            <div class="gm-series-item m30">
+                <div class="gm-hot">
+
+                    <?py if series:?>
+                        <?py for s in series:?>
+                            <div class="gm-hot-item">
+                                <a href="/series/${s.Fid}" class="img-link" target="_blank" title="${s.Fpackage_name}">
+                                    <img data-lazyload="${s.Fcover_img}" class="gzh-lazy img-hover" width="300" height="187" alt="${s.Fpackage_name}"/>
+                                    <span class="img-cover"></span>
+                                </a>
+                                <p class="gm-hot-extra">
+                                    <span class="gm-like text-gray fr">
+                                        <i class="iconfont gzh-like_line"></i>
+
+                                    </span>
+                                    <span class="gm-price text-red">
+                                        <i class="price">¥</i>${s.Fsale_price}
+                                    </span>
+                                    <del class="text-gray">
+                                        <i class="price">¥</i>${s.Fprice}
+                                    </del>
+                                </p>
+                                <p class="gm-hot-title">
+                                    <a href="/series/${s.Fid}" target="_blank" title="${s.Fpackage_name}">${s.Fpackage_name}</a>
+                                </p>
+                            </div>
+                        <?py #endfor ?>
+                    <?py #endif ?>
+                </div>
+            </div>
+            <!--热门套系 end-->
+        </section>
+        <!--left content end-->
+
+        <!--right content start-->
+        <aside class="gzh-side w230 fr">
+            <!--<div class="gzh-ad m30">-->
+                <!--<a href="" class="img-link" target="_blank"></a>-->
+                    <!--<img data-lazyload="" class="gzh-lazy img-hover" width="230" height="142" alt=""/>-->
+                <!--<span class="img-cover"></span>-->
+            <!--</div>-->
+            <?py include('view/merchant/recent_series.html') ?>
+        </aside>
+        <!--right content end-->
+    </div>
+</div>
+
+
+<?py include('view/merchant/order_alert.html') ?>
+<script>
+    function orderShow(){
+        $('#order_modal').modal();
+    }
+
+    function showCon(){
+        $('.order-content').fadeOut();
+        $('.order-succcess').fadeIn();
+    }
+    $('#nav_merchant').addClass('current');
+</script>

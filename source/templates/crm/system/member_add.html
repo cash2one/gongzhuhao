@@ -1,0 +1,158 @@
+<link rel="stylesheet" href="/static/crm/css/system/member.css" />
+<script src="/static/crm/js/system/member.js"></script>
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<div class="row-fluid sortable">
+	    <div class="box col-md-12">
+	        <div class="box-inner">
+		        <div class="box-header well" data-original-title>
+		            <h2>添加用户</h2>
+		        </div>
+		        <div class="box-content member" id="js_member">
+                    <ul class="ul-action">
+                        <li>
+                            <label for="m-mobile" class="p-name">手机号（登录账号）<em class="red">＊</em></label>
+                            <input type="tel" name="m-mobile" id="m-mobile" class="form-control input-txt" placeholder="请填写您的手机号码"/>
+                            <div class="error mobile-error"></div>
+                        </li>
+
+                        <!--li>
+                            <label for="m-nickname" class="p-name">昵称：</label>
+                            <input type="text" name="m-nickname" id="m-nickname" class="form-control input-txt" placeholder="请填写您的昵称"/>
+                        </li-->
+                        <li>
+                            <label for="m-pwd" class="p-name">密码<em class="red">＊</em></label>
+                            <input type="password" name="m-pwd" id="m-pwd" class="form-control input-txt" placeholder="请输入密码"/>
+                            <div class="error pwd-error"></div>
+                        </li>
+                        <li>
+                            <label for="m-pwd1" class="p-name">确认密码<em class="red">＊</em></label>
+                            <input type="password" name="m-pwd1" id="m-pwd1" class="form-control input-txt" placeholder="请再次输入密码"/>
+                            <div class="error pwd1-error"></div>
+                        </li>
+
+                        <li>
+                            <label for="m-name" class="p-name">昵称<em class="red">＊</em></label>
+                            <input type="text" name="m-name" id="m-name" class="form-control input-txt" placeholder="请填写您的姓名"/>
+                            <div class="error name-error"></div>
+                        </li>
+                        <!--li>
+                            <label for="m-email" class="p-name">邮箱：</label>
+                            <input type="email" name="m-email" id="m-email" class="form-control input-txt" placeholder="请填写您的邮箱"/>
+                            <div class="error email-error"></div>
+                        </li-->
+                        <li>
+                            <label for="" class="p-name v-top">权限设置<em class="red">＊</em></label>
+                            <div class="p-action">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="checkAll">全选
+                                </label><br />
+                                <td>服务管理</td>
+                                &nbsp&nbsp&nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[0].Fid}" value="${permissions[0].Fcode}" checked="checked" />${permissions[0].Fname}
+                                </label>
+                                &nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[1].Fid}" value="${permissions[1].Fcode}" />${permissions[1].Fname}
+                                </label>
+                                &nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[2].Fid}" value="${permissions[2].Fcode}" />${permissions[2].Fname}
+                                </label><br />
+
+                                <td>客片管理</td>
+                                &nbsp&nbsp&nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[3].Fid}" value="${permissions[3].Fcode}" />${permissions[3].Fname}
+                                </label>
+                                &nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[4].Fid}" value="${permissions[4].Fcode}" />${permissions[4].Fname}
+                                </label>
+                                &nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[5].Fid}" value="${permissions[5].Fcode}" />${permissions[5].Fname}
+                                </label><br />
+
+                                <td>档期管理</td>
+                                &nbsp&nbsp&nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[6].Fid}" value="${permissions[6].Fcode}" />${permissions[6].Fname}
+                                </label>
+                                &nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[7].Fid}" value="${permissions[7].Fcode}" />${permissions[7].Fname}
+                                </label><br/>
+
+                                <td>分享统计</td>
+                                &nbsp&nbsp&nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[8].Fid}" value="${permissions[8].Fcode}" />${permissions[8].Fname}
+                                </label><br />
+
+                                <td>潜客管理</td>
+                                &nbsp&nbsp&nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[9].Fid}" value="${permissions[9].Fcode}" />${permissions[9].Fname}
+                                </label>
+                                &nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[10].Fid}" value="${permissions[10].Fcode}" />${permissions[10].Fname}
+                                </label><br />
+
+                                <td>商户信息</td>
+                                &nbsp&nbsp&nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[11].Fid}" value="${permissions[11].Fcode}" />${permissions[11].Fname}
+                                </label>
+                                &nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[12].Fid}" value="${permissions[12].Fcode}" />${permissions[12].Fname}
+                                </label><br />
+
+                                <td>作品管理</td>
+                                &nbsp&nbsp&nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[13].Fid}" value="${permissions[13].Fcode}" />${permissions[13].Fname}
+                                </label>
+                                &nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[14].Fid}" value="${permissions[14].Fcode}" />${permissions[14].Fname}
+                                </label><br />
+
+                                <td>套系管理</td>
+                                &nbsp&nbsp&nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[15].Fid}" value="${permissions[15].Fcode}" />${permissions[15].Fname}
+                                </label>
+                                &nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[16].Fid}" value="${permissions[16].Fcode}" />${permissions[16].Fname}
+                                </label><br />
+
+                                <td>系统管理</td>
+                                &nbsp&nbsp&nbsp
+                                <label>
+                                    <input type="checkbox" name="checkbox" id="${permissions[17].Fid}" value="${permissions[17].Fcode}" />${permissions[17].Fname}
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="p-button">
+                            <input type="hidden" name="_xsrf" value="${xsrf_token}">
+                    		<button type="button" name="add" class="btn btn-default" id="js_cancel">取消</button>
+                    		<button type="button" name="add" class="btn btn-success" id="js_save">添加</button>
+                    		<div class="error"></div>
+                    </div>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</div>
+<script src="/static/crm/js/system/member_add.js"></script>
+<script>
+	$(function(){
+		$(".nav-user").addClass("active");
+	})
+</script>

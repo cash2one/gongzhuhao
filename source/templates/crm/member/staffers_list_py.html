@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="/static/crm/css/member/member.css" />
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->		
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well">
+					<h2>人员管理</h2>
+				</div>
+				<div class="box-content">
+					<button class="btn btn-primary btn-setting" type="button" value="添加员工" data-toggle="modal" data-target="#addMemModal" >添加员工</button>
+				</div>
+				<div class="box-content member-list">
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="ml-avatar">员工姓名</th>
+							    <th class="ml-mobile">手机号</th>
+								<th class="ml-group">隶属部门</th>
+								<th class="ml-lastlogin">创建时间</th>
+								<th class="ml-role">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+			            <?py if staffers:?>
+			                <?py for stf in staffers:?>
+							<tr>
+								<input type="hidden" value="${stf.Fid}" id="staff-id"/>
+								<td class="ml-avatar">
+									<!--<img src="" width="45" height="45" alt="avatar" class="fleft"/>-->
+									${stf.Fname}
+								</td>
+								<td class="ml-mobile">
+									${stf.Fmobi}
+								</td>
+								<td class="ml-group">
+									${stf.Fdepartment_name}
+								</td>
+								<td class="ml-lastlogin">
+	                                <span>${stf.Fcreate_time}</span>
+								</td>
+								<td class="ml-role">
+									<a href="/merchant/staffers/edit/${stf.Fid}/" class="btn btn-primary btn-sm">编辑</a>
+									<a href="javascript:;" data-id="${stf.Fid}" class="btn btn-danger btn-sm btn-del">删除</a>
+								</td>
+							</tr>
+			                <?py #endfor ?>
+			                <?py #endif?>
+						</tbody>
+					</table>
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+<!--
+	作者：zjgoing@gmail.com
+	时间：2015-01-26
+	描述：添加用户
+-->
+<div class="modal fade" id="addMemModal" tabindex="-1" role="dialog" aria-labelledby="addMemModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<form method="">
+			<div class="modal-content addMember">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="addMemModalLabel">添加员工</h4>
+				</div>
+				<div class="modal-body">
+					<ul>
+						<li>
+							<label for="staff-name">员工姓名</label>
+							<input type="text" name="staff-name" id="staff-name" class="input-txt" />
+						</li>
+						<li>
+							<label for="staff-derapt">所在部门</label>
+							<select id="staff-derapt">
+                                <?py if departments:?>
+                                    <?py for d in departments:?>
+                                        <option value="${d.Fid}">${d.Ffull_department_name}</option>
+                                     <?py #endfor?>
+                                <?py #endif?>
+							</select>
+						</li>
+						<li>
+							<label for="staff-title">职称</label>
+							<select id="staff-title">
+                                <?py for t in _MERCHANG_DEPARTMENT_TITLES:?>
+                                    <option value="${t}">${t}</option>
+                                <?py #endfor?>
+							</select>
+						</li>
+						<li>
+							<label for="staff-email">邮箱</label>
+							<input type="email" name="staff-email" id="staff-email" class="input-txt" />
+						</li>
+						<li>
+							<label for="staff-mobile">手机号</label>
+							<input type="tel" name="staff-mobile" id="staff-mobile" class="input-txt" />
+							<div class="error mobile-error"></div>
+						</li>
+					</ul>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-green" id="js_staffer_add">保存</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!--gzh func js-->
+<script src="/static/web/js/member/member.js"></script>

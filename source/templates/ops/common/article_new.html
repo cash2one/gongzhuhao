@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)http://demo.chanzhi.org/backend.php?m=article&f=create&type=article&category=0 -->
+<html class="screen-desktop-wide device-desktop m-article m-article-create">
+<head profile="http://www.w3.org/2005/10/profile">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发布文章 - 蝉知企业门户，开源免费的企业建站系统</title>
+    <meta name="keywords" content="企业门户系统 企业建站系统 开源CMS">
+    <meta name="description"
+          content="蝉知门户系统（chanzhiEPS）是一款开源免费的企业门户系统，企业建站系统，php开源CMS系统。它专为企业营销设计，功能专业全面，内置了文章发布、会员管理、论坛评论、产品展示、在线销售、客服跟踪等功能。以LGPL协议发布，真开源，真免费。注重SEO，注重营销，支持移动设备。界面简洁大方，使用简单方便，功能专业强大，是企业建站的首选！同时蝉知系统还内置了微信公众平台功能，一个网站，电脑、手机、微信体验俱佳！">
+    <script language="Javascript">var config={"webRoot":"\/","cookieLife":30,"requestType":"GET","requestFix":"-","moduleVar":"m","methodVar":"f","viewVar":"t","defaultView":"html","themeRoot":"\/theme\/","currentModule":"article","currentMethod":"create","clientLang":"zh-cn","requiredFields":"categories,title,content","save":"\u4fdd\u5b58","router":"\/backend.php","runMode":"admin"}
+
+    </script>
+    <link rel="stylesheet" href="./article_new_files/all.admin.css" type="text/css" media="screen">
+    <script src="./article_new_files/all.admin.js" type="text/javascript"></script>
+    <style>.input-append .btn-group{position: relative; left: -10px; border-radius: 0 4px 4px 0;}
+    </style>
+    <link rel="icon" href="http://demo.chanzhi.org/data/upload/201408/f_f9dcb3fb6ce5aaff3f548cbe30403a2a.ico"
+          type="image/x-icon">
+    <link rel="shortcut icon" href="http://demo.chanzhi.org/data/upload/201408/f_f9dcb3fb6ce5aaff3f548cbe30403a2a.ico"
+          type="image/x-icon">
+    <link href="http://demo.chanzhi.org/backend.php?m=rss&f=index&t=xml" title="蝉知企业门户，开源免费的企业建站系统"
+          type="application/rss+xml" rel="alternate">
+    <!--[if lt IE 9]>
+    <script src='/js/all.ie8.js?v=3.1' type='text/javascript'></script>
+    <![endif]-->
+    <!--[if lt IE 10]>
+    <script src='/js/all.ie9.js?v=3.1' type='text/javascript'></script>
+    <![endif]-->
+    <script language="Javascript">
+        if(typeof(v) != "object") v = {};v.lang = {"confirmDelete":"\u60a8\u786e\u5b9a\u8981\u6267\u884c\u5220\u9664\u64cd\u4f5c\u5417\uff1f","deleteing":"\u5220\u9664\u4e2d","doing":"\u5904\u7406\u4e2d","loading":"\u52a0\u8f7d\u4e2d","timeout":"\u7f51\u7edc\u8d85\u65f6,\u8bf7\u91cd\u8bd5"};
+    </script>
+    <style id="ace_editor">.ace_editor {position: relative;overflow: hidden;font-family: 'Monaco', 'Menlo', 'Ubuntu
+        Mono', 'Consolas', 'source-code-pro', monospace;font-size: 12px;line-height: normal;direction:
+        ltr;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color:
+        inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_content
+        {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor:
+        text;min-width: 100%;}.ace_dragging, .ace_dragging * {cursor: move !important;}.ace_dragging
+        .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250,
+        250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0,
+        0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow :
+        hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select:
+        none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right:
+        0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell
+        {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error
+        {background-image:
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat:
+        no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image:
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position:
+        2px center;}.ace_gutter-cell.ace_info {background-image:
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position:
+        2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image:
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar
+        {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left:
+        0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x:
+        scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input
+        {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance:
+        none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0
+        1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select:
+        text;user-select: text;}.ace_text-input.ace_composition {background: #f8f8f8;color: #111;z-index: 1000;opacity:
+        1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;white-space: pre;height:
+        100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing:
+        border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align:
+        right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display:
+        inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position:
+        absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px
+        solid}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor
+        {border-left-width: 0px;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity:
+        0.2;}.ace_smooth-blinking .ace_cursor {-moz-transition: opacity 0.18s;-webkit-transition: opacity
+        0.18s;-o-transition: opacity 0.18s;-ms-transition: opacity 0.18s;transition: opacity
+        0.18s;}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_marker-layer .ace_step,
+        .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position:
+        absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer
+        .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position:
+        absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line
+        .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display:
+        inline-block;height: 11px;margin-top: -2px;vertical-align:
+        middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat:
+        no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid
+        black;-moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;cursor: pointer;pointer-events:
+        auto;}.ace_dark .ace_fold
+        {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip
+        {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0,
+        0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid
+        gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;display: block;max-width:
+        100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing:
+        border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height:
+        normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled
+        > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing:
+        border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align:
+        top;background-image:
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat:
+        no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor:
+        pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block; }.ace_fold-widget.ace_end
+        {background-image:
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed
+        {background-image:
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover
+        {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);-moz-box-shadow: 0 1px 1px
+        rgba(255, 255, 255, 0.7);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);box-shadow: 0 1px 1px rgba(255,
+        255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0,
+        0.05);-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);-webkit-box-shadow: 0 1px 1px rgba(255, 255, 255,
+        0.8);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image:
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark
+        .ace_fold-widget.ace_end {background-image:
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark
+        .ace_fold-widget.ace_closed {background-image:
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark
+        .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255,
+        0.1);}.ace_dark .ace_fold-widget:active {-moz-box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);-webkit-box-shadow:
+        0 1px 1px rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid
+        {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-moz-transition:
+        opacity 0.4s ease 0.05s;-webkit-transition: opacity 0.4s ease 0.05s;-o-transition: opacity 0.4s ease
+        0.05s;-ms-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity:
+        0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-moz-transition: opacity 0.05s ease 0.05s;-webkit-transition:
+        opacity 0.05s ease 0.05s;-o-transition: opacity 0.05s ease 0.05s;-ms-transition: opacity 0.05s ease
+        0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold
+        {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style:
+        italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index:
+        9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}
+    </style>
+    <style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width:
+        1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color:
+        black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm
+        .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm
+        .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92,
+        246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color:
+        rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm
+        .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class
+        {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string
+        {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color:
+        rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm
+        .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm
+        .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm
+        .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag
+        {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer
+        .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0
+        0 3px 0px white;border-radius: 2px;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm
+        .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin:
+        -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background:
+        rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer
+        .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm
+        .ace_indent-guide {background:
+        url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==")
+        right repeat-y;}
+    </style>
+    <style> .error_widget_wrapper { background: inherit; color: inherit; border:none } .error_widget { border-top: solid
+        2px; border-bottom: solid 2px; margin: 5px 0; padding: 10px 40px; white-space: pre-wrap; }
+        .error_widget.ace_error, .error_widget_arrow.ace_error{ border-color: #ff5a5a } .error_widget.ace_warning,
+        .error_widget_arrow.ace_warning{ border-color: #F1D817 } .error_widget.ace_info, .error_widget_arrow.ace_info{
+        border-color: #5a5a5a } .error_widget.ace_ok, .error_widget_arrow.ace_ok{ border-color: #5aaa5a }
+        .error_widget_arrow { position: absolute; border: solid 5px; border-top-color: transparent!important;
+        border-right-color: transparent!important; border-left-color: transparent!important; top: -5px; }
+    </style>
+    <link href="http://demo.chanzhi.org/js/kindeditor/themes/default/default.css" rel="stylesheet">
+</head>
+<body style="zoom: 1;">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="mainNavbar">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="http://demo.chanzhi.org/backend.php?m=admin&f=index" class="navbar-brand">蝉知</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav mainNavbarNav">
+            <li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=admin&f=index">首页</a></li>
+            <li class="active simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin">文章</a></li>
+            <li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=blog">博客</a>
+            </li>
+            <li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=product&f=admin">产品</a></li>
+            <li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=book&f=admin">手册</a></li>
+            <li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=page">单页</a>
+            </li>
+            <li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=forum&f=admin">论坛</a></li>
+            <li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=site&f=setbasic">站点</a></li>
+            <li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=ui&f=setlogo">界面</a></li>
+            <li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=company&f=setbasic">公司</a></li>
+            <li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=user&f=admin">会员</a></li>
+            <li class="simple-mode-b"><a href="http://demo.chanzhi.org/backend.php?m=message&f=admin">反馈</a></li>
+            <li class="simple-mode-b"><a href="http://demo.chanzhi.org/backend.php?m=package&f=browse">扩展</a></li>
+        </ul>
+        <ul class="nav navbar-nav" id="navbarSwitcher">
+            <li><a href="http://demo.chanzhi.org/backend.php?m=article&f=create&type=article&category=0###"><i
+                    class="icon-chevron-sign-right icon-large"></i></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown"><a
+                    href="http://demo.chanzhi.org/backend.php?m=article&f=create&type=article&category=0###"
+                    class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe icon-large"></i> &nbsp;简体<span
+                    class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a rel="nofollow" href="javascript:selectLang(" zh-tw")">繁体</a></li>
+                    <li><a rel="nofollow" href="javascript:selectLang(" en")">English</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://demo.chanzhi.org/" target="_blank" class="navbar-link"><i
+                    class="icon-home icon-large"></i> 前台</a>
+            </li>
+            <li class="dropdown"><a
+                    href="http://demo.chanzhi.org/backend.php?m=article&f=create&type=article&category=0#"
+                    class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-large"></i> demo <b
+                    class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=changePassword"
+                           data-toggle="modal">修改密码</a>
+                    </li>
+                    <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=logout">退出</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="clearfix row-main">
+<div class="col-md-2">
+    <div class="leftmenu affix hiddden-xs hidden-sm">
+        <ul class="nav-left nav nav-primary nav-stacked">
+            <li class="active"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin">文章列表<i
+                    class="icon-chevron-right"></i></a>
+            </li>
+        </ul>
+        <div class="panel category-nav">
+            <div class="panel-heading">
+                <strong>类目浏览</strong>
+
+                <div class="pull-right"><a
+                        href="http://demo.chanzhi.org/backend.php?m=tree&f=browse&type=article">维护类目</a>
+                </div>
+            </div>
+            <div class="panel-body" style="max-height: 669px;">
+                <ul class="tree">
+                    <li><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=1"
+                           id="category1">蝉知下载</a>
+
+                    </li>
+                    <li><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=2"
+                           id="category2">蝉知动态</a>
+
+                    </li>
+                    <li><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=3"
+                           id="category3">商业支持</a>
+
+                    </li>
+                    <li><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=11"
+                           id="category11">知识改进</a>
+                        <ul>
+                            <li>
+                                <a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=12"
+                                   id="category12">一二三</a>
+
+                            </li>
+                            <li>
+                                <a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=13"
+                                   id="category13">四五六</a>
+
+                            </li>
+                            <li>
+                                <a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=article&categoryID=14"
+                                   id="category14">七八九</a>
+
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-10">
+<link rel="stylesheet" href="./article_new_files/min.css" type="text/css" media="screen">
+<script src="./article_new_files/min.js" type="text/javascript"></script>
+<script src="./article_new_files/zh-cn.js" type="text/javascript"></script>
+<script language="javascript">
+$(function()
+{
+    startDate = new Date(2000, 1, 1);
+    $(".date").datetimepicker
+    ({
+        format: 'yyyy-mm-dd hh:ii',
+        startDate:startDate,
+        pickerPosition: 'top-left',
+        todayBtn: true,
+        autoclose: true,
+        keyboardNavigation:false,
+        language:'zh-cn'
+    });
+});
+
+</script>
+
+<script language="Javascript">v.type = "article";</script>
+<script language="Javascript">v.categoryID = 0;</script>
+<script language="Javascript">v.jsRoot = "\/js\/";</script>
+<script language="Javascript">v.webRoot = "\/";</script>
+<script language="Javascript">v.editors = {"id":["content"],"tools":"full"};</script>
+<script language="Javascript">
+    v.errorUnwritable = "\u4e0a\u4f20\u76ee\u5f55\u4e0d\u53ef\u5199\uff0c\u65e0\u6cd5\u4e0a\u4f20\u9644\u4ef6\u3002";
+</script>
+<script language="Javascript">v.editorLang = "zh_CN";</script>
+<link rel="stylesheet" href="./article_new_files/default.css" type="text/css" media="screen">
+<script src="./article_new_files/kindeditor-min.js" type="text/javascript"></script>
+<script src="./article_new_files/zh_CN.js" type="text/javascript"></script>
+<script language="Javascript">v.uid = "54585d6a90e75";</script>
+
+<script>
+var simple = 
+[ 'formatblock', 'fontsize', '|', 'bold', 'italic','underline', '|', 
+'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|',
+'emoticons', 'image', 'link', '|', 'removeformat','undo', 'redo', 'source' ];
+
+var full = 
+[ 'formatblock', 'fontsize', 'lineheight', '|', 'forecolor', 'hilitecolor', '|', 'bold', 'italic','underline', 'strikethrough', '|',
+'justifyleft', 'justifycenter', 'justifyright', '|',
+'emoticons', 'image', '|', 'link', 'unlink', 'anchor', 'flash', 'media', 'baidumap', '/',
+'undo', 'redo', '|', 'cut', 'copy', '|', 'plainpaste', 'wordpaste', '|', 'removeformat', 'clearhtml','quickformat', '|',
+'indent', 'outdent', 'subscript', 'superscript', 'insertorderedlist', 'insertunorderedlist', '|',
+'table', 'code', 'hr', '|',
+'fullscreen', 'source', 'about'];
+
+$(document).ready(initKindeditor);
+function initKindeditor(afterInit)
+{
+    $(':input[type=submit]').after("<input type='hidden' id='uid' name='uid' value=" + v.uid + ">");
+
+    $.each(v.editors.id, function(key, editorID)
+    {
+        if(typeof(v.editors.filterMode) == 'undefined') v.editors.filterMode = true;
+        editorTool = eval(v.editors.tools);
+        var K = KindEditor;
+        keEditor = K.create('#' + editorID,
+        {
+            width:'100%',
+            items:editorTool,
+            cssPath:[v.webRoot + 'zui/css/min.css'],
+            bodyClass:'article-content',
+            urlType:'absolute', 
+            uploadJson: createLink('file', 'ajaxUpload', 'uid=' + v.uid),
+                        fileManagerJson : createLink('file', 'fileManager'),
+                        imageTabIndex:1,
+            filterMode:v.editors.filterMode,
+            allowFileManager:true,
+            langType:v.editorLang,
+            htmlTags:{font:["id","class","color","size","face",".background-color"],span:["id","class",".color",".background-color",".font-size",".font-family",".background",".font-weight",".font-style",".text-decoration",".vertical-align",".line-height"],div:["id","class","align",".border",".margin",".padding",".text-align",".color",".background-color",".font-size",".font-family",
+            ".font-weight",".background",".font-style",".text-decoration",".vertical-align",".margin-left"],table:["id","class","border","cellspacing","cellpadding","width","height","align","bordercolor",".padding",".margin",".border","bgcolor",".text-align",".color",".background-color",".font-size",".font-family",".font-weight",".font-style",".text-decoration",".background",".width",".height",".border-collapse"],"td,th":["id","class","align","valign","width","height","colspan","rowspan","bgcolor",".text-align",
+            ".color",".background-color",".font-size",".font-family",".font-weight",".font-style",".text-decoration",".vertical-align",".background",".border"],a:["id","class","href","target","name"],embed:["id","class","src","width","height","type","loop","autostart","quality",".width",".height","align","allowscriptaccess"],img:["id","class","src","width","height","border","alt","title","align",".width",".height",".border"],"p,ol,ul,li,blockquote,h1,h2,h3,h4,h5,h6":["id","class","align",".text-align",".color",
+            ".background-color",".font-size",".font-family",".background",".font-weight",".font-style",".text-decoration",".vertical-align",".text-indent",".margin-left"],pre:["id","class"],hr:["id","class",".page-break-after"],"br,tbody,tr,strong,b,sub,sup,em,i,u,strike,s,del":["id","class"],iframe:["id","class","src","frameborder","width","height",".width",".height"],style:[]},
+            afterBlur: function(){this.sync();$('#' + editorID).prev('.ke-container').removeClass('focus');},
+            afterFocus: function(){$('#' + editorID).prev('.ke-container').addClass('focus');},
+            afterChange: function(){$('#' + editorID ).change().hide();},
+            afterCreate : function()
+            {
+                var doc = this.edit.doc; 
+                var cmd = this.edit.cmd; 
+                /* Paste in chrome.*/
+                /* Code reference from http://www.foliotek.com/devblog/copy-images-from-clipboard-in-javascript/. */
+                if(K.WEBKIT)
+                {
+                    $(doc.body).bind('paste', function(ev)
+                    {
+                        var $this = $(this);
+                        var original =  ev.originalEvent;
+                        var file =  original.clipboardData.items[0].getAsFile();
+                        var reader = new FileReader();
+                        reader.onload = function (evt) 
+                        {
+                            var result = evt.target.result; 
+                            var result = evt.target.result;
+                            var arr = result.split(",");
+                            var data = arr[1]; // raw base64
+                            var contentType = arr[0].split(";")[0].split(":")[1];
+
+                            html = '<img src="' + result + '" alt="" />';
+                            $.post(createLink('file', 'ajaxPasteImage', 'uid=' + v.uid), {editor: html}, function(data)
+                            {
+                                if(data) return cmd.inserthtml(data);
+
+                                alert(v.errorUnwritable);
+                                return cmd.inserthtml(html);
+                            });
+                        };
+
+                        reader.readAsDataURL(file);
+                    });
+                }
+
+                /* Paste in firefox.*/
+                if(K.GECKO)
+                {
+                    K(doc.body).bind('paste', function(ev)
+                    {
+                        setTimeout(function()
+                        {
+                            var html = K(doc.body).html();
+                            if(html.search(/<img src="data:.+;base64,/) > -1)
+                            {
+                                $.post(createLink('file', 'ajaxPasteImage', "uid=" + v.uid), {editor: html}, function(data)
+                                {
+                                    if(data) return K(doc.body).html(data);
+
+                                    alert(v.errorUnwritable);
+                                    return K(doc.body).html(data);
+                                });
+                            }
+                        }, 80);
+                    });
+                }
+                /* End */
+            }
+        });
+    });
+
+    if($.isFunction(afterInit)) afterInit();
+}
+</script>
+<link rel="stylesheet" href="./article_new_files/min(1).css" type="text/css" media="screen">
+<script src="./article_new_files/min(2).js" type="text/javascript">
+</script>
+
+<script language="javascript"> 
+$(document).ready(function()
+{
+    $(".chosen").chosen({no_results_text: '没有匹配的选项', placeholder_text:' ', disable_search_threshold: 10, width: '100%'});
+    $('select.chosen-icons').chosenIcons({lang: 'zh-cn'});
+});
+
+</script>
+<script src="./article_new_files/ace.js" type="text/javascript"></script>
+<style>
+    .editor-wrapper {position: relative; z-index: 1;}
+    .editor-wrapper pre {z-index: 2}
+    .editor-wrapper .actions {position: absolute; right: 15px; top: 10px; z-index: 3;}
+    .editor-wrapper .actions > a {color: #808080; border: 1px solid #aaa; min-width: 14px; height: 24px; line-height:
+    24px; text-align: center; display: block; border-radius: 3px; float: left; margin-left: 6px; padding: 0 5px}
+    .editor-wrapper .actions > a:hover {color: #999}
+    .editor-wrapper.fullscreen {position: fixed; left: 0; top: 40px; bottom: 40px; right: 0}
+    .editor-wrapper.fullscreen .pre {height: 100%; width: 100%}
+
+    .modal-dialog.editor-fullscreen {position: absolute; bottom: 0; right: 0; top: 0; left: 0; width: 100%!important;
+    margin: 0!important; height: auto!important; border-radius: 0}
+    .modal-dialog.editor-fullscreen .editor-wrapper.fullscreen {bottom: 80px;}
+    .modal-dialog.editor-fullscreen .editor-actions {position: fixed; bottom: 15px; left: 20px;}
+</style>
+<script>
+jQuery.fn.codeeditor = function(options)
+{
+    return this.each(function()
+    {
+        var $this = $(this);
+        var setting = $.extend({mode: $this.data('mode') || 'html', theme: 'textmate'}, $this.data(), options);
+        if(setting.height) $this.css('height', setting.height);
+        $this.css('display', 'none');
+        var id = $this.attr('id') + '-editor';
+        $this.before('<div class="editor-wrapper"><div class="actions"><a href="javascript:;" class="btn-fullscreen"><i class="icon-resize-full"></i></a><a href="javascript:;" data-toggle="dropdown"><i class="icon-adjust"></i> <span class="ace-theme">textmate</span> <i class="icon-caret-down"></i></a><ul class="dropdown-menu pull-right ace-themes"><li><a href="###" data-theme="ambiance">Ambiance</a></li><li><a href="###" data-theme="textmate">Textmate</a></li></ul></div><pre id="{0}"></pre></div>'.format(id));
+        var $editor = $('#' + id).addClass('ace-editor').height($this.height()),
+            editor = ace.edit(id);
+        var $wrapper = $editor.closest('.editor-wrapper'),
+            session = editor.getSession();
+        editor.setValue($this.val());
+        editor.setShowPrintMargin(false);
+        editor.clearSelection();
+        setTheme(getTheme(setting.theme));
+        session.setMode("ace/mode/" + setting.mode);
+        session.setUseWorker(false);
+        session.on('change', function(e)
+        {
+            $this.val(editor.getValue());
+        });
+
+        $this.data('editor', editor);
+
+        $wrapper.find('.btn-fullscreen').click(function()
+        {
+            $wrapper.toggleClass('fullscreen');
+            $wrapper.closest('.modal-dialog').toggleClass('editor-fullscreen');
+            $('body').toggleClass('codeeditor-fullscreen');
+            $(this).find('i').toggleClass('icon-resize-small');
+            if($wrapper.hasClass('fullscreen'))
+            {
+                $editor.data('origin-height', $editor.height()).height($wrapper.height());
+            }
+            else
+            {
+                $editor.height($editor.data('origin-height'));
+            }
+            editor.resize();
+        });
+
+        $wrapper.find('.ace-themes > li > a').click(function()
+        {
+            setTheme($(this).data('theme'));
+        });
+
+        function setTheme(theme)
+        {
+            $wrapper.find('.ace-themes > li.active').removeClass('active');
+            $wrapper.find('.ace-themes > li > a[data-theme="' + theme + '"]').closest('li').addClass('active');
+            $wrapper.find('.ace-theme').text(theme);
+            editor.setTheme("ace/theme/" + theme);
+            if(window['localStorage'])
+            {
+                localStorage.setItem('codeeditor_theme', theme);
+            }
+        }
+
+        function getTheme(theme)
+        {
+            if(window['localStorage'])
+            {
+                theme = localStorage.getItem('codeeditor_theme') || theme || 'textmate';
+            }
+            return theme;
+        }
+    });
+};
+$(function()
+{
+    $('.codeeditor').codeeditor();
+});
+
+</script>
+
+<div class="panel">
+    <div class="panel-heading"><strong><i class="icon-plus"></i>&nbsp;
+        发布文章 </strong></div>
+    <div class="panel-body">
+        <form method="post" role="form" id="ajaxForm">
+            <table class="table table-form">
+                <tbody>
+                <tr>
+                    <th class="w-100px">类目</th>
+                    <td class="w-p40">
+                        <div class="required required-wrapper"></div>
+                        <select name="categories[]" id="categories" multiple="multiple" class="form-control chosen"
+                                style="display: none;">
+                            <option value="1">/蝉知下载</option>
+                            <option value="2">/蝉知动态</option>
+                            <option value="3">/商业支持</option>
+                            <option value="11">/知识改进</option>
+                            <option value="12">/知识改进/一二三</option>
+                            <option value="13">/知识改进/四五六</option>
+                            <option value="14">/知识改进/七八九</option>
+                        </select>
+
+                        <div class="chosen-container chosen-container-multi" style="width: 100%;" title=""
+                             id="categories_chosen">
+                            <ul class="chosen-choices">
+                                <li class="search-field"><input type="text" value=" " class="default" autocomplete="off"
+                                                                style="width: 25px;"></li>
+                            </ul>
+                            <div class="chosen-drop">
+                                <ul class="chosen-results"></ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+                </tbody>
+                <tbody class="articleInfo">
+                <tr>
+                    <th>作者</th>
+                    <td><input type="text" name="author" id="author" value="demo" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <th>来源</th>
+                    <td><select name="source" id="source" class="form-control chosen" style="display: none;">
+                        <option value="original" selected="selected">原创</option>
+                        <option value="copied">转贴</option>
+                        <option value="translational">翻译</option>
+                    </select>
+
+                        <div class="chosen-container chosen-container-single chosen-container-single-nosearch"
+                             style="width: 100%;" title="" id="source_chosen"><a class="chosen-single"
+                                                                                 tabindex="-1"><span>原创</span>
+
+                            <div><b></b></div>
+                        </a>
+
+                            <div class="chosen-drop">
+                                <div class="chosen-search"><input type="text" autocomplete="off" readonly=""></div>
+                                <ul class="chosen-results"></ul>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row" id="copyBox" style="display: none;">
+                            <div class="col-md-4"><input type="text" name="copySite" id="copySite" value=""
+                                                         class="form-control" placeholder="来源网站" disabled="disabled">
+                            </div>
+                            <div class="col-md-8"><input type="text" name="copyURL" id="copyURL" value=""
+                                                         class="form-control" placeholder="来源URL" disabled="disabled">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <th>标题</th>
+                    <td colspan="2">
+                        <div class="required required-wrapper"></div>
+                        <div class="input-group">
+                            <input type="text" name="title" id="title" value="" class="form-control">
+              <span class="input-group-addon w-70px">
+                <label class="checkbox">
+                    <input type="checkbox" name="isLink" id="isLink" value="1"><span>跳转</span> </label>
+              </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="link" style="display: none;">
+                    <th>链接</th>
+                    <td colspan="2">
+                        <div class="required required-wrapper"></div>
+                        <input type="text" name="link" id="link" value="" class="form-control"
+                               placeholder="输入链接，可以是站外链接">
+                    </td>
+                </tr>
+                </tbody>
+                <tbody class="articleInfo">
+                <tr>
+                    <th>别名</th>
+                    <td colspan="2">
+                        <div class="input-group">
+                            <span class="input-group-addon">http://demo.chanzhi.org/article/id_</span>
+                            <input type="text" name="alias" id="alias" value="" class="form-control"
+                                   placeholder="搜索引擎优化使用，可使用英文或数字">
+                            <span class="input-group-addon w-70px">.html</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>关键字</th>
+                    <td colspan="2"><input type="text" name="keywords" id="keywords" value="" class="form-control">
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <th>摘要</th>
+                    <td colspan="2"><textarea name="summary" id="summary" rows="2" class="form-control"></textarea>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody class="articleInfo">
+                <tr>
+                    <th>内容</th>
+                    <td colspan="2">
+                        <div class="required required-wrapper"></div>
+                        <div class="ke-container ke-container-default" style="width: 100%;">
+                            <div style="display:block;" class="ke-toolbar" unselectable="on"><span class="ke-outline"
+                                                                                                   data-name="formatblock"
+                                                                                                   title="段落"
+                                                                                                   unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-formatblock"
+                                    unselectable="on"></span></span><span class="ke-outline" data-name="fontsize"
+                                                                          title="文字大小" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize"
+                                    unselectable="on"></span></span><span class="ke-outline" data-name="lineheight"
+                                                                          title="行距" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-lineheight"
+                                    unselectable="on"></span></span><span
+                                    class="ke-inline-block ke-separator"></span><span class="ke-outline"
+                                                                                      data-name="forecolor" title="文字颜色"
+                                                                                      unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-forecolor"
+                                    unselectable="on"></span></span><span class="ke-outline" data-name="hilitecolor"
+                                                                          title="文字背景" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hilitecolor"
+                                    unselectable="on"></span></span><span
+                                    class="ke-inline-block ke-separator"></span><span class="ke-outline"
+                                                                                      data-name="bold"
+                                                                                      title="粗体(Ctrl+B)"
+                                                                                      unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold"
+                                    unselectable="on"></span></span><span class="ke-outline" data-name="italic"
+                                                                          title="斜体(Ctrl+I)" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span><span
+                                    class="ke-outline" data-name="underline" title="下划线(Ctrl+U)" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline"
+                                    unselectable="on"></span></span><span class="ke-outline" data-name="strikethrough"
+                                                                          title="删除线" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-strikethrough"
+                                    unselectable="on"></span></span><span
+                                    class="ke-inline-block ke-separator"></span><span class="ke-outline"
+                                                                                      data-name="justifyleft"
+                                                                                      title="左对齐"
+                                                                                      unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyleft"
+                                    unselectable="on"></span></span><span class="ke-outline" data-name="justifycenter"
+                                                                          title="居中" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifycenter"
+                                    unselectable="on"></span></span><span class="ke-outline" data-name="justifyright"
+                                                                          title="右对齐" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-justifyright"
+                                    unselectable="on"></span></span><span
+                                    class="ke-inline-block ke-separator"></span><span class="ke-outline"
+                                                                                      data-name="emoticons" title="插入表情"
+                                                                                      unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-emoticons"
+                                    unselectable="on"></span></span><span class="ke-outline" data-name="image"
+                                                                          title="图片" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span><span
+                                    class="ke-inline-block ke-separator"></span><span class="ke-outline"
+                                                                                      data-name="link" title="超级链接"
+                                                                                      unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link"
+                                    unselectable="on"></span></span><span class="ke-outline" data-name="unlink"
+                                                                          title="取消超级链接" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-unlink" unselectable="on"></span></span><span
+                                    class="ke-outline" data-name="anchor" title="锚点" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-anchor" unselectable="on"></span></span><span
+                                    class="ke-outline" data-name="flash" title="Flash" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-flash" unselectable="on"></span></span><span
+                                    class="ke-outline" data-name="media" title="视音频" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-media" unselectable="on"></span></span><span
+                                    class="ke-outline" data-name="baidumap" title="百度地图" unselectable="on"><span
+                                    class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-baidumap"
+                                    unselectable="on"></span></span>
+
+                                <div class="ke-hr"></div>
+                                <span class="ke-outline" data-name="undo" title="后退(Ctrl+Z)" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-undo"
+                                        unselectable="on"></span></span><span class="ke-outline" data-name="redo"
+                                                                              title="前进(Ctrl+Y)" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-redo"
+                                        unselectable="on"></span></span><span
+                                        class="ke-inline-block ke-separator"></span><span class="ke-outline"
+                                                                                          data-name="cut"
+                                                                                          title="剪切(Ctrl+X)"
+                                                                                          unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-cut"
+                                        unselectable="on"></span></span><span class="ke-outline" data-name="copy"
+                                                                              title="复制(Ctrl+C)" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-copy"
+                                        unselectable="on"></span></span><span
+                                        class="ke-inline-block ke-separator"></span><span class="ke-outline"
+                                                                                          data-name="plainpaste"
+                                                                                          title="粘贴为无格式文本"
+                                                                                          unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-plainpaste"
+                                        unselectable="on"></span></span><span class="ke-outline" data-name="wordpaste"
+                                                                              title="从Word粘贴" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-wordpaste"
+                                        unselectable="on"></span></span><span
+                                        class="ke-inline-block ke-separator"></span><span class="ke-outline"
+                                                                                          data-name="removeformat"
+                                                                                          title="删除格式"
+                                                                                          unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat"
+                                        unselectable="on"></span></span><span class="ke-outline" data-name="clearhtml"
+                                                                              title="清理HTML代码" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-clearhtml"
+                                        unselectable="on"></span></span><span class="ke-outline" data-name="quickformat"
+                                                                              title="一键排版" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-quickformat"
+                                        unselectable="on"></span></span><span
+                                        class="ke-inline-block ke-separator"></span><span class="ke-outline"
+                                                                                          data-name="indent"
+                                                                                          title="增加缩进"
+                                                                                          unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-indent"
+                                        unselectable="on"></span></span><span class="ke-outline" data-name="outdent"
+                                                                              title="减少缩进" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-outdent"
+                                        unselectable="on"></span></span><span class="ke-outline" data-name="subscript"
+                                                                              title="下标" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-subscript"
+                                        unselectable="on"></span></span><span class="ke-outline" data-name="superscript"
+                                                                              title="上标" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-superscript"
+                                        unselectable="on"></span></span><span class="ke-outline"
+                                                                              data-name="insertorderedlist" title="编号"
+                                                                              unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist"
+                                        unselectable="on"></span></span><span class="ke-outline"
+                                                                              data-name="insertunorderedlist"
+                                                                              title="项目符号" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist"
+                                        unselectable="on"></span></span><span
+                                        class="ke-inline-block ke-separator"></span><span class="ke-outline"
+                                                                                          data-name="table" title="表格"
+                                                                                          unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-table"
+                                        unselectable="on"></span></span><span class="ke-outline" data-name="code"
+                                                                              title="插入程序代码" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-code"
+                                        unselectable="on"></span></span><span class="ke-outline" data-name="hr"
+                                                                              title="插入横线" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-hr" unselectable="on"></span></span><span
+                                        class="ke-inline-block ke-separator"></span><span class="ke-outline"
+                                                                                          data-name="fullscreen"
+                                                                                          title="全屏显示"
+                                                                                          unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen"
+                                        unselectable="on"></span></span><span class="ke-outline" data-name="source"
+                                                                              title="HTML代码" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-source"
+                                        unselectable="on"></span></span><span class="ke-outline" data-name="about"
+                                                                              title="关于" unselectable="on"><span
+                                        class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-about"
+                                        unselectable="on"></span></span></div>
+                            <div style="display: block; height: 142px;" class="ke-edit">
+                                <iframe class="ke-edit-iframe" hidefocus="true" frameborder="0" tabindex=""
+                                        style="width: 100%; height: 142px;"></iframe>
+                                <textarea class="ke-edit-textarea" hidefocus="true" tabindex=""
+                                          style="width: 100%; height: 142px; display: none;"></textarea></div>
+                            <div class="ke-statusbar"><span
+                                    class="ke-inline-block ke-statusbar-center-icon"></span><span
+                                    class="ke-inline-block ke-statusbar-right-icon"></span></div>
+                        </div>
+                        <textarea name="content" id="content" rows="10" class="form-control"
+                                  style="display: none;"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>发布时间</th>
+                    <td>
+                        <div class="input-append date">
+                            <input type="text" name="addedDate" id="addedDate" value="2014-11-04 13:00"
+                                   class="form-control">
+                            <span class="add-on"><button class="btn btn-default" type="button"><i
+                                    class="icon-calendar"></i></button></span>
+                        </div>
+                    </td>
+                    <td><span class="help-inline">可以延迟到选定的时间发布。</span></td>
+                </tr>
+                <tr>
+                    <th>状态</th>
+                    <td><label class="radio-inline" for="status1"><input type="radio" id="status1" name="status"
+                                                                         value="normal" checked="checked"> 正常</label>
+                        <label class="radio-inline" for="status2"><input type="radio" id="status2" name="status"
+                                                                         value="draft"> 草稿</label>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td colspan="2"><input type="submit" id="submit" class="btn btn-primary" value="保存"
+                                           data-loading="稍候..."><input type="hidden" id="uid" name="uid"
+                                                                       value="54585d6a90e75"></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+</div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom hidden-sm hidden-xs" role="navigation">
+    <div class="collapse navbar-collapse navbar-ex6-collapse">
+        <div class="navbar-text pull-right"><span id="poweredBy"><a href="http://www.chanzhi.org/?v=3.1" target="_blank"
+                                                                    title="蝉知门户，微网站专家！"><i class="icon icon-bell"></i>
+            蝉知 3.1</a></span></div>
+    </div>
+</nav>
+
+<script language="Javascript">$(document).ready(function()
+{
+    /* Set the orginal and copySite, copyURL fields. */
+    $('#source').change(function()
+    {
+        $('#copyBox').hide().find(':input').attr('disabled', true);
+        if($(this).val() != 'original') $('#copyBox').show().find(':input').attr('disabled', false);
+    });
+
+    $('#isLink').change(function()
+    {   
+        if($(this).prop('checked'))
+        {   
+            $('.articleInfo').hide();
+            $('.link').show();
+        }   
+        else
+        {   
+            $('.articleInfo').show();
+            $('.link').hide();
+        }   
+    }); 
+    
+    /* Set current active topNav. */
+    if(v.path && v.path.length)
+    {
+        var hasActive = false;
+        $.each(v.path, function(index, category) 
+        { 
+            if(!hasActive)
+            {
+                if($('.nav-article-' + category).length >= 1) hasActive = true;
+                $('.nav-article-' + category).addClass('active');
+            }
+        });
+        if(!hasActive) $('.nav-article-0').addClass('active');
+    }
+
+    if(v.categoryID !== 0) $('.tree #category' + v.categoryID).addClass('active');
+});
+$(document).ready(function()
+{
+    $('#source').change();
+    $('#isLink').change();
+});
+
+
+</script>
+
+
+<div class="datetimepicker datetimepicker-dropdown-top-left dropdown-menu"
+     style="top: 752px; left: 566.140625px; z-index: 1040;">
+    <div class="datetimepicker-minutes" style="display: none;">
+        <table class=" table-condensed">
+            <thead>
+            <tr>
+                <th class="prev" style="visibility: visible;"><i class="icon-arrow-left"></i></th>
+                <th colspan="5" class="switch">4 十一月 2014</th>
+                <th class="next" style="visibility: visible;"><i class="icon-arrow-right"></i></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="7"><span class="minute active">13:00</span><span class="minute">13:05</span><span
+                        class="minute">13:10</span><span class="minute">13:15</span><span
+                        class="minute">13:20</span><span class="minute">13:25</span><span
+                        class="minute">13:30</span><span class="minute">13:35</span><span
+                        class="minute">13:40</span><span class="minute">13:45</span><span
+                        class="minute">13:50</span><span class="minute">13:55</span></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="7" class="today">今日</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="datetimepicker-hours" style="display: none;">
+        <table class=" table-condensed">
+            <thead>
+            <tr>
+                <th class="prev" style="visibility: visible;"><i class="icon-arrow-left"></i></th>
+                <th colspan="5" class="switch">4 十一月 2014</th>
+                <th class="next" style="visibility: visible;"><i class="icon-arrow-right"></i></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="7"><span class="hour">0:00</span><span class="hour">1:00</span><span
+                        class="hour">2:00</span><span class="hour">3:00</span><span class="hour">4:00</span><span
+                        class="hour">5:00</span><span class="hour">6:00</span><span class="hour">7:00</span><span
+                        class="hour">8:00</span><span class="hour">9:00</span><span class="hour">10:00</span><span
+                        class="hour">11:00</span><span class="hour">12:00</span><span
+                        class="hour active">13:00</span><span class="hour">14:00</span><span
+                        class="hour">15:00</span><span class="hour">16:00</span><span class="hour">17:00</span><span
+                        class="hour">18:00</span><span class="hour">19:00</span><span class="hour">20:00</span><span
+                        class="hour">21:00</span><span class="hour">22:00</span><span class="hour">23:00</span></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="7" class="today">今日</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="datetimepicker-days" style="display: block;">
+        <table class=" table-condensed">
+            <thead>
+            <tr>
+                <th class="prev" style="visibility: visible;"><i class="icon-arrow-left"></i></th>
+                <th colspan="5" class="switch">十一月 2014</th>
+                <th class="next" style="visibility: visible;"><i class="icon-arrow-right"></i></th>
+            </tr>
+            <tr>
+                <th class="dow">日</th>
+                <th class="dow">一</th>
+                <th class="dow">二</th>
+                <th class="dow">三</th>
+                <th class="dow">四</th>
+                <th class="dow">五</th>
+                <th class="dow">六</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="day old">26</td>
+                <td class="day old">27</td>
+                <td class="day old">28</td>
+                <td class="day old">29</td>
+                <td class="day old">30</td>
+                <td class="day old">31</td>
+                <td class="day">1</td>
+            </tr>
+            <tr>
+                <td class="day">2</td>
+                <td class="day">3</td>
+                <td class="day active">4</td>
+                <td class="day">5</td>
+                <td class="day">6</td>
+                <td class="day">7</td>
+                <td class="day">8</td>
+            </tr>
+            <tr>
+                <td class="day">9</td>
+                <td class="day">10</td>
+                <td class="day">11</td>
+                <td class="day">12</td>
+                <td class="day">13</td>
+                <td class="day">14</td>
+                <td class="day">15</td>
+            </tr>
+            <tr>
+                <td class="day">16</td>
+                <td class="day">17</td>
+                <td class="day">18</td>
+                <td class="day">19</td>
+                <td class="day">20</td>
+                <td class="day">21</td>
+                <td class="day">22</td>
+            </tr>
+            <tr>
+                <td class="day">23</td>
+                <td class="day">24</td>
+                <td class="day">25</td>
+                <td class="day">26</td>
+                <td class="day">27</td>
+                <td class="day">28</td>
+                <td class="day">29</td>
+            </tr>
+            <tr>
+                <td class="day">30</td>
+                <td class="day new">1</td>
+                <td class="day new">2</td>
+                <td class="day new">3</td>
+                <td class="day new">4</td>
+                <td class="day new">5</td>
+                <td class="day new">6</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="7" class="today">今日</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="datetimepicker-months" style="display: none;">
+        <table class="table-condensed">
+            <thead>
+            <tr>
+                <th class="prev" style="visibility: visible;"><i class="icon-arrow-left"></i></th>
+                <th colspan="5" class="switch">2014</th>
+                <th class="next" style="visibility: visible;"><i class="icon-arrow-right"></i></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="7"><span class="month">一月</span><span class="month">二月</span><span
+                        class="month">三月</span><span class="month">四月</span><span class="month">五月</span><span
+                        class="month">六月</span><span class="month">七月</span><span class="month">八月</span><span
+                        class="month">九月</span><span class="month">十月</span><span class="month active">十一月</span><span
+                        class="month">十二月</span></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="7" class="today">今日</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="datetimepicker-years" style="display: none;">
+        <table class="table-condensed">
+            <thead>
+            <tr>
+                <th class="prev" style="visibility: visible;"><i class="icon-arrow-left"></i></th>
+                <th colspan="5" class="switch">2010-2019</th>
+                <th class="next" style="visibility: visible;"><i class="icon-arrow-right"></i></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="7"><span class="year old">2009</span><span class="year">2010</span><span
+                        class="year">2011</span><span class="year">2012</span><span class="year">2013</span><span
+                        class="year active">2014</span><span class="year">2015</span><span class="year">2016</span><span
+                        class="year">2017</span><span class="year">2018</span><span class="year">2019</span><span
+                        class="year old">2020</span></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="7" class="today">今日</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+</body>
+</html>

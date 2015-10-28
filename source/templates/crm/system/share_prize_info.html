@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/static/crm/css/system/setting.css" />
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>分享奖励信息设置</h2>
+				</div>
+				<div class="box-content">
+					<div class="work-tab">
+						<a href="/merchant/system/edit/shareextendinfo/">分享推广信息设置</a>
+						<a class="current" href="/merchant/system/edit/shareprizeinfo/">分享奖励信息设置</a>
+						<a href="/merchant/share/wishes/">祝福设置</a>
+					</div>
+				</div>
+
+				<div class="box-content member" id="js_setting">
+                <input type="hidden" value="${info.Fid if info else 0}" id="Fid"/>
+                <div class="setcons">
+	                    会在给用户的精修图页显示，鼓励已经拍照的客户进行分享。
+	                </div>
+                		<div class="setcons">
+                        <textarea name="m-prize-info" id="description" class="form-control textarea" placeholder="请输入您要分享的奖励信息~">${info.Finfo if info else ''}</textarea>
+                        <p id="txt-count"></p>
+                    </div>
+
+                <div class="setcons tright">
+                    <!--<button type="button" name="add" class="btn btn-default" id="js_cancel_p">取消</button>-->
+                    <source class="error info-error"></source>
+                    <button type="button" name="add" class="btn btn-success" id="js_save_p">保存</button>
+				</div>
+
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+</div>
+<script src="/static/crm/js/system/set_info.js"></script>
+<script>
+	$(function(){
+		$(".nav-share").addClass("active");
+		$(".nav-share").parent().css("display","block");
+	})
+</script>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>分享</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="/static/styles/ionic.css" />
+        <link rel="stylesheet" href="/static/styles/font-awesome.css" />
+        <link rel="stylesheet" href="/static/styles/bootstrap.min.css" />
+        <link rel="stylesheet" href="/static/styles/iconfont.css" />
+        <link rel="stylesheet" href="/static/styles/work/work.css" />
+        <link rel="stylesheet" href="/static/styles/block-grid.css">
+        <link rel="stylesheet" href="/static/styles/common.css"/>
+        <link rel="stylesheet" href="/static/styles/merchant/merchant.css"/>
+        <link rel="stylesheet" href="/static/scripts/share/polyfill.object-fit.css">
+        <style type="text/css">
+        /*作品列表页面样式*/
+        html, body{
+            width:100%;
+            max-width:640px;
+            margin:0 auto;
+            background-color:#f2f2f2 !important;
+            font-size: 9px;
+        }
+        .view-container{
+            width:100%;
+            max-width:640px;
+        }
+        .content{
+            padding:10px 10px 0px 10px;
+            margin:0;
+        }
+        .list{
+            width:100%;
+            overflow:hidden;
+        }
+        .work-container .list.card{
+            margin:10px 0px 0px 0px;
+            box-shadow:0px 1px 2px 0px rgba(0,0,0,0.08);
+         }
+        .list.card:last-child{
+            margin:10px 0px 10px 0px;
+        }
+        .item-image img:first-child, .item-image .list-img{
+            height:200px;
+        }
+        .media{
+            width:100%;
+            max-width:640px;
+            margin-top:9px;
+        }
+        .img-circle{
+            width:16px;height:16px;display:block;float:left;margin-right:4px;
+          
+        }
+        .media-heading{
+            font-size:13px;
+            line-height:16px;
+        }
+        .md-extra{
+            font-size:14px;
+            color:#999;
+        }
+        .work-container .media-right span,
+        .media-right .gzh-like{
+            font-size:12px;
+            color:#999;
+        }
+        .work-container .work-item span{
+            padding-left: 0px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="work-container" style="margin-top:0px;">
+          <div class="content">
+            #{_content}
+          </div>
+          <div class="list">
+          </div>
+        </div>
+        <script src="/static/vendor/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/scripts/plugins/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/static/scripts/share/index.js"></script>
+        <!--兼容css3 object-fit样式-->
+        <script type="text/javascript" src="/static/scripts/share/polyfill.object-fit.js"></script>
+	    <script>
+        // Call polyfill to fit in images
+       document.addEventListener('DOMContentLoaded', function () {
+        objectFit.polyfill({
+        selector: 'img',
+        fittype: 'cover'
+      });
+    });
+  </script>
+    </body>
+</html>

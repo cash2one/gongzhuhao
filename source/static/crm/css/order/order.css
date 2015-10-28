@@ -1,0 +1,140 @@
+.wrapper{ overflow: hidden; height: auto; background: #f3f3f3;}
+.wrapper .container-fluid{ padding: 0;}
+.system-name{ height: 50px; line-height: 50px; background: #2ad79c; color: #fff;}
+.mainCons{ overflow: hidden; padding: 0 0 10px 0; min-height: 605px; background: #fff;}
+.title{ margin: 0 0 20px 0; padding: 0 0 0 30px; height: 50px; line-height: 50px; border-bottom: 1px solid #ccc;}
+
+.gzh-list{ position: relative; padding: 0 30px;}
+.gzh-search{ position: absolute; right: 30px; top: -15px;}
+.gzh-list .btn-group{ display: inline-block;}
+.gzh-list .navbar-form{ display: inline-block; margin-left: 20px;}
+.gzh-list .btn-add{ display: inline-block;}
+.btn-green:hover{ color: #fff;}
+
+.tab-content{ margin-top: 10px;}
+.tab-content th{ text-align: center;}
+.gzh-list .tab-content td{ line-height: 3}
+
+.state{ position: relative; top: 20px; left: 50%; margin-left: -140px; width: 280px; border-top: 2px solid #ccc; height: 1px; text-align: center;}
+.state span{ display: inline-block; position: relative; width: 36px; height: 36px; line-height: 36px; border-radius: 20px; text-align: center; background: #eaeaea; color: #000000; cursor: pointer;}
+.state span.green{ background: #4cc25c; color: #fff;}
+.state span.red{ background: #ff6698; color: #fff;}
+
+.state span.current{ background: #ff6698; color: #fff;}
+.order-date .state{ clear: both;}
+.state .fleft{ display: inline-block; position: relative; top: -20px; margin: 0 25px 0 0; width: 36px; height: 36px;}
+.state .fleft:last-child{ float: right; margin-right: 0;}
+.showInfos{display: none;  position: relative; top: -1px; left: -130px; padding: 5px 30px; width: 300px; border: 1px solid #4cc25; background: #fff; border: 1px solid #ddd; border-radius: 5px; z-index: 999;}
+.showInfos p{ line-height: 40px; margin: 0; padding: 0; z-index: 999;}
+
+
+
+.order-no{ width: 7%;}
+.order-customer{width: 8%;}
+.order-mobile{width: 9%;}
+.order-type{width: 7%;}
+.order-balance{width: 7%;}
+.order-date{width: 13%;}
+.order-state{ width: 30%; text-align: center;}
+.order-action{ width: 15%; text-align: center;}
+
+.btn-action{ padding: 0 5px; margin: 0; background: none; border: none; color: #00f;}
+.table thead td{ padding: 10px 0;}
+.order-page{ padding: 40px 0 10px 0; text-align: center;}
+.create-order{ margin: 15px 0;}
+
+
+.order-infos{ overflow: hidden;}
+.order-infos li{ margin: 10px 0;}
+.order-label{ display: inline-block; width: 80px; }
+.order-profile{ display: inline-block; margin-left: 5px;}
+.order-profile .form-control{ margin-right: 10px; width: 140px;}
+.order-profile label{ font-weight: normal;}
+.v-top{ vertical-align: top;}
+.w .form-control{ width: 440px;} 
+.order-edit .error{ padding-right: 20px;}
+.schedule-infos.modal-body{ padding: 0 15px;}
+.schedule-infos.modal-body input[type=text],
+.schedule-infos.modal-body input[type=datetime-local]{ margin-top: 10px;}
+
+.schedule-infos{ overflow: hidden;}
+
+/*.schedule-infos td{ display: inline-block;}*/
+.schedule-infos .schedule-title{ margin: 0; background: #fff; border-bottom: 1px solid #ddd; font-size: 18px;}
+.schedule-infos .schedule-item{ width: 5%; padding-top: 15px; text-align: center;  vertical-align: middle;}
+.schedule-infos .schedule-date{ width: 15%;}
+.schedule-infos .schedule-service{ width: 15%;}
+.schedule-infos .schedule-address{ width: 25%;}
+.schedule-infos .schedule-tips{ width: 38%;}
+.schedule-infos .schedule-date .form-control{ width: 98%;}
+.schedule-infos .schedule-tips .form-control{ width: 98%;}
+.schedule .modal-header{ padding: 10px 15px;}
+
+
+.schedule .schedule-item{ width: 8%; text-align: center;  vertical-align: middle;}
+.schedule .schedule-date{ width: 15%;}
+.schedule .schedule-service{ width: 20%;}
+.schedule .schedule-address{ width: 25%;}
+.schedule .schedule-tips{ width: 33%; text-align: center;}
+.schedule .schedule-date .form-control{ width: 98%;}
+.schedule .schedule-tips .form-control{ width: 98%;}
+.schedule .modal-header{ padding: 10px 15px;}
+.schedule-item span{ display: inline-block; line-height: 30px;}
+
+
+.schedule-date input,
+.schedule-address input{ margin-top: 0px;}
+.ss-item{ margin-bottom: 5px; text-align: center;}
+.ss-item label{ display: inline-block; width: 100%;}
+.ss-item select{ border: 1px solid #ddd; height: 30px; }
+.marginT{ margin-top: 10px;}
+.ss-item p{ margin: 0;}
+
+.popup{ position: absolute; top: 10px; left: 20px; border: 1px solid #f00;}
+
+.modal-lg{ min-height: 600px;}
+.iframe_schedule{ border: none; min-height: 500px;}
+.iframe_schedule body{ background: none;}
+
+.order-edit{ padding: 20px;}
+.order-edit ul{ margin: 0; padding: 0;}
+.order-edit ul li{ margin: 0 0 15px 0;}
+.radio-inline, .radio-inline input{ vertical-align: middle;}
+
+.box-content{ position: relative;}
+.box-content .add-order{ position: absolute; right: 15px; top: 0px;}
+.schedule-order-info{ margin-bottom: 10px; width: 100%;}
+.schedule-order-info ul{ overflow: hidden; padding: 0; width: 100%;}
+.schedule-order-info ul li{ display: inline-block; float: left; width: 33%; line-height: 1.5;}
+
+.box-content.box-search{ margin: 20px 0 0 0; padding: 0;}
+
+/*
+ *  二维码
+ */
+.shareQR{ display: none;  position: fixed; left: 0; top: 0; width: 100%; height: 100%; background:rgba(0, 0, 0, 0.3)!important; filter:alpha(opacity=30); background: #000; color: #fff; z-index: 99; }
+.shareQR .dialog{ position: absolute; top: 25%; left: 50%; margin-left: -210px; width: 420px; height: 270px; background: #fff; border-radius: 5px;}
+.shareQR .dialog h2{ clear: both; margin: 0; padding:0; line-height: 40px; border-bottom: 1px solid #ddd; color: #2e2e2e; font-size: 16px; text-align: left; text-indent: 20px;}
+.shareQR .close{ float: right; margin: 10px 10px 0 0; display: block; cursor: pointer;}
+.QR-code{ float: left; padding: 20px; width: 180px; height: 180px;}
+.QR-info{ overflow: hidden; float: left; padding: 10px 0 0 40px; color: #2e2e2e; text-align: left;}
+.shareQR .QR-info h2{ font-size: 16px; border-bottom: none; text-indent: 0;}
+
+.form-control{ font-size: 12px;}
+.dropdown-menu{ font-size: 12px;}
+.tips{ }
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{ vertical-align: middle; text-align: center}
+
+.staff_choose{ text-decoration: underline; cursor: pointer; color: #ff6698; }
+#order_choose{ cursor: pointer;}
+.ztree{ float: left; width: 30%; padding: 20px 0;}
+.order-infos{ height: 400px;}
+.order-infos.modal-body{ padding: 0;}
+.order-infos .ztree{ padding: 10px 20px;}
+/*.department_stf{ margin-left: 5px;}*/
+.stf-list{ width: 70%; float: right; padding: 10px; height: 400px; border-left: 1px solid #ddd;}
+.order-infos .checkbox-inline{ margin-right: 50px;}
+
+#sch_type{ width: 160px; margin-right: 0; margin-bottom: 10px;}
+.bootstrap-dialog.type-primary .modal-header{ background: #fff; color: #333;}

@@ -1,0 +1,71 @@
+<?py for follow in follows: ?>
+<div class="posts-lists-items">
+<div class="posts-profile">
+    <img style="width:32px;height:32px;" src="${follow.get('head_url')}" alt="avatar" />
+    <div class="posts-author">
+        <p>
+            <span class="posts-name">${follow.get('nick_name')}</span>
+        </p>
+        <h5>
+            <span class="posts-reply-float"></span>
+            <span class="posts-reply-time">${follow.get('time')}</span>
+        </h5>
+    </div>
+     <a href="/mobile/reply/create/${topic_id}/${type_num}/${follow.get('Fid')}" class="fright">
+         <i class="iconfont  red-text">&#xe60b;</i>
+     </a>
+</div>
+
+<div class="posts-info">
+    <p class="posts-txt">#{follow.get('Fcontent')}</p>
+    <?py for image in follow.get('images'): ?>
+        <div class="list card work-item">
+            <div class="item item-image">
+              <a href="weixin://viewimage/${image.get('img')}"><img src="${image.get('img')}"></a>
+            </div>
+        </div>
+    <?py #endfor ?>
+</div>
+</div>
+
+<?py if follow.get('has_count'): ?>
+<div class="posts-reply">
+  <?py for reply in follow.get('replies'): ?>
+
+    <?py if reply.get('is_reply') == 1: ?>
+        <div class="posts-reply-list">
+            <a class="posts-replay-author posts-level">
+                <?py if reply.get('is_floor') == 1: ?>
+                    <span class="btn-span level">楼主</span>
+                <?py else:?>
+                    <span class="posts-name">${reply.get('reply_name')}</span>
+                <?py #endif ?>
+            </a>
+            <span class="posts-reply-reply">回复</span>
+            <a class="posts-replay-author" href="/mobile/reply/create/${topic_id}/${type_num}/${reply.get('id')}">
+                 <?py if reply.get('is_parent_floor') == 1: ?>
+                    <span class="btn-span level">楼主</span>
+                 <?py else:?>
+                    <span class="posts-name">${reply.get('reply_parent_name')}</span>
+                 <?py #endif ?>
+            </a>
+            <p class="posts-reply-subject">#{reply.get('reply_content')}<span class="posts-reply-time">${reply.get('time')}</span></p>
+        </div>
+    <?py else: ?>
+        <div class="posts-reply-list">
+            <a class="posts-replay-author posts-level" href="/mobile/reply/create/${topic_id}/${type_num}/${reply.get('id')}">
+                <?py if reply.get('is_floor') == 1: ?>
+                    <span class="btn-span level">楼主</span>
+                <?py else:?>
+                    <span class="posts-name">${reply.get('reply_name')}</span>
+                <?py #endif ?>
+            </a>
+            <p class="posts-reply-subject">#{reply.get('reply_content')}<span class="posts-reply-time">${reply.get('time')}</span></p>
+
+        </div>
+
+    <?py #endif ?>
+  <?py #endfor?>
+</div>
+<?py #endif ?>
+<?py #endfor ?>

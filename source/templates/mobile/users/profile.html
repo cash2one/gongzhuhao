@@ -1,0 +1,43 @@
+<!--<link rel="stylesheet" href="../../../static/mobile/css/users/index.css"  />-->
+<link rel="stylesheet" href="../../../static/mobile/css/icon.css"  />
+<header class="header">
+
+    <div class="username">
+    		<p>${current_user.get('Fnick_name')}</p>
+    		<p>13301308406</p>
+    </div>
+	<span class="icon icon-arrow fright">
+</header>		
+<section class="cd-main-content">
+	<ul class="ul-list">
+		<li>
+		    <div class="avatar fright">
+		        <div target="_blank" href="" class="avatar-box">
+		            <a href="/mobile/user/index">
+		            		<img width="120" height="120" src="${current_user.get('Fphoto_url')}" alt="avatar" id="chooseFile"/>
+		            		<!--<input id="chooseFile" type="button" class="btn-uploadphoto" value="上传图片">-->
+		            		<input type="file" id="uploadfile"  data-clear-btn="false" name="image" accept="image/*" capture="camera" />
+		            </a>
+		            <em class="avatar-cover"></em>
+		        </div>	
+		    </div>				
+		</li>
+	</ul>
+	<ul class="ul-list">
+		<!--<li><a href="/weixin/user/diary/" data-ajax="false"><span class="icon icon-arrow fright"></span><span class="icon icon-diary"></span>我的日记</a></li>-->
+		<li><a href="/weixin/user/orders/"><span class="icon icon-arrow fright"></span><span class="icon icon-schedule"></span>我的排期</a></li>
+		<li><a href="/weixin/user/photos/"><span class="icon icon-arrow fright"></span><span class="icon icon-photo"></span>我的照片</a></li>
+		<li><a href="/weixin/user/share/"><span class="icon icon-arrow fright"></span><span class="icon icon-share"></span>我的分享</a></li>
+		<!--<li><a href="" data-ajax="false"><span class="icon icon-arrow fright"></span><span class="icon icon-order"></span>我的订单</a></li>-->
+	</ul>
+	
+	<?py if role_codes or ('orders_view' in permission): ?>
+	<ul class="ul-list">
+		<li><a href="/mobile/merchant/service/"><span class="icon icon-arrow fright"></span><span class="icon icon-like"></span>服务列表</a></li>
+	</ul>
+	<?py #endif ?>		
+	
+	<ul class="ul-list">
+		<li><a href="#"><span class="icon icon-arrow fright"></span><span class="icon icon-setting"></span>设置</a></li>
+	</ul>
+</section>

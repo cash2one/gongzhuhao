@@ -1,0 +1,54 @@
+<div class="posts-profile">
+    <img style="width:32px;height:32px;" src="http://img.gongzhuhao.com/174700TXU37wjingdian.jpg" alt="avatar" />
+    <div class="posts-author">
+        <p>
+            <span class="posts-name">姓名</span>
+            <span class="btn-span level">楼主</span>
+        </p>
+        <h5>
+            <span class="posts-reply-float">第二楼</span>
+            <span class="posts-reply-time">2小时前</span>
+        </h5>
+    </div>
+     <a href="" class="fright">评论</a>
+</div>
+<div class="posts-info">
+    <p class="posts-txt">作为高跟鞋爱好者，我觉得婚礼上的鞋更要好好挑选了。结婚那天那么折腾，太差的鞋子一定会把你疼哭的。大家都选怎样的鞋子呀？</p>
+    <div class="posts-thumbs">
+        <div class="posts-thumbs-list">
+            <a fancybox href=""  >
+                <img src="http://img.gongzhuhao.com/topic/1042/185/150618a293b1b31b3b4a90d8c1ae31292e73d5fl81U44_650x999.jpg"/>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="posts-reply">
+    <div class="posts-reply-list">
+        <a class="posts-replay-author posts-level">
+            <span class="posts-name">姓名</span>
+            <span class="btn-span level">楼主</span>
+        </a>：
+        <p class="posts-reply-subject">哇哇，长知识喽！<span class="posts-reply-time">10小时前</span></p>
+
+    </div>
+    <div class="posts-reply-list">
+        <a class="posts-replay-author">
+            <span class="posts-name">姓名</span>
+        </a>：
+        <p class="posts-reply-subject">我喜欢第一种。<span class="posts-reply-time">10小时前</span></p>
+    </div>
+    <div class="posts-reply-list">
+        <a class="posts-replay-author posts-level">
+            <span class="posts-name">姓名</span>
+            <span class="btn-span level">楼主</span>
+        </a>
+        <span class="posts-reply-reply">回复</span>
+        <a class="posts-replay-author" href="">
+             <span class="posts-name">姓名</span>
+        </a>
+        <p class="posts-reply-subject">哇哇，长知识喽！<span class="posts-reply-time">10小时前</span></p>
+    </div>
+</div>
+<div ng-if="item.has_count == 1" ng-controller="TopicCommentCtrl" ng-init="initialize(item)">
+    <div ng-include="'views/topic/topic_comment.tpl.html'"></div>
+</div>

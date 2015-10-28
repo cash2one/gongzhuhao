@@ -1,0 +1,12 @@
+<ion-view view-title="我的分享">
+  <ion-content class="share">
+	<div class="list" ng-repeat="item in model.share.list">
+	    <a class="item item-thumbnail-left" href="{{item.href}}">
+	      <img  src="{{item.cover_img}}">
+	      <h2>{{item.title}}</h2>
+	      <p>{{item.description}}</p>
+	      <p>{{item.create_time}}</p>
+	    </a>
+	</div>  
+  </ion-content>
+</ion-view>

@@ -1,0 +1,214 @@
+<?py from services.users.role_services import * ?>
+<?py from services.company.company_services import CompanyServices ?>
+<?py company_service = CompanyServices(handler.db) ?>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--chosen  选择组件-->
+    <link rel="stylesheet" href="/static/ops/css/min.css" type="text/css" media="screen">
+    <script src="/static/ops/js/min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/static/ops/datetime/bootstrap-datetimepicker.min.css" type="text/css" media="screen">
+    <script src="/static/ops/datetime/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function(){
+            $('.search_date').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+            $(".chosen-select").chosen({allow_single_deselect:true});
+
+            <?py if code == '1': ?>
+                $('#recommend_series').addClass('active');
+                $('#series_nav').addClass('active');
+            <?py elif code == '2': ?>
+                $('#recommend_product').addClass('active');
+                $('#product_nav').addClass('active');
+            <?py elif code == '3': ?>
+                $('#company_nav').addClass('active');
+                $('#recommend_company').addClass('active');
+            <?py #endif ?>
+
+        });
+    </script>
+</head>
+<body>
+ <div class="clearfix row-main">
+  <?py if code == '1': ?>
+     <?py include('ops/series/series_base.html') ?>
+  <?py elif code == '2': ?>
+     <?py include('ops/works/work_base.html') ?>
+  <?py elif code == '3': ?>
+     <?py include('ops/company/companys_base.html') ?>
+  <?py #endif ?>
+
+    <div class="col-md-10">
+      <div class="panel">
+        <div class="panel-heading">
+          <strong><i class="icon-group"></i>首页分享列表</strong>
+          <div class="panel-actions">
+
+          </div>
+        </div>
+        <form id="work_search_form" action="" method="get">
+          <table class="table table-form">
+            <tbody>
+               <tr>
+                 <th>创建时间</th>
+                  <td>
+                    <div class="input-append date">
+                        <input type="text" class="form-control search_date" value="" id="start_date" name="start_date" style="width:250px"/>
+                        <span class="add-on"><button type="button" class="btn btn-default"><i class="icon-calendar"></i></button></span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="input-append date">
+                        <input type="text" class="form-control search_date" value="" name="end_date" id="end_date" style="width:250px"/>
+                        <span class="add-on"><button type="button" class="btn btn-default"><i class="icon-calendar"></i></button></span>
+                    </div>
+                  </td>
+                 <th>名称</th>
+                 <td colspan="2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" value="" id="search_text" name="search_text" style="width:250px"/>
+                    </div>
+                 </td>
+                 <td>
+                     <input type="submit" data-loading="稍候..." value="搜索" class="btn btn-primary" id="house_type_submit">
+                 </td>
+               </tr>
+            </tbody>
+          </table>
+        </form>
+        <table class="table table-hover table-striped table-bordered">
+          <thead>
+            <tr class="text-center">
+                <th><input type="checkbox" name="user_ids" value="all"></th>
+                <th>产品名称</th>
+                <th>产品位置信息</th>
+                <th>设置首页展示图片</th>
+                <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?py for re in recommends.result: ?>
+            <tr class="text-center" id="${re.Fid}"><!--代表一条数据-->
+              <td><input type="checkbox" name="re_id" value="${re.Fid}" ></td>
+              <td>${re.Fproduct_name}</td>
+              <?py if re.Fis_on_share: ?>
+                <?py if re.Frecommend_type == 1: ?>
+                    <td>${packages_position[re.Fposition]}</td>
+                <?py elif re.Frecommend_type == 2: ?>
+                    <td>${products_position[re.Fposition]}</td>
+                <?py else: ?>
+                    <td>${companys_position[re.Fposition]}</td>
+                <?py #endif ?>
+              <?py else: ?>
+                <td></td>
+              <?py #endif ?>
+              <td>
+                 <?py if re.Frecommend_type == 1: ?>
+                    <form method="post" enctype="multipart/form-data" class="user_ajax_form"/>
+                      <select class="form-control chosen-select" name="Fposition" style="width:130px">
+                        <option value=""></option>
+                         <?py for p in packages_position: ?>
+                            <option value="${p}">${packages_position[p]}</option>
+                         <?py #endfor ?>
+                      </select>
+                      <input type="file" style="display:inline-block;margin-left:60px" name="recommend_img" accept="application/ostream" multiple/>
+                      <input type="hidden" value="${re.Frecommend_type}" name="Frecommend_type" />
+                      <input type="hidden" value="${re.Fid}" name="re_id" />
+                      <input type="submit" style="margin-left:5px" value="确定" />
+                    </form>
+
+                 <?py elif re.Frecommend_type == 2: ?>
+                    <form method="post" enctype="multipart/form-data" class="user_ajax_form"/>
+                      <select class="form-control chosen-select" name="Fposition" style="width:130px">
+                        <option value=""></option>
+                         <?py for p in products_position: ?>
+                            <option value="${p}">${products_position[p]}</option>
+                         <?py #endfor ?>
+                      </select>
+                      <input type="file" style="display:inline-block;margin-left:60px" name="recommend_img" accept="application/ostream" multiple/>
+                      <input type="hidden" value="${re.Frecommend_type}" name="Frecommend_type" />
+                      <input type="hidden" value="${re.Fid}" name="re_id" />
+                      <input type="submit" style="margin-left:5px" value="确定" />
+                    </form>
+                 <?py elif re.Frecommend_type == 3: ?>
+                    <form method="post" enctype="multipart/form-data" class="user_ajax_form"/>
+                      <select class="form-control chosen-select" name="Fposition" style="width:130px">
+                        <option value=""></option>
+                        <?py for c in companys_position: ?>
+                            <option value="${c}">${companys_position[c]}</option>
+                        <?py #endfor ?>
+                      </select>
+                      <input type="file" style="display:inline-block;margin-left:60px" name="recommend_img" accept="application/ostream" multiple/>
+                      <input type="hidden" value="${re.Frecommend_type}" name="Frecommend_type" />
+                      <input type="hidden" value="${re.Fid}" name="re_id" />
+                      <input type="submit" style="margin-left:5px" value="确定" />
+                    </form>
+                 <?py #endif ?>
+              </td>
+              <td>
+                  <a href="javascript:Re.delete(${re.Fid},${re.Frecommend_type})">移除首页列表</a>
+              </td>
+            </tr>
+          <?py #endfor ?>
+          </tbody>
+            <input type="hidden" value="${code}" id="code"/>
+            #{page_html}
+        </table>
+      </div>
+    </div>
+ </div>
+</body>
+<?py include('ops/common/dialog.html') ?> <!--引入弹出框组件-->
+<script language="Javascript">
+    var Re = {
+　　　　delete:function(re_id,type){
+
+        BootstrapDialog.show({
+            title: '删除分享产品',
+            message: '确定删除产品',
+            buttons: [{
+                label: 'Cancle',
+                action: function(dialogItself){
+                    dialogItself.close()
+                }
+            },
+            {
+                label: 'OK',
+                action: function(dialogItself){
+
+                      dialogItself.close()
+                      $.get('/gzh/ops/delete/recommend/'+re_id+'/'+type,{},function(data){
+                               var obj = $.parseJSON(data);
+                               if(obj.stat=='ok'){
+                                     $('#'+re_id).remove();
+                                }
+                       })
+                }
+            }]
+        });        　　
+　　　}
+ }
+
+
+        $(".user_ajax_form").submit(function(){
+            code = $('#code').val()
+            var opts = {
+                success : function(rs){
+                    var obj = $.parseJSON(rs);
+                    if(obj.stat == 'ok'){
+                        alert('成功!');
+                    }else{
+                        alert(obj.msg);
+                    }
+                },
+            };
+            $(this).ajaxSubmit(opts);
+            return false;
+        });
+
+</script>
+</html>

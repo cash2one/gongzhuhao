@@ -1,0 +1,46 @@
+<ion-header-bar class="bar-positive bar bar-header disable-user-behavior" align-title="center">
+    <button ng-click="$ionicGoBack($event)" class="button back-button buttons  button-clear header-item">
+    <i class="icon ion-ios-arrow-back"></i>
+    <span class="back-text">
+        <span class="default-title hide"></span>
+    </span>
+    </button>
+    <div class="title title-center header-item">评价</div>
+    <button class="button button-clear header-item pull-right" ng-show="" ng-click="onSave(model)" ng-disabled="has_dsiabled">
+	保存
+	</button>
+</ion-header-bar>
+<ion-view view-title="评价">
+  <ion-content class="rate">
+	<div class="list">
+	  <p class="gray">请点击星星进行评价</p>
+	  <div class="item item-input">
+	  	<span class="input-label">{{model.evaluation_category_name}}:</span>
+	  	<star-rating ng-model="model.score" on-rating-selected="onUpdateRating(rating)"></star-rating>
+      </div>
+
+      <div class="item item-input" ng-show="hasDoubelRating">
+	  	<span class="input-label">{{model.evaluation_category_name_2}}:</span>
+	  	<star-rating ng-model="model.score_2" on-rating-selected="onUpdateRating_2(rating)"></star-rating>
+	  </div>
+
+	  <div class="item item-input">
+	    <span class="input-label">评价</span>
+	    <textarea rows="5" ng-model="model.content"></textarea>
+	  </div>
+      <div class="list">
+        <div class="col col-33"  style="display:inline-block;position:relative;overflow:hidden;" ng-repeat="item in uploader.queue">
+            <div class="progress" style="margin-bottom: 0;width:100px;position:absolute">
+            <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div></div>
+              <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 , width:100 }"></div>
+        </div>
+
+        <div class="col col-33"  style="display:inline-block;position:relative;overflow:hidden;" >
+            <input type="file" style="display:none"
+              id="file_post" multiple nv-file-select="" uploader="uploader" accept="image/*;capture=camera"/>
+            <img ng-click="onTriggerClick()" src="/static/images/photo.png"/>
+        </div>
+    </div>
+	</div>
+  </ion-content>
+</ion-view>

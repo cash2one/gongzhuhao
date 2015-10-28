@@ -1,0 +1,26 @@
+<?py for share in shares.result: ?>
+<div class="list card work-item">
+  <div class="item item-image">
+    <a href="/mobile/share/detail/${share.Fid}"><img src="${share.Fcover_img}"></a>
+  </div>
+  <div class="media">
+    <div class="media-body">
+      <h4 class="zqmedia-tittlezhu">${share.Ftitle}</h4>
+      <p class="md-extra" style="margin-left: 10px;">
+        服务商:
+          <?py company = handler.get_company_info(share.Fmerchant_id) ?>
+          <?py if company: ?>
+              <span class="md-extra">${company.get('Fcompany_name')}</span>
+          <?py else: ?>
+              <span class="md-extra"></span>
+          <?py #endif ?>
+      </p>
+    </div>
+  <!-- <div class="media-right">
+      <a href="#">
+        <i class="iconfont gzh-like"></i><span>24</span>
+      </a>
+    </div>-->
+  </div>
+</div>
+<?py #endfor ?>

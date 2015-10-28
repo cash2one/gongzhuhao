@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/static/mobile/css/photo/photo.css" />
+<form  action="/mobile/user/photos/share/" method="post">
+	<header data-role="header"  class="header">
+		<a class="back" href="javascript:history.go(-1);"><span class="icon icon-back"></span></a>
+	    <p class="title">分享设置</p>
+	</header>	
+	
+    #{xsrf_form_html}
+    <input type="hidden" name="images" value="${image_ids}">
+    <input type="hidden" name="album_id" value="${album_id}">
+    <input type="hidden" name="cover_id" value="${cover_id}">
+    <section class="setting cd-main-content">
+        <ul class="ul-setting">
+            <li>
+                <input type="text" name="title" id="title" class="input-txt" placeholder="${album.Fablum_name}的${album.Falbum_type}照新鲜出炉了~~!求祝福！" value="${album.Fablum_name}的${album.Falbum_type}照新鲜出炉了~~!求祝福"/>
+            </li>
+            <li>
+                <img src="${handler.get_show_img_url(cover_img,100)}" width="100" height="100" class="cover-img" />
+                <textarea cols="3" class="desc" name="description" style="height: 160px;" id="description" placeholder="${content}">${content}</textarea>
+            </li>
+            <li>
+                <p style="padding-top: 1em;"><label for="bgmusic">背景音乐</label></p>
+                <p>
+                    <select id="bg_music" name="bg_music">
+                      <?py for m in musics: ?>
+                            <option value="${m.Fid}">${m.Fmusic_name}</option>
+                      <?py #endfor ?>
+                    </select>
+                </p>
+            </li>
+        </ul>
+    </section>
+    <footer class="footer">
+        <input type="submit" class="btn-share" value="分享"/>
+    </footer>
+</form>

@@ -1,0 +1,232 @@
+/*
+ *    Author: mengnan
+ *    date: 2015.1.12
+ *
+*/
+a:focus{
+    text-decoration: none;
+}
+.main{
+    width: 1210px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+.sort-tabs{
+    text-align: right;
+    padding-bottom: 23px;
+    font-size: 14px;
+}
+.sort-tabs a{
+    color: #646464;
+    margin-left: 10px;
+    display: inline-block;
+    width: 98px;
+    height: 33px;
+    text-align: center;
+    border: 1px #e0e0e0 solid;
+    border-radius: 4px;
+    line-height: 33px;
+    cursor: pointer;
+}
+.sort-tabs a.time{
+    margin-left: 19px;
+}
+.sort-tabs a.active,.sort-tabs a:hover{
+    background: #2ad79c;
+    color: #fff;
+    border-color: #2ad79c;
+    text-decoration: none;
+}
+.case-list{
+    width: 1239px;
+    margin-left: -28px;
+}
+.case-list li{
+    padding: 0;
+    width: 383px;
+    margin-left: 28px;
+    margin-bottom: 26px;
+    float: left;
+    border: 1px #e4e4e4 solid;
+}
+.case-list li .main-img{
+    display:block;
+    margin-bottom: 7px;
+    position: relative;
+}
+.case-list li .main-img span{
+    position: absolute;
+    width: 351px;
+    padding: 0 16px;
+    bottom: 0;
+    left: 0;
+    height: 30px;
+    line-height: 30px;
+    background:rgba(0,0,0,0.3);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000);
+    color: #fff;
+    font-size: 14px;
+}
+.case-list li .main-img em{
+    float: right;
+}
+.case-list li .main-img img{
+    display: block;
+    width: 383px;
+    height: 285px;
+}
+.case-list li .thumb-part{
+    font-size: 0;
+    width: 390px;
+}
+.case-list li .thumb-part img{
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 123px;
+    height: 92px;
+    margin-right: 7px;
+    cursor: pointer;
+}
+.case-list li .case-info{
+    display: table-cell;
+    vertical-align: middle;
+    width: 383px;
+    height: 74px;
+}
+.merchant-link{
+    margin-left: 19px;
+    margin-right: 12px;
+}
+.case-info .merchant-link,.case-info div{
+    display: inline-block;
+    vertical-align: middle;
+}
+.case-info>a img{
+    display: block;
+    width: 50px;
+    height: 49px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    behavior: url(/static/skin/js/ie/PIE.htc);
+}
+.case-info-txt p{
+    width: 290px;
+    font-size: 16px;
+    color: #504f4f;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.case-info-txt a{
+    color: #504f4f;
+}
+.case-list li .case-name{
+    margin-bottom: 2px;
+    font-size: 18px;
+}
+.case-info-txt .company{
+    font-size: 12px;
+    color: #656565;
+}
+.case-info-txt .company a{
+    color: #2ad79c;
+    margin-left: 5px;
+}
+.pre-more {
+    font-size: 14px;
+    display: block;
+    background: #f9f9f9;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    text-align: center;
+    color: #666;
+}
+.pre-more:hover,a.pre-more:visited,a.pre-more:focus,a.pre-more:active{
+    text-decoration: none;
+    background: #f3f3f3;
+    color: #666;
+}
+
+/**灵感list  头部信息选择样式**/
+.ins-info-select-head{
+    margin: 20px 0;
+    border: 1px #e4e4e4 solid;
+}
+.ins-icon{
+    background: url("/static/skin/images/ins-icon.png") no-repeat;
+}
+.d-line {
+    border-bottom: 1px #e4e4e4 dashed;
+}
+.ins-info-select-head .ins-info-list li{
+    margin: 0;
+    padding: 0;
+}
+.ins-info-select-head .ins-info-list li .ins-info-icon{
+    float: left;
+    color: #7c7c7c;
+    font-size: 12px;
+    line-height: 50px;
+    height: 50px;
+    background-color: #f8f8f8;
+    width: 80px;
+    text-align: center;
+}
+.ins-info-select-head .ins-info-list li .ins-info-select{
+    float: left;
+    padding: 10px;
+}
+.ins-info-select-head .ins-info-list li .ins-info-select .select-things{
+    float: left;
+    height: 26px;
+    line-height: 26px;
+    border: 1px transparent solid;
+    margin-right: 1px;
+    padding: 0 7px;
+    font-size: 12px;
+    color: #515151;
+    background: #fff;
+    border-radius: 6px;
+    position: relative;
+    z-index: 2;
+    behavior: url(/static/skin/js/ie/PIE.htc);
+}
+.ins-info-select-head .ins-info-list li .ins-info-select .select-things:hover,
+.ins-info-select-head .ins-info-list li .ins-info-select .ins-info-active{
+    background: #086dba;
+    border: 1px #086dba solid;
+    color: #fff;
+    text-decoration: none;
+}
+.case-list li.column{
+    border: 0;
+    height: auto;
+}
+.case-list li.column div{
+    border: 1px #e4e4e4 solid;
+    margin-bottom: 26px;
+}
+.case-list li.column div .main-img img{
+    height: auto;
+    width: 100%;
+}
+.case-list li.column .decription{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 46px;
+    line-height: 46px;
+    padding: 0 60px 0 16px;
+    font-size: 14px;
+}
+.case-list li.column .decription .company{
+    font-size: 12px;
+    color: #2ad79c;
+}
+.case-list li.column .decription .product{
+    font-size: 16px;
+    color: #504F4F;
+}

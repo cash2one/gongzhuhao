@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>商家详情</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/styles/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/styles/common.css"/>
+    <link rel="stylesheet" href="/static/styles/ionic.css" />
+    <link rel="stylesheet" type="text/css" href="/static/styles/iconfont.css" />
+    <link rel="stylesheet" href="/static/styles/merchant/merchant.css"/>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="bar bar-header gzh-header bar-light">
+             <button class="button back-button buttons  button-clear header-item" onclick="javascript:history.go(-1)">
+                <i class="icon ion-ios-arrow-back"></i>
+                <span class="back-text">
+                    <span class="default-title hide">返回</span>
+                </span>
+            </button>
+            <div class="title title-center header-item">免费预约</div>
+        </header>
+        <div class="gzh-cons">
+            <section class="merchant-detail">
+                <form method="post">
+                    <div class="md-order bg-white">
+                        <h2 class="text-red" style="margin-top: 1em;">预约到店享受优惠</h2>
+                        <div class="md-gift">
+                            <?py if gift1:?>
+                                <p>
+                                    <span class="text-red">到店礼</span>
+                                    ${gift1.Fcontent}
+                                </p>
+                            <?py else:?>
+                                <p>
+                                    <span class="text-red">到店礼</span>
+                                   无
+                                </p>
+                            <?py #endif?>
+                             <?py if gift2:?>
+                                <p>
+                                    <span class="text-red">优惠</span>
+                                    ${gift2.Fcontent}
+                                </p>
+                            <?py else:?>
+                                <p>
+                                    <span class="text-red">优惠</span>
+                                   无
+                                </p>
+                            <?py #endif?>
+                        </div>
+                    </div>
+                    <div class="md-contact">
+                        我们将通知商户尽快与您联系。
+                    </div>
+                    <div class="md-mobile bg-white">
+
+                        <input type="tel" name="phone" id="phone" value="${phone}" />
+
+                    </div>
+                    <div class="md-map">
+
+                    </div>
+                    <div class="md-order-btn">
+                        <button class="btn btn-order" id="btn-order">免费预约</button>
+                    </div>
+                    <div class="error"></div>
+                </form>
+            </section>
+        </div>
+    </div>
+    <?py include("views/assets/javascripts.html") ?>
+    <script>
+        $(function(){
+            $('#btn-order').on('click', function(){
+                if($('#phone').val == ''){
+                    $('.error').html("请填写手机号码");
+                    $('#phone').focus();
+                    return false;
+
+                }
+                var phone = $('#phone').val();
+                $.ajax({
+                    type: "POST",
+                    url: "",
+                    data:{
+                        phone: phone
+                    },
+
+                    success: function(data){
+                        var obj = $.parseJSON(data)
+                        if(obj.code == 200){
+                            window.location.href = ''
+                        } else {
+                            $(".error").html(data.info);
+                            return false;
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

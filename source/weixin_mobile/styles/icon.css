@@ -1,0 +1,24 @@
+.icon{ display: inline-block; width: 32px; background: url(../images/icons.png) no-repeat; background-size: cover; vertical-align: middle;}
+.icon-schedule{ height: 32px;  background-position: 0px -1px; }
+.icon-photo{ height: 32px; background-position: 0px -34px; }
+.icon-share{ height: 32px; background-position: 0px -69px; }
+.icon-calendar{ height: 32px; background-position: 0px -102px; }
+.icon-arrow{ height: 30px; background-position: 0 -136px;}
+.icon-back{ height: 36px; background-position: 0px -246px;}
+.icon-time{ height: 28px; background-position: 0px -186px;}
+.icon-location{ height: 32px; background-position: 0px -215px;}
+.icon-like{ height: 32px; background-position: 0px -282px;}
+.icon-user{ height: 30px; background-position: 0px -316px;}
+.icon-tel{ height: 30px; background-position: 0px -346px;}
+.icon-mobile{ height: 30px; background-position: 5px -376px;}
+.icon-code{ height: 30px; background-position: 5px -410px;}
+.icon-setting{ height: 32px; background-position: 0 -444px;}
+.icon-nickname{ height: 32px; background-position: 0 -477px;}
+
+.icon-mobile-color{ height: 32px; background-position: 5px -509px;}
+.icon-key{ height: 28px!important; background-position: 5px -570px;}
+.icon-code-color{ height: 28px!important; background-position: 5px -542px;}
+
+.icon-diary{ height: 33px; background-position: -2px -4px; }
+.icon-order{ height: 33px; background-position: -2px -41px; }
+/*.icon-like{ height: 28px; background-position: -2px -170px; }*/

@@ -1,0 +1,16 @@
+API url
+/mobile/topic/sns/([\d]*)/([\d]*)/([\d]*)/([\d]*)
+
+参数  topic_id,sns_type,topic_type,operation
+参数1:话题/回复ID
+参数2:(1、2)       1:收藏 2:点赞
+参数3:话题类型  (0,1)  0:话题类型  1.话题回复
+参数4:操作类型  (0,1)  0:新增     1.删除
+
+example:
+    /mobile/topic/sns/1/1/0/0     收藏id为1的话题
+    /mobile/topic/sns/1/1/0/1     取消收藏id为1的话题
+
+
+    /mobile/topic/sns/1/2/1/0     点赞id为1的话题回复
+    /mobile/topic/sns/1/2/1/1     取消点赞id为1的话题回复

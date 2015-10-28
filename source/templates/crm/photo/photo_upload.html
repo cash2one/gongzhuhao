@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+<meta charset="utf-8">
+<title>公主号 －－ 客片管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="Muhammad Usman">
+ 
+	<link rel="stylesheet" href="/static/crm/css/plugins/bootstrap.min.css" />
+	<link rel="stylesheet" href="/static/crm/css/common.css" />
+	<link href='/static/crm/css/photo/photo.css' rel='stylesheet' />
+	<script src="/static/crm/js/plugins/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="/static/crm/js/plugins/lightbox/css/lightbox.css" />
+	<!--<link rel="stylesheet" href="/static/apps_crm/js/plugins/lightbox/css/screen.css" />-->
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="/static/crm/js/plugins/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+#{xsrf_form_html}
+<!-- topbar starts -->
+
+<?py include('crm/common/_nav.html') ?>
+
+<!-- topbar ends -->
+	<div class="ch-container">
+	<div class="row">
+		<!-- left menu starts -->
+		<?py include('crm/common/_left.html') ?>
+		<!-- left menu ends -->
+
+		<div id="content" class="col-lg-10 col-sm-10">
+		<!-- content starts -->		
+		<div class="row-fluid sortable">		
+			<div class="box col-md-12">
+				<div class="box-inner">
+					<div class="box-header well">
+						<h2>客片管理</h2>
+					</div>
+					<div class="box-content photo-upload">
+						<ul class="photo-infos">
+							<li>订单号：<span>2000000000000</span></li>
+							<li>客户姓名：<span>张锦锦</span></li>
+							<li>联系方式：<span>13301308406</span></li>
+							<li>客户确认情况：<span class="label label-warning">客户确认中</span></li>
+						</ul>
+						<div class="photo-tag" id="js_tag_photo">
+							<!--<ul>
+								<li id="photo-style">
+									<span class="glyphicon glyphicon-picture"></span>拍摄风格：
+									<a href="javascript:void(0)" class="tags current" data-id="0">全部</a>
+									<a href="javascript:void(0)" class="tags" data-id="1">时尚</a>
+									<a href="javascript:void(0)" class="tags" data-id="2">清新</a>
+									<a href="javascript:void(0)" class="tags" data-id="3">特色</a>
+									<a href="javascript:void(0)" class="tags" data-id="4">韩式</a>
+									<a href="javascript:void(0)" class="tags" data-id="5">复古</a>
+								</li>
+								<li id="photo-scene">
+									<span class="glyphicon glyphicon-home"></span>拍摄场景：
+									<a href="javascript:void(0)" class="tags current" data-id="0">全部</a>
+									<a href="javascript:void(0)" class="tags" data-id="1">花海</a>
+									<a href="javascript:void(0)" class="tags" data-id="2">外景</a>
+									<a href="javascript:void(0)" class="tags" data-id="3">特色</a>
+									<a href="javascript:void(0)" class="tags" data-id="4">实景基地</a>
+								</li>
+								<li id="photo-clothes">
+									<span class="glyphicon glyphicon-picture"></span>婚纱礼服：
+									<a href="javascript:void(0)" class="tags current" data-id="0">全部</a>
+									<a href="javascript:void(0)" class="tags" data-id="1">婚纱</a>
+									<a href="javascript:void(0)" class="tags" data-id="2">便装</a>
+									<a href="javascript:void(0)" class="tags" data-id="3">礼服</a>
+									<a href="javascript:void(0)" class="tags" data-id="4">裙子</a>
+									<a href="javascript:void(0)" class="tags" data-id="5">情侣装</a>
+									<a href="javascript:void(0)" class="tags" data-id="6">特色</a>
+								</li>
+							</ul>-->
+						</div>						
+						<ul class="nav nav-tabs" id="myTab">
+							<!--<li class="active"><a href="#photo-finishing">原图</a></li>
+							<li ><a href="/merchant/album/photo/upload/${ablum_id}/adorn">精修图</a></li>-->
+							<li class="active"><a href="#photo-finishing">精修图</a></li>
+						</ul>
+						<div class="tab-pane" id="photo-original">
+							<div class="pu-action clear">
+								<!--<span><input type="checkbox" id="js_select_all" />全选</span>-->
+								<button class="btn btn-sm btn-danger btn-delete fright" id="js_del_all">删除</button>
+								<button class="btn btn-sm btn-green btn-tag fright" id="js_tags">添加标签</button>
+								<div class="pu-upload">
+									<input type="button" class="btn btn-sm btn-primary btn-uploadphoto" value="保存" />
+									<form action="/merchant/album/photo/upload/${ablum_id}/" method="post" enctype="multipart/form-data" id="J-formFile">
+							            <input type="hidden" name="_xsrf" value="${xsrf_token}">
+							            <input type="button" class="btn btn-sm btn-primary btn-uploadphoto" value="上传图片" />
+							            <input id="fileupload" type="file" name="files" data-url="/merchant/album/photo/upload/${ablum_id}/"  title="请选择图片" multiple>
+							        </form>								
+								</div>	
+
+								<div class="tags-all">
+									
+								</div>
+							</div>
+					      	
+					        <div class="photo-thumb" id="J-append-photo">
+					        		<input type="hidden" id="js-photo" />
+					        </div>
+					        <div class="photo-thumb clearfix">
+					           <ul>
+							     <?py for p in photos:?>
+							       <li>
+							    	 <div class="pt-item">
+							    			<p class="pt-tags bg-alpha">
+						        				<!--<input type="checkbox" name="check_tags" class="check-tags fleft" />-->
+						        				<!--<span class="check-tags fleft f12">添加标签</span>-->
+						        				<span class="pt-delete fright glyphicon glyphicon-remove"></span>
+						        			</p>
+								        <a class="pt-link" data-lightbox="pt-thumb" data-title="Hello" data-id=""  href="${p.Fimage_url}">
+								            <img class="pt-image" data-pid="" alt="Hello" src="${handler.get_show_img_url(p.Fimage_url,150)}"/>
+								        </a>	
+								        <p class="pt-tag"></p>
+							    	 </div>
+							       </li>	
+							     <?py #endfor ?>	
+							   </ul> 			        		
+					        </div>
+						</div>
+
+					</div><!--/span-->
+				</div>
+			</div>
+			</div><!--/row-->
+
+		</div><!--/#content.span10-->
+	</div><!--/fluid-row-->
+
+</div><!--/.fluid-container-->
+
+<script type="text/html" id="J-model-photo">
+	<!--<div class="pt-item">
+        <a class="pt-link" data-lightbox="pt-thumb" data-id=""  href="">
+            <img class="pt-image" alt="" src="/static/apps_crm/js/plugins/uploadify/img/user-loading.gif" />
+        </a>		
+   	</div>-->
+	<div class="pt-item">
+		<p class="pt-tags bg-alpha">
+			<!--<input type="checkbox" name="check_tags" class="check-tags fleft" />-->
+			<span class="pt-delete fright glyphicon glyphicon-remove"></span>
+		</p>
+	    <a class="pt-link" data-lightbox="pt-thumb" data-title="Hello" data-id=""  href="">
+	        <img class="pt-image" data-pid="" alt="Hello" src="/static/web/js/plugins/uploadify/img/user-loading.gif"/>
+	    </a>	
+	    <p class="pt-tag"></p>
+	</div>   	   	
+</script>
+
+<div class="tag-dialog" id="js_dialog_tag">
+	<div class="photo-tag dialog">
+		<h2>请选择标签：<span class="fright close-tag glyphicon glyphicon-remove"></span></h2>
+		<ul>
+			<li id="style">
+				<span class="glyphicon glyphicon-picture"></span>拍摄风格：
+				<a href="javascript:void(0)" class="tags" data-id="1">时尚<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="2">清新<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="3">特色<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="4">韩式<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="5">复古<span class="glyphicon glyphicon-remove tags-del"></span></a>
+			</li>
+			<li id="scene">
+				<span class="glyphicon glyphicon-home"></span>拍摄场景：
+				<a href="javascript:void(0)" class="tags" data-id="1">花海<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="2">外景<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="3">特色<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="4">实景基地<span class="glyphicon glyphicon-remove tags-del"></span></a>
+			</li>
+			<li id="clothes">
+				<span class="glyphicon glyphicon-picture"></span>婚纱礼服：
+				<a href="javascript:void(0)" class="tags" data-id="1">婚纱<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="2">便装<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="3">礼服<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="4">裙子<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="5">情侣装<span class="glyphicon glyphicon-remove tags-del"></span></a>
+				<a href="javascript:void(0)" class="tags" data-id="6">特色<span class="glyphicon glyphicon-remove tags-del"></span></a>
+			</li>
+		</ul>
+		<div class="choose-tag">
+			<div class="tips"></div>
+			<button class="btn btn-success btn-sm fright btn-conform">确定</button>
+			<button class="btn btn-default btn-sm fright btn-cancel">取消</button>
+		</div>
+	</div>	
+
+<script src="/static/crm/js/plugins/bootstrap.min.js"></script>
+<script src="/static/crm/js/plugins/jquery.cookie.js"></script>
+<script src="/static/crm/js/plugins/jquery.history.js"></script>
+<script src="/static/crm/js/common.js"></script>
+<!--gzh func js-->
+
+<script src="/static/crm/js/plugins/uploadify/js/jquery.ui.widget.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.iframe-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/load-image.min.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.xdr-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-ui.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-process.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-image.js"></script>
+<script src="/static/crm/js/plugins/lightbox/js/lightbox.min.js"></script>
+
+<script src="/static/crm/js/photo/photo.js"></script>
+
+</body>
+</html>

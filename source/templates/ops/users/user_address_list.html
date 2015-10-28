@@ -1,0 +1,66 @@
+{% extends 'user_base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+                 <ul class="nav nav-tabs">
+                    <li class="active"><a href="/operation/appversion/list">app版本</a></li>
+                    <li><a href="/operation/appversion/add">新增版本</a></li>
+                </ul>
+
+            <div class="panel panel-default">
+
+
+                <table class="table table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th class="center">ID</th>
+                        <th>user </th>
+                        <th>地址</th>
+                        <th>城市</th>
+                        <th>省份</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if add_list %}
+                    {% for add in add_list %}
+                    <tr>
+                        <td><a href="">{{ add.id }}</a></td>
+                        <td width="30%">{{ add.user_id }}</td>
+                        <td>{{ add.address }}</td>
+                        <td>{{ add.city }}</td>
+                        <td>{{ add.province }}</td>
+                    </tr>
+                    {% end %}
+                    {% end %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-12 text-right">
+                <div class="dataTables_paginate paging_bootstrap">
+                    <ul class="pagination pagination-sm">
+                        <li><a href="#">«</a></li>
+                        <li class="disabled"><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">»</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% end %}
+
+{% block js %}
+<script type="text/javascript">
+    $('#nav_user_list').addClass("active");
+    $('#user_address_list').addClass("active");
+</script>
+{% end %}

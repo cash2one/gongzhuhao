@@ -1,0 +1,28 @@
+<ion-header-bar class="bar-positive bar bar-header disable-user-behavior" align-title="center">
+    <button ng-click="$ionicGoBack($event)" class="button back-button buttons  button-clear header-item">
+    <i class="icon ion-ios-arrow-back"></i>
+    <span class="back-text">
+        <span class="default-title hide">返回</span>
+    </span>
+    </button>
+    <div class="title title-center header-item">{{model.detail.data.schedule_type}}</div>
+    <a href="#/appraisal/{{model.order_id}}/{{model.schedule_type_id}}" class="button button-clear header-item pull-right" >发表评价</a>
+    <!-- ng-click="addAppraisal()" -->
+</ion-header-bar>
+<ion-view view-title="排期详情">
+  <ion-content>
+     <div class="item_info gray">
+        <p class="item_title">
+            <span class="staffer_name">{{model.detail.data.staffer_name}}</span>
+            <span class="staffer_title">{{model.detail.data.staffer_title}}</span>
+            <span class="staffer_mobile">{{model.detail.data.staffer_mobi}}</span>
+        </p>
+        <p class="item_date"><i class="icon ion-ios-clock-outline pink"></i>{{model.detail.data.schedule_date}}</p>
+        <p class="item_location"><i class="icon ion-ios-navigate-outline pink"></i>{{model.detail.data.schedule_site}}</p>
+    </div>
+    <div class="container">
+        <p class="tips-title">温馨提示</p>
+        <div class="tips-cons">{{model.detail.data.schedule_reminder}}</div>
+    </div>
+  </ion-content>
+</ion-view>

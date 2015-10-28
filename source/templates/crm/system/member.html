@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="/static/crm/css/system/member.css" />
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<div class="row-fluid sortable">
+	    <div class="box col-md-12">
+	        <div class="box-inner">
+		        <div class="box-header well" data-original-title>
+		            <h2>用户管理</h2>
+		        </div>
+		        <div class="box-content tright">
+		        		<form class="form-horizontal">
+                            <a href="/merchant/edit/addrole/" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>添加新成员</a>
+		        		</form>
+		        </div>
+		        <div class="box-content member">
+                    <form class="form-horizontal">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="member-name">昵称</th>
+                                    <th class="member-account">手机号（登录账号）</th>
+                                    <!--th class="member-power">权限</th-->
+                                    <th class="member-action">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?py for item in users: ?>
+                                <tr>
+                                    <input type="hidden" value="${item.Fid}" id="member_id"/>
+                                    <td class="member-name">${item.Fnick_name}</td>
+                                    <td class="member-account">${item.Fuser_mobi}</td>
+
+                                    <td class="member-action">
+                                            <a href="/merchant/edit/editrole/${item.Fid}/" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit"></span>修改</a>
+                                    		<a href="javascript:;" class="btn btn-sm btn-danger btn-delete"><span class="glyphicon glyphicon-trash"></span>删除</a>
+                                    </td>
+                                </tr>
+                                <?py #endfor ?>
+                            </tbody></table>
+                    </form>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</div>
+<script src="/static/crm/js/system/member.js"></script>

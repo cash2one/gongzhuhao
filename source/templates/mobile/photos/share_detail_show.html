@@ -1,0 +1,309 @@
+
+<html lang="ch">
+<head>
+<title>${user_photos_share.Ftitle}</title>
+<meta charset="utf-8" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="pragram" content="no-cache" />
+<!--<script src="/static/apps_crm/js/plugins/jquery.min.js"></script>-->
+<link rel="stylesheet" type="text/css" href="/static/mobile/css/photo/main.css" />
+<!--<meta property="wb:webmaster" content="260acc1e378e5f77" />
+<meta property="qc:admins" content="446525720607636" />-->
+<style>
+	body{ background: #fff;}
+	.shared{ padding: 1em;}
+	.cons{ overflow: hidden; font-size: 1.6em; }
+	.wish{ padding: 0; height: 60px; line-height: 60px; border: 1px solid #e5e5e5; border-bottom: none; font-size: 1.6em;}
+	.user-form{ margin: 0; padding: 0; clear: both;}
+	.al{ display: inline; width: 75%; float: left;}
+	.input-txt{ padding-left: .4em; height: 60px; line-height: 60px; font-size: 1.6em;}
+	.ar{ display: inline; float: left; width: 20%; text-align: right; margin: 0; font-size: 1.6em; color: #666;}
+	.input-textarea{ border: 1px solid #ddd; border-radius: 3px; margin-top: .5em; width: 100%; height: 120px; background: #fff;}
+	.wishes{ overflow: hidden;  padding: 0; font-size: 1.6em; font-weight: 100;}
+	.wishes ul{ margin: 0; padding: 0; border: 1px solid #e5e5e5; border-top: none;}
+	.wishes ul li{ padding: 0 0 0 .5em; height: 60px; line-height: 60px; border-top: 1px solid #e5e5e5;}
+	.wishes ul li label{clear: both; display: inline-block; width: 100%; font-weight: 100; font-size: 1.4em; color: #666;}
+	.wishes ul li label span{ float: right; width: 94%;}
+	.wishes ul li input{ float: left; display: inline-block; margin-top: .6em;  width: 1em; height: 1em; }
+	.ad{ height: 100px; line-height: 100px;}
+	.btn-save{ margin: 1em 0 0 0; padding: 0; width: 100%; height: 60px; background: #ed32a4; color: #fff; border-radius: 3px; border: none; font-size: 1.6em;}
+	.tcenter{ text-align: center;}
+	.wish-list{ margin: 0 1em; padding: .8em 0; font-size: 1.6em; color: #666;}
+	.wish-totle{ width: 100%; padding: 0; font-size: 1.4em; }
+	.wish-list ul{ margin: .5em 0 0 0; padding: 0; list-style: none; border: 1px solid #e5e5e5; border-top: none;}
+	.wish-list ul li{ padding: 0 .4em; height: 50px; line-height: 50px; border-top: 1px solid #e5e5e5; font-size: 1.4em;}	
+	.telephone{ border: 1px solid #e5e5e5; color: #666;}
+	#share{ height: 100%;}
+	.red{ margin: 0 .3em; color: #ed32a4;}
+	.gray{ margin: 0.3em; color: #666;}
+	.wish-list ul li .datetime{ float: right; font-size: 1em; color: #666;}
+</style>
+<script type="text/javascript">
+//var c_count=7;
+var phoneWidth = parseInt(window.screen.width);
+var phoneScale = phoneWidth/640;
+var ua = navigator.userAgent;
+if (/Android (\d+\.\d+)/.test(ua)){
+	var version = parseFloat(RegExp.$1);
+	// andriod 2.3
+	if(version>2.3){
+	document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+	// andriod 2.3以上
+	}else{
+	document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+	}
+// 其他系统
+} else {
+	document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+}
+</script>
+
+</head>
+<body class='s-bg-ddd'>
+<!--模版加载提示-->
+<section class="u-alert">
+<img style='display:none;' src="/static/mobile/images/loading_large.gif" />
+<div class='alert-loading z-move'>
+	<div class='cycleWrap'>
+		<span class='cycle cycle-1'></span>
+		<span class='cycle cycle-2'></span>
+		<span class='cycle cycle-3'></span>
+		<span class='cycle cycle-4'></span>
+	</div>
+	<div class="lineWrap">
+		<span class='line line-1'></span>
+		<span class='line line-2'></span>
+		<span class='line line-3'></span>
+	</div>
+</div>
+</section>
+<!--模版加载提示 end-->
+<!-- 声音控件 -->
+<section class='u-audio f-hide' data-src='${user_photos_share.Fmusic_url}'>
+	<p id='coffee_flow' class="btn_audio">
+		<strong class='txt_audio z-hide'>关闭</strong>
+		<span class='css_sprite01 audio_open'></span>
+	</p>
+</section>
+<section class='u-arrow f-hide'><p class="css_sprite01"></p></section>
+<section class='p-ct'>
+	<div class='translate-back f-hide'>
+		
+	<!--<input id="ca-tips" type="hidden" value="" />-->
+	<!--<input id="r-cover" type="hidden" value='/static/touchspa/7.jpg' />-->
+
+     <div class='m-page m-fengye f-hide' data-page-type='info_pic3' data-statics='info_pic3'>
+        <!-- <div class="page-con lazy-img" data-src='${handler.get_show_img_url(user_photos_share.Fcover_img,600)}'></div> -->
+                <div class="photo-wrapper page-con j-txtWrap lazy-img">
+                    <span>
+                        <img data-src='${handler.get_show_img_url(img.Fimg_url,600)}' />
+                    </span>
+                </div>
+    </div>
+	<?py for img in images:?>
+            <div class='m-page m-bigTxt f-hide' data-page-type='bigTxt' data-statics='info_list'>
+                <!-- <div class="page-con j-txtWrap lazy-img" data-src='${handler.get_show_img_url(img.Fimg_url,600)}'></div> -->
+                <div class="photo-wrapper page-con j-txtWrap lazy-img">
+                    <span>
+                        <img data-src='${handler.get_show_img_url(img.Fimg_url,600)}' />
+                    </span>
+                </div>                
+            </div>
+    <?py #endfor ?>
+
+		<div class='m-page m-bigTxt f-hide' data-page-type='bigTxt' data-statics='info_list' id="share">
+            <form action="/mobile/user/share/wish/commit/" method="get">
+                #{xsrf_form_html}
+                <div style="display:none">
+                <input id="Fshare_id" name="Fshare_id" type="text" value="${user_photos_share.Fid}" />
+                <input id="Fuser_id"  name="Fuser_id" type="text" value="${user_photos_share.Fuser_id}" />
+                <input id="Fuser_name" name="Fuser_name" type="text" value="${nick_name}" />
+                <input id="Fmerchant_id" name="Fmerchant_id" type="text" value="${user_photos_share.Fmerchant_id}" />
+                <input id="Fcompany_id" name="Fcompany_id" type="text" value="${company.Fid}" />
+                </div>
+                <?py if (not is_self) or (not share_wish):?>
+                        <div class="shared">
+                            <div class="cons wish">
+                                <div class="al">
+                                    <input type="text" name="Fsend_user" id="Fsend_user" value="${nick_name}" class="input-txt" placeholder="昵称"/>
+                                </div>
+                                <div class="ar">
+                                    祝福：
+                                </div>
+                            </div>
+                            <div class="cons wishes">
+                                <!--<textarea data-rol="textarea" id="wish-content" name="Fwish_content" class="input-textarea"></textarea>-->
+                                <ul>
+                                    <?py if m_set_wishes:?>
+                                         <?py for s in m_set_wishes:?>
+                                            <li>
+                                                <label for="wishes_1">
+                                                        <input type="radio" name="wish_id" id="wishes_1" value="${s.Fid}" checked/>
+                                                        <span>${s.Fwishes_content}</span>
+                                                </label>
+                                            </li>
+                                        <?py #endfor ?>
+                                    <?py else:?>
+
+                                    <?py #endif ?>
+
+                                </ul>
+                            </div>
+                            <!--<div class="cons ad tcenter">-->
+                             <!--${'' if not extend_info else extend_info.Finfo}-->
+                             <!--${'' if not prize_info else prize_info.Finfo}-->
+                            <!--</div>-->
+                            <div class="cons telephone">
+                                <input type="text" name="Fcust_phone" id="Fcust_phone" class="input-txt" placeholder="输入手机号索取优惠券"/>
+                            </div>
+                            <div class="cons tcenter">
+                                <button type="submit" name="submit" id="add" class="btn-save" >提交</button>
+                            </div>
+                        </div>
+                <?py #endif?>
+                <div class="cons wish-list">
+                    <div class="wish-totle">已经收到<span class="red">${wishes.count()}</span>条祝福</div>
+                    <ul>
+	                <?py for wish in wishes: ?>
+	                    <li><span class="datetime">2014-03-03</span>${wish.Fsend_user}<span class="gray">祝福：</span>${wish.Fwish_content}</li>
+	                <?py #endfor ?>                   
+                    </ul>
+                </div>
+            </form>
+		</div>
+	</div>
+</section>
+<script src="/static/mobile/js/photo/offline.js" type="text/javascript" ></script>
+<script src="/static/mobile/js/photo/init.mix.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/mobile/js/photo/coffee.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/mobile/js/photo/main.js" type="text/javascript" charset="utf-8" defer＝'defer'></script>
+<script src="/static/mobile/js/main.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+    debug: false,
+    appId: '${dic_sign.get('appId')}',
+    timestamp: ${dic_sign.get('timestamp')},
+    nonceStr: '${dic_sign.get('nonceStr')}',
+    signature: '${dic_sign.get('signature')}',
+    jsApiList: [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem',
+        'translateVoice',
+        'startRecord',
+        'stopRecord',
+        'onRecordEnd',
+        'playVoice',
+        'pauseVoice',
+        'stopVoice',
+        'uploadVoice',
+        'downloadVoice',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'getNetworkType',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu',
+        'showOptionMenu',
+        'closeWindow',
+        'scanQRCode',
+        'chooseWXPay',
+        'openProductSpecificView',
+        'addCard',
+        'chooseCard',
+        'openCard'
+    ]
+    });
+
+    wx.ready(function () {
+        // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+        wx.checkJsApi({
+          jsApiList: [
+            'previewImage',
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo'
+          ],
+          success: function (res) {
+            //alert(JSON.stringify(res));
+          }
+        });
+
+        // 5.2 图片预览
+        //分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: '${user_photos_share.Ftitle}', // 分享标题
+            link: '${share_url}', // 分享链接
+            imgUrl: '${handler.get_show_img_url(user_photos_share.Fcover_img,300)}', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        //分享给朋友
+        wx.onMenuShareAppMessage({
+            title: '${user_photos_share.Ftitle}', // 分享标题
+            desc: '${user_photos_share.Fdescription}', // 分享描述
+            link: '${share_url}', // 分享链接
+            imgUrl: '${handler.get_show_img_url(user_photos_share.Fcover_img,300)}', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        //分享到QQ
+        wx.onMenuShareQQ({
+            title: '${user_photos_share.Ftitle}', // 分享标题
+            desc: '${user_photos_share.Fdescription}', // 分享描述
+            link: '${share_url}', // 分享链接
+            imgUrl:'${handler.get_show_img_url(user_photos_share.Fcover_img,300)}', // 分享图标
+            success: function () {
+               // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+               // 用户取消分享后执行的回调函数
+            }
+        });
+
+        //分享到腾讯微博
+        wx.onMenuShareWeibo({
+            title: '${user_photos_share.Ftitle}', // 分享标题
+            desc: '${user_photos_share.Fdescription}', // 分享描述
+            link: '${share_url}', // 分享链接
+            imgUrl: '${handler.get_show_img_url(user_photos_share.Fcover_img,300)}', // 分享图标
+            success: function () {
+               // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+    });
+</script>
+
+</body>
+</html>

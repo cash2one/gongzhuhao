@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="/static/crm/css/series/series.css" />
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->		
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+	                    <h2>套系发布</h2>
+	                </div>
+				<div class="box-content series-publish">
+	                <a href="/merchant/weddingcompany/series/add/" class="btn btn-success fright"><span class="glyphicon glyphicon-open"></span>套系发布</a>
+				</div>
+				<div class="box-content member-list">
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="ml-avatar">名称</th>
+							    <th class="ml-mobile">现价</th>
+								<th class="ml-group">原价</th>
+								<th class="ml-lastlogin">创建时间</th>
+								<th class="ml-role">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+			            <?py if series:?>
+			                <?py for s in series:?>
+							<tr>
+								<input type="hidden" value="${s.Fid}" id="series-id"/>
+								<td class="ml-avatar">
+									<!--<img src="" width="45" height="45" alt="avatar" class="fleft"/>-->
+									${s.Fpackage_name}
+								</td>
+								<td class="ml-mobile">
+									${s.Fsale_price}
+								</td>
+								<td class="ml-group">
+									${s.Fprice}
+								</td>
+								<td class="ml-lastlogin">
+	                                <span>${s.Fcreate_time}</span>
+								</td>
+								<td class="ml-role">
+									<a href="/merchant/weddingcompany/series/edit/${s.Fid}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit"></span>编辑</a>
+									<!--<a href="/merchant/series/delete/${s.Fid}/" class="btn btn-danger btn-sm delete"><span class="glyphicon glyphicon-trash"></span>删除</a>-->
+									<a href="javascript:;" data-id="${s.Fid}" class="btn btn-danger btn-sm delete"><span class="glyphicon glyphicon-trash"></span>删除</a>
+								</td>
+							</tr>
+			                <?py #endfor ?>
+			                <?py #endif?>
+						</tbody>
+					</table>
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+<script src="/static/crm/js/weddingcompany/series_list.js"></script>
+<script src="/static/crm/js/weddingcompany/series_delete.js"></script>
+
+<script>
+	$(function(){
+		$(".nav-series").addClass("active");
+	})
+</script>

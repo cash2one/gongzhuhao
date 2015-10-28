@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/static/mobile/css/order/order.css"  />
+<form method="post" action="" id="order-form" enctype="multipart/form-data">
+	<header class="header">
+		<a id="cd-menu-trigger" href="#0"><span class="cd-menu-icon"></span></a>
+		<p class="title">我的排期</p>
+	</header>	
+	<section data-role="content" class="cd-main-content">
+		<div class="photo-share">
+		<ul class="ul-list">
+			<?py for item in items.result: ?>
+    			<li>
+    				<p class="f16">
+    					<span class="order-name"><i class="icon icon-user"></i>${item.Fuser_name}</span>
+    					<span class="order-tel"><i class="icon icon-tel"></i>${item.Fuser_mobi}</span>
+    				</p>
+    				<p class="f14">
+    					<span class="order-type">${ORDER_TYPES[item.Forder_type]}</span>|<span class="schedule-type">档期分类</span>|<span class="order-money">${item.Famount}元</span>|<span accesskey="photo-time">拍照时间：2015-04-06 </span>
+    				</p>
+    				<p class="f12 text-gray">
+    					<span class="order-no">订单号：${item.Forder_id_user}</span>
+    					<span class="order-time">订单时间：2015-04-06</span>
+    				</p>
+    			</li>
+    		
+			<?py #endfor ?>
+			</ul>
+			</div>
+	</section>
+
+<?py if 'merchant' in user.Frole_codes or 'orders_edit' in user.Fpermission: ?>
+    <footer class="footer">
+        <a href="/mobile/order/query_schedule/" class="btn-share">录入订单</a>
+    </footer>
+<?py #endif ?>
+	<?py include('mobile/layout/menu_nav.html')?>
+</form>	
+<script>
+	$(function(){
+		$('.nav_schedule').addClass('current');
+	})
+</script>

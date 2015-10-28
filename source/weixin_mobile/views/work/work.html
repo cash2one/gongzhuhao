@@ -1,0 +1,68 @@
+<!doctype html>
+<?py from services.company.location_service import LocationServices?>
+<?py location_service = LocationServices(handler.db) ?>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <?py include("views/assets/styles.html") ?>
+        <link rel="stylesheet" href="/static/styles/bootstrap.min.css" />
+        <style type="text/css">
+        body{
+                font-size: 9px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="work-container">
+            <header class="bar bar-header bar-light">
+                <button class="button back-button buttons  button-clear header-item" onclick="javascript:history.go(-1)">
+                <i class="icon ion-ios-arrow-back"></i>
+                </button>
+                <div class="title title-center header-item">作品详情</div>
+                <button class="button button-clear header-item right-button">
+                <i class="iconfont like"></i>
+                </button>
+            </header>
+            <div class="content padding">
+                <dl class="work-item">
+                    <dt>${work.Fname}</dt>
+                    <dd>作品风格<span>${work.Fstyle_name}</span></dd>
+                    <dd>拍摄场景<span>${work.Fshot_scene_name}</span></dd>
+                    <dd>选型特色<span>${work.Fmode_style_name}</span></dd>
+                </dl>
+                <!-- iterator images  start-->
+                <?py for image in work_images: ?>
+                <div class="list card work-item">
+                    <div class="item item-image">
+                      <a href="weixin://viewimage/${image.Furl}"><img src="${image.Furl}"></a>
+                    </div>
+                </div>
+                <?py #endfor ?>
+                <!--iterator images end-->
+            </div>
+            <div class="work-divider"></div>
+            <div class="content">
+                <div class="list work-item">
+                    <a class="media work-media" style="text-decoration:none;" href="/mobile/merchant/detail/${company.Fuser_id}">
+                      <div class="media-left">
+                            <img class="media-object" src="${company.Fphoto_url}" alt="">
+                      </div>
+                      <div class="media-body">
+                        <h2>${company.Fcompany_name}<span class="btn-tip btn-red">惠</span><span class="btn-tip btn-blue">返</span></h2>
+                        <p class="price">${company.Fcheapest} ~ ${company.Fmost_expensive}</p>
+                        <p class="area">${location_service.get_location_name_by_id('area',company.Farea)}</p>
+                      </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <?py include("views/assets/javascripts.html") ?>
+        <script src="/static/scripts/plugins/WeixinApi.js"></script>
+    </body>
+</html>

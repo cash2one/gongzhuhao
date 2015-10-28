@@ -1,0 +1,20 @@
+<div class="navbar navbar-default" role="navigation">
+	<div class="navbar-inner">
+		<div class="btn-group pull-right">
+			<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> ${handler.get_current_user().get('Fuser_name')}</span>
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="/merchant/resetinfo/">个人中心</a></li>
+				<li><a href="/logout">退出</a></li>
+			</ul>
+		</div>
+		<div class="customer pull-right">
+			${handler.get_current_user().get('Fcompany_name')}
+		</div>
+		<div class="logo pull-left">
+			
+		</div>
+	</div>
+</div>

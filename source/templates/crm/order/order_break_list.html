@@ -1,0 +1,121 @@
+<link rel="stylesheet" href="/static/crm/js/plugins/dataTime/jquery.datetimepicker.css" />
+<link href='/static/crm/css/order/order.css' rel='stylesheet' />
+<?py include('crm/calender/doublecalender.html') ?>
+<style>
+.p-red{
+    color:red
+    }
+</style>
+
+<?py  import datetime ?>
+<div id="content" class="col-lg-10 col-sm-10">
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>服务管理</h2>
+				</div>
+				<div class="box-content box-search">
+		             <form action="" method="get" class="form-search col-md-8">
+
+	                    <div class="col-md-4">
+	                        <?py if start_date:?>
+	                            <input type="text" class="form-control" name="sch_date" id="sch_date" value="${start_date and start_date or ''}-${end_date and end_date or ''}" placeholder="请输入时间"/>
+	                        <?py else:?>
+	                            <input type="text" class="form-control" name="sch_date" id="sch_date" value="" placeholder="请输入时间"/>
+	                        <?py #endif ?>
+	                    </div>
+
+						<div class="input-group">
+					    		<input type="text" value="${search_text and search_text or ''}" name='search_text' class="form-control input-txt" placeholder="请输入订单号/手机号/姓名搜索" />
+					      	<span class="input-group-btn">
+					        		<button class="btn btn-default" type="submit">搜索</button>
+					      	</span>
+					    </div>
+					</form>
+					<div class="col-md-4">
+						<a class="btn btn-success add-order" href="/merchant/orders/add/"><i class="glyphicon glyphicon-plus"></i>添加</a>
+					</div>
+				</div>
+				<div class="box-content orders">
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane active" id="order-all">
+							<form class="form-horizontal">
+								<table class="table">
+									<thead>
+										<tr>
+											<th class="order-mobile">联系电话</th>
+											<th class="order-type">预约订单类型</th>
+										</tr>
+									</thead>
+									<tbody>
+                                        <?py for break_order in page_data.result: ?>
+                                            <tr>
+                                                <td class="order-mobile">${break_order.Fmobile}</td>
+                                                <?py if break_order.Forder_type == 1: ?>
+                                                    <td class="order-type">商户订单</td>
+                                                <?py elif break_order.Forder_type == 2: ?>
+                                                    <td class="order-type">套系订单</td>
+                                                <?py else: ?>
+                                                    <td class="order-type">作品订单</td>
+                                                <?py #endif ?>
+                                            </tr>
+                                        <?py #endfor  ?>
+										<tr>
+										</tr>
+									</tbody>
+		                            #{page_html}
+								</table>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+
+<!--gzh func js-->
+<script src="/static/crm/js/plugins/dataTime/jquery.datetimepicker.js" ></script>
+<script src="/static/crm/js/order/order.js"></script>
+<script type="text/javascript">
+
+var orders = {
+    delete:function(order_id,e){
+           BootstrapDialog.show({
+                title: '退单',
+                message: '退单不可恢复,确定退单',
+                buttons: [{
+                    label: '取消',
+                    action: function(dialogItself){
+                        dialogItself.close()
+                    }
+                },
+                {
+                    label: '确认',
+                    action: function(dialogItself){
+                          dialogItself.close()
+                          $.get('/merchant/orders/delete/'+order_id,function(data){
+                                   var obj = $.parseJSON(data);
+                                   if(obj.stat=='1000'){
+                                         alert(obj.msg);
+                                         $(e).closest('tr').remove();
+                                   }else{
+                                        alert(obj.msg);
+                                    }
+                           })
+                    }
+                }]
+            });
+    }
+}
+
+$(document).ready(function() {
+  $('#sch_date').daterangepicker({}, function(start, end, label) {
+    console.log(start.toISOString(), end.toISOString(), label);
+  });
+   });
+ </script>

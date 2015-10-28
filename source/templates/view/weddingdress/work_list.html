@@ -1,0 +1,139 @@
+<link rel="stylesheet" href="/static/skin/css/merchant.css"/>
+<link rel="stylesheet" type="text/css" href="/static/skin/css/less.css">
+<style type="text/css">
+    * {
+          box-sizing: border-box;
+    }
+    body{
+        background-color:#fff !important;
+        font-size: 16px;
+    }
+</style>
+<article class="gzh-main">
+    <ul class="gzh-tab"><!-- 列表 Start -->
+        <li><a href="/weddingdress/series/">套系列表</a></li>
+        <li><a href="/weddingdress/merchant/">商家列表</a></li>
+        <li class="gzh-active"><a href="/weddingdress/work/">作品列表</a></li>
+    </ul><!-- 列表 End -->
+
+    <div class="gzh-list gzh-list--list1"><!--分类 start-->
+        <div class="gzh-list-left"><i class="iconfont gzh-sort"></i>分类筛选</div>
+        <?py if qcategory == '': ?>
+            <div class="gzh-list-center gzh-active"><span>全部</span></div>
+        <?py else: ?>
+            <div class="gzh-list-center"><a href="/weddingdress/work/?color=${qcolor}&style=${qstyle}&order=${order}">全部</a></div>
+        <?py #endif ?>
+
+        <ul class="gzh-list-right">
+        <?py for code, name in category_info.iteritems(): ?>
+            <?py if code == qcategory: ?>
+                <li class="gzh-active"><span>${name}</span></li>
+            <?py else: ?>
+                <li><a href="/weddingdress/work/?category=${code}&color=${qcolor}&style=${qstyle}&order=${order}">${name}</a></li>
+            <?py #endif ?>
+        <?py #endfor ?>
+        </ul>
+    </div><!--分类 End-->
+
+    <div class="gzh-list"><!--颜色 Start -->
+        <div class="gzh-list-left"><i class="iconfont">&#xe62e;</i>颜色筛选</div>
+        <?py if qcolor == '': ?>
+            <div class="gzh-list-center gzh-active"><span>全部</span></div>
+        <?py else: ?>
+            <div class="gzh-list-center"><a href="/weddingdress/work/?category=${qcategory}&style=${qstyle}&order=${order}">全部</a></div>
+        <?py #endif ?>
+        <ul class="gzh-list-right">
+        <?py for code, name in color_info.iteritems(): ?>
+            <?py if code == qcolor: ?>
+                <li class="gzh-active"><span>${name}</span></li>
+            <?py else: ?>
+                <li><a href="/weddingdress/work/?category=${qcategory}&color=${code}&style=${qstyle}&order=${order}">${name}</a></li>
+            <?py #endif ?>
+        <?py #endfor ?>
+        </ul>
+    </div><!--颜色 End-->
+
+
+    <div class="gzh-list gzh-list--list2"><!--款式 Start -->
+        <div class="gzh-list-left"><i class="iconfont gzh-star"></i>款式筛选</div>
+        <?py if qstyle == '': ?>
+            <div class="gzh-list-center gzh-active"><span>全部</span></div>
+        <?py else: ?>
+            <div class="gzh-list-center"><a href="/weddingdress/work/?category=${qcategory}&color=${qcolor}&order=${order}">全部</a></div>
+        <?py #endif ?>
+        <ul class="gzh-list-right">
+        <?py for code, name in style_info.iteritems(): ?>
+            <?py if code == qstyle: ?>
+                <li class="gzh-active"><span>${name}</span></li>
+            <?py else: ?>
+                <li><a href="/weddingdress/work/?category=${qcategory}&color=${qcolor}&style=${code}&order=${order}">${name}</a></li>
+            <?py #endif ?>
+        <?py #endfor ?>
+        </ul>
+    </div><!--款式 End-->
+
+    <!-- 排序栏 Start-->
+    <div class="gzh-filter">
+        <ul class="clearfix">
+            <?py if order == 'Fcreate_time': ?>
+                <li class="hover">
+                    <a href="/weddingdress/work/?order=Fcreate_time&category=${qcategory}&color=${qcolor}&style=${qstyle}&order=${order}">默认排序</a>
+                </li>
+            <?py else: ?>
+                <li>
+                    <a href="/weddingdress/work/?order=Fcreate_time&category=${qcategory}&color=${qcolor}&style=${qstyle}&order=${order}">默认排序</a>
+                </li>
+            <?py #endif ?>
+
+            <li>
+                <a href="#">喜欢最多</a>
+            </li>
+
+            <?py if order == 'Fcreate_time desc': ?>
+                <li class="hover">
+                    <a href="/weddingdress/work/?order=Fcreate_time desc&category=${qcategory}&color=${qcolor}&style=${qstyle}&order=${order}">最新发布</a>
+                </li>
+            <?py else: ?>
+                <li>
+                    <a href="/weddingdress/work/?order=Fcreate_time desc&category=${qcategory}&color=${qcolor}&style=${qstyle}&order=${order}">最新发布</a>
+                </li>
+            <?py #endif ?>
+        </ul>
+        <i>为您找到<span>${works_count}</span>个作品</i>
+    </div>
+    <!-- 排序栏 End-->
+
+    <!-- 作品列表 Start -->
+    <ul class="gzh-block-grid  gzh-block-grid-4">
+      <?py for work, company_name in works: ?>
+        <li class="gzh-card gzh-card--285">
+            <a class="gzh-overlay gzh-overlay-hover" href="/weddingdress/work/${work.Fid}">
+                <img data-lazyload="${work.Fcover_img}" class="gzh-lazy gzh-thumbnail">
+                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                </figcaption>
+            </a>
+            <div class="gzh-caption">
+                <a class="gzh-title" href="/weddingdress/work/${work.Fid}">${work.Fname}</a>
+                <p class="gzh-label">
+                    <a href="">${company_name}</a>
+                    <span class="pull-right"><i class="iconfont gzh-like_line"></i>36</span>
+                </p>
+            </div>
+        </li>
+      <?py #endfor ?>
+    </ul>
+    <!-- 作品列表 End -->
+
+    <!-- 分页 Start -->
+    <ul class="gzh-pagination gzh-pagination--center">
+        #{page_html}
+    </ul>
+    <!-- 分页 End  -->
+</article>
+
+
+<script>
+    $('#nav_merchant').addClass('current');
+    $('#nav_merchant').html('婚纱礼服<i class="iconfont gzh-down"></i>');
+     $('.nav-dropdown').css({left:'0px'})
+</script>

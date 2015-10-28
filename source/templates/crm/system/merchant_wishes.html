@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="/static/crm/css/system/setting.css" />
+<link href='/static/crm/css/system/setting.css' rel='stylesheet' />
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>祝福设置</h2>
+				</div>
+				<div class="box-content">
+					<div class="work-tab">
+						<a href="/merchant/system/edit/shareextendinfo/">分享推广信息设置</a>
+						<a href="/merchant/system/edit/shareprizeinfo/">分享奖励信息设置</a>
+						<a class="current" href="/merchant/share/wishes/">祝福设置</a>
+					</div>
+				</div>
+				<div class="box-content setting">
+					<form method="">
+		                <table class="table">
+		                    <thead>
+		                        <tr>
+		                            <th class="tip-item">祝福类型</th>
+									<th class="tip-address">祝福语</th>
+		                        </tr>
+		                    </thead>
+		                    <tbody>
+                                <?py for merchant_wishes_type in merchant_wishes_types: ?>
+		                        <tr>
+                                    <td class="tip-item">${merchant_wishes_type}</td>
+		                            <td class="tip-address">
+                                        <input type="hidden" value="${merchant_wishes_types.index(merchant_wishes_type)}" class="Ftype_id" />
+                                        <button type="submit" name="add" class="btn btn-success btn-sm add">添加</button>
+
+                                        <ul class="ul-address">
+                                        <?py for merchant_wish in merchant_wishes: ?>
+                                            <?py if merchant_wish.Fwishes_type == merchant_wishes_types.index(merchant_wishes_type): ?>
+                                            <li>
+                                                <input type="hidden" value="${merchant_wish.Fid}" class="Fid" />
+                                                <span class="addtxt">${merchant_wish.Fwishes_content}</span>
+                                                <input type="text" class="form-control input-txt" />
+                                                <span class="glyphicon glyphicon-edit edit" title="修改"></span>
+                                                <span class="glyphicon glyphicon-ok save" title="保存" style="display:none"></span>
+                                                <span class="glyphicon glyphicon-trash delete" title="删除"></span>
+                                            </li>
+                                            <?py #endif ?>
+                                        <?py #endfor ?>
+                                        </ul>
+		                            </td>
+		                        </tr>
+                                <?py #endfor ?>
+		                    </tbody>
+		                </table>
+					</form>
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+<script src="/static/crm/js/system/wishes.js"></script>
+<script>
+	$(function(){
+		$(".nav-share").addClass("active");
+		$(".nav-share").parent().css("display","block");
+	})
+</script>

@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+<meta charset="utf-8">
+<title>公主号 －－ 客片管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+ 
+	<link rel="stylesheet" href="../../../../static/web/css/reset.css" />
+	<link rel="stylesheet" href="../../../../static/web/css/common.css" />
+	<link rel="stylesheet" href="../../../../static/web/css/plugins/bootstrap.min.css" />
+	<link rel="stylesheet" id="bs-css" href="../../../../static/web/css/plugins/bootstrap-cerulean.min.css"/>
+	<script src="../../../../static/web/js/plugins/jquery.min.js"></script>
+	<script src="../../../../static/web/js/plugins/bootstrap.min.js"></script> 
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="js/html5.js"></script>
+	<![endif]-->
+	<style>
+		.h-profile{ padding: 20px 0; }
+		.h-schedu{ padding: 15px 0;}
+		.row p{ margin: 0;}
+		.bg-pink{ background: #f69; color: #fff;}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<div class="container bg-pink">
+				<div class="row h-profile">
+					<div class="col-xs-2 col-md-2 col-sm-2">
+                        <span>${shd_nm}</span>
+					</div>
+					<div class="col-xs-10 col-md-10 col-sm-10">
+						<p>时间：${"待定" if item.Fdatetime=="" else item.Fdatetime}</p>
+						<p>地点：${"待定" if item.Fsite=="" else item.Fsite}</p>
+                        <p>${"人员" if item.Ftitle_stf=="" else item.Ftitle_stf}：
+                        ${"待定" if item.Fname_stf=="" else item.Fname_stf}
+                         <?py if stf:?>
+                            (${"" if stf.Fmobi=="" else stf.Fmobi})
+                         <?py #endif?>
+                        </p>
+					</div>
+				</div>
+			</div>
+		</header>	
+		<section>
+			<div class="container">
+				<div class="row h-schedu">
+					<div class="col-xs-12 col-md-12 col-sm-12">
+						<p>温馨提示</p>
+                        <p style="word-wrap:break-word;word-break:keep-all;white-space:pre-wrap;">${item.Freminder}</p>
+					</div>
+				</div>
+				<div class="row h-schedu">
+					<a href="index.html">
+						<div class="col-xs-12 col-md-12 col-sm-12">
+							<span>返回</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

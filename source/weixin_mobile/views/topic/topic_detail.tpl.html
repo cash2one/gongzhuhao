@@ -1,0 +1,97 @@
+<ion-header-bar class="bar-positive bar bar-header disable-user-behavior" align-title="center">
+    <button ng-click="$ionicGoBack($event)" class="button back-button buttons  button-clear header-item">
+    <i class="icon ion-ios-arrow-back"></i> 
+    <span class="back-text">
+        <span class="default-title hide">返回</span>
+    </span>
+    </button>
+    <div class="title title-center header-item">话题</div>
+</ion-header-bar>
+<ion-view view-title="话题">
+  <ion-content class="topic-detail">
+	<div class="topic-top">
+		<h1 ng-bind="model.detail.topic_title"><span>#</span></h1>
+	</div>
+	<div class="list">
+		<div class="posts-list">
+			<div class="posts-profile">
+				<img style="width:32px;height:32px;" ng-src="{{model.detail.head_url}}" alt="avatar" />
+				<div class="posts-right">
+					<span class="posts-name" ng-bind="model.detail.nick_name"></span>
+					<span class="btn-span level">楼主</span>
+					<h5 ng-bind="model.detail.time"></h5>
+				</div>
+			</div>
+			<div class="posts-info">
+				<p class="posts-txt" ng-bind-html="model.detail.topic_content | qqface">
+				</p>
+				<div class="posts-thumbs">
+					<div class="col col-33"  style="display:inline-block;max-height:100px;overflow:hidden;position:relative;" ng-repeat="image in model.detail.topic_images">
+						<a fancybox href="" ng-click="openFancybox('{{image.original_img}}')" >
+						<img style="width:100%;min-height:100px;" ng-src="{{image.img}}"/>
+						</a>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>		
+	<div class="list">
+		<div class="posts-list" style="padding:0px;">
+			<div class="posts-extra">
+				<div class="row">
+
+					<div class="col col-10" ng-repeat="praise in model.detail.praise_urls">
+						<img style="width:24px;height:24px;border-radius:50%;" ng-src="{{praise.praise_img}}" alt="avatar" />
+					</div>
+
+					<div class="col col-10" style="color:#666;" ng-bind="model.detail.praise_count"></div>
+
+					<div class="col col-30 col-offset-70">
+						<a href="#/reply/{{topic_id}}/{{user_id}}/" class="comment fright">
+							<i class="icon fa fa-thumbs-o-up pink"></i>
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="list" ng-repeat="item in model.detail.replies">
+		<div class="posts-list">
+			<div class="posts-profile">
+				<img style="width:32px; height:32px;" ng-src="{{item.head_url}}"  />
+				<div class="posts-right">
+					<span class="posts-name" ng-bind="item.nick_name"></span>
+					<h5 ng-bind="model.detail.time"></h5>
+				</div>
+				<span class="fright" ng-class="{pink : item.sns == 1}" ng-click="onChangeSNS({{item.reply_id}})">
+					<i class="icon ion-ios-chatboxes-outline pink"></i>{{item.sns_count}}
+				</span>
+			</div>
+			<div class="posts-reply">
+				<p class="posts-txt" ng-bind-html="item.Fcontent | qqface">
+				</p>
+				<div class="posts-thumbs">
+					<div class="col col-33"  style="display:inline-block;max-height:100px;overflow:hidden;position:relative;" ng-repeat="image in item.images">
+						<a fancybox href="" ng-click="openFancybox('{{image.original_img}}')" >
+						<img style="width:100%;min-height:100px;" ng-src="{{image.img}}"/>
+						</a>
+					</div>				
+				</div>
+			</div>
+			<div ng-if="item.has_count == 1" ng-controller="TopicCommentCtrl" ng-init="initialize(item)">
+				<div ng-include="'views/topic/topic_comment.tpl.html'"></div>
+			</div>
+		</div>
+	</div>
+	<ion-infinite-scroll
+	    on-infinite="loadMore()"
+	    distance="1%" ng-if="noMoreItemsAvailable">
+	</ion-infinite-scroll>
+  </ion-content>
+	<nav mfb-menu position="{{position}}" effect="{{effect}}"
+       active-icon="ion-close-round" resting-icon="ion-plus-round"
+       ng-mouseenter="hovered()" ng-mouseleave="hovered()"
+       toggling-method="{{method}}">
+   </nav>
+</ion-view>	

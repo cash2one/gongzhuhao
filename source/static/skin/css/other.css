@@ -1,0 +1,138 @@
+.zmz-main-box{
+    width: 1210px;
+    margin: 0 auto;
+}
+.key{
+    margin: 20px 0 50px 0;
+    height: 40px;
+    background-position: -17px -3020px;
+    padding: 0 0 0 45px;
+    font-size: 24px;
+    line-height: 40px;
+    color: #414141;
+}
+.part{
+    margin:0 0 300px 150px;
+}
+.part .no-list{
+    margin-bottom: 6px;
+    margin-left: 10px;
+}
+.part .no-list .step{
+    float: left;
+    background: #e3e3e3;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+    margin: 0 5px;
+    font-size: 16px;
+}
+.part .no-list .step:hover{
+    text-decoration: none;
+}
+.part .no-list .line{
+    float: left;
+    border-top: 2px #e3e3e3 solid;
+    width: 216px;
+    margin-top: 15px;
+}
+.part .no-list .bg-color-green{
+    background: #2ad79c;
+}
+.part .no-list .line-color-green{
+    border-top-color: #2ad79c;
+}
+.part .step-name-list{
+    margin-bottom: 60px;
+}
+.part .step-name-list .step-name{
+    float: left;
+    color: #727272;
+    font-size: 16px;
+    margin-right: 194px;
+}
+.part .step-name-list .step-name{
+    float: left;
+    color: #727272;
+    font-size: 16px;
+    margin-right: 194px;
+}
+.part .step-name-list .font-color-green {
+    color: #2ad79c;
+}
+.part .info-part .input-list-part{
+    margin-bottom: 10px;
+    position: relative;
+}
+.part .info-part .input-list-part2{
+    padding-top: 30px;
+}
+.part .info-part .input-list-part .put-in{
+    height: 35px;
+    width: 400px;
+    padding-right: 40px;
+    margin: 0;
+}
+.part .info-part .input-list-part .user {
+    width: 16px;
+    height: 15px;
+    background-position: -31px -2442px;
+    position: absolute;
+    top: 15px;
+    left: 420px;
+}
+.part .info-part .input-list-part .err{
+    color: #ff0000;
+    height: 18px;
+}
+.part .info-part .input-list-part .put-in2{
+    height: 35px;
+    width: 180px;
+    margin: 0;
+}
+.part .info-part .input-list-part .code-img{
+    width: 120px;
+    height: 45px;
+    position: absolute;
+    top: 0;
+    left: 210px;
+}
+.part .info-part .input-list-part .change-code{
+    position: absolute;
+    top: 25px;
+    left: 350px;
+    font-size: 12px;
+}
+.part .info-part .input-list-part2 .next-step-btn{
+    width: 448px;
+    height: 45px;
+    background: #2ad79c;
+    color: #fff;
+    font-size: 18px;
+    line-height: 45px;
+    text-align: center;
+    display: block;
+}
+.part .info-part .input-list-part .send-code{
+    width: 220px;
+    height: 45px;
+    font-size: 14px;
+    color: #494949;
+    line-height: 45px;
+    text-align: center;
+    background: #f4f4f4;
+    position: absolute;
+    top: 0;
+    left: 226px;
+}
+.part .info-part .input-list-part .pwd {
+    width: 16px;
+    height: 17px;
+    background-position: -31px -2466px;
+    position: absolute;
+    top: 15px;
+    left: 420px;
+}

@@ -1,0 +1,41 @@
+
+.member-name{ width: 20%;}
+.member-account{ width: 20%;}
+.member-power{ width: 40%;}
+.member-action{ width: 20%;}
+
+.member .table>thead>tr>td, 
+.member .table>thead>tr>th{ padding: 10px 0; border-bottom-width: 1px; text-align: center;}
+.member .table>tbody>tr>td, 
+.member .table>tbody>tr>th, 
+.member .table>tfoot>tr>td, 
+.member .table>tfoot>tr>th{ padding: 8px 0; vertical-align: middle; text-align: center;}
+.member .form-control{ width: 300px;}
+.member .form-control label{ font-weight: 100}
+.ul-action{ padding: 10px;}
+.ul-action li{ margin: 10px 0;}
+/*.ul-action p{ margin: 0; font-weight: 100;}
+.ul-action .p-action{ margin-bottom: 30px;}
+.p-button .btn-default{ margin-right: 10px;}*/
+
+.ul-action .p-name{ display: inline-block; width: 150px; }
+.ul-action input{ display: inline-block;}
+.ul-action .p-action{ display: inline-block; min-width: 800px;}
+.p-action label{ width: 120px;}
+.p-action label input{ margin-right: 5px;}
+.ul-action .checkbox-inline{ margin-right: 10px; vertical-align: text-top;}
+.p-button{ padding-left: 164px;}
+.p-button .btn-default{ margin-right: 10px;}
+
+.error{ margin-left: 10px;}
+
+
+.table-bordered>tbody>tr>td, 
+.table-bordered>tbody>tr>th, 
+.table-bordered>tfoot>tr>td, 
+.table-bordered>tfoot>tr>th, 
+.table-bordered>thead>tr>td, 
+.table-bordered>thead>tr>th{ border: 1px solid #ddd; border-left: none; border-right: none;}
+
+.pwd-modify{ padding-left: 10px;}
+.pwd-modify a{ margin-left: 42px; text-decoration: none; cursor: pointer;}

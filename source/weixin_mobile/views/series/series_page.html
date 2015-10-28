@@ -1,0 +1,29 @@
+<?py for package in series.result: ?>
+    <div class="list card work-item">
+      <div class="item item-image">
+        <a href="/api/mobile/series/${package.Fid}">
+            <img class="lazy" src="${package.Fcover_img}" data-original="">
+        </a>
+        <div class="item-mask">
+          <h3 style="font-size:1.625rem;">${package.Fpackage_name}</h3>
+        </div>
+      </div>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading" style="font-size:1.875rem;color:#ff6577;">¥${package.Fsale_price}<span class="share-price" style="font-size:1.25rem;color:#999;">市场价<del>¥${package.Fprice}</del></span></h4>
+          <?py company = handler.get_company(package.Fmerchant_id) ?>
+          <?py if company: ?>
+            <p style="font-size:1.625rem;color:#666;">${company.Fcompany_name}</p>
+          <?py else: ?>
+            <p style="font-size:1.625rem;color:#666;"></p>
+          <?py #endif ?>
+
+        </div>
+        <div class="media-right">
+          <a href="/api/mobile/series/${package.Fid}">
+            <i class="iconfont gzh-like"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+<?py #endfor ?>

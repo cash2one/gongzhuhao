@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>商家详情</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/styles/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/styles/common.css"/>
+    <link rel="stylesheet" href="/static/styles/ionic.css" />
+    <link rel="stylesheet" type="text/css" href="/static/styles/iconfont.css" />
+    <link rel="stylesheet" href="/static/styles/merchant/merchant.css"/>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="bar bar-header gzh-header bar-light">
+             <button class="button back-button buttons  button-clear header-item" onclick="javascript:history.go(-2)">
+                <i class="icon ion-ios-arrow-back"></i>
+                <span class="back-text">
+                    <span class="default-title hide">返回</span>
+                </span>
+            </button>
+            <div class="title title-center header-item">免费预约</div>
+        </header>
+        <div class="gzh-cons">
+            <section class="merchant-detail bg-white">
+                <div class="md-order tcenter">
+                    <div class="order-success"></div>
+                    <h2 class="md-tips">恭喜您成功预约</h2>
+                    <h3 class="md-tips">请留意您的手机，我们将通知商户尽快与您联系</h3>
+                </div>
+                <div class="md-series ">
+
+                    <h2 style="margin:0; border: none">您可能感兴趣的</h2>
+                    <?py for s in series:?>
+                        <div class="md-item">
+                            <a href="/api/mobile/series/${s.Fid}"><img src="${s.Fcover_img}" /></a>
+                            <h3>${s.Fpackage_name}</h3>
+                            <p class="md-extra">
+                                <span class="text-red"><i class="price">¥</i>${s.Fsale_price} ~ ${s.Fprice}</span>
+                            </p>
+                        </div>
+                    <?py #endfor ?>
+                </div>
+            </section>
+        </div>
+    </div>
+    <?py include("views/assets/javascripts.html") ?>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>${topic_category.Fname}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="/static/styles/common.css" />
+    <?py include("views/assets/styles.html") ?>
+    <link rel="stylesheet" type="text/css" href="/static/styles/topic/topic.css" />
+</head>
+<body>
+    <div class="work-container">
+        <header class="bar bar-header gzh-header bar-light">
+             <a class="button back-button buttons  button-clear header-item" href="/mobile/topics/index/">
+                <i class="icon ion-ios-arrow-back"></i>
+                <span class="back-text">
+                    <span class="default-title hide">返回</span>
+                </span>
+            </a>
+            <div class="title title-center header-item">话题</div>
+        </header>
+        <div class="gzh-cons">
+            <div class="topic-item bg-gray" style=" margin-top: 44px;border-bottom: none; background: #f7f7f7">
+                <a href="" style="border:0px; ">
+                    <img class="topic-thumb" src="${topic_category.Fimg_url}" alt="" width="80" height="80"/>
+                    <div class="topic-item-list">
+                        <h2 class="topic-title">${topic_category.Fname}</h2>
+                        <p class="topic-extr">
+                            <span class="topic-total">话题<em>${topic_category.Ftopic_count}</em></span>
+                            <span class="topic-view gray fright">浏览<em>${page_view}</em></span>
+                        </p>
+                    </div>
+                 </a>
+            </div>
+            <div class="topic-item-nav">
+                <?py if type_num == '1': ?>
+                    <a href="/mobile/topics/query/${topic_category.Fid}/1/1" class="current">最新发布</a>
+                    <a href="/mobile/topics/query/${topic_category.Fid}/2/1" class="">最后回复</a>
+                    <a href="/mobile/topics/query/${topic_category.Fid}/3/1" class="">精华话题</a>
+                <?py elif type_num == '2': ?>
+                    <a href="/mobile/topics/query/${topic_category.Fid}/1/1" class="">最新发布</a>
+                    <a href="/mobile/topics/query/${topic_category.Fid}/2/1" class="current">最后回复</a>
+                    <a href="/mobile/topics/query/${topic_category.Fid}/3/1" class="">精华话题</a>
+                <?py else: ?>
+                    <a href="/mobile/topics/query/${topic_category.Fid}/1/1" class="">最新发布</a>
+                    <a href="/mobile/topics/query/${topic_category.Fid}/2/1" class="">最后回复</a>
+                    <a href="/mobile/topics/query/${topic_category.Fid}/3/1" class="current">精华话题</a>
+                <?py #endif ?>
+            </div>
+            <div class="topic-lists">
+                #{_content}
+            </div>
+            <input type="hidden" value="${type_num}" id="type_num"/>
+            <input type="hidden" value="${topic_category.Fid}" id="topic_category_id" />
+            <?py if has_next: ?>
+            <button type="button" class="btn btn-more"> 点击获取更多数据>></button>
+            <?py #endif ?>
+        </div>
+    </div>
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-large waves-effect waves-light red" href="/mobile/topics/create/${topic_category.Fid}/${type_num}"><i class="iconfont iconfont-2x">&#xe60d;</i></a>
+    </div>
+    <?py include("views/assets/javascripts.html") ?>
+    <script type="text/javascript" src="/static/scripts/plugins/jquery.sticky-kit.js"></script>
+    <script type="text/javascript" src="/static/scripts/topic/topic.js"></script>
+</body>
+</html>

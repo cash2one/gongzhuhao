@@ -1,0 +1,237 @@
+/*全局样式 开始*/
+html,body {width:100%; height:100%;}
+body {line-height:1.5; font-family:"Microsoft YaHei",Helvetica; color:#646464;}
+input,textarea,button,select {font-family:"Microsoft YaHei",Helvetica; color:#646464;}
+@media screen and (max-width:299px) {
+body,input,textarea,button,select {font-size:10px;}
+}
+@media screen and (min-width:300px) and (max-width:479px) {
+body,input,textarea,button,select {font-size:12px;}
+}
+@media screen and (min-width:480px) and (max-width:639px) {
+body,input,textarea,button,select {font-size:16px;}
+}
+@media screen and (min-width:640px) and (max-width:959px) {
+body,input,textarea,button,select {font-size:20px;}
+}
+@media screen and (min-width:960px) and (max-width:1279px) {
+body,input,textarea,button,select {font-size:24px;}
+}
+@media screen and (min-width:1280px) and (max-width:1599px) {
+body,input,textarea,button,select {font-size:28px;}
+}
+@media screen and (min-width:1600px) and (max-width:1919px) {
+body,input,textarea,button,select {font-size:32px;}
+}
+@media screen and (min-width:1920px) {
+body,input,textarea,button,select {font-size:36px;}
+}
+h1,h2,h3,h4,h5,h6,th {font-weight:normal;}
+th {text-align:center;}
+input[type="text"],input[type="password"],input[type="button"],input[type="reset"],input[type="submit"],textarea {-o-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
+textarea {resize:none;}
+::-moz-placeholder {color:#999;}
+:-ms-input-placeholder {color:#999;}
+::-webkit-input-placeholder {color:#999;}
+input[type="text"],input[type="password"],input[type="button"],input[type="reset"],input[type="submit"] {margin:0; outline:0; border:0; padding:0; background:transparent; font-size:100%; line-height:normal;}
+address,caption,cite,code,dfn,var,em {font-style:normal; font-weight:normal;}
+a {text-decoration:none;}
+a,a:link,a:visited,a:hover,a:active,a:focus {color:#646464;}
+.fl {float:left;}
+.fr {float:right;}
+.clearfix {}
+.clearfix:after {content:"."; visibility:hidden; display:block; clear:both; height:0; font-size:0;}
+.ellipsis {overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+.line-clamp {overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-box-orient:vertical;}
+.one-line {-webkit-line-clamp:1;}
+.two-lines {-webkit-line-clamp:2;}
+.three-lines {-webkit-line-clamp:3;}
+.border-box {-o-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box;}
+.wrap {overflow:hidden; width:100%;}
+.be-pushed {width:100%;}
+
+/*加载同一张背景图 开始*/
+.icon-menu,.icon-channel,.icon-case,.icon-diary,.icon-home,.icon-last,.icon-prev,.icon-next,.icon-return,.icon-like,.icon-share,.icon-comment,.icon-price {background-image:url(../images/mb_icons.png); background-repeat:no-repeat; background-size:10em 10em;}
+/*加载同一张背景图 结束*/
+
+/*侧推 开始*/
+.aside-menu {overflow:auto; z-index:10; position:fixed; top:0; left:0; width:45%; height:100%; background-color:#27443a;}
+.aside-menu .aside-hd {padding-top:1.5em;}
+.aside-menu .aside-hd h2.capt {position:relative; padding:1.5em;}
+.aside-menu .aside-hd h2.capt .icon-channel {display:inline-block; width:2em; height:2em; background-position:-2em 0; vertical-align:middle;}
+.aside-menu .aside-hd h2.capt .text-channel {font-size:1.5em; vertical-align:middle; color:#25d391;}
+.aside-menu .aside-hd h2.capt .line-channel {display:block; position:absolute; left:0; bottom:-1px; width:70%; height:0.3em; border-bottom:1px solid #188963; background-color:#23c890;}
+.aside-menu .aside-nav {padding-bottom:1.5em;}
+.aside-menu .aside-nav .nav-list {border-bottom:1px solid #142620;}
+.aside-menu .aside-nav .nav-list li {border-top:1px solid #142620;}
+.aside-menu .aside-nav .nav-list a {display:block; padding:1.5em; background-color:#1d372e;}
+.aside-menu .aside-nav .nav-list a:active {background-color:#142d24;}
+.aside-menu .aside-nav .nav-list a.current {background-color:#142d24;}
+.aside-menu .aside-nav .nav-list a .icon-case {display:inline-block; width:2em; height:2em; background-position:-4em 0; vertical-align:middle;}
+.aside-menu .aside-nav .nav-list a .text-case {font-size:1.1em; vertical-align:middle; color:#25d391;}
+.aside-menu .aside-nav .nav-list a .icon-diary {display:inline-block; width:2em; height:2em; background-position:-6em 0; vertical-align:middle;}
+.aside-menu .aside-nav .nav-list a .text-diary {font-size:1.1em; vertical-align:middle; color:#25d391;}
+.aside-menu,.be-pushed {-o-transition:all 0.5s ease; -moz-transition:all 0.5s ease; -ms-transition:all 0.5s ease; -webkit-transition:all 0.5s ease; transition:all 0.5s ease;}
+.aside-show,.push-back {-o-transform:translate3d(0,0,0); -moz-transform:translate3d(0,0,0); -ms-transform:translate3d(0,0,0); -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+.aside-hide {-o-transform:translate3d(-100%,0,0); -moz-transform:translate3d(-100%,0,0); -ms-transform:translate3d(-100%,0,0); -webkit-transform:translate3d(-100%,0,0); transform:translate3d(-100%,0,0);}
+.push-out {-o-transform:translate3d(45%,0,0); -moz-transform:translate3d(45%,0,0); -ms-transform:translate3d(45%,0,0); -webkit-transform:translate3d(45%,0,0); transform:translate3d(45%,0,0);}
+/*侧推 结束*/
+
+/*分页 开始*/
+.paginate {border-top:1px solid #444; border-bottom:1px solid #444; background-color:#454545;}
+.paginate a {display:block; width:25%; height:4.4em; text-align:center; line-height:4.4em; color:#fff;}
+.paginate a:active {background-color:#333;}
+.paginate span {display:inline-block; width:2em; height:2em; vertical-align:middle;}
+.paginate .btn-home {border-right:1px solid #383838;}
+.paginate .btn-home .icon-home {background-position:0 -2em;}
+.paginate .btn-last {border-right:1px solid #383838; border-left:1px solid #4e4e4e;}
+.paginate .btn-last .icon-last {background-position:-2em -2em;}
+.paginate .btn-prev {border-right:1px solid #383838; border-left:1px solid #4e4e4e;}
+.paginate .btn-prev .icon-prev {background-position:-4em -2em;}
+.paginate .btn-next {border-left:1px solid #4e4e4e;}
+.paginate .btn-next .icon-next {background-position:-6em -2em;}
+/*分页 结束*/
+
+/*详情图片 开始*/
+.pic-item {padding:3% 0;}
+.pic-item img {width:100%;}
+.pic-item .funcs {border:1px solid #d1d1d1; border-top:none;}
+.pic-item .funcs a {display:block; padding:0.2em 0; text-align:center; font-size:1.1em;}
+.pic-item .funcs a:active {background-color:#f1f1f1;}
+.pic-item .funcs span {vertical-align:middle;}
+.pic-item .funcs .btn-like {width:33%;}
+.pic-item .funcs .btn-like .icon-like {display:inline-block; width:2em; height:2em; background-position:0 -8em;}
+.pic-item .funcs .btn-share {width:34%;}
+.pic-item .funcs .btn-share .icon-share {display:inline-block; width:2em; height:2em; background-position:-2em -8em;}
+.pic-item .funcs .btn-comment {width:33%;}
+.pic-item .funcs .btn-comment .icon-comment {display:inline-block; width:2em; height:2em; background-position:-4em -8em;}
+/*详情图片 结束*/
+
+/*头部 开始*/
+.hd {position:relative; height:4.4em; background-color:#2ad79c; line-height:4.4em;}
+.hd .btn-menu {position:absolute; top:0; left:0; width:2em; height:2em; padding:1.2em;}
+.hd .btn-menu:active {background-color:#17ffb0;}
+.hd .btn-menu .icon-menu {display:block; width:2em; height:2em; background-position:0 0;}
+.hd .btn-return {position:absolute; top:0; left:0; width:2em; height:2em; padding:1.2em 2.3em;}
+.hd .btn-return:active {background-color:#17ffb0;}
+.hd .btn-return .icon-return {display:block; width:2em; height:2em; background-position:-8em 0;}
+.hd .capt {text-align:center; font-size:1.7em; color:#fff;}
+/*头部 结束*/
+
+/*首页案例 开始*/
+/*幻灯*/
+.index .slide-box {position:relative; width:100%;}
+.index .slide-box .slide-bd {width:100%;}
+.index .slide-box .slide-bd .slide-list {width:100%;}
+.index .slide-box .slide-bd .slide-list li {width:100%;}
+.index .slide-box .slide-bd .slide-list a.pic {display:block; position:relative; width:100%; height:0; padding:37.5% 0 0;}
+.index .slide-box .slide-bd .slide-list img {z-index:1; position:absolute; top:0; left:0; width:100%; height:100%;}
+.index .slide-box .slide-hd {z-index:1; position:absolute; bottom:1em; right:2em;}
+.index .slide-box .slide-hd li {overflow:hidden; display:inline-block; width:0.5em; height:0.5em; margin:0 0.5em; border:0.2em solid #fff; border-radius:100%; text-indent:-9999px;}
+.index .slide-box .slide-hd li.on {background-color:#2ad79c;}
+/*案例列表*/
+.index .case-list .case-list-nav {width:100%; background-color:#2ad79c; font-size:1.1em;}
+.index .case-list .case-list-nav a {display:block; height:2.6em; border-bottom:0.3em solid transparent; text-align:center; line-height:2.6em; color:#fff;}
+.index .case-list .case-list-nav a.case-latest {width:50%;}
+.index .case-list .case-list-nav a.case-excellent {width:50%;}
+.index .case-list .case-list-nav a.current {border-bottom-color:#17ffb0;}
+.index .case-list .case-list-main {padding:2%;}
+.index .case-list .case-list-main table {width:100%;}
+.index .case-list .case-list-main td {width:50%;}
+.index .case-list .case-list-main td {width:50%;}
+.index .case-list .case-list-main .item {padding:3%;}
+.index .case-list .case-list-main .item img {width:100%;}
+.index .case-list .case-list-main .item a {display:block; background-color:#fff;}
+.index .case-list .case-list-main .item a:active {background-color:#efefef;}
+.index .case-list .case-list-main .item .case-info {box-shadow:0 0 0.5em #ddd; padding:5%;}
+.index .case-list .case-list-main .item .case-info .pic {position:relative; width:100%; height:0; padding:85% 0 0;}
+.index .case-list .case-list-main .item .case-info .pic img {position:absolute; top:0; left:0; width:100%; height:100%;}
+.index .case-list .case-list-main .item .case-info .tit {width:100%; height:1.5em; margin-top:3%; font-size:1.2em; color:#262626;}
+.index .case-list .case-list-main .item .case-info .desc {width:100%; height:1.5em; margin:2% 0; color:#6c6c6c;}
+/*首页案例 结束*/
+
+/*案例详情 开始*/
+.case .case-detail {width:90%; margin:0 auto;}
+.case .case-detail .case-info {padding:4% 0 5%;}
+.case .case-detail .case-info .info-param table {width:100%;}
+.case .case-detail .case-info .info-param table td {width:25%; text-align:center; vertical-align:top;}
+.case .case-detail .case-info .info-param table .item {display:inline-block; width:5.4em;}
+.case .case-detail .case-info .info-param table .item .param-name {width:5em; height:5em; border:0.2em solid #e8e8e8; border-radius:100%;}
+.case .case-detail .case-info .info-param table .item .param-name a {overflow:hidden; display:block; position:relative; width:5em; height:0; padding:5em 0 0; line-height:5em;}
+.case .case-detail .case-info .info-param table .item .param-name .pic {z-index:3; position:absolute; top:0; left:0; width:100%; height:100%; border-radius:100%;}
+.case .case-detail .case-info .info-param table .item .param-name .cover {z-index:4; position:absolute; top:0; left:0; width:100%; height:100%; border-radius:100%; background-color:rgba(0,0,0,0.5);}
+.case .case-detail .case-info .info-param table .item .param-name .txt {z-index:5; position:absolute; top:0; left:0; width:100%; height:100%; font-size:1.1em; color:#fff;}
+.case .case-detail .case-info .info-param table .item .param-data {padding-top:0.5em; color:#5a5a5a;}
+.case .case-detail .case-info .info-param table .item .param-data a {color:#5a5a5a;}
+.case .case-detail .case-info .funcs {padding-top:3%;}
+.case .case-detail .case-info .funcs a {display:block; width:30%; border:1px solid #1fc98f; border-radius:0.3em; padding:0.2em 0; text-align:center; font-size:1.1em;}
+.case .case-detail .case-info .funcs a:active {background-color:#fbfbfb;}
+.case .case-detail .case-info .funcs span {vertical-align:middle;}
+.case .case-detail .case-info .funcs .btn-like .icon-like {display:inline-block; width:2em; height:2em; background-position:0 -4em;}
+.case .case-detail .case-info .funcs .btn-share {margin-left:5%;}
+.case .case-detail .case-info .funcs .btn-share .icon-share {display:inline-block; width:2em; height:2em; background-position:-2em -4em;}
+.case .case-detail .case-info .funcs .btn-comment .icon-comment {display:inline-block; width:2em; height:2em; background-position:-4em -4em;}
+.case .case-detail .case-show {}
+.case .case-detail .case-show .show-hd {}
+.case .case-detail .case-show .show-hd .capt {display:inline-block; font-weight:bold; font-size:1.3em; color:#1fc98f;}
+.case .case-detail .case-show .show-hd .price {display:inline-block;}
+.case .case-detail .case-show .show-hd .price .icon-price {display:inline-block; width:2em; height:2em; background-position:-8em -2em; vertical-align:bottom;}
+.case .case-detail .case-show .show-hd .price .text-price {vertical-align:bottom;}
+.case .case-detail .case-show .show-hd .price .price-num {}
+.case .case-detail .case-show .content {padding:2% 0;}
+.case .case-detail .case-show .content p {padding:1% 0;}
+/*案例详情 结束*/
+
+/*业主日记 开始*/
+/*业主日记列表*/
+.diary .diary-list > li {border-top:1px solid #d3d3d3; padding:3% 5%; background-color:#f8f8f8;}
+.diary .diary-list > li:first-child {border-top:none;}
+.diary .diary-list > li:active {background-color:#f1f1f1;}
+.diary .diary-list .avatar {overflow:hidden; display:block; overflow:hidden; position:relative; width:15%; height:0; box-shadow:0.1em 0.1em 0.2em #ddd; border:0.2em solid #fff; border-radius:100%; padding:15% 0 0;}
+.diary .diary-list .avatar img {position:absolute; top:0; left:0; width:100%; height:100%; border-radius:100%;}
+.diary .diary-list .diary-info {width:80%;}
+.diary .diary-list .diary-info .tit {font-size:1.2em; color:#333;}
+.diary .diary-list .diary-info .tit a {color:#333;}
+.diary .diary-list .diary-info .tit a:active {color:#2ad79c;}
+.diary .diary-list .diary-info .pub {padding:1.5% 0; font-size:0.8em; color:#2ad79c;}
+.diary .diary-list .diary-info .pub .pub-name {color:#2ad79c;}
+.diary .diary-list .diary-info .pub .pub-time {}
+.diary .diary-list .diary-info .desc {max-height:3em; font-size:0.9em;}
+.diary .diary-list .diary-info .pic-pre {padding-top:1.5%;}
+.diary .diary-list .diary-info .pic-pre .pic-list > li {float:left; width:32%; padding:0.5%;}
+.diary .diary-list .diary-info .pic-pre .pic-list a.pic {display:block;}
+.diary .diary-list .diary-info .pic-pre .pic-list a.pic img {width:100%;}
+/*业主日记详情*/
+.diary .diary-detail {}
+.diary .diary-detail .user {}
+.diary .diary-detail .user .user-main {position:relative;}
+.diary .diary-detail .user .user-main .banner {display:block; position:relative; width:100%; height:0; padding:43.75% 0 0;}
+.diary .diary-detail .user .user-main .banner img {position:absolute; top:0; left:0; width:100%; height:100%;}
+.diary .diary-detail .user .user-main .info {position:absolute; bottom:0; left:0; width:100%;}
+.diary .diary-detail .user .user-main .info .avatar {overflow:hidden; display:block; z-index:1; position:relative; width:15%; height:0; margin:0 0 2% 5%; border:0.2em solid #fff; border-radius:100%; padding:15% 0 0; background-color:#fff;}
+.diary .diary-detail .user .user-main .info .avatar img {position:absolute; top:0; left:0; width:100%; height:100%; border-radius:100%;}
+.diary .diary-detail .user .user-main .info .user-info {position:absolute; bottom:0; left:0; width:100%;}
+.diary .diary-detail .user .user-main .info .user-info .user-name {padding-left:25%; font-size:1.2em;}
+.diary .diary-detail .user .user-main .info .user-info .user-name a {text-shadow:0 0 0.2em #fff; color:#353535;}
+.diary .diary-detail .user .user-main .info .user-info .pub {overflow:hidden; height:2.2em; margin-top:1%; padding-left:25%; background-color:rgba(0,0,0,0.5); line-height:2.2em; color:#fff;}
+.diary .diary-detail .user .user-main .info .user-info .pub .house-info {display:inline-block; width:66%; font-size:0.9em;}
+.diary .diary-detail .user .user-main .info .user-info .pub .house-info .data-name {}
+.diary .diary-detail .user .user-main .info .user-info .pub .pub-time {display:inline-block; width:30%; font-size:0.8em;}
+.diary .diary-detail .user .funcs {background-color:#2ad79c;}
+.diary .diary-detail .user .funcs a {display:block; padding:0.5em 0; text-align:center; font-size:1.1em; color:#fff;}
+.diary .diary-detail .user .funcs a:active {background-color:#17ffb0;}
+.diary .diary-detail .user .funcs span {display:inline-block; vertical-align:middle; line-height:2em;}
+.diary .diary-detail .user .funcs .btn-like {width:33%;}
+.diary .diary-detail .user .funcs .btn-like .icon-like {width:2em; height:2em; background-position:0 -6em;}
+.diary .diary-detail .user .funcs .btn-share {width:34%;}
+.diary .diary-detail .user .funcs .btn-share .icon-share {width:2em; height:2em; background-position:-2em -6em;}
+.diary .diary-detail .user .funcs .btn-comment {width:33%;}
+.diary .diary-detail .user .funcs .btn-comment .icon-comment {width:2em; height:2em; background-position:-4em -6em;}
+.diary .diary-detail .content {width:86%; margin:0 5% 0 9%; border-left:1px solid #2ad79c;}
+.diary .diary-detail .content .stage {position:relative; border-top:1px solid #2ad79c; padding:5% 0 5% 9%;}
+.diary .diary-detail .content .stage:first-child {border-top:none;}
+.diary .diary-detail .content .stage .tit {font-weight:bold; font-size:1.2em; color:#3c3c3c;}
+.diary .diary-detail .content .stage .status {position:absolute; top:0; left:0; width:3.6em; height:3.6em; margin:4% 0 0 -1.9em; border-radius:100%; background-color:#2ad79c; color:#fff;}
+.diary .diary-detail .content .stage .status .status-name {display:table-cell; width:3.6em; height:3.6em; vertical-align:middle; text-align:center; line-height:1.2;}
+.diary .diary-detail .content .stage .cont {}
+/*业主日记 结束*/

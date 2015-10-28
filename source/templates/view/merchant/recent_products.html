@@ -1,0 +1,19 @@
+<div class="gzh-side-pro">
+    <p class="gs-title">
+        <span class="f16 text-red">精品推荐</span>
+    </p>
+    <?py if recent_products:?>
+        <?py for p in recent_products:?>
+            <div class="gs-item">
+                <a href="/product/${p.Fid}" class="img-link">
+                    <img data-lazyload="${p.Fcover_img}" class="gzh-lazy img-hover" width="190" height="118" />
+                    <span class="img-cover"></span>
+                </a>
+                <h2 class="f14"><a href="/product/${p.Fid}">${p.Fname}</a></h2>
+                <p class="gm-price text-red f20">
+                    <i class="price">¥</i>${p.Fsale_price}
+                </p>
+            </div>
+        <?py #endfor ?>
+    <?py #endif ?>
+</div>

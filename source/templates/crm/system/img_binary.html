@@ -1,0 +1,40 @@
+<link href='/static/crm/css/system/setting.css' rel='stylesheet' />
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>二维码设置</h2>
+				</div>
+				<div class="box-content">
+                    <form id="qr_img_form">
+                    <div class="input-group">
+                        #{xsrf_form_html}
+                            <input type="text" name="url" id="url" placeholder="输入url" class="form-control input-txt">
+                        <span class="input-group-btn">
+                                <button type="button" id="create_qr_img" class="btn btn-default">生成二维码</button>
+                        </span>
+                    </div>
+                    </form>
+				</div>
+				<div id="qrcode" class="box-content setting">
+
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+<script>
+
+$(function(){
+        $('#create_qr_img').on('click',function(){
+                $('#qrcode').html('');
+                url ='/common/tools/qrcode/?url='+$('#url').val()
+                var html = "<center><img src='"+url+"'/></center>"
+                $('#qrcode').append(html);
+        })
+})
+
+</script>

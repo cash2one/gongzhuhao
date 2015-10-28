@@ -1,0 +1,25 @@
+<ion-view view-title="首页">
+  <ion-content class="homepage">
+        <a 
+           href="#/home"
+           class="item item-avatar  item-text-wrap item-thumbnail-left item-icon-right" style="background-image:url(/static/images/cover_bg.png);background-size:100% 100%;">
+          <img src="{{model.user_avatar}}" style="border-width: 2px;
+  border-color: white;
+  border-style: solid;">
+          <div class="row row-bottom">
+            <div class="col content">          
+              <h1 class="title">{{model.user_name}}</h1>
+              <p>{{model.user_mobi}}</p>
+            </div>
+          </div>
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+    <ion-list>
+      <ion-item class="item-icon-left item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/{{chat.action}}">
+        <i class="icon {{chat.icon}} pink"></i>
+        <div class="item-text-wrap">{{chat.name}}</div>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

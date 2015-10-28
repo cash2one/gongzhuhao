@@ -1,0 +1,210 @@
+.o-hidden{
+    overflow: hidden;
+}
+.o-auto{
+    width: auto;
+    height: auto;
+    overflow: auto;
+}
+.example-image-link{
+    display: inline-block;
+}
+.slider-mask{
+    position: fixed;
+    z-index: 1024;
+    background: #000;
+    opacity: .7;
+    filter: alpha(opacity=70);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+}
+
+.slider-pop-box{
+    position: fixed;
+    margin: 15px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    z-index: 1025;
+    display: none;
+}
+.slider-photo-wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 300px;
+}
+.slider-desc-review{
+    float: right;
+    width: 270px;
+    height: 100%;
+    background: #fff;
+    padding: 0 15px;
+    overflow: scroll;
+}
+.slider-desc-review .info h3{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 26px;
+    padding-top: 30px;
+}
+.slider-desc-review .info .length{
+    color: #999;
+    margin-top: 3px;
+}
+.slider-desc-review .info .desc{
+    margin-top: 6px;
+    line-height: 20px;
+    color: #999;
+}
+.slider-desc-review .info .m-comment-li-desc {
+    margin-top: 5px;
+    font-size: 14px;
+    padding-left: 6px;
+}
+.slider-desc-review .user-pic{
+    color: #2ad79c;
+}
+.slider-desc-review .delete-this{
+    color: #999;
+}
+.slider-desc-review .comment-this{
+    color: #2ad79c;
+}
+.slider-desc-review .review-wrap textarea{
+    width: 258px;
+    height: 20px;
+    max-width: 258px;
+    margin-top: 12px;
+    border: 2px #eee solid;
+    border-radius: 0;
+    padding: 4px;
+    box-shadow: none;
+}
+.slider-desc-review .review-wrap textarea:focus{
+    border-color: #2ad79c;
+}
+.review-list.n,.review-wrap.n{
+    display: none;
+}
+.review-list{
+    margin-bottom: 30px;
+}
+.review-submit{
+    float: right;
+    margin-top: 10px;
+    width: 60px;
+    height: 24px;
+    background: #efefef;
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+    line-height: 22px;
+    border: 0;
+    /*transition: all .3s;*/
+    cursor: pointer;
+}
+.review-submit:hover{
+    background: #1abc9c;
+    color: #fff;
+    text-decoration: none;
+}
+.m-comment-lists{margin: 20px 0 0; padding: 0px;}
+.m-comment-list-item{position: relative; overflow: hidden; min-height: 36px;margin-top: 20px;}
+.m-comment-list-item.m-comment-list-item-reply{margin-left:40px; margin-top: 6px}
+.m-comment-list-item .face{position: absolute; left: 0; top: 0px;border-radius: 50%;
+    width: 36px;
+    height: 36px;}
+
+.m-comment-li-desc{margin:0 0 0 45px; line-height:20px;}
+.m-comment-li-desc a.user_pic{display: inline;}
+.m-comment-li-desc p{clear: both; margin-top:10px;}
+.m-comment-li-desc var{ font-style: normal; color: #999; margin: 0 0 0 10px;}
+.m-comment-li-desc span{float: right; margin: 0 2px 0 0; cursor: pointer;}
+.m-slide-coll .m-comment-subject{list-style: none; margin: 0;}
+.m-slide-h{margin: 0 0 15px;}
+.reply-text{
+    width: 172px;
+    height: 24px;
+    max-width: 186px;
+    border-radius: 0;
+    border: #eee 2px solid;
+    box-shadow: none;
+    resize: none;
+    padding: 4px;
+}
+.reply-text:focus{
+    box-shadow: none;
+    border-color: #2ad79c;
+}
+.review-reply-submit{
+    width: 40px;
+}
+.slider-close{
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+.photo-nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1026;
+}
+.photo-nav a{
+    display: block;
+    float: left;
+    width: 50%;
+    height: 100%;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    -webkit-transition: all 600ms;
+    -moz-transition: all 600ms;
+    -ms-transition: all 600ms;
+    -o-transition: all 600ms;
+    transition: all 600ms;
+}
+.photo-nav a:hover{
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+.photo-nav img{
+    position: relative;
+    top: 50%;
+    margin-top: -64px;
+    float: left;
+}
+.photo-nav a.photo-next,.photo-nav a.photo-next img{
+    float: right;
+}
+.photo-main{
+    position: absolute;
+    z-index: 1024;
+    text-align: center;
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.mid{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+.photo-main img{
+    max-height: 100%;
+    /*max-width: 90%;*/
+}
+
+.like-wrap{
+    margin: 10px 0 0 0;
+    color: #999;
+}

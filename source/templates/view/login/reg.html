@@ -1,0 +1,58 @@
+<?py include('view/login/login_header.html')?>
+ <div class="gzh-login-cons">
+    <div class="gzh-dialog-cons">
+        <form method="post" action="">
+        <p class="error reg-error">${info}</p>
+        <ul>
+            <li>
+                <input type="tel" name="phone" class="input-txt" id="regPhone" placeholder="手机号码" value=""/>
+            </li>
+                <input type="hidden" name="next" value="${next}"/>
+            <li>
+                <input type="text" name="code" class="input-txt code" id="regCode" placeholder="验证码" value="" />
+                <input type="button" class="btn btn-code" value="发送验证码" id="getRegCode" />
+            </li>
+            <li>
+                <input type="password" name="password" class="input-txt" id="regPwd" placeholder="设置密码" value=""/>
+            </li>
+            <li>
+                <input type="checkbox" name="agreement" id="agreement" checked/>
+                <span class="agreement f14">我已经阅读并同意<a href="" class="text-pink">《公主号用户协议》</a></span>
+            </li>
+            <li>
+                <input type="submit" name="login" class="btn btn-submit btn-reg" id="regSubmit" value="注册" />
+            </li>
+        </ul>
+        </form>
+    </div>
+
+
+    <!--
+    <div class="gzh-dialog-footer">
+        <h2 class="gzh-dialog-line">
+            <span>社交帐号登录</span>
+        </h2>
+        <p class="gzh-dialog-social">
+            <a href="#">
+                <i class="icon icon48 icon-weibo"></i>
+            </a>
+            <a href="#">
+                <i class="icon icon48 icon-wechat"></i>
+            </a>
+            <a href="#">
+                <i class="icon icon48 icon-qq"></i>
+            </a>
+        </p>
+    </div>
+    -->
+</div>
+  <script src="/static/skin/js/gzh_reg.js"></script>
+<script>
+    $(function(){
+        $(".reg").addClass("current");
+        $(".login").removeClass("current");
+    })
+</script>
+<?py include('view/login/login_footer.html')?>
+
+

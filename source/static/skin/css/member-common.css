@@ -1,0 +1,294 @@
+a:hover,a:active,a:focus{
+    text-decoration: none;
+}
+.hidden{
+    display: none;
+}
+.required{
+    color: red;
+    margin-right: 3px;
+}
+.main{
+    width: 1210px;
+    min-height: 970px;
+    *height: 970px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.member-left{
+    width: 208px;
+    float: left;
+    margin-right: 86px;
+}
+.header-portrait{
+    text-align: center;
+    height: 146px;
+    padding-top: 37px;
+}
+.header-portrait img{
+    width: 114px;
+    height: 114px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    behavior: url(/static/skin/js/ie/PIE.htc);
+}
+.member-list{
+    margin-top: 1px;
+}
+.member-list .item{
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    border: 1px #e9e9e9 solid;
+    margin-top: -1px;
+}
+.member-list .item a{
+    color: #414141;
+    font-size: 16px;
+    display: block;
+}
+.member-list .item a:hover,.member-list .item.active a{
+    background: #f9f9f9;
+}
+
+.main-right{
+    float: right;
+    width: 916px;
+    padding-top: 38px;
+}
+.main-right h3{
+    height: 53px;
+    line-height: 54px;
+    font-size: 20px;
+    color: #414141;
+    border-bottom: 2px #1ab493 solid;
+    margin-bottom: 91px;
+    text-indent: 18px;
+}
+
+form input:focus{
+    box-shadow: none;
+    outline: none;
+}
+form input,form label,form select{
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0 !important;
+    border-radius: 0 ;
+}
+form label{
+    margin-bottom: 0;
+}
+
+/*pwd*/
+.pwd-form p{
+    margin-bottom: 24px;
+}
+.pwd-form p input,.pwd-form label{
+    display: inline-block;
+    vertical-align: middle;
+}
+.pwd-form label{
+    width: 140px;
+    text-align: right;
+    margin-right: 28px;
+    cursor: default;
+    font-size: 16px;
+    color: #3f3f3f;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+.pwd-form p input{
+    border-radius: 0;
+    width: 430px;
+    height: 40px;
+    padding-top:0;
+    padding-bottom: 0;
+    margin-bottom: 0px;
+}
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus{
+    box-shadow: none;
+}
+.pwd-form .btn-submit{
+    width: 168px;
+    height: 42px;
+    color: #fff;
+    background: #2ad79c;
+    font-size: 16px;
+    border: 0;
+    border-radius: 2px;
+    position: relative;
+    left: 445px;
+    z-index: 2;
+    top: 26px;
+    behavior: url(/static/skin/js/ie/PIE.htc);
+}
+/*data*/
+.change-data h3{
+    margin-bottom: 41px;
+}
+.data-form label,.data-form .sex-label{
+    width: 100px;
+    padding-right: 28px;
+    text-align: right;
+    font-size: 16px;
+}
+.data-form div{
+    margin-bottom: 14px;
+}
+.data-form input{
+    width: 430px;
+    height: 32px;
+    line-height: 32px\9;
+}
+.data-form .message{
+    margin-left: 28px;
+    font-size: 14px;
+    color: #999;
+}
+.data-form .change_phone{
+    width: auto;
+    background: none;
+    border: 0;
+    margin-left: 27px;
+}
+.data-form .change_phone:hover{
+    color: #2ad79c;
+}
+.data-form .phone-code-wrap{
+    margin-top: 14px;
+    padding-left: 128px;
+}
+.data-form .phone_send_code,.data-form .phone_check_code{
+    width: auto;
+}
+.data-form .phone_send_code{
+    background: none;
+    border: 0;
+    margin-right: 28px;
+}
+.data-form .phone_send_code:hover{
+    color: #2ad79c;
+}
+.data-form .phone_check_code{
+    height: 20px;
+}
+.data-form .add-on{
+    display: none;
+}
+.data-form textarea,.data-form input[type="text"]{
+    border-radius: 0;
+}
+.data-form .change-data-submit{
+    width: 168px;
+    height: 42px;
+    margin-left: 128px;
+    font-size: 16px;
+    border-radius: 2px;
+    position: relative;
+    z-index: 2;
+    behavior: url(/static/skin/js/ie/PIE.htc);
+    background: #2ad79c;
+    border: 0;
+    color: #fff;
+}
+.data-form .sex-label{
+
+    display: inline-block;
+}
+.data-form .sex-wrap label{
+    width: auto;
+    padding-right: 35px;
+}
+.data-form .sex-wrap label input{
+    width: 15px;
+    margin-top: -2px;
+    margin-right: 8px;
+}
+
+/*image*/
+.image-form{
+    padding-left: 25px;
+    margin-top: -53px;
+}
+.image-form .head-img img{
+    width: 114px;
+    height: 114px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    behavior: url(/static/skin/js/ie/PIE.htc);
+}
+.upload{
+    padding-top: 18px;
+}
+.image-form .upload-qa-btn{
+    border: none;
+    background: url("/static/skin/images/diary-img-icon.png") no-repeat;
+    width: 126px;
+    height: 38px;
+    margin-left: 13px;
+}
+input[type="file"].file-upload{
+    width: 126px;
+    height: 38px;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    opacity: 0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)";
+    margin-left: -128px;
+    cursor: pointer;
+    margin-right: 28px;
+}
+.img-cut{
+    margin-top: 52px;
+    position: relative;
+}
+.img-cut .cut-img-wrap{
+    /*max-width: 400px;*/
+    /*_width: 400px;*/
+    border: 1px #dfdfdf solid;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    float: left;
+}
+.img-cut .cut-img-wrap img{
+    /*max-height: 250px;*/
+}
+
+.image-form .btn-group{
+    margin-top: 20px;
+    margin-left: -5px;
+    width: 100%;
+}
+.image-form .btn-group a{
+    display: inline-block;
+    width: 63px;
+    height: 32px;
+    border: 1px #dfdfdf solid;
+    color: #8c8c8c;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: center;
+    margin-right: 10px;
+}
+.image-form .btn-group a.file-submit{
+    border-color: #2ad79c;
+    background: #2ad79c;
+    color: #fff;
+}
+.image-form .jcrop-holder{
+    margin: 0 auto;
+}
+.preview-container{
+    float: left;
+    margin-left: 100px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    z-index: 2;
+    behavior: url(/static/skin/js/ie/PIE.htc);
+    overflow: hidden;
+}

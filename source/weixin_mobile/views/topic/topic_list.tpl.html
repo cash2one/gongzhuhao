@@ -1,0 +1,110 @@
+<ion-header-bar class="bar-positive bar bar-header disable-user-behavior" align-title="center">
+    <button ng-click="$ionicGoBack($event)" class="button back-button buttons  button-clear header-item">
+    <i class="icon ion-ios-arrow-back"></i> 
+    <span class="back-text">
+        <span class="default-title hide">返回</span>
+    </span>
+    </button>
+    <div class="title title-center header-item">话题</div>
+</ion-header-bar>
+<ion-view view-title="话题">
+  <ion-content class="topic topic-list" ng-model="isMoving" direction="y" on-scroll="onScroll()" on-scroll-complete="onScrollComplete()" delegate-handle="mainScroll">
+	<div>
+	<tab-slide-box tab="1" style="overflow:auto;">
+		<div class="list" style="background-color:#f7f7f7;">
+			<a class="item item-thumbnail-left" href="" style="border:0px; background-color: #f7f7f7;">
+			    <img ng-src="{{model.list.category_url}}" alt="{{model.list.category_name}}"/>
+			    <h2 class="topic-title" ng-bind="model.list.category_name"></h2>
+			    <h3 class="topic-desc gray" ng-bind"model.list.category_desc"></h3>   
+			    <p class="topic-extra">
+					<span class="topic-total">话题<em ng-bind="model.list.topic_count"></em></span>
+					<span class="topic-view gray">浏览<em ng-bind="model.list.page_view"></em></span>
+			    </p>
+			 </a>
+	    	<div class="tsb-icons" style="margin-bottom:0px;">
+	    		<div class="tsb-ic-wrp">
+					<ion-scroll class="tsb-hscroll">
+					<a href="javascript:;" class="ion-home1">最新发布</a>
+					<a href="javascript:;" class="ion-game-controller-b1">最后回复</a>
+					<a href="javascript:;" class="ion-email1">精华话题</a>
+					</ion-scroll>
+				</div>
+	    	</div>
+    	</div>
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false">
+            <ion-slide>
+                <div class="list topic-tabs">
+					<a href="#/topic_detail/{{item.Fid}}/{{item.Fuser_id}}" class="item" ng-repeat="item in model.list.list_new">
+						<div class="topic-list-title">
+							<i class="icon-top" ng-show="{{item.Fis_top}}"></i>
+							<i class="icon-essence" ng-show="{{item.Fis_essence}}"></i>
+							<h2><span ng-bind="item.Ftitle"></span><i class="icon ion-images" ng-show="{{item.photo}}"></i></h2>
+							
+						</div>
+						<div class="topic-info">
+							<img src="{{item.head_url}}" alt="" />
+							<span class="topic-list-publisher" ng-bind="item.nick_name"></span>
+							<span class="topic-list-msg fright">
+								<i class="icon fa fa-comment-o"></i>
+								<span ng-bind="item.Ftotal_assess"></span>
+							</span>
+							<span class="topic-list-date fright" ng-bind="item.time"></span>
+						</div>
+					</a>
+				</div>
+            </ion-slide>
+            <ion-slide>
+                <div class="list topic-tabs">
+					<a href="#/topic_detail/{{item.Fid}}/{{item.Fuser_id}}" class="item" ng-repeat="item in model.list.list_reply">
+						<div class="topic-list-title">
+							<i class="icon-top" ng-show="{{item.Fis_top}}"></i>
+							<i class="icon-essence" ng-show="{{item.Fis_essence}}"></i>
+							<h2><span ng-bind="item.Ftitle"></span><i class="icon ion-images" ng-show="{{item.photo}}"></i></h2>
+							
+						</div>
+						<div class="topic-info">
+							<img ng-src="{{item.head_url}}" alt="" />
+							<span class="topic-list-publisher" ng-bind="item.nick_name"></span>
+							<span class="topic-list-msg fright">
+								<i class="icon fa fa-comment-o"></i>
+								<span ng-bind="item.Ftotal_assess"></span>
+							</span>
+							<span class="topic-list-date fright" ng-bind="item.time"></span>
+						</div>
+					</a>
+				</div>
+            </ion-slide>
+            <ion-slide>
+                <div class="list topic-tabs">
+					<a href="#/topic_detail/{{item.Fid}}/{{item.Fuser_id}}" class="item" ng-repeat="item in model.list.list_is_essence">
+						<div class="topic-list-title">
+							<i class="icon-top" ng-show="{{item.Fis_top}}"></i>
+							<i class="icon-essence" ng-show="{{item.Fis_essence}}"></i>
+							<h2><span ng-bind="item.Ftitle"></span><i class="icon ion-images" ng-show="{{item.photo}}"></i></h2>
+						</div>
+						<div class="topic-info">
+							<img ng-src="{{item.head_url}}" alt="" />
+							<span class="topic-list-publisher" ng-bind="item.nick_name"></span>
+							<span class="topic-list-msg fright">
+								<i class="icon fa fa-comment-o"></i>
+								<span ng-bind="item.Ftotal_assess"></span>
+							</span>
+							<span class="topic-list-date fright" ng-bind="item.time"></span>
+						</div>
+					</a>
+				</div>
+            </ion-slide>
+        </ion-slide-box>
+	</tab-slide-box>
+	</div>
+	<ion-infinite-scroll
+	    on-infinite="loadMore()"
+	    distance="1%" ng-if="noMoreItemsAvailable">
+	</ion-infinite-scroll>
+  </ion-content>
+  <nav mfb-menu position="{{position}}" effect="{{effect}}"
+       active-icon="ion-close-round" resting-icon="ion-plus-round"
+       ng-mouseenter="hovered()" ng-mouseleave="hovered()"
+       toggling-method="{{method}}">
+   </nav>
+</ion-view>	

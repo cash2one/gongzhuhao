@@ -1,0 +1,115 @@
+{% extends 'user_base.html' %}
+{% block left %}
+<!--{% include 'user_menu.html' %}-->
+{% end %}
+
+{% block content %}
+
+{% raw xsrf_form_html() %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="main-content">
+                <div id="breadcrumbs" class="breadcrumbs breadcrumbs-fixed">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home home-icon"></i>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">用户管理</a>
+                        </li>
+                        <li class="active">用户列表</li>
+                    </ul>
+                    <!-- .breadcrumb -->
+                </div>
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="span2">
+                                <a class="btn btn-success btn-sm" href="/admin/user?operation=add">
+                                    <i class="icon-plus bigger-125"></i>
+                                    添加员工
+                                </a>
+                            </div>
+
+                            <div class="table-responsive">
+                                <div role="grid" class="dataTables_wrapper" id="sample-table-2_wrapper">
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <div class="input-group">
+                                                <label class="lbl">每页条数
+                                                    <select name="per_pages_select" id="per_pages_select" size="1"
+                                                            class="selectpicker show-tick form-control">
+                                                        {%for p in PAGE_COUNT%}
+                                                        {%if p==page_count %}
+                                                        <option value="{{p}}" selected="selected">{{p}}</option>
+                                                        {%else%}
+                                                        <option value="{{p}}">{{p}}</option>
+                                                        {%end%}
+                                                        {%end%}
+                                                    </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <div class="input-group">
+                                                {%if is_employee=='1' %}
+                                                <input type="checkbox" checked value="1" name="is_employee"
+                                                       id="is_employee">
+                                                {%else%}
+                                                <input type="checkbox" value="0" name="is_employee" id="is_employee">
+                                                {%end%}
+                                                <span class="helper">选择状态效果</span>
+                                                </label>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class="input-group">
+                                                <label class="lbl">查询条件
+                                                    <select name="query_type" id="query_type" size="1"
+                                                            class="selectpicker show-tick form-control">
+                                                        <option value="">-----</option>
+                                                        <option value="nick">NickName</option>
+                                                        <option value="user_name">UserName</option>
+                                                        <option value="email">Email</option>
+                                                        <option value="phone">Phone</option>
+                                                    </select></label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-4">
+                                            <div class="input-group">
+                                                <input type="text" id="query_text" value="{{search_text}}"
+                                                       name="query_text" placeholder="Type your query"
+                                                       class="form-control search-query">
+                                                <span class="input-group-btn">&nbsp;
+											<button id="user_search_btn" class="btn btn-purple btn-sm" type="button">
+                                                &nbsp;&nbsp;Search <i class="icon-search icon-on-right bigger-110"></i>
+                                            </button>
+										</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="user_data_list">
+                                        {% include 'user_data_list.html'%}
+                                    </div>
+                                    <!-- user data list end -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.page-content -->
+            </div>
+        </div>
+    </div>
+    {% end %}
+
+    {%block js%}
+    <script src="{{ static_url('js/admin/users/users.js')}}"></script>
+    {%end%}

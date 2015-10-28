@@ -1,0 +1,345 @@
+<link rel="stylesheet" href="/static/skin/css/topic.css">
+<link rel="stylesheet" href="/static/skin/css/redactor.css">
+<style>
+    .htnr img {
+        margin: 0 10px 10px 0 !important;
+        max-width: 100% !important;
+    }
+    .redactor_toolbar{
+        overflow: visible !important;
+        height: 40px !important;
+    }
+    .redactor_toolbar li{
+        margin-right: 15px !important;
+        margin-top: 5px !important;
+    }
+    .redactor_toolbar li a{
+        background-image: none;
+        position: relative;
+        text-indent: 0;
+    }
+    .redactor_toolbar li a>i,
+    .redactor_toolbar li a:after{
+        color: rgb(102, 102, 102);
+        cursor: pointer;
+        display: inline;
+        font-family: iconfont;
+        font-size: 26px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        height: auto;
+        line-height: 22.1428604125977px;
+        width: auto;
+    }
+    .redactor_toolbar li .redactor_btn_image:after{
+        content: "\e603"
+    }
+
+    .redactor_toolbar li a>i{
+        content: "\e601"
+    }
+    .redactor_editor{
+        min-height: 200px;
+    }
+
+</style>
+
+<!-- 页面信息存储 -->
+<div class="hide">
+    <input type="hidden" name="pageType" value="DETAIL">
+    <input type="hidden" name="topic_id" value="${topic.Fid}">
+    <input type="hidden" name="_xsrf" value="${xsrf_token}">
+</div>
+<div class="gzh-position f16">
+    <div class="ur_here">
+        <a href="/topic" title="首页" target="_self">首页</a>
+        &nbsp;&gt;&nbsp;
+        <a href="/topic/${topic_cate.Fid}/" title="${topic_cate.Fname}" target="_self">${topic_cate.Fname}</a>
+        &nbsp;&gt;&nbsp;
+        <a href="" title="${topic.Ftitle}" class="mbx" target="_self">${topic.Ftitle}</a>
+    </div>
+</div>
+<div class="gzh-container" style="margin-top:0px">
+<div class="main clearfix">
+    <!--页面浮动部分-->
+    <div class="fixedPart">
+        <ul class="fixed-do-list">
+            <li>
+                <a href="/topic/create/" class="f-one-icon f-public"></a>
+            </li>
+            <li>
+                <a href="javascript:;" onclick="$(this).closest('li').find('.qrCode-img').slideToggle();" class="f-one-icon f-wx-qrcode"></a>
+                <img src="/static/skin/images/wx-dyh.png" class="qrCode-img" alt="">
+            </li>
+            <li>
+                <a href="#" class="f-one-icon f-toTop"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="gzh-topic clear">
+    <div class="topic_detail_left">
+
+        <div class="topic_title f18 clearfix">
+            <h2 class="c_name fl">${topic.Ftitle}</h2>
+            <div class="c_filter tright fr">
+                <!--<a href="" class="btn btn-publish" title="编辑话题"><i class="iconfont">&#xe605;</i>编辑话题</a>-->
+                <!--&lt;!&ndash;<a class="btn btn-gzh">只看楼主</a>&ndash;&gt;-->
+                <!--<a class="btn btn-gzh"><i class="iconfont">&#xe608;</i>关注</a>-->
+                <!--<a class="btn btn-gzh"><i class="iconfont">&#xe605;</i>跟贴</a>-->
+            </div>
+        </div>
+
+        <div class="view_button clearfix">
+            <!--<div class="left iw_pl"><a href="" class="btn btn-gzh" title="编辑话题"><i class="iconfont">&#xe605;</i>我要评论</a></div>-->
+            <!--<div class="left iw_pl"><a class="post_comment" href="#topicPublishForm" title="我要评论">我要评论</a></div>-->
+            <!--<div class="right v_pl"><a href="" class="add_vtalk_follow" title="关注话题">关注话题</a></div>-->
+            <!--<div class="right v_pl"><a href="" title="最新评论">最新评论</a></div>-->
+            <!--<div class="right v_home"><a href="" title="只看楼主">只看楼主</a></div>-->
+            <?py if handler.current_user and handler.current_user['Fid'] == topic.Fuser_id: ?>
+                <!--<div class="right v_home"><a href="/topic/edit/${topic.Fid}" class="editTopic" title="编辑话题">编辑话题</a></div>-->
+            <?py #endif ?>
+        </div>
+
+        <ul class="topic_comment_detail" id="detail_comment">
+
+            <!--楼主显示 start-->
+            <li class="tc_li clearfix" data-id="0">
+                <div class="ad_user_info left">
+                    <a href="#" class="user_head" title="">
+                        <img src="${user_photo}" width="80" height="80" alt="">
+                    </a>
+                    <a href="/member/index/${topic.Fuser_id}" title="${nick_name}" class="t_u_name">${nick_name}</a>
+                    <p class="floor">楼主</p>
+                </div>
+
+                <div class="tp_de_content left">
+                    <div class="htnr">#{topic.Fcontent}</div>
+
+                    <?py if topic_images:?>
+                        <div class="top-detail-descImg clearfix">
+                            <?py for img in topic_images:?>
+                                <img src="${img['topic_img']}" alt="">
+                            <?py #endfor ?>
+                        </div>
+                    <?py #endif ?>
+                    <?py if topic.Fedit_times: ?>
+                    <p style="position: absolute; bottom: 35px; left: 20px;">本帖子于 ${topic.Flast_edit_time} 被${nick_name}编辑过</p>
+                    <?py #endif ?>
+
+                    <div class="ly_con clearfix">
+                        <div class="fb_time left">${time_passed(topic.Fcreate_time)}</div>
+                        <p class="topic_icon topic_toComment">
+                            <i class="iconfont " title="评论数">&#xe605;</i>
+                            ${topic.Ftotal_assess}
+                        </p>
+                        <p class="topic_icon topic_view">
+                            <i class="iconfont " title="浏览量">&#xe602</i>
+                            ${handler.get_page_view('t_topics',topic.Fid,topic.Fpage_view)}
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <!--楼主显示 end-->
+
+            <?py if reply_list:?>
+                <?py for r in reply_list:?>
+                    <li class="tc_li clearfix" data-id="${r['Fid']}">
+                        <!--个人信息-->
+                        <div class="ad_user_info left">
+                            <a href="/member/index/${r['Fuser_id']}" class="user_head" title="">
+                                <img src="${r['head_url']}" width="80" height="80" alt="">
+                            </a>
+                            <a href="/member/index/${r['Fuser_id']}" title="" class="t_u_name">${r['nick_name']}</a>
+                            <p class="floor">${r['index']}L</p>
+                        </div>
+                        <!--end个人信息-->
+
+                        <div class="tp_de_content left">
+                            <div class="htnr">${r['content']}</div>
+                            <?py if r['images']:?>
+                                <div class="top-detail-descImg clearfix">
+                                    <?py for img in r['images']:?>
+                                        <img src="${img['img']}" alt="">
+                                    <?py #endfor?>
+                                </div>
+                            <?py #endif ?>
+
+                            <div class="ly_con clearfix">
+                                <div class="fb_time left">${r['time']}</div>
+                                <?py if not r['replies']['total_count']:?>
+                                    <a href="javascript:;" class="re_topic">回复</a>
+                                <?py #endif ?>
+                            </div>
+                            <?py if not r['replies']['total_count']:?>
+                                <div class="topic_re" style="display: none;"></div>
+                            <?py #endif ?>
+
+                            <?py if r['replies']['replies']:?>
+                                <div class="topic_re">
+                                    <?py for ir in r['replies']['replies']:?>
+                                        <div class="re_info clearfix">
+                                            <div class="re_de_in">
+                                                <a href="/member/index/${ir['user_id']}" class="re_name" title="${ir['nick_name']}">${ir['nick_name']}</a>
+                                                <?py if ir['parent_user_id']: ?>
+                                                <span> 回复 </span>
+                                                <a href="/member/index/${ir['parent_user_id']}" class="re_name" title="${ir['parent_nick_name']}">${ir['parent_nick_name']}</a>
+                                                <?py #endif ?>
+                                                <span> : </span>
+                                                <span>${ir['content']}</span>
+                                            </div>
+                                            <a href="javascript:;" class="re_rtalk" data-id="${ir['reply_id']}">回复</a>
+                                        </div>
+                                    <?py #endfor ?>
+                                </div>
+
+                                    <div class="more_re clearfix">
+                                        <?py if r['replies']['total_count']>5:?>
+                                            <!--<a href="javascript:void(0)" title="点击展开剩余回复>>" class="sy_hf">点击展开剩余回复&gt;&gt;</a>-->
+                                        <?py #endif ?>
+                                        <a href="javascript:;" class="re_topic">我也说一句</a>
+                                    </div>
+                            <?py #endif ?>
+
+                            <div class="re_text_area" style="display:none;">
+                                <form class="reply_form" action="" method="post">
+                                    <p class="re_tittle">回复内容</p>
+                                    <div class="re_content">
+                                        <textarea name="content" class="re_talk_content"></textarea>
+                                    </div>
+                                    <div class="re_hf_submit clearfix">
+                                        <input type="hidden" class="reply_to" name="reply_to" value="${r['Fid']}">
+                                        <input type="button" value="提交" class="topic_hf_button reply_submit">
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </li>
+
+                 <?py #endfor ?>
+            <?py #endif ?>
+        </ul>
+
+        <!-- 翻页部分在此 -->
+        <div class="page-part">
+            <!--页面信息保存-->
+            <input type="hidden" name="page" value="1">
+            <input type="hidden" name="total_page" value="${total_page}">
+            <div class="page" id="J-manage-page"></div>
+        </div>
+
+        <div class="topic-publish-part" id="topicPublishForm">
+            <h3 class="publish-title">跟帖</h3>
+            <div class="topic-main-desc">
+                <textarea class="topic-desc-content" id="saytext" name="saytext" placeholder="请输入评论内容，至少5个字"></textarea>
+            </div>
+        </div>
+        <input type="button" class="ml20 btn btn-save commentBtn" value="发表">
+        <span class="err"></span>
+    </div>
+
+    <div class="topic_detail_right">
+        <p class="hot-topic-title red f16">热门话题</p>
+        <ul class="hot-topic-list">
+            <?py for topic in hot_topic: ?>
+            <li><a href="/topic/detail/${topic.Fid}/${topic.Fuser_id}" class="topic_icon hot-topic" target="_blank" title="${topic.Ftitle}">${topic.Ftitle}</a></li>
+            <?py #endfor ?>
+        </ul>
+
+
+    </div>
+    </div>
+</div>
+</div>
+<!-- 上传图片控件 -->
+<!-- <script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.ui.widget.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.iframe-transport.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/load-image.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.xdr-transport.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-ui.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-process.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/upload/jquery.fileupload-image.js"></script>
+ -->
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/plug/jquery.qqFace.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/topic_v2.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/skin/js/redactor.js"></script>
+<script type="text/javascript">
+    var topic = new topic().init();
+    $(function(){
+        $("#saytext").redactor({
+            buttons: ['image'],
+            imageUpload: '/album/photo/topic/upload/',
+            callback: function(){
+                $(".redactor_toolbar").append('<li class="emotion"><a href="javascript:void(null);" title="Insert qqface" class="redactor_btn_qqface" tabindex="-1"><i class="iconfont">&#xe601;</i></a></li>');
+                $('.redactor_editor').attr('id' , 'redactor_editor');
+
+                $('.emotion').qqFace({
+                    id: 'facebox',
+                    assign:'redactor_editor', //给输入框赋值
+                    path:'/static/skin/js/plug/face/',    //表情图片存放的路径
+                    tip : 'em_'
+                });
+            }
+        });
+        
+        $('#nav_topic').addClass('current');
+        jQuery.fn.extend({ 
+        insertAtCaret: function(str){ 
+        var textObj = $('#redactor_editor').get(0);
+        str = str.replace(/\[em_([0-9]*)\]/g,'<img src="/static/skin/js/plug/face/$1.gif" border="0"/>'); 
+        textObj.innerHTML = textObj.innerHTML + str;
+        return ; 
+        }
+        });
+    });
+</script>
+
+<script type="text/html" id="J-model-topic-comment">
+    <li class="tc_li clearfix" data-id="{{id}}">
+        <div class="ad_user_info left">
+            <a href="/member/index/{{user_id}}" class="user_head">
+                <img src="{{head_url}}" width="80" height="80" alt="">
+            </a>
+            <a href="/member/index/{{user_id}}" title="{{name}}" class="t_u_name">{{name}}</a>
+            <p class="floor">{{floor}}L</p>
+        </div>
+        <div class="tp_de_content left">
+            <div class="htnr">{{content}}</div>
+            {{descImg}}
+            <div class="ly_con clearfix">
+                <div class="fb_time left">{{time}}</div>
+                {{replay}}
+            </div>
+            <div class="topic_re" style="display: none;">
+                {{secondComment}}
+            </div>
+            <div class="more_re clearfix">{{meToo}}</div>
+            <div class="re_text_area" style="display:none;">
+                <form class="reply_form" action="" method="post">
+                    <p class="re_tittle">回复内容</p>
+                    <div class="re_content">
+                        <textarea name="content" class="re_talk_content"></textarea>
+                    </div>
+                    <div class="re_hf_submit clearfix">
+                        <input type="hidden" class="reply_to" name="reply_to" value="{{reply_id}}">
+                        <input type="button" value="提交" class="topic_hf_button reply_submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </li>
+</script>
+
+<script type="text/html" id="J-model-topic-comment2">
+    <div class="re_info clearfix">
+        <div class="re_de_in">
+            <a href="/member/index/{{user_id}}" class="re_name" title="{{name}}">{{name}}</a>
+            {{replay_object}}
+            <span> : </span>
+            <span>{{content}}</span>
+        </div>
+        <a href="javascript:;" class="re_rtalk" data-id="{{id}}">回复</a>
+    </div>
+</script>

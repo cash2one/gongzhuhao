@@ -1,0 +1,13 @@
+Fspace_remark = Column(String(512),doc='补充说明')
+Fshot_desc = Column(String(512),doc='套系特色')
+Fphotographer_level = Column(String(256),doc='摄影师级别')
+Frecommend_photographer = Column(String(512),doc='推荐摄影师')       #多个用空格隔开
+Farter_level = Column(String(256),doc='化妆师级别')
+Frecommend_arter = Column(String(512),doc='推荐化妆师')              #多个用空格隔开
+Fphoto_album_desc = Column(String(512),doc='相册')
+Fphoto_frame_desc = Column(String(512),doc='相框')
+Fmv_desc = Column(String(512),doc='相框')
+Fother_desc = Column(String(512),doc='其他描述')
+Fdescription = Column(Text,doc='套系补充说明')#
+Fother_pay_desc = Column(String(512),doc='其他补充说明')
+Fcover_img = Column(String(512),doc='封面图') #alter table t_shot_package add Fcover_img varchar(512) default '';

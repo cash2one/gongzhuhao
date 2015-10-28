@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="/static/mobile/css/schedule/schedule.css"  />
+<header class="header">
+	<a class="back" href="javascript:history.go(-1);"><span class="icon icon-back"></span></a>
+	<div class="title">${shd_nm}</div>
+	<!--<a href="/mobile/schedule/experience/${order_id}/${shd_no}/" class="publish">
+		<span class="icon icon-calendar fright"></span>
+	</a>-->
+</header>				
+<section class="cd-main-content detail">
+	<div class="info">
+        <p>${"人员" if item.Ftitle_stf=="" else item.Ftitle_stf}：
+        ${"" if item.Fname_stf=="" else item.Fname_stf}
+         <?py if stf:?>
+            (${"" if stf.Fmobi=="" else stf.Fmobi})
+         <?py #endif?>
+        </p>
+        <p><i class="icon icon-time"></i>${"" if not item.Fdatetime else item.Fdatetime}</p>
+		<p><i class="icon icon-location"></i>${"" if item.Fsite=="" else item.Fsite}</p>
+	</div>
+	<div class="container">
+		<p class="tips-title">温馨提示</p>
+        <div class="tips-cons" style="">${item.Freminder}</div>	
+	</div>
+</section>

@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="/static/crm/css/member/member.css" />
+			
+<div id="content" class="col-lg-10 col-sm-10">			
+	<!-- content starts -->		
+	<div class="row-fluid sortable">		
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>编辑员工</div>
+				<div class="box-content member-list">
+					<input type="hidden" value="${staffer.Fid}" id="staff-id"/>
+					<ul>
+						<li>
+							<label for="staffer-name-m">姓名</label>
+		                    <input type=" text" name="username" id="staffer-name-m" class="input-txt"  value="${staffer.Fname}"/>
+						</li>
+						<li>
+							<label for="staff-derapt-m">所在部门</label>
+							<select id="staff-derapt-m">
+		                        <?py for item in dpt_items: ?>
+		                        <?py if str(item.get('Fid'))==staffer.Fdepartment_id: ?>
+		                        <option value="${item.get('Fid')}" selected="true">${item.get('Ffull_department_name')}</option>
+		                        <?py else: ?>
+		                        <option value="${item.get('Fid')}">${item.get('Ffull_department_name')}</option>
+		                        <?py #endif ?>
+		                        <?py #endfor ?>
+							</select>
+						</li>
+						<li>
+							<label for="staff-title-m">职称</label>
+							<!--<input type="text" name="mobile" id="staff-title" class="input-txt" value="" />-->
+							<select id="staff-title-m">
+		                        <?py for t in _MERCHANG_DEPARTMENT_TITLES:?>
+		                        <?py if t==staffer.Ftitle.encode('utf8'): ?>
+		                            <option value="${t}" selected="true">${t}</option>
+		                        <?py else: ?>
+		                            <option value="${t}">${t}</option>
+		                        <?py #endif ?>
+		                        <?py #endfor?>
+							</select>
+						</li>
+						<li>
+							<label for="staffer-email-m">邮箱</label>
+							<input type="email" name="email" id="staffer-email-m" class="input-txt" value="${staffer.Femail}" />
+						</li>
+						<li>
+							<label for="staffer-mobile-m">手机号</label>
+							<input type="tel" name="mobile" id="staffer-mobile-m" class="input-txt" value="${staffer.Fmobi}" />
+						</li>
+						<li>
+							<button type="button" class="btn btn-default" data-dismiss="modal" id="js_staffer_cancel">取消</button>
+							<button type="button" class="btn btn-green" id="js_staffer_edit">保存</button>
+						</li>
+					</ul>
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+<!--gzh func js-->
+<script src="/static/crm/js/member/member.js"></script>

@@ -1,0 +1,237 @@
+<link href='/static/crm/css/dragula.min.css' rel='stylesheet' />
+<link href='/static/crm/css/series/series.css' rel='stylesheet' />
+
+<div id="content" class="col-lg-10 col-sm-10">
+    <div class="row-fluid sortable">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title>
+                    <h2>套系发布</h2>
+                </div>
+                <div class="box-content series">
+                    <div class="form-group">
+                        <label class="label-title">套系名称<em>*</em></label>
+                        <input type="text" name="package_name" id="package-name" class="form-control" value="" placeholder="请填写套系名称"/>
+                        <div class="error package-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title">原价<em>*</em></label>
+                        <input type="text" name="price" id="price" class="form-control" value="" placeholder="请填写原价"/>
+                        <div class="error price-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title">现价<em>*</em></label>
+                        <input type="text" name="sale_price" id="sale-price" class="form-control" value="" placeholder="请填写现价"/>
+                        <div class="error sale-price-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="v-top label-title">婚礼布置</label>
+                        <div class="series-extra">
+                            <div class="form-group">
+                                <label class="v-top label-title">迎宾区</label>
+                                <textarea name="welcome_area" id="welcome_area" class="form-control" placeholder="请描述迎宾区"></textarea>
+                                <div class="error welcome_area-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">仪式区</label>
+                                <textarea name="ceremony_area" id="ceremony_area" class="form-control" placeholder="请描述仪式区"></textarea>
+                                <div class="error ceremony_area-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">婚宴区</label>
+                                <textarea name="reception_area" id="reception_area" class="form-control" placeholder="请描述婚宴区"></textarea>
+                                <div class="error reception_area-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">设备及灯光</label>
+                                <textarea name="equipment" id="equipment" class="form-control" placeholder="请描述设备及灯光"></textarea>
+                                <div class="error equipment-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">婚礼布置补充说明</label>
+                                <textarea name="arrangement_extra" id="arrangement_extra" class="form-control" placeholder="婚礼布置补充说明"></textarea>
+                                <div class="error arrangement_extra-error"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="v-top label-title">鲜花装饰</label>
+                        <div class="series-extra">
+                            <div class="form-group">
+                                <label class="v-top label-title">会场</label>
+                                <textarea name="meetingplace" id="meetingplace" class="form-control" placeholder="请描述会场"></textarea>
+                                <div class="error meetingplace-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">新郎</label>
+                                <textarea name="bridegroom" id="bridegroom" class="form-control" placeholder="请描述新郎鲜花类型"></textarea>
+                                <div class="error bridegroom-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">新娘</label>
+                                <textarea name="bride" id="bride" class="form-control" placeholder="请描述新娘鲜花类型"></textarea>
+                                <div class="error bride-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">贵宾</label>
+                                <textarea name="vip" id="vip" class="form-control" placeholder="请描述贵宾鲜花类型"></textarea>
+                                <div class="error vip-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">鲜花装饰补充说明</label>
+                                <textarea name="flower_extra" id="flower_extra" class="form-control" placeholder="鲜花装饰补充说明"></textarea>
+                                <div class="error flower_extra-error"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="v-top label-title">仪式</label>
+                        <div class="series-extra">
+                            <div class="form-group">
+                                <label class="v-top label-title">证婚仪式</label>
+                                <textarea name="wedding_ceremony" id="wedding_ceremony" class="form-control" placeholder="请描述证婚仪式"></textarea>
+                                <div class="error wedding_ceremony-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">宴会仪式</label>
+                                <textarea name="banquet_ceremony" id="banquet_ceremony" class="form-control" placeholder="请描述宴会仪式"></textarea>
+                                <div class="error banquet_ceremony-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">仪式补充说明</label>
+                                <textarea name="ceremony_extra" id="ceremony_extra" class="form-control" placeholder="仪式补充说明"></textarea>
+                                <div class="error ceremony_extra-error"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="v-top label-title">服务团队</label>
+                        <div class="series-extra">
+                            <div class="form-group">
+                                <label class="v-top label-title">司仪</label>
+                                <textarea name="master" id="master" class="form-control" placeholder="请描述司仪"></textarea>
+                                <div class="error master-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">化妆</label>
+                                <textarea name="makeup" id="makeup" class="form-control" placeholder="请描述化妆"></textarea>
+                                <div class="error makeup-error"></div>
+                            </div>
+                             <div class="form-group">
+                                <label class="v-top label-title">摄影</label>
+                                <textarea name="photography" id="photography" class="form-control" placeholder="请描述摄影"></textarea>
+                                <div class="error photography-error"></div>
+                            </div>
+                             <div class="form-group">
+                                <label class="v-top label-title">摄像</label>
+                                <textarea name="camera" id="camera" class="form-control" placeholder="请描述摄像"></textarea>
+                                <div class="error camera-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">其他人员</label>
+                                <textarea name="service_extra" id="service_extra" class="form-control" placeholder="其他人员介绍"></textarea>
+                                <div class="error service_extra-error"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="v-top label-title">补充说明</label>
+                        <textarea name="extra" id="extra" class="form-control" cols="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-title v-top">封面图</label>
+                        <div class="series-upload">
+                        		<div class="cover-img">
+                                 <form action="/merchant/product/upload/series" method="post" id="js_cover"  enctype="multipart/form-data"/>
+                                    <input type="hidden" name="_xsrf" value="${xsrf_token}">
+                                    <div class="btn-uploadcover" value="" >上传封面图</div>
+                                    <img title="封面图" alt="" data-id="" src="" id="cover" class="cover">
+                                    <input id="coverupload" type="file" name="files" title="请选择图片" />
+                                </form>
+                        		</div>
+                            <div class="cover-desc v-top">
+                            		<p>图片宽度和高度940X580px，其他类目发横图1600*1200px，</p>
+                            		<p>单张图片不要超过10M，图片上不要有任何文字及Logo；</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt">
+                        <label class="label-title">图片展示<em>*</em></label>
+                        <div class="series-upload">
+                        		<div class="cover-img">
+                                <form action="/merchant/product/upload/series" method="post" enctype="multipart/form-data" id="J-formFile" />
+						            <input type="hidden" name="_xsrf" value="${xsrf_token}" />
+						            <input type="button" class="btn btn-sm btn-success btn-uploadphoto" value="上传图片" />
+						            <input id="fileupload" type="file" name="files" data-url="#"  title="请选择图片" multiple />
+						        </form>
+					        </div>
+					        <div class="cover-desc">
+                            		<p>单张图片不要超过5M, 建议上传8张图片及以上;</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="series-extra">
+                            <ul class="photo-thumb" id="J-append-photo">
+                                <input type="hidden" id="js-photo" />
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title">商户承若</label>
+                        <input type="checkbox" name="promise" checked />本套餐内容完全真实，不存在任何隐形消费
+                    </div>
+                    <div class="form-group ml">
+                        <input type="checkbox" name="statement" checked />我已阅读《商户信息发布声明》
+                    </div>
+                    <div class="form-group tcenter">
+                        <input type="submit" class="btn btn-default" id="save" value="提交"/>
+                        <input type="hidden" name="post_url" value="/merchant/weddingcompany/series/add/" />
+
+                        <!--<button class="btn btn-default" id="preview">预览</button>-->
+                        <a href="/merchant/weddingcompany/series/list/" class="btn btn-primary" id="cancel">取消</a>
+                    </div>
+                </div>
+            </div><!--/span-->
+        </div>
+    </div><!--/row-->
+</div><!--/#content.span10-->
+<!--<form>-->
+
+<script type="text/html" id="J-model-photo">
+	<li class="photo-item" sort-id="">
+        <div class="up-photo">
+            <img src="/static/crm/js/plugins/uploadify/img/user-loading.gif" alt="" title="" data-id=""/>
+        </div>
+        <!--<textarea name="photo_desc" class="photo-desc" placeholder="请填写图片描述"></textarea>-->
+        <span class="delete-photo">
+        		<i class="glyphicon glyphicon-trash"></i>
+        </span>
+	</li>
+</script>
+
+
+<!--gzh func js-->
+<script src="/static/crm/js/plugins/uploadify/js/jquery.ui.widget.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.iframe-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/load-image.min.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.xdr-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-ui.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-process.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-image.js"></script>
+<script src="/static/crm/js/dragula.min.js"></script>
+
+<script src="/static/crm/js/weddingcompany/series_add.js"></script>
+<script>
+	$(function(){
+        dragula([$('#J-append-photo')[0]]);
+		$(".nav-series").addClass("active");
+	})
+</script>

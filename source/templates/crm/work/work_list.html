@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="/static/crm/css/work/work.css" />
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->		
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+	                    <h2>作品预览</h2>
+	            	</div>
+	            	<div class="box-content">
+						<a href="/merchant/work/add/" class="btn btn-primary btn-publish"><span class="glyphicon glyphicon-open"></span>作品发布</a>
+					<div class="work-tab">
+						<a class="current" href="/merchant/work/list/wedding">婚纱摄影</a>
+						<a href="/merchant/work/list/traveling">旅游婚纱</a>
+					</div>                       		
+	            	</div>
+				<div class="box-content work">
+					<table class="table">
+						<thead>
+							<tr>
+								<th class="ml-avatar">名称</th>
+							    <th class="ml-mobile">风格</th>
+								<th class="ml-group">拍摄场景</th>
+								<th class="ml-lastlogin">造型特色</th>
+	                            <th class="ml-lastlogin">起拍价</th>
+								<th class="ml-role">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+			            <?py if work:?>
+			                <?py for w in work:?>
+							<tr>
+								<input type="hidden" value="${w.Fid}" id="work-id"/>
+								<td class="ml-avatar">
+									<!--<img src="" width="45" height="45" alt="avatar" class="fleft"/>-->
+									${w.Fname}
+								</td>
+								<td class="ml-mobile">
+									${w.Fstyle_name}
+								</td>
+								<td class="ml-group">
+									${w.Fshot_scene_name}
+								</td>
+								<td class="ml-lastlogin">
+	                                <span>${w.Fmode_style_name}</span>
+								</td>
+	                            <td class="ml-lastlogin">
+	                                <span>${w.Fsale_price}</span>
+								</td>
+								<td class="ml-role">
+									<a href="/merchant/work/edit/${w.Fid}/" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-edit"></span>编辑</a>
+									<a href="javascript:;" data-id="${w.Fid}" class="btn btn-danger btn-sm delete"><span class="glyphicon glyphicon-trash"></span>删除</a>
+								</td>
+							</tr>
+			                <?py #endfor ?>
+			                <?py #endif?>
+						</tbody>
+					</table>								
+
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+<script src="/static/crm/js/work/work.js"></script>
+<script>
+	$(function(){
+		$(".nav-work").addClass("active");
+	})
+</script>

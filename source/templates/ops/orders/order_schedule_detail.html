@@ -1,0 +1,364 @@
+
+<div class="clearfix row-main">
+    <?py include('ops/orders/orders_base.html')?>
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading"><strong><i class="icon-plus"></i>&nbsp; 订单详情</strong> </div>
+            <div class="panel-body">
+                <form id="product_search_form" action="" method="post">
+                   <?py if data_info:?>
+                   <?py for data_list in data_info:?>
+                    <table class="table table-form">
+                        <tbody>
+                        <tr>
+                            <input type="hidden" id="id" name="id" value="${data_list['query'].id}">
+                            <th class="w-100px">用户姓名</th>
+                            <?py if data_list['query'].name:?>
+                            <td class="w-p50">
+                                <input type="text" name="user_name" id="user_name" value="${data_list['query'].name}"  class="form-control" readonly= "true">
+                            </td>
+                            <?py else:?>
+                            <td class="w-p50">
+                                <input type="text" name="user_name" id="user_name" value="NULL"  class="form-control" readonly= "true">
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        <tr class="w-p40">
+                            <th class="w-100px">用户昵称</th>
+                            <?py if data_list['query'].user_nick:?>
+                            <td class="w-p50">
+                                <input type="text" name="user_nick" id="user_nick" value="${data_list['query'].user_nick}"  class="form-control" readonly= "true">
+                            </td>
+                            <?py else: ?>
+                            <td class="w-p50">
+                                <input type="text" name="user_nick" id="user_nick" value="NULL"  class="form-control" readonly= "true">
+                            </td>
+                            <?py #endif?>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                        <tbody >
+                        <tr>
+                            <th>用户联系方式</th>
+                            <?py if data_list['query'].phone:?>
+                            <td>
+                                <input type="text" name="user_contract" id="user_contract" value="${data_list['query'].phone}"  class="form-control" readonly= "true">
+                            </td>
+                            <?py else:?>
+                            <td>
+                                <input type="text" name="user_contract" id="user_contract" value="NULL"  class="form-control" readonly= "true">
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        <tr>
+                            <th>用户地址</th>
+                            <?py if data_list['query'].address:?>
+                            <td>
+                                <input type="text" name="user_address" id="user_address" value="${data_list['query'].address}"  class="form-control" readonly= "true">
+                            </td>
+                            <?py else:?>
+                            <td>
+                                <input type="text" name="user_address" id="user_address" value="NULL"  class="form-control" readonly= "true">
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        <tr>
+                            <th>订单类型</th>
+                            <?py if data_list['query'].order_type==2:?>
+                            <td>
+                                <input type="text" name="order_type" id="order_type" value="商户"  class="form-control" readonly= "true">
+                            </td>
+                            <?py else:?>
+                            <td>
+                                <input type="text" name="order_type" id="order_type" value="其他"  class="form-control" readonly= "true">
+                            </td>
+                            <?py #endif?>
+                        </tr>
+                        <tr>
+                            <th>订单描述</th>
+                            <?py if data_list['query'].description:?>
+                            <td>
+                                <input type="text" name="order_description" id="order_description" value="${data_list['query'].description}"  class="form-control" readonly= "true">
+                            </td>
+                            <?py else: ?>
+                            <td>
+                                <input type="text" name="order_description" id="order_description" value="NULL"  class="form-control" readonly= "true">
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        <tr>
+                            <th>订单创建日期</th>
+                            <?py if data_list['query'].gmt_created:?>
+                            <td>
+                                <input type="text" name="order_gmt_create" id="order_gmt_create" value="${data_list['query'].gmt_created}"  class="form-control" readonly= "true">
+                            </td>
+                            <?py else: ?>
+                            <td>
+                                <input type="text" name="order_gmt_create" id="order_gmt_create" value="NULL"  class="form-control" readonly= "true">
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                          <tr>
+                            <th>最新修改日期</th>
+                            <?py if data_list['query'].gmt_modified:?>
+                            <td>
+                                <input type="text" name="order_gmt_modified" id="order_gmt_modified" value="${data_list['query'].gmt_modified}"  class="form-control" readonly= "true">
+                            </td>
+                            <?py else: ?>
+                            <td>
+                                <input type="text" name="order_gmt_modified" id="order_gmt_modified" value="NULL"  class="form-control" readonly= "true">
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        </tbody>
+                        <tbody>
+                        <tr>
+                            <th>订单标题</th>
+                            <?py if data_list['query'].product_title:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="title" id="title" value="${data_list['query'].product_title}" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py else:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="title" id="title" value="NULL" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                         <tr>
+                            <th>订单状态</th>
+                             <?py if data_list['query'].status==0:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="order_status" id="order_status" value="已下单" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                             <?py else:?>
+                             <td >
+                                <div class="input-group">
+                                    <input type="text" name="order_status" id="order_status" value="已确认" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                             <?py #endif ?>
+                        </tr>
+                        <tr>
+                            <th>商家名称</th>
+                              <?py if not data_list['query'].merchant_name=='':?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_name" id="merchant_name" value="${data_list['query'].merchant_name}" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                             <?py else:?>
+                             <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_name" id="merchant_name" value="NULL" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                             <?py #endif ?>
+                        </tr>
+                        <?py for merchant_data in data_list['data']:?>
+                        <input type="hidden" id="merchant_id" name="merchant_id" value="${merchant_data.id}">
+
+                        <tr>
+                            <th>商家地址</th>
+                            <?py if merchant_data.address:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_address" id="merchant_address" value="${merchant_data.address}" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py else:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_address" id="merchant_address" value="NULL" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                         <tr>
+                            <th>商家联系人</th>
+                            <?py if merchant_data.contact:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_contract" id="merchant_contract" value="${merchant_data.contact}" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                             <?py else:?>
+                             <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_contract" id="merchant_contract" value="NULL" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        <tr>
+                            <th>商家联系电话</th>
+                            <?py if merchant_data.phone:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_phone" id="merchant_phone" value="${merchant_data.phone}" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py else:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_phone" id="merchant_phone" value="NULL" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        <tr>
+                            <th>商家等级</th>
+                            <?py if merchant_data.level:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_level" id="merchant_level" value="${merchant_data.level}" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py else:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_level" id="merchant_level" value="0" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        <tr>
+                            <th>商家微信地址</th>
+                            <?py if merchant_data.app_url:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_wechaturl" id="merchant_wechaturl" value="${merchant_data.app_url}" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py else:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_wechaturl" id="merchant_wechaturl" value="NULL" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        <tr>
+                            <th>商家QQ</th>
+                            <?py if merchant_data.qq:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_qq" id="merchant_qq" value="${merchant_data.qq}" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py else:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_qq" id="merchant_qq" value="NULL" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        <tr>
+                            <th>商家Email</th>
+                            <?py if merchant_data.mail:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_email" id="merchant_email" value="${merchant_data.mail}" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py else:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_email" id="merchant_email" value="NULL" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        <tr>
+                            <th>商家背景页面</th>
+                            <?py if merchant_data.background_url:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_bgurl" id="merchant_bgurl" value="${merchant_data.background_url}" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py else:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_bgurl" id="merchant_bgurl" value="NULL" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        <tr>
+                            <th>商家photos</th>
+                            <?py if merchant_data.photo_url:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_phourl" id="merchant_phourl" value="${merchant_data.photo_url}" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py else:?>
+                            <td >
+                                <div class="input-group">
+                                    <input type="text" name="merchant_phourl" id="merchant_phourl" value="NULL" class="form-control" readonly= "true">
+                                </div>
+                            </td>
+                            <?py #endif ?>
+                        </tr>
+                        <?py #endfor ?>
+                        </tbody>
+
+                        </tbody>
+                        <tbody>
+                        <tr align="center">
+                            <td ><input type="submit" name="submit" id="submit" class="btn btn-primary" value="保存"
+                                                   data-loading="稍候..." disabled="disabled">
+                            </td>
+                            <td ><input type="button" id="edit" class="btn btn-primary" value="编辑" onclick="javascript:Order.Enable()"  >
+                            </td>
+                        </tr>
+                        </tbody>
+                    #{xsrf_form_html}
+                    </table>
+                    <?py #endfor ?>
+                    <?py #endif ?>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+
+     var Order =
+     {
+         Enable: function ()
+         {
+             $("#submit").attr('disabled', false);
+             $("#user_nick").attr('readonly', false);
+             $("#user_contract").attr('readonly', false);
+             $("#user_address").attr('readonly', false);
+             $("#order_type").attr('readonly', false);
+             $("#order_description").attr('readonly', false);
+             $("#order_gmt_create").attr('readonly', false);
+             $("#order_gmt_modified").attr('readonly', false);
+             $("#title").attr('readonly', false);
+             $("#order_status").attr('readonly', false);
+             $("#merchant_name").attr('readonly', false);
+             $("#merchant_address").attr('readonly', false);
+             $("#merchant_contract").attr('readonly', false);
+             $("#merchant_phone").attr('readonly', false);
+             $("#merchant_level").attr('readonly', false);
+             $("#merchant_wechaturl").attr('readonly', false);
+             $("#merchant_qq").attr('readonly', false);
+             $("#merchant_email").attr('readonly', false);
+             $("#merchant_bgurl").attr('readonly', false);
+             $("#merchant_phourl").attr('readonly', false);
+             $("#user_name").attr('readonly',false);
+         }
+     }
+</script>

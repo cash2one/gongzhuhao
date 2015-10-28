@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/static/crm/css/system/setting.css" />
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->
+	<div class="row-fluid sortable">
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>服务设置 - 订单礼</h2>
+				</div>
+				<div class="box-content">
+					<div class="work-tab">
+                        <a href="/merchant/schedule/edit/template/msg/">温馨提示设置</a>
+						<a href="/merchant/schedule/edit/template/site/">地址设置</a>
+                        <a href="/merchant/system/gift/1">到店礼</a>
+                        <a class="current" href="/merchant/system/gift/2">订单礼</a>
+					</div>
+				</div>
+
+				<div class="box-content member" id="js_setting">
+                <div class="setcons">
+	                </div>
+                		<div class="setcons">
+                        <?py if gift: ?>
+                            <textarea name="m-prize-info" id="description" class="form-control textarea" placeholder="请输入您的订单礼~">${gift.Fcontent}</textarea>
+                        <?py else: ?>
+                            <textarea name="m-prize-info" id="description" class="form-control textarea" placeholder="请输入您的订单礼~"></textarea>
+                        <?py #endif ?>
+                        <p id="txt-count"></p>
+                    </div>
+
+                <div class="setcons tright">
+                    <source class="error info-error"></source>
+                    <button type="button" name="add" class="btn btn-success" id="js_save_og">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<script src="/static/crm/js/system/set_order_gift.js"></script>
+<script>
+	$(function(){
+		$(".nav-service").addClass("active");
+		$(".nav-service").parent().css("display","block");
+	})
+</script>

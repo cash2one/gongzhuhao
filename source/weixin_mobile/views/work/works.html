@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <?py include("views/assets/styles.html") ?>
+        <style type="text/css">
+        body{
+          font-size: 9px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="work-container">
+          <header class="bar bar-header bar-light">
+            <div class="row">
+              <div class="col">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    ${work_style.get(work_style_code,'全部风格')} <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/api/mobile/works/query/1/" data-value="">全部</a></li>
+                    <?py for key in work_style: ?>
+                        <li><a href="/api/mobile/works/query/1/?style=${key}" data-value="${key}">${work_style.get(key)}</a></li>
+                    <?py #endfor?>
+                  </ul>
+              </div>
+              <div class="col">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    ${work_scene.get(work_scene_code,'全部场景')} <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="/api/mobile/works/query/1/" data-value="">全部</a></li>
+                    <?py for key in work_scene: ?>
+                        <li><a href="/api/mobile/works/query/1/?scene=${key}" data-value="${key}">${work_scene.get(key)}</a></li>
+                    <?py #endfor ?>
+                  </ul>
+              </div>
+            </div>
+          </header>
+          <div class="content">
+              #{_content}
+          </div>
+           <div class="list">
+          <?py if has_next == 1: ?>
+            <button type="button" class="btn btn-more"> 点击获取更多数据>></button>
+          <?py #endif ?>
+          </div>
+        </div>
+        <?py include("views/assets/javascripts.html") ?>
+        <script type="text/javascript" src="/static/scripts/work/works.js"></script>
+    </body>
+</html>

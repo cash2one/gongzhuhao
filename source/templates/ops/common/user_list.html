@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://demo.chanzhi.org/backend.php?m=user&f=admin -->
+<html class="screen-desktop-wide device-desktop m-user m-user-admin"><head profile="http://www.w3.org/2005/10/profile"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员列表 - 蝉知企业门户，开源免费的企业建站系统</title>
+<meta name="keywords" content="企业门户系统 企业建站系统 开源CMS">
+<meta name="description" content="蝉知门户系统（chanzhiEPS）是一款开源免费的企业门户系统，企业建站系统，php开源CMS系统。它专为企业营销设计，功能专业全面，内置了文章发布、会员管理、论坛评论、产品展示、在线销售、客服跟踪等功能。以LGPL协议发布，真开源，真免费。注重SEO，注重营销，支持移动设备。界面简洁大方，使用简单方便，功能专业强大，是企业建站的首选！同时蝉知系统还内置了微信公众平台功能，一个网站，电脑、手机、微信体验俱佳！">
+<script language="Javascript">var config={"webRoot":"\/","cookieLife":30,"requestType":"GET","requestFix":"-","moduleVar":"m","methodVar":"f","viewVar":"t","defaultView":"html","themeRoot":"\/theme\/","currentModule":"user","currentMethod":"admin","clientLang":"zh-cn","requiredFields":"","save":"\u4fdd\u5b58","router":"\/backend.php","runMode":"admin"}
+</script>
+<link rel="stylesheet" href="./files/all.admin.css" type="text/css" media="screen">
+<script src="./files/all.admin.js" type="text/javascript"></script>
+<style>
+    .user-control-nav{margin-bottom: 20px;}
+@media (max-width: 480px) { .hidden-xxs {display: none} .page {font-size: 12px}}
+@media (max-width: 400px) { .hidden-xxxs {display: none}}
+.panel{margin: 0 15px 0 0;}
+.panel-actions > form {max-width: 400px;}
+.panel-actions > form .input-group{margin-top: 3px;}
+.panel-actions > form .input-group .btn{margin: 0;}
+</style><link rel="icon" href="http://demo.chanzhi.org/data/upload/201408/f_f9dcb3fb6ce5aaff3f548cbe30403a2a.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://demo.chanzhi.org/data/upload/201408/f_f9dcb3fb6ce5aaff3f548cbe30403a2a.ico" type="image/x-icon">
+<link href="http://demo.chanzhi.org/backend.php?m=rss&f=index&t=xml" title="蝉知企业门户，开源免费的企业建站系统" type="application/rss+xml" rel="alternate"><!--[if lt IE 9]>
+<script src='/js/all.ie8.js?v=3.1' type='text/javascript'></script>
+<![endif]-->
+<!--[if lt IE 10]>
+<script src='/js/all.ie9.js?v=3.1' type='text/javascript'></script>
+<![endif]-->
+<script language="Javascript">if(typeof(v) != "object") v = {};v.lang = {"confirmDelete":"\u60a8\u786e\u5b9a\u8981\u6267\u884c\u5220\u9664\u64cd\u4f5c\u5417\uff1f","deleteing":"\u5220\u9664\u4e2d","doing":"\u5904\u7406\u4e2d","loading":"\u52a0\u8f7d\u4e2d","timeout":"\u7f51\u7edc\u8d85\u65f6,\u8bf7\u91cd\u8bd5"};</script>
+</head>
+<body style="zoom: 1;">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="mainNavbar">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="http://demo.chanzhi.org/backend.php?m=admin&f=index" class="navbar-brand">蝉知</a>
+  </div>
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav mainNavbarNav">
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=admin&f=index">首页</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin">文章</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=blog">博客</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=product&f=admin">产品</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=book&f=admin">手册</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=article&f=admin&type=page">单页</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=forum&f=admin">论坛</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=site&f=setbasic">站点</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=ui&f=setlogo">界面</a></li>
+<li class="simple-mode-a"><a href="http://demo.chanzhi.org/backend.php?m=company&f=setbasic">公司</a></li>
+<li class="active simple-mode-a"><a href="./files/user_list.html">会员</a></li>
+<li class="simple-mode-b"><a href="http://demo.chanzhi.org/backend.php?m=message&f=admin">反馈</a></li>
+<li class="simple-mode-b"><a href="http://demo.chanzhi.org/backend.php?m=package&f=browse">扩展</a></li>
+</ul>
+    <ul class="nav navbar-nav" id="navbarSwitcher">
+      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=admin###"><i class="icon-chevron-sign-right icon-large"></i></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown"><a href="http://demo.chanzhi.org/backend.php?m=user&f=admin###" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-globe icon-large"></i> &nbsp;简体<span class="caret"></span></a>
+<ul class="dropdown-menu">
+  <li><a rel="nofollow" href="javascript:selectLang("zh-tw")">繁体</a></li><li><a rel="nofollow" href="javascript:selectLang("en")">English</a></li></ul>
+</li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right"><li><a href="http://demo.chanzhi.org/" target="_blank" class="navbar-link"><i class="icon-home icon-large"></i> 前台</a>
+</li><li class="dropdown"><a href="http://demo.chanzhi.org/backend.php?m=user&f=admin#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-large"></i> demo <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="http://demo.chanzhi.org/backend.php?m=user&f=changePassword" data-toggle="modal">修改密码</a>
+</li><li><a href="http://demo.chanzhi.org/backend.php?m=user&f=logout">退出</a>
+</li></ul></li></ul>  </div>
+</nav>
+
+
+<div class="clearfix row-main">
+      <div class="col-md-2">
+    <div class="leftmenu affix hiddden-xs hidden-sm">
+      <ul class="nav-left nav nav-primary nav-stacked">
+<li class="active"><a href="./files/user_list.html">全部会员<i class="icon-chevron-right"></i></a>
+</li>
+<li class=""><a href="http://demo.chanzhi.org/backend.php?m=user&f=admin&provider=sina">微博会员<i class="icon-chevron-right"></i></a>
+</li>
+<li class=""><a href="http://demo.chanzhi.org/backend.php?m=user&f=admin&provider=wechat">微信会员<i class="icon-chevron-right"></i></a>
+</li>
+</ul>
+ </div>
+  </div>
+  <div class="col-md-10">
+  <script language="Javascript">v.provider = false;</script>
+<div class="panel">
+  <div class="panel-heading">
+    <strong><i class="icon-group"></i> 会员列表</strong>
+    <div class="panel-actions">
+      <form method="get" class="form-inline form-search">
+        <input type="hidden" name="m" id="m" value="user">
+<input type="hidden" name="f" id="f" value="admin">
+        <div class="input-group">
+          <input type="text" name="user" id="user" value="" class="form-control search-query" placeholder="请输入用户名">
+          <span class="input-group-btn">
+             <input type="submit" id="submit" class="btn btn-primary" value="搜索" data-loading="稍候...">           </span>
+        </div>
+      </form>
+    </div>
+  </div>
+  <table class="table table-hover table-striped table-bordered">
+    <thead>
+      <tr class="text-center">
+        <th>编号</th>
+        <th>真实姓名</th>
+        <th>用户名</th>
+        <th>性别</th>
+        <th class="text-left">公司/组织</th>
+        <th>注册日期</th>
+        <th>访问次数</th>
+        <th>最后登录</th>
+        <th>最后IP</th>
+        <th>状态</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="text-center">
+      <td>2</td>
+      <td>demo</td>
+      <td>demo</td>
+      <td></td>
+      <td></td>
+      <td>2014-08-25</td>
+      <td>117</td>
+      <td>2014-10-16 14:16:12</td>
+      <td>221.215.102.148</td>
+      <td>
+                  <label class="label label-success">正常</label>      </td>
+      <td class="operate">
+                <a href="http://demo.chanzhi.org/backend.php?m=user&f=edit&account=demo">编辑</a>
+                <span class="dropdown">
+          <a href="http://demo.chanzhi.org/backend.php?m=user&f=admin###" class="dropdown-toggle" data-toggle="dropdown">禁用 <span class="caret"></span></a>
+          <ul class="dropdown-menu pull-right text-left" role="menu">
+                      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=forbid&userID=2&date=1" class="forbider">一天</a>
+</li>
+                      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=forbid&userID=2&date=2" class="forbider">两天</a>
+</li>
+                      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=forbid&userID=2&date=3" class="forbider">三天</a>
+</li>
+                      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=forbid&userID=2&date=7" class="forbider">一周</a>
+</li>
+                      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=forbid&userID=2&date=30" class="forbider">一个月</a>
+</li>
+                      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=forbid&userID=2&date=3000" class="forbider">永久</a>
+</li>
+                    </ul>
+        </span>
+                      </td>
+    </tr>
+        <tr class="text-center">
+      <td>3</td>
+      <td>test</td>
+      <td>test</td>
+      <td></td>
+      <td></td>
+      <td>2014-08-26</td>
+      <td>2</td>
+      <td>2014-08-26 10:12:56</td>
+      <td>221.5.213.133</td>
+      <td>
+                  <label class="label label-success">正常</label>      </td>
+      <td class="operate">
+                <a href="http://demo.chanzhi.org/backend.php?m=user&f=edit&account=test">编辑</a>
+                <span class="dropdown">
+          <a href="http://demo.chanzhi.org/backend.php?m=user&f=admin###" class="dropdown-toggle" data-toggle="dropdown">禁用 <span class="caret"></span></a>
+          <ul class="dropdown-menu pull-right text-left" role="menu">
+                      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=forbid&userID=3&date=1" class="forbider">一天</a>
+</li>
+                      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=forbid&userID=3&date=2" class="forbider">两天</a>
+</li>
+                      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=forbid&userID=3&date=3" class="forbider">三天</a>
+</li>
+                      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=forbid&userID=3&date=7" class="forbider">一周</a>
+</li>
+                      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=forbid&userID=3&date=30" class="forbider">一个月</a>
+</li>
+                      <li><a href="http://demo.chanzhi.org/backend.php?m=user&f=forbid&userID=3&date=3000" class="forbider">永久</a>
+</li>
+                    </ul>
+        </span>
+                      </td>
+    </tr>
+        </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="12">
+                <div style="float:right; clear:none;" class="page form-inline">共 <strong>2</strong> 条记录，每页 <strong><select name="_recPerPage" id="_recPerPage" onchange="submitPage(&quot;changeRecPerPage&quot;);" class="w-60px">
+<option value="5">5</option>
+<option value="10" selected="selected">10</option>
+<option value="15">15</option>
+<option value="20">20</option>
+<option value="25">25</option>
+<option value="30">30</option>
+<option value="35">35</option>
+<option value="40">40</option>
+<option value="45">45</option>
+<option value="50">50</option>
+<option value="100">100</option>
+<option value="200">200</option>
+<option value="500">500</option>
+<option value="1000">1000</option>
+</select>
+</strong> 条，页面：<strong>1/1</strong> 首页 上页 下页 末页 <input type="hidden" id="_recTotal" value="2">
+<input type="hidden" id="_pageTotal" value="1">
+<input type="text" id="_pageID" value="1" style="text-align:center;width:30px;">
+<input type="button" id="goto" value="Go!" onclick="submitPage(&quot;changePageID&quot;);" class="btn btn-default btn-xs">        <script language="Javascript">
+        vars = '';
+        pageCookie = 'pagerUserAdmin';
+        function submitPage(mode)
+        {
+            pageTotal  = parseInt(document.getElementById('_pageTotal').value);
+            pageID     = document.getElementById('_pageID').value;
+            recPerPage = document.getElementById('_recPerPage').value;
+            recTotal   = document.getElementById('_recTotal').value;
+            $.cookie(pageCookie, recPerPage, {expires:config.cookieLife, path:config.webRoot});
+            if(mode == 'changePageID')
+            {
+                if(pageID > pageTotal) pageID = pageTotal;
+                if(pageID < 1) pageID = 1;
+            }
+            else if(mode == 'changeRecPerPage')
+            {
+                pageID = 1;
+            }
+
+            vars = vars.replace('_recTotal_', recTotal)
+            vars = vars.replace('_recPerPage_', recPerPage)
+            vars = vars.replace('_pageID_', pageID);
+            location.href=createLink('user', 'admin', vars);
+        }
+        </script></div>        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
+</div></div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom hidden-sm hidden-xs" role="navigation">
+  <div class="collapse navbar-collapse navbar-ex6-collapse">
+    <div class="navbar-text pull-right"> <span id="poweredBy"><a href="http://www.chanzhi.org/?v=3.1" target="_blank" title="蝉知门户，微网站专家！"><i class="icon icon-bell"></i> 蝉知 3.1</a></span></div>
+  </div>
+</nav>
+
+<script language="Javascript">$(document).ready(function()
+{
+    /* Set forbid link options. */
+    $('td.operate a.forbider').click(function()
+    {
+        $.getJSON($(this).attr('href'),function(data)
+        {
+            alert(data.message);
+            return location.reload();
+        });
+        return false;
+    });
+
+    $('.form-search').submit(function()
+    {
+        var inputValue = $(".search-query").val();
+        if(inputValue == '')
+        {
+            alert('请输入用户名');
+            return false;
+        }
+    });
+
+    /* Set active menu. */
+    $('.leftmenu li.active').removeClass('active');
+    $(".leftmenu a[href*='provider=" + v.provider  + "']").parent().addClass('active');
+    if($('.leftmenu li.active').size() == 0) $('.leftmenu li:first').addClass('active');
+
+    $('#pullBtn').click(function()
+    {
+        url = $(this).attr('href');
+        $(this).text(v.lang.loading);
+        $.getJSON(url, function(response)
+        {
+            if(response.result == 'success')
+            {
+                window.location.reload();
+            }
+            else
+            {
+                bootbox.alert(response.message);
+            }
+        });
+        return false;
+    });
+});
+
+</script>
+
+
+</body></html>

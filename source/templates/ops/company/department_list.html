@@ -1,0 +1,62 @@
+<?py from admin_apps.companys.department_handler import get_child_dept ?>
+<div class="clearfix row-main">
+    <?py include('ops/company/companys_base.html') ?>
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading">
+                <strong><i class="icon-group"></i>部门列表</strong>
+            </div>
+
+            <!--chosen  选择组件-->
+            <link rel="stylesheet" href="/static/ops/css/min.css" type="text/css" media="screen">
+            <script src="/static/ops/js/min.js" type="text/javascript"></script>
+            <link rel="stylesheet" href="/static/ops/datetime/bootstrap-datetimepicker.min.css" type="text/css" media="screen">
+            <script src="/static/ops/datetime/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+            <script>
+                     $(document).ready(function(){
+                        $(".chosen-select").chosen({allow_single_deselect:true});
+                        $('.search_date').datepicker({
+                            format: 'yyyy-mm-dd'
+                        });
+                        $('#company_nav').addClass('active');
+                     });
+            </script>
+
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th><input type="checkbox" name="user_ids" value="all"></th>
+                        <th>序号</th>
+                        <th>部门名称</th>
+                        <th>部门全路径名称</th>
+                        <th>创建日期</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                  <?py for department in page_data.result: ?>
+                    <tr class="text-center" id="${department.Fid}">
+                       <td><input type="checkbox" name="staffer_id" value="${department.Fid}"></td>
+                       <td>${department.Fid}</td>
+                       <td>${department.Fname}</td>
+                       <td>${department.Ffull_department_name}</td>
+                       <td>${department.Fcreate_time}</td>
+                       <td>
+                          <?py query = get_child_dept(handler,department.Fuid_mct,department.Fid) ?>
+                          <?py if query.count() >0: ?>
+                            <a href="/gzh/ops/department/list/${department.Fuid_mct}/${department.Fid}/${department.Fdepartment_level}">下级部门</a>
+                          <?py #endif ?>
+                          <a href="/gzh/ops/department/staffer/list/${department.Fuid_mct}/${department.Fid}">查询员工</a>
+                       </td>
+                    </tr>
+                  <?py #endfor ?>
+                </tbody>
+                   #{page_html}
+            </table>
+        </div>
+    </div>
+</div>
+<script language="Javascript">
+
+</script>

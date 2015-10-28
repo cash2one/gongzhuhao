@@ -1,0 +1,12 @@
+<ion-view view-title="照片">
+  <ion-content class="photo">
+  	<div ng-repeat="item in model.photolist.list"class="list card photo-list">
+	  <a class="item item-image" href="weixin://viewimage/{{item.photo_url}}">
+	    <img class="full-image" style="padding:5px;height:200px;" ng-src="{{item.photo_url}}">
+	  </a>
+  </div>
+  </ion-content>
+  <div class="bar bar-footer">
+    <div class="title" ng-click="onShare()">分  享</div>
+  </div>
+</ion-view>

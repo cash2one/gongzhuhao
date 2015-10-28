@@ -1,0 +1,215 @@
+
+<div class="clearfix row-main">
+
+<?py include('ops/users/user_menu.html') ?>
+
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading"><strong><i class="icon-globe"></i>编辑用户</strong></div>
+            <div class="panel-body">
+                <form class="form-inline" action="" id="user_ajax_form" method="post">
+                    <table class="table table-form">
+                        <tbody>
+
+                        <tr>
+                            <th class="col-xs-2">用户名</th>
+                            <td class="col-xs-6">
+                                <input type="text"  class="form-control" value="${user.Fuser_name}" id="user_name" name="Fuser_name">
+                                <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th class="col-xs-2">昵称</th>
+                            <td class="col-xs-6"><input type="text" class="form-control" value="${user.Fnick_name}" id="nick" name="Fnick_name">
+                                 <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <?py if user.Frole_codes: ?>
+                            <tr>
+                                <th class="col-xs-2">用户类型</th>
+                                      <td class="col-xs-6">
+                                        <?py if user.is_employee == True: ?>
+                                           <label for="type1" class="radio-inline">
+                                                <input type="radio" class="checkbox" checked="checked" value="1" name="is_employee" id="type1">员工</label>
+                                           <label for="type2" class="radio-inline">
+                                                <input type="radio" class="checkbox" value="0" name="is_employee" id="type2">非员工</label>
+                                        <?py else: ?>
+                                           <label for="type1" class="radio-inline">
+                                                <input type="radio" class="checkbox" value="1" name="is_employee" id="type1">员工</label>
+                                           <label for="type2" class="radio-inline">
+                                                <input type="radio" class="checkbox" checked="checked" value="0" name="is_employee" id="type2">非员工</label>
+                                        <?py #endif ?>
+                                      </td>
+                                <td></td>
+                            </tr>
+                        <?py #endif ?>
+
+                         <?py if user.Frole_codes: ?>
+                            <tr>
+                                <th>角色</th>
+                                <td>
+                                    <?py if roles:?>
+                                     <?py for r in roles:?>
+                                      <?py if r.Fcode in user.Frole_codes: ?>
+                                        <label class="checkbox">
+                                            <input type="checkbox" checked = "checked" value="${r.Fid}" name="roles" id="role_id">${r.Fname}</label>
+                                      <?py else: ?>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="${r.Fid}" name="roles" id="role_id">${r.Fname}</label>
+                                      <?py #endif ?>
+                                     <?py #endfor?>
+                                    <?py #endif ?>
+                                </td>
+                                <td></td>
+                            </tr>
+                         <?py #endif?>
+
+
+                        <!--<tr>-->
+                            <!--<th>语言</th>-->
+                            <!--<td><select class="form-control chosen" id="lang" name="lang">-->
+                                <!--<option selected="selected" value="zh-cn">简体</option>-->
+                                <!--<option value="zh-tw">繁体</option>-->
+                                <!--<option value="en">English</option>-->
+                            <!--</select>-->
+                            <!--</td>-->
+                            <!--<td></td>-->
+                        <!--</tr>-->
+
+                        <?py if 'merchant' in user.Frole_codes: ?>
+                            <tr id="merchant_name_tr">
+                                <th class="col-xs-2">商户名称</th>
+                                <td class="col-xs-6"><input type="merchant_name" class="form-control" value="${company.Fcompany_name}" id="merchant_name" name="Fcompany_name">
+                                     <span class="text-error red" for="title" ></span>
+                                </td>
+                                <td></td>
+                            </tr>
+
+                            <tr id="merchant_addr_tr">
+                                <th class="col-xs-2">商户地址</th>
+                                <td class="col-xs-6"><input type="merchant_addr" class="form-control" value="${company.Faddress}" id="merchant_addr" name="Faddress">
+                                    <span class="text-error red" for="title" ></span>
+                                </td>
+                                <td></td>
+                            </tr>
+                        <?py #endif ?>
+
+
+
+
+                        <tr>
+                            <th>邮箱</th>
+                            <td><input type="text" class="form-control" value="${user.Femail}" id="email" name="Femail">
+                                 <span class="text-error red" for="title" ></span>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <th>手机</th>
+                            <td><input type="text" class="form-control" value="${user.Fuser_mobi}" id="phone" name="Fuser_mobi">
+                                 <span class="text-error red" for="title"></span>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <!--
+                        <tr>
+                            <th>站点口号</th>
+                            <td colspan="2"><input type="text" class="form-control" value="为天下企业提供专业的营销工具！" id="slogan"
+                                                   name="slogan">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>站点描述</th>
+                            <td colspan="2"><textarea rows="10" class="form-control" id="desc" name="desc">蝉知门户系统（chanzhiEPS）是一款开源免费的企业门户系统，企业建站系统，php开源CMS系统。它专为企业营销设计，功能专业全面，内置了文章发布、会员管理、论坛评论、产品展示、在线销售、客服跟踪等功能。以LGPL协议发布，真开源，真免费。注重SEO，注重营销，支持移动设备。界面简洁大方，使用简单方便，功能专业强大，是企业建站的首选！同时蝉知系统还内置了微信公众平台功能，一个网站，电脑、手机、微信体验俱佳！</textarea>
+                            </td>
+                        </tr>
+                        <tr class="icp">
+                            <th>备案编号</th>
+                            <td colspan="2">
+                                <div class="row">
+                                    <div class="col-sm-3"><input type="text" class="form-control col-xs-2" value=""
+                                                                 id="icp" name="icp">
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">备案编号链接</span>
+                                            <input type="text" class="form-control" value="http://www.miitbeian.gov.cn"
+                                                   id="icpLink" name="icpLink">
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        -->
+                        <tr>
+                            <th></th>
+                            <td colspan="2">
+                                <input type="button" data-loading="稍候..." value="保存" class="btn btn-primary" id="user_submit"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    #{xsrf_form_html}
+                </form>
+            </div>
+        </div>
+    </div>
+<?py include('ops/common/dialog.html') ?>
+<script language="Javascript">
+
+    function showRequest() {
+        var params=["user_name","user_pwd","nick","phone"];
+
+        for(var i = 0;i<params.length;i++){
+            if($('#'+params[i]).val()==""){
+                $('#'+params[i]).parent().find('span').html("不能为空！");
+                return false;
+            }else{
+                $('#'+params[i]).parent().find('span').html('');
+            }
+        }
+        return true;
+    }
+
+    function showResponse(responseText, statusText)  {
+                alert(responseText);
+                alert(statusText);
+              BootstrapDialog.show({
+                    title: '创建用户',
+                    message: '保存成功!',
+                    buttons: [{
+                        label: 'Close',
+                        action: function(dialogItself){
+                            dialogItself.close();
+                        }
+                    }]
+                });
+    }
+
+
+$(document).ready(function()
+{
+    $('#user_role_nav').addClass('active');
+
+    $('#user_submit').click(function(){
+        var is_validate = showRequest();
+        if(is_validate){
+            $.post('',$('#user_ajax_form').serialize(),function(data){
+                var obj = $.parseJSON(data);
+                if(obj.status=='success'){
+                    alert('保存成功');
+                    location.href = '/gzh/ops/users/list/';
+                }
+            })
+        }
+    });
+});
+
+
+</script>
+
+<?py include('ops/common/datetime_html.html') ?>

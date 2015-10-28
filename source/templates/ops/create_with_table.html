@@ -1,0 +1,104 @@
+
+<!--#富文本选择库-->
+<?py include('ops/common/kindeditor.html') ?>
+
+
+<!--chosen  选择组件-->
+<link rel="stylesheet" href="/static/ops/css/min.css" type="text/css" media="screen">
+<script src="/static/ops/js/min.js" type="text/javascript"></script>
+
+
+<?py include('ops/common/dialog.html') ?> <!--引入弹出框组件-->
+
+
+<script>
+KindEditor.ready(function(K) {
+    // name 和texteara 一致
+editor = K.create('textarea[name="content"]', {
+    //文件上传链接
+    uploadJson:'/admin/file/upload/decorate_knowledge/',
+
+   // fileManagerJson:'/admin/file/filemanager/decorate_knowledge/',
+    allowFileManager:false,
+
+    afterCreate : function() {
+        var self = this;
+        K.ctrl(document, 13, function() {
+            self.sync();
+            document.forms['article_form'].submit();
+        });
+        K.ctrl(self.edit.doc, 13, function() {
+            self.sync();
+            document.forms['article_form'].submit();
+        });
+    }
+
+});
+
+});
+</script>
+<div class="clearfix row-main">
+
+
+<div class="col-md-2">
+    <div class="leftmenu affix hiddden-xs hidden-sm">
+        <ul class="nav-left nav nav-primary nav-stacked">
+            <li id="user_menu_new"><a href="#">后台所有可用组件<i class="icon-chevron-right"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+    <div class="col-md-10">
+
+
+        <div class="panel">
+            <div class="panel-heading">
+                <strong><i class="icon-group"></i> 可用组件</strong>
+
+                 <div class="panel-actions">
+                    <form>
+                    <input type="text" name="table_name" id="table_name" value="" class="form-control">
+                     </form>
+                    </div>
+            </div>
+
+
+            <form id="ajaxForm" role="form" method="post">
+                <table class="table table-form">
+                    <tbody>
+
+                        <?py for (filed,filed_type,file_length,file_not_null) in filed_info:?>
+                                <?py if filed != 'id' and filed != "deleted" and filed !="created" and filed != "updated":?>
+                                    <tr>
+                                        <th class="w-100px">${ filed }</th>
+
+                                            <?py if file_length >=1000: ?>
+                                        <td class="w-p40" colspan="2">
+                                                <textarea  name='content' ></textarea>
+                                            </td>
+                                            <?py else: ?>
+                                        <td class="w-p40">
+                                                <input type="text" class="form-control"  id='${filed}' name='${filed}'/></td>
+
+                                                 <td>
+
+                                                </td>
+                                            <?py #endif ?>
+
+                                    </tr>
+                                <?py #endif ?>
+
+                            <?py #endfor ?>
+
+                        </tbody>
+                    </table>
+                </form>
+
+        </div>
+
+    </div>
+</div>
+

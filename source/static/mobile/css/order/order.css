@@ -1,0 +1,49 @@
+.order .box{ margin: 1em; border: 1px solid #e5e5e5; border-bottom: none; font-size: 1.8em;}
+.order .form-group{ position: relative; margin: 0 0 .5em 0; border-bottom: 1px solid #e5e5e5;}
+.order .form-group label{ display: inline-block; margin-top: .5em; padding-left: 1%; width: 24%; font-size: 1.8em;}
+.order .form-group input, .order .form-group select{ padding-right: 1%; width: 74%; height: 40px; line-height: 40px; font-size: 1.8em;}}
+.order .form-group input{margin-bottom: .5em; border: none;}
+.order .form-group select{ margin: .5em 0; border: 1px solid #e5e5e5; background: #fff;}
+#image-preview { margin: 2em auto; width: 80%; max-width: 300px;}
+#image-preview img {width: 100%;}
+.hiddenfile { width: 0px; height: 0px; overflow: hidden; }
+
+.description{ min-height: 100px; width: 100%; border: 1px solid #ddd; border-radius: 3px; font-size: 1.6em;}
+.upload-box{ position: relative; width: 100%; margin:1em auto;}
+.upload-main{ position: relative; overflow: hidden;}
+.btn-upload{ display: inline-block; width: 12em; height: 3em; border: 1px solid #cf4156; background: #cf4156; color: #fff;}
+.upload-preview{ overflow: hidden; padding: 1em 0;}
+.upload-append-list{ overflow: hidden; width: 100px; height: auto; margin: 0 1em 0 0; float:left; position:relative;}
+.upload-delete{  position: absolute; top: 0; right: 0; width: 26px; height: 26px; display: inline-block; background:url(/static/mobile/images/delete.png) no-repeat center;}
+.upload-image{ overflow: hidden; width: 100px; height: 100px;}
+/*.upload-submit{padding-top:1em; padding-left:1em; overflow: hidden; height: 80px;} */
+.btn-confirm{display:none; }
+.upload-loading{ height:100px; background:url(/static/mobile/images/loading.gif) no-repeat center;}
+.upload-progress{display:none; padding:5px; border-radius:10px; color:#fff; background-color:rgba(0,0,0,.6); position:absolute; left:25px; top:45px;}
+.ui-shadow-inset{ box-shadow: none; -webkit-box-shadow:none; -moz-box-shadow:none}
+#chooseFile{ position: absolute; top: 0; left: 0;}
+.fileupload{ margin-top: 1em;}
+#uploadfile{ position: absolute; top: 0; left: 0; filter: alpha(opacity=0); -moz-opacity: 0; opacity: 0; width: 100%; cursor: pointer;}
+.bg-alpha{ background:rgba(0, 0, 0, 0.5)!important; filter:alpha(opacity=50); background: #000; color: #fff; z-index: 99;}
+
+.share .box{ margin: 1em;}
+.upload-box{ padding: 0 1em; margin: 0;}
+#js_upload{ position: relative; display: inline-block; margin-right: 10px; background: url(/static/mobile/images/photo.png) no-repeat; width: 100px; height: 100px; border: none; }
+#js_btn_upload{ position: absolute; top: 0; left: 0;filter: alpha(opacity=0);-moz-opacity: 0; opacity: 0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; width: 100px; height: 100px;cursor: pointer;}
+.share-title{ font-size: 1.6em;}
+.btn-confirm{ width: 100px; height: 40px; line-height: 40px; border: none; color: #ed32a4; background: #eee;}
+
+.publish{ margin-top: 0; top: 1.2em; font-size: 1.8em; cursor: pointer;}
+
+/*list*/
+.cd-main-content{ padding-top: 100px;}
+.photo-share{ overflow-y: auto; padding: 1em 0 60px 0; }
+.ul-list{ margin: 0 auto; padding: 0; width: 100%; list-style: none;}
+.ul-list li{ padding: 1em 0; border-bottom: 1px solid #ddd;}
+.ul-list li p{ margin: .6em 1em; padding: 0;}
+.ul-list li span{ margin: 0; padding: 0;}
+.ul-list .order-no{ margin-right: 3em; }
+.ul-list .order-tel{ margin-left: 3em;}
+.footer{ position: fixed; bottom: 0; left: 0; display: inline-block; width: 100%; padding: 0; border-top: 1px solid #ccc8cb; z-index: 999; text-align: center;}
+.btn-share{ display: inline-block; width: 100%; height: 80px; line-height: 80px; border: none; border-radius: 3px; background: #efebee; color: #ed32a4; text-decoration: none; font-size: 1.6em;}
+a.btn-share{ color: #ed32a4;}

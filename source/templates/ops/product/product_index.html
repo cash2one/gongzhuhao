@@ -1,0 +1,259 @@
+<div class="clearfix row-main">
+    <?py include('ops/product/product_menu.html')?>
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading">
+                <strong><i class="icon-group"></i>商家案例</strong>
+            </div>
+            <!--chosen  选择组件-->
+            <link rel="stylesheet" href="/static/ops/css/min.css" type="text/css" media="screen">
+            <script src="/static/ops/js/min.js" type="text/javascript"></script>
+
+            <link rel="stylesheet" href="/static/ops/datetime/bootstrap-datetimepicker.min.css" type="text/css" media="screen">
+            <script src="/static/ops/datetime/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+            <script>
+                $(document).ready(function(){
+                    $(".chosen-select").chosen({allow_single_deselect:true});
+                    //startDate = new Date();
+                    //startDate:startDate,
+                    $('.search_date').datepicker({
+                        format: 'yyyy-mm-dd'
+                    });
+                });
+            </script>
+            <form id="product_search_form" action="" method="get">
+                <table class="table table-form">
+                    <tbody>
+                    <tr>
+                        <th>其他待定</th>
+                        <td>
+                            <div class="input-append date">
+                                <input type="text" class="form-control search_date" value="" id="start_date" name="start_date">
+                                     <span class="add-on"><button type="button" class="btn btn-default"><i
+                                             class="icon-calendar"></i></button></span>
+                            </div>
+                        </td>
+                        <td>
+                        <th>风格</th>
+                        <td>
+                            <select class="form-control chosen-select" name="status" id="design_style_name">
+                                <option value=""></option>
+                                <?py if decorate_styles: ?>
+                                <?py for p in decorate_styles: ?>
+
+                                <option value="${p.name}">${p.name}</option>
+                                <?py #endfor ?>
+                                <?py #endif ?>
+                            </select>
+                        </td>
+                        <th>空间</th>
+                        <td>
+                            <select class="form-control chosen-select" name="role"  id="house_type_name">
+                                <option value=""></option>
+                                <?py if house_styles: ?>
+                                      <?py for p in house_styles: ?>
+                                               <option value="${p.name}">${p.name}</option>
+                                       <?py #endfor ?>
+                                <?py #endif ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>价格</th>
+                        <td>
+                            <div class="input-group">
+                                最低
+                                <input type="text" id="costprice_value1" name="costprice_value1" value="">
+
+                                最高<input type="text" id="costprice_value2" name="costprice_value2">
+                            </div>
+                        </td>
+                        <th>名称</th>
+                        <td colspan="2">
+                            <div class="input-group">
+                                <input type="text" class="form-control" value="" id="search_text" name="search_text">
+                            </div>
+                        </td>
+                        <th></th>
+                        <td colspan="2">
+                        </td>
+                         #{xsrf_form_html}
+                        <td><input type="submit" data-loading="稍候..." value="搜索" class="btn btn-primary"
+                                   id="house_type_submit">
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </form>
+
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                <tr class="text-center">
+                    <th>编号</th>
+                    <th>案例名称</th>
+                    <th>商户名</th>
+                    <th>户型</th>
+                    <th>风格</th>
+                    <th>总价</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <?py if data: ?>
+                <?py for p in data.result: ?>
+                <tr>
+                    <td>${p.id}</td>
+                    <td>${p.title}</td>
+                    <td>${company_db.get_company_name_by_user_id(p.user_id)}</td>
+                    <td>${p.house_type_name}</td>
+                    <td>${p.design_style_name}</td>
+                    <td>${p.total_price}</td>
+                    <td>${p.id}</td>
+                    <?py if p.is_recommend:?>
+                     <td>
+                        <a href="/merchant/product/detail/${p.id}">查看</a>
+                        <a href="javascript:Product.recommend_cancle(${p.id})">取消推荐</a>
+                        <!--<a href="javascript:Product.top(${p.id})">置顶</a>-->
+                    </td>
+                    <?py #endif?>
+                    <?py if not p.is_recommend:?>
+                    <td>
+                        <a href="/merchant/product/detail/${p.id}">查看</a>
+                        <a href="javascript:Product.recommend(${p.id})">推荐</a>
+                        <!--<a href="javascript:Product.top(${p.id})">置顶</a>-->
+                    </td>
+                    <?py #endif?>
+
+                </tr>
+                <?py #endfor ?>
+                <?py #endif ?>
+                </tbody>
+                #{data.render_page_html()}
+            </table>
+        </div>
+    </div>
+</div>
+
+<?py include('ops/common/dialog.html') ?> <!--引入弹出框组件-->
+<script language="Javascript" type="text/javascript">
+    $(document).ready(function(){
+
+    });
+
+    var Product = {
+    recommend:function(product_id){
+        BootstrapDialog.show
+        (
+          {
+            title: '推荐产品',
+            message: '确定推荐该产品',
+            buttons:
+        [
+            {
+                label: 'Cancle',
+                action: function(dialogItself){
+                    dialogItself.close()
+                }
+            },
+            {
+                label: 'OK',
+                action: function(dialogItself){
+                      dialogItself.close()
+                    $.get('/admin/users_product/recomment/'+product_id,{},function(data){
+                               if (data == 's'){
+                                window.location.reload(true);
+                            }else{
+                                alert(data);
+                            }
+
+
+                       })
+                }
+            }
+        ]
+          }
+        )
+    },
+
+        recommend_cancle:function(product_id){
+        BootstrapDialog.show
+        (
+          {
+            title: '推荐产品',
+            message: '确定推荐该产品',
+            buttons:
+        [
+            {
+                label: 'Cancle',
+                action: function(dialogItself){
+                    dialogItself.close()
+                }
+            },
+            {
+                label: 'OK',
+                action: function(dialogItself){
+                      dialogItself.close()
+                    $.get('/admin/users_product/recomment_cancle/'+product_id,{},function(data){
+                            if (data == 's'){
+                                window.location.reload(true);
+                            }else{
+                                alert(data);
+                            }
+
+                       })
+                }
+            }
+        ]
+          }
+        )
+    },
+    top:function(product_id){
+        alert(product_id)
+    }
+
+    };
+
+function onactive(obj,id){
+
+}
+ window.onload=function(){
+
+     if (${method_kind_int}==0)
+     {
+          $('#user_menu_list').addClass('active');
+     }
+     if (${method_kind_int}==1)
+     {
+          $('#user_menu_list').addClass('active');
+     }
+     if (${method_kind_int}==2)
+     {
+          $('#user_menu_new_register').addClass('active');
+     }
+     if (${method_kind_int}==3)
+     {
+          $('#user_menu_active').addClass('active');
+     }
+     if (${method_kind_int}==4)
+     {
+          $('#user_menu_blist').addClass('active');
+     }
+     if (${method_kind_int}==5)
+     {
+          $('#user_menu_employee').addClass('active');
+     }
+
+ }
+
+
+</script>
+
+
+<!--<script>-->
+<!--$(document).ready(function() {-->
+        <!---->
+    <!--})-->
+<!--</script>-->

@@ -1,0 +1,23 @@
+<ul class="posts_comment">
+	<li ng-repeat="item in model.comment">
+		<span class="comment_name">{{item.reply_name}}
+		<span class="btn-span" ng-show="item.is_floor==1">楼主</span>:
+		</span>
+		<p>
+		<span ng-show="item.is_reply== 1">
+			<span class="comment_reply">回复</span>
+			<span class="comment_name">{{item.reply_parent_name}}:</span>
+		</span>
+		<span ng-bind-html="item.reply_content | qqface">
+		</span>
+		<span class="comment_time">{{item.time}}</span>
+		</p>
+	</li>
+</ul>
+<!--
+<div class="comment_more">
+	<div class="pull-right">
+		<div class="btn_more" ng-click="onLoadMore()">更多10条评论</div>
+	</div>
+</div>
+-->

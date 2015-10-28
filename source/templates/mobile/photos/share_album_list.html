@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/static/mobile/css/photo/photo.css" />
+    <header class="header">
+    		<a id="cd-menu-trigger" href="#0"><span class="cd-menu-icon"></span></a>
+        <p class="title">分享实例</p>
+    </header>		
+    <section class="share-album cd-main-content">
+        <ul class="list">
+        <?py for share in shares: ?>
+          <li>
+              <!--<a class="pt-link" data-lightbox="pt-thumb"  href="">-->
+            <a class="pt-link"  href="/mobile/user/photos/share/${share.Fid}/">
+        		<dl>
+        			<dt><img src="${default_url if not share.Fcover_img else handler.get_show_img_url(share.Fcover_img,300)}"/></dt>
+        			<dd>${share.Ftitle}</dd>
+        			<dd class="desc">${share.Fdescription}</dd>
+        			<dd class="desc">${share.Fcreate_time}</dd>
+        		</dl>     
+        		</a>
+          </li>
+        <?py #endfor ?>
+        </ul>
+    </section>
+<?py include('mobile/layout/menu_nav.html')?>
+<script>
+	$(function(){
+		$('.nav_share').addClass('current');
+	})
+</script>
+

@@ -1,0 +1,43 @@
+<?py include('view/login/login_header.html')?>
+    <div class="gzh-login-cons">
+        <div class="gzh-dialog-cons">
+            <p class="error login-pwd-error"></p>
+            <ul>
+                <li>
+                    <input type="tel" name="phone" class="input-txt" id="loginCodePhone" placeholder="手机号码" />
+                </li>
+                <li>
+                    <input type="text" name="code" class="input-txt code" id="loginCode" placeholder="验证码" />
+                    <input type="button" class="btn btn-code" id="getCode" value="发送验证码"  />
+
+                </li>
+                <li>
+                    <p class="agreement f14">
+                        <a href="＃" class="text-pink">忘记密码?</a>
+                        <a href="/login" class="text-pink fright">帐号登录</a>
+                    </p>
+                </li>
+                <li>
+                    <input type="button" name="login" class="btn btn-submit btn-login-code" id="btnCodeLogin" value="登录" />
+                </li>
+            </ul>
+        </div>
+        <!--<div class="gzh-dialog-footer">-->
+            <!--<h2 class="gzh-dialog-line">-->
+                <!--<span>社交帐号登录</span>-->
+            <!--</h2>-->
+            <!--<p class="gzh-dialog-social">-->
+                <!--<a href="#">-->
+                    <!--<i class="icon icon48 icon-weibo"></i>-->
+                <!--</a>-->
+                <!--<a href="#">-->
+                    <!--<i class="icon icon48 icon-wechat"></i>-->
+                <!--</a>-->
+                <!--<a href="#">-->
+                    <!--<i class="icon icon48 icon-qq"></i>-->
+                <!--</a>-->
+            <!--</p>-->
+        <!--</div>-->
+    </div>
+<script src="/static/skin/js/gzh_login.js"></script>
+<?py include('view/login/login_footer.html')?>

@@ -1,0 +1,182 @@
+<style>
+.photo-infos{ overflow: hidden; margin: 0; padding: 10px 20px; list-style: none;}
+.photo-infos li{ float: left; display: inline-block; margin-right: 10px;}
+.photo-thumb{ position: relative; overflow: hidden; margin: 0 auto; padding: 10px 20px;}
+.photo-action{ padding: 0 20px;}
+.pt-item{ position: relative; margin: 0 15px 0 0; display: inline-block; width: 180px; height: 220px;} 
+.pt-link{ /*float: left;*/ position: relative; top: 0; display: inline-block; height: 220px; overflow: hidden;} 
+.bg-alpha{ position: absolute; top: 0; left: 0; margin: 0; padding: 0 5%; width: 100%; height: 30px; background:rgba(0, 0, 0, 0.5)!important; filter:alpha(opacity=50); background: #000; color: #fff; z-index: 99;}
+.pt-link .pt-image{ width: 100%; height: auto; vertical-align: top;}
+.checkphoto{ margin: 5px 0 0 10px; vertical-align: top;}
+input[type=radio], input[type=checkbox]{ margin: 8px 0 0 0;}
+.pt-delete{ float: right; margin: 5px 0 0 0; cursor: pointer;}
+.delete-photo{ margin-right: 20px;}
+</style>
+<div class="clearfix row-main">
+    <?py include('ops/orders/orders_base.html')?>
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading">
+                <strong><i class="icon-group"></i>客片列表</strong>
+            </div>
+            <!--chosen  选择组件-->
+            <link rel="stylesheet" href="/static/ops/css/min.css" type="text/css" media="screen">
+            <script src="/static/ops/js/min.js" type="text/javascript"></script>
+
+            <link rel="stylesheet" href="/static/ops/datetime/bootstrap-datetimepicker.min.css" type="text/css" media="screen">
+            <script src="/static/ops/datetime/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+            <script>
+                $(document).ready(function(){
+                    $(".chosen-select").chosen({allow_single_deselect:true});
+                    $('.search_date').datepicker({
+                        format: 'yyyy-mm-dd'
+                    });
+                    $('#user_order_nav').addClass('active');
+                });
+            </script>
+            <table class="table table-hover table-striped table-bordered">
+                <div class="box-content photo-upload">
+                    <ul class="photo-infos">
+                        <li>订单号：
+                            <?py if handler.get_order_by_id(order_id): ?>
+                                <span>${handler.get_order_by_id(order_id).Forder_id_user}</span>
+                            <?py else: ?>
+                                <span></span>
+                            <?py #endif ?>
+                        </li>
+                        <li>客户姓名：
+                            <?py if handler.get_order_by_id(order_id): ?>
+                                <span>${handler.get_order_by_id(order_id).Fuser_name}</span>
+                            <?py else: ?>
+                                <span></span>
+                            <?py #endif ?>
+                        </li>
+                        <li>联系方式：
+                            <?py if handler.get_order_by_id(order_id): ?>
+                                <span>${handler.get_order_by_id(order_id).Fuser_mobi}</span></li>
+                            <?py else: ?>
+                                <span></span>
+                            <?py #endif ?>
+                        <li>客户确认情况：
+                            <?py if handler.get_album_by_id(album_id): ?>
+                                <span class="label label-warning">${album_status[handler.get_album_by_id(album_id).Fstatus]}</span>
+                            <?py else: ?>
+                                <span></span>
+                            <?py #endif ?>
+                        </li>
+                    </ul>
+                    <form action="" method="post" onsubmit="return saveReport();">
+                    		<input type="hidden" name="_xsrf" value="${xsrf_token}" />
+                    		<p class="photo-action">
+                     		<span class="delete-photo">
+	                    	    <input type="checkbox" id="all" eitvalue=""/>全选
+	                        </span>
+	                    		<input type="submit" name="submit" id="delete-all" class="btn btn-sm btn-primary" value="删除 "/>
+                    		</p>
+                            <input type="hidden" name="merchant_id" id="merchant_id" value="${merchant_id}" />
+                            <input type="hidden" name="album_id" id="album_id" value="${album_id}" />
+                    </form>
+                    <div class="photo-thumb clearfix">
+                    		<!--
+                        <?py for photo in page_data.result:?>
+                            <a class="pt-link" data-lightbox="pt-thumb" data-id=""  href="${photo.Fimage_url}">
+                                <img class="pt-image" alt="" src="${handler.get_show_img_url(photo.Fimage_url,150)}"/>
+                            </a>
+                        <?py #endfor ?>
+                       -->
+                      <?py for photo in page_data.result: ?>
+                        <div class="pt-item">
+							<p class="bg-alpha">
+								<input type="checkbox" name="photothumb" value="${photo.Fid}" class="checkphoto"/>
+								<span class="pt-delete">X</span>
+							</p>
+						    <a class="pt-link" data-id="" >
+						        <img class="pt-image" data-pid="${photo.Fid}" src="${photo.Fimage_url}"/>
+						    </a>
+						</div>
+                      <?py #endfor ?>
+                    </div>
+			    </div>
+                 <tfoot>
+                    #{page_html}
+                 </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<?py include('ops/common/dialog.html') ?> <!--引入弹出框组件-->
+<script language="Javascript" type="text/javascript">
+    window.onload = function(){
+        $('#user_albums_nav').addClass('active');
+
+    }
+
+    function saveReport(){
+        if(confirm('确定删除该图片')){
+            var _select ="";
+            $("input[name='photothumb']:checked").each(function(){
+                _select += $(this).val() + ","; //选取所有选中checkbox的val值
+            })
+            var _xsrf = $('input[name="_xsrf"]').val();
+            var _merchant_id = $('#merchant_id').val();
+            var _album_id = $('#album_id').val();
+            $.ajax({
+                type:"get",
+                url:"/gzh/ops/delete/photo/",
+                data:{
+                    img_id:_select.slice(0,-1),
+                    merchant_id:_merchant_id,
+                    _xsrf:_xsrf,
+                },
+                success: function(data){
+                    var obj = $.parseJSON(data);
+                    if(obj.stat == "success"){
+                        location.href = '/gzh/ops/photo/list/'+_album_id+'/'+_merchant_id;
+                    }else{
+                        alert(data.msg);
+                    }
+                },
+                error: function(){
+                }
+            });
+                return false;
+        }
+    }
+
+$(function(){
+	//全选，全不选
+   $("#all").click(function() {
+        $('input[name="photothumb"]').prop("checked",this.checked);
+    });
+    var _checkbox = $("input[name='photothumb']");
+    _checkbox.click(function(){
+        $("#all").prop("checked",_checkbox.length == $("input[name='photothumb']:checked").length ? true : false);
+    });
+
+	//删除单张图片
+	$(".pt-delete").on("click",function(){
+	    if(confirm('确定删除该图片')){
+	        var _html = $(this).parent().parent();
+            var _imgid = $(this).closest(".pt-item").find("img").attr("data-pid"); //图片的ID
+            var _merchant_id = $('#merchant_id').val();
+            $.ajax({
+                type:"get",
+                url:"/gzh/ops/delete/photo/",
+                data:{
+                    img_id:_imgid,
+                    merchant_id:_merchant_id,
+                },
+                success:function(data){
+                    var obj = $.parseJSON(data);
+                    if(obj.stat == "success"){
+                        _html.remove();
+                    }else{
+                        alert(obj.msg);
+                    }
+                }
+            });
+	    }
+	})
+})
+</script>
+

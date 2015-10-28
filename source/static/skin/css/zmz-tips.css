@@ -1,0 +1,486 @@
+.tip-icon{
+	background: url("/static/skin/images/tip-icon.png") no-repeat;
+}
+/*tips list*/
+.main-box{
+	width: 1210px;
+	margin: 0 auto;
+}
+.tip-banner{
+	width: 1210px;
+	margin: 20px auto 0;
+}
+.tip-banner img {
+	width: 1210px;
+	height: 84px;
+}
+.tip-hd{
+	margin-top: 18px;
+	margin-bottom: 20px;
+}
+.tip-category{
+	width: 345px;
+	float: left;
+}
+.tip-category ul>li{
+	margin-bottom: 1px;
+}
+.tip-category ul>li a{
+	height: 38px;
+	padding-left: 40px;
+	background-color: #f3f3f3;
+	display: block;
+}
+.tip-category ul>li .tip-name{
+	float: left;
+	line-height: 38px;
+	font-size: 14px;
+	color: #2e2e2e;
+}
+.tip-category ul>li .tip-number {
+	background-color: #dcdcdc;
+	padding:0 7px;
+	color: #fff;
+	float: right;
+	margin:9px 25px 0 0;
+	border-radius: 2px;
+	height: 20px;
+	line-height: 20px;
+}
+.tip-category ul>li a:hover{
+	text-decoration: none;
+	background-color: #ebebeb;
+}
+.tip-category .tip-category-search{
+	height: 38px;
+	padding:10px 0 0 40px;
+	background-color: #f3f3f3;
+	position: relative;
+}
+.tip-category-search input[type='text']{
+	border: none;
+	border-radius: 0;
+	margin: 0;
+	float: left;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	width: 220px;
+	padding-right: 54px;
+}
+.tip-category-search input[type='submit']{
+	display: block;
+	position: absolute;
+	background:#fff url("../images/cate-btn.jpg") no-repeat;
+	border: none;
+	right:30px;
+	border-radius: 0;
+	height: 28px;
+	width: 28px;
+}
+.tip-hd-banner{
+	width: 850px;
+	overflow: hidden;
+	height: 400px;
+	float: right;
+}
+/**  轮播图样式  **/
+div.slideBox{ position:relative; margin:0 auto; overflow:hidden;}
+div.slideBox ul.items{ position:absolute; float:left; background:none; list-style:none; padding:0px; margin:0px;}
+div.slideBox ul.items li{ float:left; background:none; list-style:none; padding:0px; margin:0px;}
+div.slideBox ul.items li a{ float:left; line-height:normal !important; padding:0px !important; border:none/*For IE.ADD.JENA.201206300844*/;}
+div.slideBox ul.items li a img{width: 850px !important; height: 400px !important; margin:0px !important; padding:0px !important; display:block; border:none/*For IE.ADD.JENA.201206300844*/;}
+.tip-bd{
+	margin-bottom: 20px;
+}
+.mb50{
+	margin-bottom: 50px;
+}
+.tip-bd .tip-bd-title{
+	padding-bottom: 15px;
+	border-bottom: 1px #dadada solid;
+}
+.tip-bd .tip-bd-title h4{
+	color:#484848;
+	font-size: 20px;
+	line-height: 20px;
+	display: inline-block;
+}
+.tip-bd .tip-hd-content{
+	margin: 0 0 0 -16px;
+}
+.tip-bd .tip-hd-content li{
+	float: left;
+	margin-left: 18px;
+	margin-top: 20px;
+}
+.tip-bd .tip-hd-content li .tip-jn-img{
+	padding: 4px;
+	margin-bottom: 13px;
+	border: 1px #d7d7d7 solid;
+	display: block;
+}
+.tip-bd .tip-hd-content li .tip-jn-img img{
+	width: 176px;
+	height: 255px;
+}
+.tip-bd .tip-hd-content li .tip-jn-txt{
+	font-size: 16px;
+	line-height: 16px;
+	height: 16px;
+	color: #313131;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 186px;
+	text-align: center;
+}
+.tip-bd .tip-hd-content li .tip-update-time{
+	font-size: 12px;
+	line-height: 12px;
+	height: 12px;
+	color: #656565;
+	width: 186px;
+	text-align: center;
+	margin-top: 10px;
+}
+
+/*  new tip detail*/
+.tip-download-part{
+	width: 850px;
+	overflow: hidden;
+	height: 400px;
+	float: right;
+	position: relative;
+}
+.tip-download-part img{
+	width: 850px;
+	height: 360px;
+}
+.tip-download-part .download-info{
+	border-left: 1px #dedede solid;
+	border-right: 1px #dedede solid;
+	border-bottom: 1px #dedede solid;
+	width: 823px;
+	height: 38px;
+	line-height: 38px;
+	padding-left: 25px;
+}
+.tip-download-part .download-info .tip-message{
+	float: left;
+	margin-right: 16px;
+}
+.tip-download-part .download-info .tip-message2{
+	float: left;
+	margin-right: 32px;
+}
+.tip-type{
+	color: #717171;
+	font-size: 12px;
+	background-position: -155px -32px;
+	height: 12px;
+	padding-left: 20px;
+	font-weight: bold;
+}
+.update-time{
+	color: #717171;
+	font-size: 12px;
+	background-position: -155px -49px;
+	height: 12px;
+	padding-left: 20px;
+	font-weight: bold;
+}
+.file-size{
+	color: #717171;
+	font-size: 12px;
+	background-position: -155px -69px;
+	height: 12px;
+	padding-left: 20px;
+	font-weight: bold;
+}
+.download-count{
+	color: #717171;
+	font-size: 12px;
+	background-position: -155px -88px;
+	height: 12px;
+	padding-left: 20px;
+	font-weight: bold;
+}
+.info-content{
+	color: #8e8e8e;
+	font-size: 12px;
+}
+.detail-tip-main-box{
+	margin-bottom: 100px;
+}
+.detail-tip-main-box .related-tip{
+	float: left;
+	width: 303px;
+	border: 1px #e4e4e4 solid;
+	padding: 20px;
+}
+.detail-tip-main-box .related-tip .related-tip-title{
+	color: #545454;
+	font-size: 18px;
+	line-height: 18px;
+	padding-bottom: 12px;
+	border-bottom: 1px #e4e4e4 solid;
+}
+.related-tip-list{
+	margin: 0;
+}
+.related-tip-list li{
+	padding: 15px 0;
+	border-bottom: 1px #e4e4e4 dashed;
+}
+.related-tip-list li .tip-faceImg{
+	padding: 2px;
+	border: 1px #e4e4e4 solid;
+	margin-right: 18px;
+	float: left;
+}
+.related-tip-list li .tip-faceImg img{
+	width: 110px;
+	height: 142px;
+}
+.related-tip-list li .related-tip-info{
+	float: left;
+	width: 169px;
+	padding-top: 20px;
+}
+.related-tip-list li .related-tip-info .related-tip-name{
+	display: inline-block;
+	font-size: 14px;
+	line-height: 14px;
+	color: #464646;
+	margin-bottom: 12px;
+	width: 169px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.related-tip-list li .related-tip-info .tip-info-detail{
+	color: #464646;
+	font-size: 12px;
+	line-height: 12px;
+	margin-bottom: 12px;
+	width: 169px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.detail-tip-main-box .tip-main{
+	float: right;
+	width: 810px;
+	margin-right: 20px;
+}
+.tip-main .w-n{
+	font-size: 14px;
+	line-height: 14px;
+	color: #585858;
+	margin-bottom: 12px;
+}
+.tip-content{
+	margin-bottom: 24px;
+	font-size: 13px;
+	color: #585858;
+	text-indent: 2em;
+}
+.comment-part{
+	margin-bottom: 16px;
+}
+.comment-part .comment-type{
+	margin-bottom: 14px;
+	color: #3a3a3a;
+	font-size: 14px;
+	line-height: 14px;
+}
+.comment-flag{
+	color: #8c8c8c;
+	display: inline-block;
+}
+.line{
+	display: inline-block;
+	margin: 0 10px;
+}
+.comment-part a{
+	color: #8c8c8c;
+	text-decoration: none;
+}
+.comment-part .comment-active{
+	color: #3a3a3a;
+}
+.comment-input-part .comment-content{
+	float: left;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	padding: 5px 10px;
+	border: 1px #dfdfdf solid;
+	width: 618px;
+	height: 48px;
+	max-width: 618px;
+	max-height: 48px;
+	border-radius: 0;
+}
+.comment-input-part .publish{
+	float: left;
+	width: 170px;
+	height: 60px;
+	background: #f3f3f3;
+	border-top: 1px #dfdfdf solid;
+	border-right: 1px #dfdfdf solid;
+	border-bottom: 1px #dfdfdf solid;
+	border-left: none;
+	font-size: 16px;
+	color: #545454;
+	line-height: 60px;
+	text-align: center;
+}
+.comment-list li{
+	padding: 12px 0 12px 20px;
+	border-bottom: 1px #e4e4e4 dashed;
+}
+.comment-list li .user-head-link{
+	float: left;
+	margin-right: 12px;
+}
+.comment-list li .user-head-link img{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position:relative;
+	z-index:2;
+	behavior: url(/static/skin/js/ie/PIE.htc);
+}
+.comment-list li .c-info{
+	float: left;
+	padding-top: 7px;
+}
+.comment-list li .c-info .c-name-date{
+	font-size: 14px;
+	line-height: 14px;
+	color: #6b6b6b;
+	margin-bottom: 10px;
+}
+.comment-list li .c-info .c-name-date span{
+	margin-right: 10px;
+}
+.comment-list li .c-info .c-name-date a{
+	color: #6b6b6b;
+	margin-right: 10px;
+}
+.comment-list li .c-info .c-content{
+	font-size: 14px;
+	line-height: 14px;
+	color: #6b6b6b;
+	width: 728px;
+}
+.view{
+	background: url("/static/skin/images/tip-view-btn.png") no-repeat;
+	position: absolute;
+	right: 20px;
+	top: 275px;
+	width: 80px;
+	height: 27px;
+}
+.download{
+	background: url("/static/skin/images/tip-download-btn.png") no-repeat;
+	position: absolute;
+	right: 20px;
+	top: 312px;
+	width: 80px;
+	height: 27px;
+}
+.this-tip-name{
+	background: #000;
+	filter: alpha(opacity=40);
+	-moz-opacity: 0.4;
+	opacity: 0.4;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=40)";
+	position: absolute;
+	top: 30px;
+	right: 0;
+	height: 46px;
+	line-height: 46px;
+	padding: 0 20px;
+	font-size: 18px;
+	color: #fff;
+}
+.cover{
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1040;
+	background-color: #000;
+	filter: alpha(opacity=80);
+	-moz-opacity: 0.8;
+	opacity: 0.8;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=80)";
+}
+.viewImgPart{
+	width: 800px;
+	position: fixed;
+	background: #fff;
+	z-index: 1200;
+	border-radius: 6px;
+}
+.tip-modal-bode{
+	padding: 10px 10px 0;
+}
+.tip-modal-bode img{
+	width: 780px;
+	margin-bottom: 10px;
+}
+.view-download{
+	background: url("/static/skin/images/tip-download-btn.png") no-repeat;
+	width: 80px;
+	height: 27px;
+	float: left;
+}
+.view-download2{
+	width: 200px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	display: block;
+	color: #fff;
+	font-size: 16px;
+	background: #1a72c4;
+	border: 4px #c9c9c9 solid;
+	border-radius: 5px;
+	margin: 20px auto 50px;
+}
+.view-download2:hover{
+	color: #fff;
+	text-decoration: none;
+}
+
+/*分享*/
+.jiathis_style_32x32{
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: -2px;
+	margin-left: 6px;
+}
+.jiathis_style_32x32 .jtico {
+	text-align: left;
+	overflow: hidden;
+	display: block!important;
+	height: 16px!important;
+	line-height: 16px!important;
+	background-size: 16px auto;
+	cursor: pointer;
+	padding-left: 25px !important;
+}
+.jiathis_style_32x32 .jtico_qzone {
+	background-position: 0px -16px;
+}
+.jiathis_style_32x32 .jtico_weixin {
+	background-position: 0px -1840px;
+}
+.jiathis_style_32x32 .jtico_tieba {
+	background-position: 0px -80px;
+}

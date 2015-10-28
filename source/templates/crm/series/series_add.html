@@ -1,0 +1,267 @@
+<link href='/static/crm/css/dragula.min.css' rel='stylesheet' />
+<link href='/static/crm/css/series/series.css' rel='stylesheet' />
+
+<!--<form action="/merchant/series/add/${series_id}/" method="post" onsubmit="return checkForm()">-->
+<div id="content" class="col-lg-10 col-sm-10">	
+    <div class="row-fluid sortable">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title>
+                    <h2>套系发布</h2>
+                </div>
+                <div class="box-content series">
+                		<input type="hidden" value="${series_id}" id="series-id"/>
+                    <div class="form-group">
+                        <label class="label-title">套系名称<em>*</em></label>
+                        <input type="text" name="package_name" id="package-name" class="form-control" value="${series.Fpackage_name if series else ''}" placeholder="请填写套系名称"/>
+                        <div class="error package-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title">原价<em>*</em></label>
+                        <input type="text" name="price" id="price" class="form-control" value="${series.Fprice if series else ''}" placeholder="请填写原价"/>
+                        <div class="error price-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title">现价<em>*</em></label>
+                        <input type="text" name="sale_price" id="sale-price" class="form-control" value="${series.Fsale_price if series else ''}" placeholder="请填写现价"/>
+                        <div class="error sale-price-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="v-top label-title">服装造型<em>*</em></label>
+                        <div class="series-extra">
+                            <div class="form-group">
+                                <label class="label-title">新娘造型(套)<em>*</em></label>
+                                <input type="text" name="bride_style_count" id="bride-style-count" class="form-control" value="${series.Fbride_style_count if series else ''}" placeholder="请填写新娘造型套数"/>
+                                <div class="error bride-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="label-title">新郎造型(套)<em>*</em></label>
+                                <input type="text" name="groom_style_count" id="groom-style-count" class="form-control" value="${series.Fgroom_style_count if series else ''}" placeholder="请填写新郎造型套数"/>
+                                <div class="error groom-error"></div> 
+                            </div>
+                            <div class="form-group">
+                                <label class="label-title">服装选择<em>*</em></label>
+                                <label class="radio-inline">
+                                    <?py if series and series.Fcloth_select_type == 1: ?>
+                                        <input type="radio" name="cloth_select_type" value="1" checked />指定区域
+                                    <?py else: ?>
+                                        <input type="radio" name="cloth_select_type" value="1" />指定区域
+                                    <?py #endif ?>
+                                </label>
+                                <label class="radio-inline">
+                                    <?py if series and series.Fcloth_select_type == 2: ?>
+                                        <input type="radio" name="cloth_select_type" value="2" checked />全场任选
+                                    <?py else: ?>
+                                        <input type="radio" name="cloth_select_type" value="2" />全场任选
+                                    <?py #endif ?>
+                                </label>
+                                <div class="error cloth-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">补充说明</label>
+                                <textarea name="cloth_remark" id="cloth-remark" class="form-control" cols="3">${series.Fcloth_remark if series else ''}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="v-top label-title">拍摄地点<em>*</em></label>
+                        <div class="series-extra">
+                            <div class="form-group" id="outdoor">
+                                <label class="label-title">外景地<em>*</em></label>
+                                <?py if series and series.Foutdoor_space:?>
+                                    <?py for s in series.Foutdoor_space.split(';'):?>
+                                        <input type="text" class="form-control input-write" value="${s}"  placeholder="请填写外景地"/>
+                                    <?py #endfor?>
+                                <?py else:?>
+                                        <input type="text" class="form-control input-write" value=""  placeholder="请填写外景地"/>
+                                <?py #endif?>
+                                <span class="glyphicon glyphicon-plus add"></span>
+                                <div class="error outdoor-space-error"></div>
+                            </div>
+                            <div class="form-group" id="inner">
+                                <label class="label-title">内景地<em>*</em></label>
+                                <?py if series and series.Finner_space:?>
+                                    <?py for s in series.Finner_space.split(';'):?>
+                                        <input type="text" class="form-control input-write" value="${s}"  placeholder="请填写外景地"/>
+                                    <?py #endfor?>
+                                <?py else:?>
+                                        <input type="text"  class="form-control input-write" value=""  placeholder="请填写外景地"/>
+                                <?py #endif?>
+                                <span class="glyphicon glyphicon-plus add"></span>
+                                <div class="error inner-space-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">补充说明</label>
+                                <textarea name="space_remark" id="space-remark" class="form-control" cols="3">${series.Fspace_remark if series else ''}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="v-top label-title">套系特色</label>
+                        <textarea name="shot_desc" id="shot-desc" class="form-control wtextarea" cols="3">${series.Fshot_desc if series else ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="v-top label-title">服务团队</label>
+                        <div class="series-extra">
+
+                            <div class="form-group">
+                                <label class="label-title">摄影师级别<em>*</em></label>
+
+                                <input type="text" name="photographer_level" id="photographer-level" class="form-control input-write" value="${series.Fphotographer_level if series else ''}" placeholder="请填写摄影师级别"/>
+
+                                <div class="error photographer-level-error"></div>
+                            </div>
+                            <div class="form-group" id="photographer">
+                                <label class="label-title">推荐摄影师</label>
+
+                                    <?py if series and series.Frecommend_photographer:?>
+                                        <?py for s in series.Frecommend_photographer.split(';'):?>
+                                            <input type="text" class="form-control input-write" value="${s}"  placeholder="请填写推荐摄影师"/>
+                                        <?py #endfor?>
+                                    <?py else:?>
+                                            <input type="text"  class="form-control input-write" value=""  placeholder="请填写推荐摄影师"/>
+                                    <?py #endif?>
+                                <span class="glyphicon glyphicon-plus add"></span>
+                                <div class="error recommend-photographer-error"></div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="label-title">化妆师级别<em>*</em></label>
+                                <input type="text" name="arter_level" id="arter-level" class="form-control input-write" value="${series.Farter_level if series else ''}" placeholder="请填写化妆师级别"/>
+                                <div class="error arter-level-error"></div>
+                            </div>
+                            <div class="form-group" id="arter">
+                                <label class="label-title">推荐化妆师</label>
+
+                                    <?py if series and series.Frecommend_arter:?>
+                                        <?py for s in series.Frecommend_arter.split(';'):?>
+                                            <input type="text" class="form-control input-write" value="${s}"  placeholder="请填写推荐化妆师"/>
+                                        <?py #endfor?>
+                                    <?py else:?>
+                                            <input type="text"  class="form-control input-write" value=""  placeholder="请填写推荐化妆师"/>
+                                    <?py #endif?>
+                                <span class="glyphicon glyphicon-plus add"></span>
+                                <div class="error recommend-arter-error"></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="v-top label-title">附赠产品</label>
+                        <div class="series-extra">
+                            <div class="form-group">
+                                <label class="v-top label-title">相册</label>
+                                <textarea class="form-control" name="photo_album_desc" id="photo-album-desc" cols="3">${series.Fphoto_album_desc if series else ''}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">相框</label>
+                                <textarea class="form-control" name="photo_frame_desc" id="photo-frame-desc" cols="3">${series.Fphoto_frame_desc if series else ''}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">MV</label>
+                                <textarea class="form-control" name="mv_desc" id="mv-desc" cols="3">${series.Fmv_desc if series else ''}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">其他</label>
+                                <textarea class="form-control" name="other_desc" id="other-desc" cols="3">${series.Fother_desc if series else ''}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="v-top label-title">补充说明</label>
+                        <textarea class="form-control wtextarea" name="description" id="description" cols="3">${series.Fdescription if series else ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="v-top label-title">其他收费项目</label>
+                        <textarea class="form-control wtextarea" name="other_pay_desc" id="other-pay-desc" cols="3">${series.Fother_pay_desc if series else ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title v-top">封面图</label>
+                        <div class="series-upload">
+                        		<div class="cover-img">
+                                 <form action="/merchant/product/upload/series" method="post" id="js_cover"  enctype="multipart/form-data"/>
+                                		<input type="hidden" name="_xsrf" value="${xsrf_token}">
+                                    <div class="btn-uploadcover" value="" >上传封面图</div>
+                                    <img title="封面图" alt="" data-id="" src="${series.Fcover_img if series else ''}" id="cover" class="cover">
+                                    <input id="coverupload" type="file" name="files" title="请选择图片" />
+                                </form>                                   			
+                        		</div>
+                            <div class="cover-desc v-top">
+                            		<p>图片宽度和高度940X580px，其他类目发横图1600*1200px，</p>
+                            		<p>单张图片不要超过10M，图片上不要有任何文字及Logo；</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt">
+                        <label class="label-title">图片展示<em>*</em></label>
+                        <div class="series-upload">
+                        		<div class="cover-img">
+                                <form action="/merchant/product/upload/series" method="post" enctype="multipart/form-data" id="J-formFile" />
+						            <input type="hidden" name="_xsrf" value="${xsrf_token}" />
+						            <input type="button" class="btn btn-sm btn-success btn-uploadphoto" value="上传图片" />
+						            <input id="fileupload" type="file" name="files" data-url="#"  title="请选择图片" multiple />
+						        </form>	
+					        </div>
+					        <div class="cover-desc">
+                            		<p>单张图片不要超过5M, 建议上传8张图片及以上;</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="series-extra">
+                            <ul class="photo-thumb" id="J-append-photo">
+                                <input type="hidden" id="js-photo" />
+                            </ul>
+                        </div>	
+                    <div class="form-group">
+                        <label class="label-title">商户承若</label>
+                        <input type="checkbox" name="promise" checked />本套餐内容完全真实，不存在任何隐形消费
+                    </div>
+                    <div class="form-group ml">
+                        <input type="checkbox" name="statement" checked />我已阅读《商户信息发布声明》
+                    </div>
+                    <div class="form-group tcenter">
+                        <input type="submit" class="btn btn-default" id="save" value="提交"/>
+                        <!--<button class="btn btn-default" id="preview">预览</button>-->
+                        <a href="/merchant/weddingdress/series/list/" class="btn btn-primary" id="cancel">取消</a>
+                    </div>
+                </div>
+            </div><!--/span-->
+        </div>
+    </div><!--/row-->
+</div><!--/#content.span10-->
+<!--<form>-->
+	
+<script type="text/html" id="J-model-photo">
+	<li class="photo-item" sort-id="">
+        <div class="up-photo">
+            <img src="/static/crm/js/plugins/uploadify/img/user-loading.gif" alt="" title="" data-id=""/>
+        </div>
+        <!--<textarea name="photo_desc" class="photo-desc" placeholder="请填写图片描述"></textarea>-->      
+        <span class="delete-photo">
+        		<i class="glyphicon glyphicon-trash"></i>
+        </span>       
+	</li> 
+</script>
+	
+
+<!--gzh func js-->
+<script src="/static/crm/js/plugins/uploadify/js/jquery.ui.widget.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.iframe-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/load-image.min.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.xdr-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-ui.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-process.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-image.js"></script>
+<script src="/static/crm/js/dragula.min.js"></script>
+
+<script src="/static/crm/js/series/add.js"></script>
+<script>
+	$(function(){
+        dragula([$('#J-append-photo')[0]]);
+		$(".nav-series").addClass("active");
+	})
+</script>

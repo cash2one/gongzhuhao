@@ -1,0 +1,174 @@
+<link href='/static/crm/css/dragula.min.css' rel='stylesheet' />
+<link href='/static/crm/css/series/series.css' rel='stylesheet' />
+
+<div id="content" class="col-lg-10 col-sm-10">
+    <div class="row-fluid sortable">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title>
+                    <h2>套系发布</h2>
+                </div>
+                <div class="box-content series">
+                    <div class="form-group">
+                        <label class="label-title">套系名称<em>*</em></label>
+                        <input type="text" name="package_name" id="package-name" class="form-control" value="${series.Fpackage_name}" placeholder="请填写套系名称"/>
+                        <div class="error package-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title">原价<em>*</em></label>
+                        <input type="text" name="price" id="price" class="form-control" value="${series.Fprice}" placeholder="请填写原价"/>
+                        <div class="error price-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title">现价<em>*</em></label>
+                        <input type="text" name="sale_price" id="sale-price" class="form-control" value="${series.Fsale_price}" placeholder="请填写现价"/>
+                        <div class="error sale-price-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title">套餐形式<em>*</em></label>
+                        <?py if series.Ftype == 'rent': ?>
+                            <input type="radio" name="type" value="rent" checked /> 租赁
+                            <span>&nbsp;</span>
+                            <input type="radio" name="type" value="sale" /> 购买
+                        <?py else: ?>
+                            <input type="radio" name="type" value="rent" /> 租赁
+                            <span>&nbsp;</span>
+                            <input type="radio" name="type" value="sale" checked /> 购买
+                        <?py #endif ?>
+                        <div class="error type-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <?py if series.Ffreetrial == 0: ?>
+                            <label class="label-title">0元试纱<em>*</em></label>
+                            <input type="radio" name="freetrial" value="0" checked /> 不可
+                            <span>&nbsp;</span>
+                            <input type="radio" name="freetrial" value="1" /> 可以
+                        <?py else: ?>
+                            <label class="label-title">0元试纱<em>*</em></label>
+                            <input type="radio" name="freetrial" value="0" /> 不可
+                            <span>&nbsp;</span>
+                            <input type="radio" name="freetrial" value="1" checked /> 可以
+                        <?py #endif?>
+                    </div>
+                    <div class="form-group">
+                        <label class="v-top label-title">套餐内容<em>*</em></label>
+                        <div class="series-extra">
+                            <div class="form-group">
+                                <label class="label-title">衣服数量<em>*</em></label>
+                                <input type="text" name="count" id="count" class="form-control" value="${series.Fcount}" placeholder="请填写衣服数量"/>
+                                <div class="error count-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="v-top label-title">类型描述<em>*</em></label>
+                                <textarea name="description" id="description" class="form-control" placeholder="请描述婚纱的类型(分隔符为、)">${series.Fdescription}</textarea>
+                                <div class="error description-error"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="v-top label-title">补充说明</label>
+                        <textarea name="extra" id="extra" class="form-control" cols="3">${series.Fextra}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title v-top">封面图</label>
+                        <div class="series-upload">
+                        		<div class="cover-img">
+                                 <form action="/merchant/product/upload/series" method="post" id="js_cover"  enctype="multipart/form-data"/>
+                                    <input type="hidden" name="_xsrf" value="${xsrf_token}">
+                                    <div class="btn-uploadcover" value="" >上传封面图</div>
+                                    <img title="封面图" alt="" data-id="" src="${series.Fcover_img}" id="cover" class="cover">
+                                    <input id="coverupload" type="file" name="files" title="请选择图片" />
+                                </form>
+                        		</div>
+                            <div class="cover-desc v-top">
+                            		<p>图片宽度和高度940X580px，其他类目发横图1600*1200px，</p>
+                            		<p>单张图片不要超过10M，图片上不要有任何文字及Logo；</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt">
+                        <label class="label-title">图片展示<em>*</em></label>
+                        <div class="series-upload">
+                        		<div class="cover-img">
+                                <form action="/merchant/product/upload/series" method="post" enctype="multipart/form-data" id="J-formFile" />
+						            <input type="hidden" name="_xsrf" value="${xsrf_token}" />
+						            <input type="button" class="btn btn-sm btn-success btn-uploadphoto" value="上传图片" />
+						            <input id="fileupload" type="file" name="files" data-url="#"  title="请选择图片" multiple />
+						        </form>
+					        </div>
+					        <div class="cover-desc">
+                            		<p>单张图片不要超过5M, 建议上传8张图片及以上;</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="series-extra">
+                            <ul class="photo-thumb" id="J-append-photo">
+                                <input type="hidden" id="js-photo" />
+                                <?py if images:?>
+                                    <?py for img in images:?>
+                                        <li class="photo-item" sort-id="">
+                                            <div class="up-photo">
+                                                <img src="${img.Furl}" alt="" title="" data-id="${img.Fimg_id}"/>
+                                            </div>
+                                            <!--<textarea name="photo_desc" class="photo-desc" placeholder="请填写图片描述">${img.Fdescription}</textarea>-->
+                                            <span class="delete-photo" data-id="${img.Fid}">
+									        		<i class="glyphicon glyphicon-trash"></i>
+									        </span>
+                                        </li>
+                                    <?py #endfor?>
+                                <?py #endif ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-title">商户承若</label>
+                        <input type="checkbox" name="promise" checked />本套餐内容完全真实，不存在任何隐形消费
+                    </div>
+                    <div class="form-group ml">
+                        <input type="checkbox" name="statement" checked />我已阅读《商户信息发布声明》
+                    </div>
+                    <div class="form-group tcenter">
+                        <input type="submit" class="btn btn-default" id="save" value="提交"/>
+                        <input type="hidden" name="post_url" value="/merchant/weddingdress/series/edit/${series.Fid}" />
+                        <!--<button class="btn btn-default" id="preview">预览</button>-->
+                        <a href="/merchant/weddingdress/series/list/" class="btn btn-primary" id="cancel">取消</a>
+                    </div>
+                </div>
+            </div><!--/span-->
+        </div>
+    </div><!--/row-->
+</div><!--/#content.span10-->
+<!--<form>-->
+
+<script type="text/html" id="J-model-photo">
+	<li class="photo-item" sort-id="">
+        <div class="up-photo">
+            <img src="/static/crm/js/plugins/uploadify/img/user-loading.gif" alt="" title="" data-id=""/>
+        </div>
+        <!--<textarea name="photo_desc" class="photo-desc" placeholder="请填写图片描述"></textarea>-->
+        <span class="delete-photo">
+        		<i class="glyphicon glyphicon-trash"></i>
+        </span>
+	</li>
+</script>
+
+
+<!--gzh func js-->
+<script src="/static/crm/js/plugins/uploadify/js/jquery.ui.widget.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.iframe-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/load-image.min.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.xdr-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-ui.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-process.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-image.js"></script>
+<script src="/static/crm/js/dragula.min.js"></script>
+
+<script src="/static/crm/js/weddingdress/series_add.js"></script>
+<script>
+	$(function(){
+        dragula([$('#J-append-photo')[0]]);
+		$(".nav-series").addClass("active");
+	})
+</script>

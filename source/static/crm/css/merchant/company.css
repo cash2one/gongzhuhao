@@ -1,0 +1,12 @@
+.company .form-group label{ display: inline-block; width: 100px; text-align: left;}
+.company .form-group .form-control{ width: 300px; display: inline-block;}
+.company .v-top{ vertical-align: top;}
+.company .update-img{ display: inline-block; min-width: 700px;}
+.company .update-img dt{ float: left; margin-right: 20px;}
+.company .update-img dd p{ margin-top: 10px;}
+.company .logo-bg{ display: inline;}
+.company .update-img a{ display: inline-block; position: relative; vertical-align: top;} 
+.company .btn-up{ position: relative; margin-bottom: 10px; cursor: pointer;}
+.company .btn-files{ position: absolute; top: 0; left: 0; filter: alpha(opacity=0); -moz-opacity: 0; opacity: 0;  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)";  width: 82px;  height: 33px; cursor: pointer;}
+input{font-size: 12px;}
+.form-control{ font-size: 12px;}

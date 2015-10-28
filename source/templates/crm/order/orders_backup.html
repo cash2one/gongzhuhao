@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="/static/crm/js/plugins/dataTime/jquery.datetimepicker.css" />
+<link href='/static/crm/css/order/order.css' rel='stylesheet' />	
+<?py include('crm/calender/doublecalender.html') ?>
+<div id="content" class="col-lg-10 col-sm-10">
+	<!--<ul class="breadcrumb">
+		<li><a href="#">公主号</a></li>
+		<li><a href="#">订单管理</a></li>
+	</ul>				-->
+	<!-- content starts -->		
+	<div class="row-fluid sortable">		
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>服务管理</h2>
+				</div>
+				<div class="box-content box-search">
+		             <form action="" method="post" class="form-search col-md-8">
+	                    <div class="col-md-4">
+	                        <input type="text" class="form-control" name="sch_date" id="sch_date" value="${start_date and start_date or ''} - ${end_date and end_date or ''}" placeholder="请输入时间"/>
+	                    </div>
+
+						<div class="input-group">
+					      	<span class="input-group-btn">
+					        		<button class="btn btn-default" type="submit">生成备份数据</button>
+					      	</span>
+					    </div>
+					</form>	
+
+				</div>
+				<div class="box-content orders">
+
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane active" id="order-all">
+							<form class="form-horizontal">
+								<table class="table">
+									<thead>
+										<tr>
+											<th class="order-no">订单开始时间</th>
+											<th class="order-customer">结束时间</th>
+											<th class="order-action" >操作</th>
+										</tr>
+									</thead>   
+									<tbody>
+                                        <?py for q in query:?>
+                                            <tr>
+                                                <td class="order-no">${q.Fstart_date}</th>
+                                                <td class="order-customer">${q.Fend_date}</th>
+                                                <td class="order-action" ><a href="/merchant/orders/backup/download/${q.Fid}">下载数据</a></th>
+                                            </tr>
+                                        <?py #endfor?>
+                                    </tbody>
+								</table>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+
+<!--gzh func js-->
+<script src="/static/crm/js/plugins/dataTime/jquery.datetimepicker.js" ></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('#sch_date').daterangepicker({}, function(start, end, label) {
+        console.log(start.toISOString(), end.toISOString(), label);
+      });
+      
+      $(".orders_backup").addClass("active");
+
+   });
+ </script>

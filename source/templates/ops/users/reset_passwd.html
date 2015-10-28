@@ -1,0 +1,33 @@
+<div class="clearfix row-main">
+
+<?py include('ops/users/user_menu.html') ?>
+
+<div class="col-md-10">
+    <div class="panel">
+        <div class="panel-heading"><strong><i class="icon-globe"></i> 重置密码</strong></div>
+        <div class="panel-body">
+            <form class="form-inline" action="/gzh/ops/users/resetpwd/${user_id}/" id="user_ajax_form" method="post">
+                <table class="table table-form">
+                    <tbody>
+
+                            <input type="hidden" name="user_id" value="${user_id}" >
+                     <tr>
+                        <th class="col-xs-2">新密码</th>
+                        <td class="col-xs-6"><input type="password" class="form-control" value="" id="user_pwd" name="user_pwd">
+                             <span class="text-error red" for="title" ></span>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <td colspan="2">
+                            #{xsrf_form_html}
+                            <input type="submit" data-loading="稍候..." value="修改" class="btn btn-primary" id="user_submit"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

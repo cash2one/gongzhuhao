@@ -1,0 +1,194 @@
+<link rel="stylesheet" href="/static/crm/js/plugins/dataTime/jquery.datetimepicker.css" />
+<link href='/static/crm/css/order/order.css' rel='stylesheet' />	
+<?py include('crm/calender/doublecalender.html') ?>
+<div id="content" class="col-lg-10 col-sm-10">
+	<!--<ul class="breadcrumb">
+		<li><a href="#">公主号</a></li>
+		<li><a href="#">订单管理</a></li>
+	</ul>				-->
+	<!-- content starts -->		
+	<div class="row-fluid sortable">		
+		<div class="box col-md-12">
+			<div class="box-inner">
+				<div class="box-header well" data-original-title>
+					<h2>服务管理</h2>
+				</div>
+				<div class="box-content box-search">
+		             <form action="/merchant/orders/" method="get" class="form-search col-md-8">
+		                 <input type="hidden" name="order_status" id="order_status" value="${order_status}">
+	                    <div class="col-md-4">
+	                        <?py if start_date:?>
+	                            <input type="text" class="form-control" name="sch_date" id="sch_date" value="${start_date and start_date or ''}-${end_date and end_date or ''}" placeholder="请输入时间"/>
+	                        <?py else:?>
+	                            <input type="text" class="form-control" name="sch_date" id="sch_date" value="" placeholder="请输入时间"/>
+	                        <?py #endif ?>
+	                    </div>
+
+						<div class="input-group">
+					    		<input type="text" value="${search_text and search_text or ''}" name='search_text' class="form-control input-txt" placeholder="请输入订单号/手机号/姓名搜索" />
+					      	<span class="input-group-btn">
+					        		<button class="btn btn-default" type="submit">搜索</button>
+					      	</span>
+					    </div>
+					</form>	
+					<div class="col-md-4">
+						<a class="btn btn-success add-order" href="/merchant/orders/add/"><i class="glyphicon glyphicon-plus"></i>添加</a>
+					</div>
+				</div>
+				<div class="box-content orders">
+		            <ul class="nav nav-tabs" id="myTab">
+		                <?py if not order_status:?>
+						   <li class="active"><a href="/merchant/orders/">全部订单</a></li>
+		                    <li class=""><a href="/merchant/orders/?order_status=0">待排期</a></li>
+		                    <li class=""><a href="/merchant/orders/?order_status=1">执行中</a></li>
+		                    <li class=""><a href="/merchant/orders/?order_status=2">已完成</a></li>
+		               <?py #endif?>
+
+		                <?py if order_status=='0':?>
+						    <li><a href="/merchant/orders/">全部订单</a></li>
+		                    <li class="active"><a href="/merchant/orders/?order_status=0">待排期</a></li>
+		                    <li class=""><a href="/merchant/orders/?order_status=1">执行中</a></li>
+		                    <li class=""><a href="/merchant/orders/?order_status=2">已完成</a></li>
+		               <?py #endif?>
+
+		                <?py if order_status=='1':?>
+						    <li ><a href="/merchant/orders/">全部订单</a></li>
+		                    <li class=""><a href="/merchant/orders/?order_status=0">待排期</a></li>
+		                    <li class="active"><a href="/merchant/orders/?order_status=1">执行中</a></li>
+		                    <li class=""><a href="/merchant/orders/?order_status=2">已完成</a></li>
+		               <?py #endif?>
+
+		                <?py if order_status=='2':?>
+						    <li><a href="/merchant/orders/">全部订单</a></li>
+		                    <li class=""><a href="/merchant/orders/?order_status=0">待排期</a></li>
+		                    <li class=""><a href="/merchant/orders/?order_status=1">执行中</a></li>
+		                    <li class="active"><a href="/merchant/orders/?order_status=2">已完成</a></li>
+		               <?py #endif?>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane active" id="order-all">
+							<form class="form-horizontal">
+								<table class="table">
+									<thead>
+										<tr>
+											<th class="order-no">订单号码</th>
+											<th class="order-customer">客户姓名</th>
+											<th class="order-mobile">客户手机</th>
+											<th class="order-type">订单类型</th>
+											<th class="order-balance">订单余额</th>
+											<th class="order-date">订单时间</th>
+											<th class="order-state">状态</th>
+											<th class="order-action" >操作</th>
+										</tr>
+									</thead>   
+									<tbody>
+		                            <?py import datetime?>
+										<?py for item in items.result: ?>
+										<tr>
+											<input type="hidden" id="order_id" value="${item.Fid}" />
+											<td class="order-no">${item.Forder_id_user}</td>
+											<td class="order-customer">${item.Fuser_name}</td>
+											<td class="order-mobile">${item.Fuser_mobi}</td>
+											<td class="order-type">${ORDER_TYPES[item.Forder_type]}</td>
+											<td class="order-balance">${item.Famount}元</td>
+											<td class="order-date tcenter">${item.Fcreate_time}</td>
+
+		                                    <?py if item.Fstatus in ('0',0):?>
+		                                        <td class="order-state tcenter">
+		                                            <a  class="btn btn-sm btn-default"  href="/merchant/schedule/${item.Fid}/">制定排期</a>
+		                                        </td>
+		                                        <td class="order-action tcenter" >
+		                                            <div class="action">
+		                                                <a href="/merchant/orders/update/${item.Fid}/" class="btn btn-primary btn-sm">修改</a>
+		                                            </div>
+		                                        </td>
+		                                    <?py else:?>
+		                                        <?py secheduls = handler.get_order_schedules(item.Fid) ?>
+		                                            <?py if secheduls and secheduls.count()!=0: ?>
+		                                                <td class="order-state">
+		                                                    <div class="state">
+		                                                        <?py schedule_tag="0" ?>
+		                                                            <?py for schedul in secheduls:?>
+		                                                                <div class="fleft">
+		                                                                        <?py if not schedul.Fdatetime:?>
+		                                                                            <span  class="step1">待定</span>
+		                                                                        <?py elif schedul.Fdatetime < datetime.datetime.now():?>
+		                                                                            <span  class="step1 green">${SCHEDULE_TYPE[schedul.Fid]}</span>
+		                                                                        <?py else:?>
+		                                                                            <?py if schedule_tag=='0':?>
+		                                                                                <span  class="step1 red">${SCHEDULE_TYPE[schedul.Fid]}</span>
+		                                                                                <?py schedule_tag="1" ?>
+		                                                                             <?py else:?>
+		                                                                                    <span  class="step1">${SCHEDULE_TYPE[schedul.Fid]}</span>
+		                                                                             <?py #endif ?>
+		                                                                        <?py #endif?>
+
+		                                                                        <div class="showInfos">
+		                                                                            <p>${SCHEDULE_TYPE[schedul.Fid]}时间：${schedul.Fdatetime.strftime('%Y-%m-%d %H:%M') if schedul.Fdatetime else "待定"}</p>
+		                                                                            <p>服务人员：${schedul.Fname_stf if schedul.Fname_stf else "待定"} </p>
+		                                                                        </div>
+
+		                                                                </div>
+		                                                            <?py #endfor ?>
+
+		                                                    </div>
+		                                                </td>
+
+		                                                <td class="order-action center">
+		                                                    <a class="btn btn-primary btn-sm" href="/merchant/orders/update/${item.Fid}/">修改</a>
+		                                                    <a class="btn btn-success btn-sm" href="/merchant/schedule/${item.Fid}/">排期</a>
+		                                                    <!--<a class="btn btn-danger btn-sm btn-share" href="#">分享</a>
+															<div class="shareQR" style="display: none;">
+											                    <div class="dialog">
+											                       	<h2>${item.Fuser_name}<a href="javascript:void(0)" class="tright"><i class="close glyphicon glyphicon-remove"></i></a></h2>
+																	<div class="QR-code">
+																		<img src="/common/tools/binary_img/${item.Fid}/" alt=""  width="180" height="180"/>
+																	</div>
+																	<div class="QR-info">
+																		<h2>${item.Fuser_name}</h2>
+																		<p>订单号：${item.Forder_id_user}</p>
+																		<p>手机号：${item.Fuser_mobi}</p>
+																	</div>
+											                    </div>
+											                </div>-->
+		                                                </td>
+		                                                <?py else: ?>
+		                                                <td class="order-state tcenter">
+		                                                    <a  class="btn btn-sm btn-default"  href="/merchant/schedule/${item.Fid}/">制定排期</a>
+		                                                </td>
+		                                                <td class="order-action tcenter">
+		                                                    <div class="action">
+		                                                        <a href="/merchant/orders/update/${item.Fid}/" class="btn btn-primary btn-sm">修改</a>
+		                                                    </div>
+		                                                </td>
+		                                            <?py #endif ?>
+		                                    <?py #endif ?>
+										    </tr>
+										<?py #endfor ?>
+									</tbody>
+		                            #{page_html}
+								</table>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div><!--/span-->
+		</div>
+	</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+
+<!--gzh func js-->
+<script src="/static/crm/js/plugins/dataTime/jquery.datetimepicker.js" ></script>
+<script src="/static/crm/js/order/order.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('#sch_date').daterangepicker({}, function(start, end, label) {
+        console.log(start.toISOString(), end.toISOString(), label);
+      });
+      
+      $(".nav-order").addClass("active");
+   });
+ </script>

@@ -1,0 +1,180 @@
+<link rel="stylesheet" href="/static/crm/css/merchant/company.css" />
+
+<link rel="stylesheet" href="/static/common/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="/static/common/kindeditor/kindeditor-all-min.js"></script>
+
+<script>
+    KindEditor.ready(function(K) {
+        var editor = K.editor({
+            allowFileManager : true,
+            uploadJson:'/common/img/upload/${company.Fid if company else "logs"}',
+            imageSizeLimit:'5MB',
+            extraFileUploadParams:{"_xsrf":$("#_xsrf").val()},
+            fieldName : 'imgFile',
+        });
+
+        K('#company_logo').click(function() {
+            editor.loadPlugin('multiimage', function() {
+                editor.plugin.multiImageDialog({
+                    clickFn : function(urlList) {
+                        var div = K('#J_imageView');
+                        K.each(urlList, function(i, data) {
+                            div.attr('src',data.url);
+                            $('#Fphoto_url').val(data.url);
+                        });
+                        editor.hideDialog();
+                    }
+                });
+            });
+        });
+    });
+</script>
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->
+	<div class="row-fluid">
+		<div class="box col-md-12">
+			<div class="box-inner">
+			<div class="box-header well" data-original-title>
+				<h2>账户设置</h2>
+			</div>
+			<div class="box-content company">
+				<form role="form">
+					<input type="hidden" name="_xsrf" id="_xsrf" value="${xsrf_token}">
+                    <div class="form-group">
+                        <label for="company_name">公司名称<em class="red">*</em></label>
+                        <input type="text" name="company_name" id="company_name" class="form-control input-txt" value="${company.Fcompany_name if company else ''}" />
+                        <div class="error company-error"></div>
+                    </div>
+                    <?py role_codes = handler.get_current_user().get('Frole_codes')?>
+                    <?py permission = handler.get_current_user().get('Fpermission')?>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">地址<em class="red">*</em></label>
+			            <select class="basic-info-select province" id="province">
+                            <option value="-1">请选择</option>
+			                <?py if company: ?>
+			                <?py for p in province: ?>
+			                <option value="${p.Fid}" ${"selected = 'selected'" if p.Fid == company.Fprovince else ''}>${p.Fprovince_name}</option>
+			                <?py #endfor ?>
+			                <?py else: ?>
+			                <?py for p in province: ?>
+			                <option value="${p.Fid}" >${p.Fprovince_name}</option>
+			                <?py #endfor ?>
+			                <?py #endif ?>
+			            </select>
+			            <select class="basic-info-select city" id="city">
+                            <option value="-1">请选择</option>
+			                <?py if company: ?>
+			                <?py for p in city: ?>
+			                <option value="${p.Fid}" ${"selected = 'selected'" if p.Fid == company.Fcity else ''}>${p.Fcity_name}</option>
+			                <?py #endfor ?>
+			                <?py else: ?>
+			                <?py for p in city: ?>
+			                <option value="${p.Fid}" >${p.Fcity_name}</option>
+			                <?py #endfor ?>
+			                <?py #endif ?>
+			            </select>
+			            <select class="basic-info-select county" id="county">
+                            <option value="-1">请选择</option>
+			                <?py if company: ?>
+			                <?py for p in area: ?>
+			                <option value="${p.Fid}" ${"selected = 'selected'" if p.Fid == company.Farea else ''}>${p.Farea_name}</option>
+			                <?py #endfor ?>
+			                <?py else: ?>
+			                <?py for p in area: ?>
+			                <option value="${p.Fid}">${p.Farea_name}</option>
+			                <?py #endfor ?>
+			                <?py #endif ?>
+			            </select>
+			            <div class="error province-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="detail_address">详细地址<em class="red">*</em></label>
+                        <input type="text" name="detail_address" id="detail_address" class="form-control input-txt" value="${company.Fdetail_address if company else ''}" />
+                        <div class="error address-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contacts">联系人<em class="red">*</em></label>
+                        <input type="text" name="contacts" id="contacts" class="form-control input-txt" value="${company.Fcontact if company else ''}" />
+                        <div class="error contacts-error"></div>
+                    </div>
+			        <div class="form-group">
+			            <label for="contacts_tel">联系电话<em class="red">*</em></label>
+			            <input type="text" name="contacts_tel" id="contacts_tel" class="form-control input-txt" value="${company.Fphone.split(',')[0] if company else ''}" maxlength="17" />
+			            <!--button class="add-phone-btn btn btn-sm btn-success">添加</button-->
+			            <div class="error tel-error"></div>
+			        </div>
+			        <?py if company: ?>
+			        <?py for p in company.Fphone.split(',')[1:]: ?>
+			        <div class="form-group">
+                        <label for="contacts_tel" style="visibility">联系电话<em class="red">*</em></label>
+			            <input type="text" name="contacts_tel" id="contacts_t" class="form-control input-txt" value="${p}" maxlength="17" />
+			            <div class="error tel-error"></div>
+			        </div>
+			        <?py #endfor ?>
+			        <?py #endif ?>
+                    <div class="form-group">
+                        <label for="qq">QQ</label>
+                        <input type="text" name="qq" id="qq" class="form-control input-txt" value="${company.Fqq if company else ''}" />
+                        <div class="error qq-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mail">邮箱</label>
+                        <input type="text" name="mail" id="mail" class="form-control input-txt" value="${company.Fmail if company else ''}" />
+                        <div class="error mail-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="desc" class="v-top">描述</label>
+                        <textarea name="desc" id="desc" class="form-control input-txt">${company.Fdescription if company else ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="v-top">公司LOGO</label>
+                        <dl class="update-img">
+                            <dt class="logo-bg">
+                                <img id="J_imageView" src="${company.Fphoto_url if company else ''}" style="width: 132px; height: 132px;" alt="" />
+                            </dt>
+                            <dd>
+                                <input type="hidden" name="Fphoto_url" id="Fphoto_url" value="${company.Fphoto_url if company else ''}">
+                                    <?py if role_codes or 'merchant_information_edit' in permission: ?>
+                                    <!--<img src="/static/skin/images/add-img.jpg" alt="">-->
+                                    <input type="button" id="company_logo" class="btn btn-primary btn-up" value="添加图片" />
+                                    <?py #endif ?>
+                                   <!-- <input type="file" name="files" class="btn-files" data-url="" accept="image/png, image/gif, image/jpg, image/jpeg" />-->
+                                <p>1.图片规格：图片宽度和高度940X580px，单张图片不要超过5M。</p>
+                                <p>2.图片格式支持jpg、png和bmp格式。</p>
+                            </dd>
+                            <div class="error logo-error"></div>
+                        </dl>
+                    </div>
+                    <div class="form-group">
+                        <label ></label>
+                        <?py if role_codes or ('merchant_information_edit' in permission): ?>
+                            <a href="javascript:void(0)" class="btn btn-success basic-info-save-btn">提&nbsp&nbsp交</a>
+                        <?py #endif ?>
+                    </div>
+                </form>				
+			</div>
+		</div><!--/span-->
+	</div>
+	</div><!--/row-->
+</div>
+<script>
+    $(document).ready(function(){
+        <?py if not role_codes and 'merchant_information_edit' not in permission: ?>
+            $('#province').attr("disabled",true);
+            $('#city').attr("disabled",true);
+            $('#county').attr("disabled",true);
+        <?py #endif ?>
+
+    })
+</script>
+<script type="text/html" id="J-model-phone" >
+    <div class="basic-info-list clearfix">
+            <p class="basic-name" style="visibility: hidden">联系电话：</p>
+            <input type="text" name="contacts_tel" class="basic-info-input" value="" maxlength="17">
+            <button class="del-phone-btn btn">删除</button>
+            <p class="basic-info-err contacts-tels-err"></p>
+    </div>
+</script>
+<script charset="utf-8" src="/static/crm/js/system/edit_info.js"></script>
+
+

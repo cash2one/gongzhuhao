@@ -1,0 +1,701 @@
+<link rel="stylesheet" href="/static/skin/css/merchant.css"/>
+<link rel="stylesheet" type="text/css" href="/static/skin/css/less.css">
+<link rel="stylesheet" type="text/css" href="/static/skin/js/swiper/swiper.min.css">
+<style type="text/css">
+    * {
+          box-sizing: border-box;
+    }
+    body{
+        background-color:#fff !important;
+        font-size: 16px;
+    }
+	.swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+    }
+    .mtop40{margin-top: 40px;}
+
+    .gzh-series .gzh-media,
+    .gzh-works .gzh-media{
+    	padding:0px;
+    	border:1px solid #eee;
+    	border-top-width:3px;
+    	font-size: inherit;
+    }
+    .gzh-swiper{
+    	background-color: #fafafa;
+    	margin-right: auto;
+    	margin-left: auto;
+    }
+    .gzh-media:hover{
+		background-color: inherit;
+    }
+
+    .gzh-series .gzh-media-left,
+    .gzh-works .gzh-media-left{
+		padding:20px;
+		border-right:1px solid #eee;
+    }
+    .gzh-series .gzh-block-grid-3 >li:nth-of-type(6n+1){
+    	clear: none;
+    }
+
+    .gzh-series .gzh-card .gzh-title,
+    .gzh-works .gzh-card .gzh-title{
+    	color:#333;
+    }
+	
+	.gzh-series [class*="gzh-block-grid"],
+	.gzh-works [class*="gzh-block-grid"]{
+		padding: 0px;
+		margin: 0px;
+	}
+
+	.gzh-works [class*="gzh-block-grid"] > li,
+	.gzh-series [class*="gzh-block-grid"] > li{
+		padding: 20px;
+		border-right:1px solid #eee;
+		border-top:1px solid #eee;
+	}
+	.gzh-works .gzh-card .gzh-caption,
+	.gzh-series .gzh-card .gzh-caption{
+		margin: 0px;
+		margin-top: 13px;
+		line-height: 1;
+	}
+	.gzh-media .gzh-media-right{
+		background-color: #fff;
+	}
+	.gzh-mtop-30{
+		margin-top: 30px;
+	}
+
+	.gzh-mbottom-10{
+		margin-bottom: 10px;
+	}
+	.gzh-pbottom{
+		padding-bottom:10px; 
+		border-bottom:3px solid #eee;
+	}
+
+	.swiper-container {
+        width: 100%;
+        height: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .swiper-slide {
+        background-size: cover;
+        background-position: center;
+        
+    }    
+	.gzh-swiper-list{
+		margin: 0px;
+		padding: 0px;
+		display: block;
+		list-style: none;
+		font-size: 16px;
+		color:#666;
+		padding-top:20px;
+		border-top:1px solid #eee;
+	}
+
+	.gzh-swiper-list li{
+		width: 220px;
+		background-color: #f5f5f5;
+		line-height: 2;
+		padding: 9px 0px;
+		margin: 10px 0px;
+		border-radius: 4px;
+		position: relative;
+		cursor: pointer;
+	}
+
+	.gzh-swiper-list li.active{
+		background-color: #ff6657;
+		color:#fff;
+	}
+	
+	.gzh-swiper-list li.active:after,
+	.gzh-swiper-list li.active:before{
+		right: 100%;
+		top: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
+	.gzh-swiper-list li.active:after {
+		border-right-color: #ff6657;
+		border-width: 5px;
+		margin-top: -5px;
+	}
+	.gzh-swiper-list li.active:before {
+		border-right-color: #ff6657;
+		border-width: 5px;
+		margin-top: -5px;
+	}
+	.gzh-tooltip{
+		  margin: 10px 20px;
+  		  opacity: 1;
+	}
+	.gzh-swiper-container{
+		margin-top:0px;;
+	}
+	.gzh-swiper-container .gzh-media{
+		padding:0px;
+		margin:0px;
+		border-bottom:0px;
+	}
+	.gzh-swiper-container .gzh-media-inner{
+		width:940px;
+		height:480px;
+		overflow: hidden;
+	}
+	.gzh-swiper-container .gzh-media-right{
+		width:260px;
+		text-align:center;
+		padding-left:20px;
+	}
+	.gzh-swiper-container  .gzh-scan{
+		margin-top:32px;
+		margin-bottom:24px;
+	}
+	.gzh-swiper-container .gzh-media-right p{
+		font-size:18px;
+		line-height:1;
+		padding-top:16px;
+	}
+</style>
+<div class="gzh-swiper">
+	<div class="gzh-main gzh-swiper-container">
+		<div class="gzh-media">
+			<div class="gzh-media-body">
+				<div class="gzh-media-inner">
+			 	<!-- Swiper -->
+				    <div class="swiper-container gallery">
+				        <div class="swiper-wrapper">
+                            <?py if w_banner_first: ?>
+                                 <a class="swiper-slide" href="${w_banner_first.get('Flink')}" style="background-image:url(${w_banner_first.get('Fimage_url')})"></a>
+                            <?py else: ?>
+                                 <a class="swiper-slide" href="#" style="background-image:url(/static/ops/pics/banner_01.jpg)"></a>
+                            <?py #endif ?>
+                            <?py if w_banner_second: ?>
+                                <a class="swiper-slide" href="${w_banner_second.get('Flink')}" style="background-image:url(${w_banner_second.get('Fimage_url')})"></a>
+                            <?py else: ?>
+                                <a class="swiper-slide" style="background-image:url(/static/ops/pics/banner_01.jpg)"></a>
+                            <?py #endif ?>
+                            <?py if w_banner_third: ?>
+                                <a class="swiper-slide" href="${w_banner_third.get('Flink')}" style="background-image:url(${w_banner_third.get('Fimage_url')})"></a>
+                            <?py else: ?>
+                                <a class="swiper-slide" style="background-image:url(/static/ops/pics/banner_01.jpg)"></a>
+                            <?py #endif ?>
+				        </div>
+					</div>
+				</div>
+			</div>
+			<div class="gzh-media-right">
+				<div class="gzh-scan">
+					<a href="">
+						<img src="/static/ops/pics/gzh_code.png" alt="" />
+					</a>
+					<p>扫一扫，婚礼尽在掌握！</p>
+				</div>
+				<ul class="gzh-swiper-list">
+                    <?py if w_banner_first: ?>
+                        <li class="active" data-index="1">
+						    ${w_banner_first.get('Fname')}
+					    </li>
+                    <?py else: ?>
+                        <li class="active" data-index="1">
+						    春暖花开就结婚
+					    </li>
+                    <?py #endif ?>
+                    <?py if w_banner_second: ?>
+                        <li data-index="2">
+						    ${w_banner_second.get('Fname')}
+					    </li>
+                    <?py else: ?>
+                        <li data-index="2">
+						    春暖花开就结婚
+					    </li>
+                    <?py #endif ?>
+                    <?py if w_banner_third: ?>
+                        <li data-index="3">
+						    ${w_banner_third.get('Fname')}
+					    </li>
+                    <?py else: ?>
+                        <li data-index="3">
+						    春暖花开就结婚
+					    </li>
+                    <?py #endif ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="gzh-main gzh-container gzh-home" style="margin-top:0px;">
+	<section class="gzh-series">
+	    <h2 class="gzh-index-title f24 gzh-mbottom-10">
+	    	<i class="iconfont gzh-diamond text-red" style="font-size:1.3em;"></i>
+			精品套系
+            <a href="/api/packages/" class="fr f16 text-gray">更多<i class="iconfont gzh-enter"></i></a>
+        </h2>
+        <div class="gzh-media">
+            <?py if s_essence: ?>
+                <div class="gzh-media-left">
+                    <a href="/series/${s_essence.Fproduct_id}">
+                        <img src="${s_essence.Frecommend_url}" alt="" style="width:260px;height:482px"/>
+                    </a>
+        	    </div>
+            <?py else: ?>
+                <div class="gzh-media-left">
+                    <a href="#">
+                        <img src="/static/ops/pics/essence.jpg" alt="" style="width:260px;height:482px"/>
+                    </a>
+        	    </div>
+            <?py #endif ?>
+
+        	<div class="gzh-media-body">
+        		<ul class="gzh-block-grid gzh-block-grid-3">
+                    <?py if s_upper_left: ?>
+                        <li class="gzh-card gzh-card--258 gzh-block-width-33">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/series/${s_upper_left.Fproduct_id}">
+                                <img src="${s_upper_left.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/series/${s_upper_left.Fproduct_id}">${s_upper_left.Fproduct_name}</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥${handler.get_series_info(s_upper_left.Fproduct_id).Fsale_price}</span>
+                                    <del>￥${handler.get_series_info(s_upper_left.Fproduct_id).Fprice}</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--258 gzh-block-width-33">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_default.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">精品套系 尽请期待</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥</span>
+                                    <del>￥</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+
+                    <?py if s_upper_center: ?>
+                        <li class="gzh-card gzh-card--258 gzh-block-width-33">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/series/${s_upper_center.Fproduct_id}">
+                                <img src="${s_upper_center.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/series/${s_upper_center.Fproduct_id}">${s_upper_center.Fproduct_name}</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥${handler.get_series_info(s_upper_center.Fproduct_id).Fsale_price}</span>
+                                    <del>￥${handler.get_series_info(s_upper_center.Fproduct_id).Fprice}</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--258 gzh-block-width-33">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_default.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">精品套系 尽请期待</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥</span>
+                                    <del>￥</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+                    <?py if s_upper_right: ?>
+                        <li class="gzh-card gzh-card--258 gzh-block-width-33">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/series/${s_upper_right.Fproduct_id}">
+                                <img src="${s_upper_right.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/series/${s_upper_right.Fproduct_id}">${s_upper_right.Fproduct_name}</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥${handler.get_series_info(s_upper_right.Fproduct_id).Fsale_price}</span>
+                                    <del>￥${handler.get_series_info(s_upper_right.Fproduct_id).Fprice}</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--258 gzh-block-width-33">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_default.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">精品套系 尽请期待</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥</span>
+                                    <del>￥</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+                    <?py if s_down_first: ?>
+                        <li class="gzh-card gzh-card--184" style="width:25%;">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/series/${s_down_first.Fproduct_id}">
+                                <img src="${s_down_first.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/series/${s_down_first.Fproduct_id}">${s_down_first.Fproduct_name}</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥${handler.get_series_info(s_down_first.Fproduct_id).Fsale_price}</span>
+                                    <del>￥${handler.get_series_info(s_down_first.Fproduct_id).Fprice}</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--184" style="width:25%;">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_small.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">精品套系 尽请期待</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥</span>
+                                    <del>￥</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+                    <?py if s_down_second: ?>
+                        <li class="gzh-card gzh-card--184" style="width:25%;">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/series/${s_down_second.Fproduct_id}">
+                                <img src="${s_down_second.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/series/${s_down_second.Fproduct_id}">${s_down_second.Fproduct_name}</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥${handler.get_series_info(s_down_second.Fproduct_id).Fsale_price}</span>
+                                    <del>￥${handler.get_series_info(s_down_second.Fproduct_id).Fprice}</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--184" style="width:25%;">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_small.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">精品套系 尽请期待</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥</span>
+                                    <del>￥</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+                    <?py if s_down_third: ?>
+                        <li class="gzh-card gzh-card--184" style="width:25%;">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/series/${s_down_third.Fproduct_id}">
+                                <img src="${s_down_third.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/series/${s_down_third.Fproduct_id}">${s_down_third.Fproduct_name}</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥${handler.get_series_info(s_down_third.Fproduct_id).Fsale_price}</span>
+                                    <del>￥${handler.get_series_info(s_down_third.Fproduct_id).Fprice}</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--184" style="width:25%;">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_small.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">精品套系 尽请期待</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥</span>
+                                    <del>￥</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+                    <?py if s_down_fourth: ?>
+                        <li class="gzh-card gzh-card--184" style="width:25%;">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/series/${s_down_fourth.Fproduct_id}">
+                                <img src="${s_down_fourth.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/series/${s_down_fourth.Fproduct_id}">${s_down_fourth.Fproduct_name}</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥${handler.get_series_info(s_down_fourth.Fproduct_id).Fsale_price}</span>
+                                    <del>￥${handler.get_series_info(s_down_fourth.Fproduct_id).Fprice}</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--184" style="width:25%;">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_small.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">精品套系 尽请期待</a>
+                                <p class="gzh-label">
+                                    <span class="gzh-price">￥</span>
+                                    <del>￥</del>
+                                </p>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+				</ul>
+        	</div>
+        </div>
+	</section>
+	<div class="gzh-mtop-30">
+        <?py if w_activity_banner: ?>
+            <a href="${w_activity_banner.get('Flink')}">
+			    <img src="${w_activity_banner.get('Fimage_url')}" alt="" style="height:120px;width:100%;" />
+		    </a>
+        <?py else: ?>
+            <a href="#">
+			    <img src="/static/ops/pics/transverse_banner01.jpg" alt="" style="height:120px;width:100%;" />
+		    </a>
+        <?py #endif ?>
+	</div>
+	<section class="gzh-works gzh-mtop-30">
+	    <h2 class="gzh-index-title f24 gzh-mbottom-10">
+	    	<i class="iconfont gzh-hot text-red" style="font-size:1.3em;"></i>
+	    	人气作品
+            <a href="/api/products/" class="fr f16 text-gray">更多<i class="iconfont gzh-enter"></i></a>
+        </h2>
+        <div class="gzh-media">
+            <?py if p_hot: ?>
+                <div class="gzh-media-left">
+                    <a href="/product/${p_hot.Fproduct_id}">
+                        <img src="${p_hot.Frecommend_url}" alt="" style="width:260px;height:482px"/>
+                    </a>
+        	    </div>
+            <?py else: ?>
+                <div class="gzh-media-left">
+                    <a href="#">
+                        <img src="/static/ops/pics/essence.jpg" alt="" style="width:260px;height:482px"/>
+                    </a>
+        	    </div>
+            <?py #endif ?>
+        	<div class="gzh-media-body">
+        		<ul class="gzh-block-grid gzh-block-grid-3">
+                    <?py if p_upper_left: ?>
+                        <li class="gzh-card gzh-card--258">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/product/${p_upper_left.Fproduct_id}">
+                                <img src="${p_upper_left.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/product/${p_upper_left.Fproduct_id}">${p_upper_left.Fproduct_name}</a>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--258">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_default.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">人气作品 尽请期待</a>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+                    <?py if p_upper_center: ?>
+                        <li class="gzh-card gzh-card--258">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/product/${p_upper_center.Fproduct_id}">
+                                <img src="${p_upper_center.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/product/${p_upper_center.Fproduct_id}">${p_upper_center.Fproduct_name}</a>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--258">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_default.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">人气作品 尽请期待</a>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+                    <?py if p_upper_right: ?>
+                        <li class="gzh-card gzh-card--258">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/product/${p_upper_right.Fproduct_id}">
+                                <img src="${p_upper_right.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/product/${p_upper_right.Fproduct_id}">${p_upper_right.Fproduct_name}</a>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--258">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_default.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">人气作品 尽请期待</a>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+                    <?py if p_down_left: ?>
+                        <li class="gzh-card gzh-card--258">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/product/${p_down_left.Fproduct_id}">
+                                <img src="${p_down_left.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/product/${p_down_left.Fproduct_id}">${p_down_left.Fproduct_name}</a>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--258">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_default.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">人气作品 尽请期待</a>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+                    <?py if p_down_center: ?>
+                        <li class="gzh-card gzh-card--258">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/product/${p_down_center.Fproduct_id}">
+                                <img src="${p_down_center.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/product/${p_down_center.Fproduct_id}">${p_down_center.Fproduct_name}</a>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--258">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_default.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">人气作品 尽请期待</a>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+                    <?py if p_down_right: ?>
+                        <li class="gzh-card gzh-card--258">
+                            <a class="gzh-overlay gzh-overlay-hover" href="/product/${p_down_right.Fproduct_id}">
+                                <img src="${p_down_right.Frecommend_url}" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="/product/${p_down_right.Fproduct_id}">${p_down_right.Fproduct_name}</a>
+                            </div>
+	                    </li>
+                    <?py else: ?>
+                        <li class="gzh-card gzh-card--258">
+                            <a class="gzh-overlay gzh-overlay-hover" href="#">
+                                <img src="/static/ops/pics/share_default.jpg" class="gzh-thumbnail">
+                                <figcaption class="gzh-overlay-panel gzh-overlay-fade gzh-overlay-background">
+                                </figcaption>
+                            </a>
+                            <div class="gzh-caption">
+                                <a class="gzh-title" href="#">人气作品 尽请期待</a>
+                            </div>
+	                    </li>
+                    <?py #endif ?>
+				</ul>
+        	</div>
+        </div>
+	</section>
+	<section class="gzh-recommend-merchant mtop40">
+	    <h2 class="gzh-index-title f24 gzh-pbottom">
+            <i class="iconfont gzh-shop text-red" style="font-size:1.3em;"></i>推荐商家
+            <a href="/api/merchant/list/" class="fr f16 text-gray">更多<i class="iconfont gzh-enter"></i></a>
+        </h2>
+		<ul class="gzh-block-grid  gzh-block-grid-6" style="margin-top:10px;">
+            <?py for m in merchants: ?>
+                <?py if m: ?>
+                    <li class="gzh-card gzh-card--180"><a href="/merchant/detail/${m.Fproduct_id}"><img src="${m.Frecommend_url}" alt="" class="gzh-thumbnail"></a></li>
+                <?py else: ?>
+                    <li class="gzh-card gzh-card--180"><a href="#"><img src="/static/ops/pics/merchant_default.jpg" alt="" class="gzh-thumbnail"></a></li>
+                <?py #endif ?>
+            <?py #endfor ?>
+		</ul>
+	</section>
+</div>
+<script src="/static/skin/js/swiper/swiper.min.js"></script>
+<script src="/static/skin/js/swiper/swiper.jquery.min.js"></script>
+
+<script type="text/javascript">
+ var gallery = new Swiper('.gallery', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 0,
+        autoplay: 10 * 1000,
+        width: 940,
+        height: 480,
+        onSlideChangeStart : function(swiper){
+        	var list = $(".gzh-swiper-list>li"),
+        		current = list[swiper.activeIndex];
+        	list.removeClass("active");
+        	$(current).addClass('active');
+        }
+    });
+ $(".gzh-swiper-list>li").click(function(e){
+ 	gallery.slideTo($(this).data('index') - 1)
+ });
+</script>

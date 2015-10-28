@@ -1,0 +1,59 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="mainNavbar">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="http://www.gongzhuhao.com" class="navbar-brand"><i class="icon-home icon-large"></i>前台</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+        <ul class="nav navbar-nav mainNavbarNav">
+            <li class="simple-mode-a" id="index_nav"><a href="/admin/index">首页</a></li>
+            <li class="simple-mode-a" id="user_role_nav"><a href="/gzh/ops/users/list/0">用户</a></li>
+            <li class="simple-mode-a" id="company_nav"><a href="/gzh/ops/companys/list/">公司</a></li>
+            <li class="simple-mode-a" id="user_order_nav"><a href="/gzh/ops/orders/list">订单</a></li>
+            <li class="simple-mode-a" id="bespeake_order_nav"><a href="/gzh/ops/bespeak/orders/list">预约</a></li>
+            <li class="simple-mode-a" id="series_nav"><a href="/gzh/ops/series/">套系</a></li>
+            <li class="simple-mode-a" id="product_nav"><a href="/gzh/ops/works/list/">作品</a></li>
+            <li class="simple-mode-a" id="banner_nav"><a href="/gzh/ops/create/b_type">广告</a></li>
+            <!--<li class="simple-mode-a" id="schedule_plan_nav"><a href="/gzh/ops/schedule_plan/company/list/">档期</a></li>-->
+            <!--<li class="simple-mode-a" id="potential_client_nav"><a href="#">潜客</a></li>-->
+            <li class="simple-mode-a" id="music_nav"><a href="/gzh/ops/upload/music/">音乐</a></li>
+            <li class="simple-mode-a" id="topic_tag_nav"><a href="/gzh/ops/create/topic/tag/">话题</a></li>
+
+            <li class="simple-mode-a" id="activity_tag_nav"><a href="/gzh/ops/query/activities">活动</a></li>
+
+            <li class="simple-mode-b" id="weixin_nav"><a href="/admin/weixin/">微信</a></li>
+            <li class="simple-mode-b" id="message"><a href="/ops/message/index/">信息</a></li>
+            <!--
+            <li class="simple-mode-a" id="base_nav"><a href="#">配置</a></li>
+            <li class="simple-mode-b" id="action_nav"><a href="#">活动</a></li>
+            <li class="simple-mode-b" id="advertise_nav"><a href="#">广告</a></li>
+            <li class="simple-mode-b" id="weixin_nav"><a href="/gzh/ops/weixin/">微信</a></li>
+            <li class="simple-mode-a" id="message_nav"><a href="#">消息</a></li>
+            <li class="simple-mode-b" id="system_nav"><a href="#">系统</a></li>          -->
+
+            <li class="simple-mode-b" id="site_manger"><a href="/admin/system/index.html">站点管理</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav" id="navbarSwitcher">
+            <li><a href="#"><i class="icon-chevron-sign-right icon-large"></i></a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                    class="icon-user icon-large"></i>${current_user.get('Fnick_name')} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" >修改密码</a>
+                    </li>
+                    <li><a href="/loginout">退出</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

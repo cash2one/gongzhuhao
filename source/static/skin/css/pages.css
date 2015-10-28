@@ -1,0 +1,78 @@
+/** 翻页共有样式 **/
+.page-part{
+    margin: 20px 0;
+}
+.page-part .page{
+    text-align: center;
+}
+.page-part .page p, .page-part .page a{
+    display: inline-block;
+    border: 1px #d2d2d2 solid;
+    height: 30px;
+    width: 30px;
+    margin:0 5px 0 0;
+    text-align: center;
+    line-height: 30px;
+    color: #666;
+    vertical-align: middle;
+}
+/*.page-prev{*/
+    /*background-position: -20px -373px;*/
+    /*vertical-align: -11px;*/
+/*}*/
+/*.page-next{*/
+    /*background-position: -20px -410px;*/
+    /*vertical-align: -9px;*/
+/*}*/
+/*.page-prev:hover{*/
+    /*background-position: -71px -373px;*/
+/*}*/
+/*.page-next:hover{*/
+    /*background-position: -71px -410px;*/
+/*}*/
+.page-part .page .total-page{
+    width: 70px;
+    border: none;
+    height: 32px;
+    line-height: 32px;
+}
+.page-part .page .goPage{
+    border: none;
+    width: 100px;
+    vertical-align: -10px;
+}
+.page-part .page .goPage ins{
+    float: left;
+    margin-right: 5px;
+}
+.page-part .page .goPage input{
+    float: left;
+    width: 30px;
+    height: 30px;
+    padding: 0 5px;
+    margin: 2px 5px 0 0;
+    text-align: center;
+}
+.page-part .page .toJump{
+    border: none;
+    font-size: 14px;
+    width: 50px;
+    height: 32px;
+    line-height: 32px;
+    color: #fff;
+    background: #ff6577;
+    text-align: center;
+    display: inline-block;
+}
+.page-part .page .page-active{
+    background: #ff6577;
+    color: #fff;
+    border: 1px #ff6577 solid;
+}
+.page-part .page .pageNum:hover{
+    background: #ec4559;
+    color: #fff;
+    border: 1px #ec4559 solid;
+    text-decoration: none;
+}
+/** 翻页共有样式结束 **/

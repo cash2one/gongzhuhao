@@ -1,0 +1,25 @@
+
+<header class="header">
+    <a id="cd-menu-trigger" href="#0"><span class="cd-menu-icon"></span></a>
+    <p class="title">我的排期</p>
+</header>
+<section class="cd-main-content">
+        <ul class="list">
+            <?py for schedule in _schedules:?>
+                <li>
+                    <a href="/mobile/merchant/orders/add/?shot_date=${schedule[0]}&schedule_category=${category_id}" rel="external">
+                        <dl>
+                            <dd class="order-time">${schedule[0]}</dd>
+                            <dd class="order-title">${schedule[1]}</dd>
+                            <dd class="order-no">${schedule[2]}</dd>
+                        </dl>
+                    </a>
+                </li>
+            <?py #endfor ?>
+        </ul>
+</section>
+<script>
+	$(function(){
+		$('.nav_service').addClass('current');
+	})
+</script>

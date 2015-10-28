@@ -1,0 +1,61 @@
+<?py include('view/account/_header.html') ?>
+<div class="col-lg-9 col-md-9">
+    <div class="gzh-well clearfix">
+        <h4 class="h4 pull-left ng-scope">小组话题</h4>
+        <ul class="pull-left nav-profile">
+            <li><a href="/user/topics/" class="current">我的话题</a></li>
+            <li><a href="/user/topics/reply.html">我的回复</a></li>
+            <li><a href="#">关注的话题</a></li>
+        </ul>
+    </div>
+    <div class="gzh-profile">
+
+        <?py if topics:?>
+            <?py for topic in topics.result:?>
+                <article class="gzh-article">
+                   <header class="gzh-article-header">
+                    <h2 class="f16">
+                        <i class="icon icon20 icon-top"></i>
+                        <i class="icon icon20 icon-essence"></i>
+                        <a target="_blank" href="/topic/detail/${topic.Fcotegory_id}/${topic.Fid}">${topic.Ftitle}</a>
+                    </h2>
+                   </header>
+                   <div class="gzh-article-cons">
+                        <p class="gzh-article-text">#{topic.Fcontent}</p>
+                        <?py images = handler.get_images_of_topic(topic.Fid) ?>
+                           <?py if images:?>
+                               <div class="gzh-article-thumb">
+                                   <?py for img in images:?>
+                                        <img class="gzh-acticle-img" src="${img.Fimg_url}" width="120" height="80"/>
+                                   <?py #endfor ?>
+                                </div>
+                           <?py #endif ?>
+                   </div>
+                    <footer class="gzh-article-footer">
+                        <p>
+                            <span class="gzh-article-author"></span>
+                            <span class="gzh-article-date"></span>
+                            <span class="gzh-article-comment"><i class="iconfont gzh-reply_1 text-gray"></i>${topic.Fpage_view}</span>
+                            <span class="gzh-article-view"><i class="iconfont gzh-see text-gray"></i>${topic.Ftotal_assess}</span>
+                        </p>
+                    </footer>
+                </article>
+            <?py #endfor ?>
+
+        <?py #endif ?>
+             <?py if topics.page_num>1:?>
+                <ul class="gzh-pagination gzh-pagination--center">
+                   #{topics.render_admin_html_web()}
+                </ul>
+             <?py #endif ?>
+    </div>
+</div>
+</div>
+</section>
+
+<?py include('view/account/_footer.html') ?>
+<script>
+$(function(){
+$('#user_topics').addClass('current');
+})
+</script>

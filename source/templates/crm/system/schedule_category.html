@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="/static/crm/css/system/member.css" />
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<div class="row-fluid sortable">
+	    <div class="box col-md-12">
+	        <div class="box-inner">
+		        <div class="box-header well" data-original-title>
+		            <h2>档期分类</h2>
+		        </div>
+		        <div class="box-content tright">
+		        		<form class="form-horizontal">
+                            <a href="/merchant/schedule/category/add/" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>添加档期分类</a>
+		        		</form>
+		        </div>
+		        <div class="box-content member">
+                    <form class="form-horizontal">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="member-name">分类编号</th>
+                                    <th class="member-account">分类名称</th>
+                                    <!--th class="member-power">权限</th-->
+                                    <th class="member-action">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?py for schedule_category in page_data.result: ?>
+                                <tr id="${schedule_category.Fid}">
+                                    <input type="hidden" value="${schedule_category.Fid}" />
+                                    <td class="member-name">${schedule_category.Fid}</td>
+                                    <td class="member-account">${schedule_category.Fname}</td>
+                                    <td class="member-action">
+                                        <a href="/merchant/schedule/category/edit/${schedule_category.Fid}" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit"></span>修改</a>
+                                        <a href="javascript:schedule_category.delete(${schedule_category.Fid})" class="btn btn-sm btn-danger btn-delete"><span class="glyphicon glyphicon-trash"></span>删除</a>
+                                    </td>
+                                </tr>
+                                <?py #endfor ?>
+                            <input type="hidden" name="_xsrf" value="${xsrf_token}">
+                            </tbody>
+                            #{page_html}
+                        </table>
+                    </form>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</div>
+<?py include('ops/common/dialog.html') ?>
+<script language="javascript">
+    var schedule_category = {
+        delete:function(sc_id){
+
+            BootstrapDialog.show({
+                title: '删除档期分类',
+                message: '确定删除分类',
+                buttons: [{
+                    label: 'Cancle',
+                    action: function(dialogItself){
+                        dialogItself.close()
+                    }
+                },
+                {
+                    label: 'OK',
+                    action: function(dialogItself){
+                          dialogItself.close()
+                          $.get('/merchant/schedule/category/delete/'+sc_id,{},function(data){
+                               var obj = $.parseJSON(data);
+                               if(obj.stat == 'success'){
+                                     $('#'+sc_id).remove();
+                              }
+                        })
+                    }
+                }]
+            });        　　
+　　　   }
+    }
+</script>

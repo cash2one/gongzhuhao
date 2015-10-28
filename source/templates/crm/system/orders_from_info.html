@@ -1,0 +1,125 @@
+<link rel="stylesheet" href="/static/crm/css/system/member.css" />
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<div class="row-fluid sortable">
+	    <div class="box col-md-12">
+	        <div class="box-inner">
+		        <div class="box-header well" data-original-title>
+		            <h2>订单来源</h2>
+		        </div>
+		        <div class="box-content tright">
+		        		<form class="form-horizontal">
+
+                            <a href="javascript:;" onclick="OrderFrom.set_order_from();" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>添加来源</a>
+		        		</form>
+		        </div>
+		        <div class="box-content member">
+                    <form class="form-horizontal">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="member-account">来源名称</th>
+                                    <th class="member-action">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="">
+                                <?py for item in data: ?>
+                                <tr>
+                                    <input type="hidden" value="${item.Fid}" id="member_id"/>
+                                    <td class="member-account">${item.Fname}</td>
+
+                                    <td class="member-action">
+                                            <a href="javascript:;" class="btn btn-sm btn-success" onclick="OrderFrom.update_order_from('${item.Fid}','${item.Fname}');" id="update_from_btn"><span class="glyphicon glyphicon-edit"></span>修改</a>
+                                    		<a href="javascript:;" class="btn btn-sm btn-danger btn-delete"  onclick="OrderFrom.delete_order_from_info('${item.Fid}');" id="delete_from_btn"><span class="glyphicon glyphicon-trash"></span>删除</a>
+                                    </td>
+                                </tr>
+                                <?py #endfor ?>
+                            </tbody>
+                        </table>
+                    </form>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="ModalLabel">添加来源</h4>
+      </div>
+      <div class="modal-body">
+         <form id="user_order_from_form">
+                <div class="box-content shot_schedule">
+                    <div class="form-group">
+                        <input type="hidden" id='order_from_id' name="order_from_id" value=""/>
+                        订单来源:<input type="text" name="order_from_name" id="order_from_name" class="form-control iput-txt" value="" placeholder="" />
+                    </div>
+                </div>
+              #{xsrf_form_html}
+         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="user_order_from_btn">添加</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+
+var OrderFrom = {
+　　　　set_order_from:function(){
+            $('#order_from_name').val('');
+            $("#order_from_id").val('');
+            $('#myModal').modal()
+　　　　},
+
+       update_order_from:function(_id,name){
+          $('#order_from_name').val(name);
+          $("#order_from_id").val(_id);
+          $('#myModal').modal()
+   },
+
+   delete_order_from_info:function(_id){
+        $.get('/merchant/system/order_from/delete/'+_id,{},function(data){
+                var obj = $.parseJSON(data);
+               if(obj.state=='ok'){
+                    show_dialog_reload('删除订单来源','删除成功');
+                }
+               else
+                    show_dialog_none_reload('删除订单来源',obj.info);
+        })
+   },
+
+};
+
+$(document).ready(function(){
+
+
+    $("#user_order_from_btn").click(function() {
+        var name = $("#order_from_name").val();
+        var from_id = $("#order_from_id").val();
+        if(name==''){
+            alert("来源不能为空");
+            return;
+        }
+        $.get('/merchant/system/order_from/create/',{name:name,order_from_id:from_id},function(data){
+               var obj = $.parseJSON(data);
+               if(obj.state=='ok'){
+                    show_dialog_reload('设置订单来源','设置成功');
+                }
+               else
+                    show_dialog_none_reload('设置订单来源',obj.info);
+        })
+    });
+
+
+});
+
+</script>

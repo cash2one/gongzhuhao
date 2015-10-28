@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>公主号 － 登录页面</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- The styles -->
+
+	<link rel="stylesheet" href="/static/crm/css/plugins/bootstrap.min.css" />
+	<link rel="stylesheet" href="/static/crm/css/common.css" />
+	<link href='/static/crm/css/login/login.css' rel='stylesheet' />
+	<script src="/static/crm/js/plugins/jquery-1.11.2.min.js"></script>
+ 
+	<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="ch-container">
+	<div class="row">
+		<div class="col-md-12 center login-header">
+			<h2>公主号</h2>
+		</div>
+	</div> 
+	<div class="row">
+		<div class="well col-md-5 center login-box" id="login-box">		
+			<form class="form-horizontal" method="post">
+				 #{xsrf_form_html}
+				<fieldset>
+					<input type="hidden" name="url" value="/">
+					<div class="error"></div>
+					<div class="input-group input-group-lg">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
+						<input type="text" class="form-control input-txt" name="username" id="username" value="" placeholder="用户名/手机号" />
+					</div>
+					<div class="input-group input-group-lg">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
+						<input type="password" class="form-control input-txt" name="password" id="password" value="" placeholder="密码" />
+					</div>
+                    <?py if msg: ?>
+                        <div class="clearfix">${msg}</div>
+
+                    <?py else: ?>
+                        <div class="clearfix"></div>
+                    <?py #endif ?>
+
+					<button type="submit" class="btn btn-success" id="login">登录</button>
+					
+				</fieldset>
+			</form>
+		</div>
+	</div> 
+</div> 
+ 
+<script src="/static/crm/js/plugins/bootstrap.min.js"></script>
+<!-- <script src="/static/crm/js/plugins/jquery.cookie.js"></script>
+<script src="/static/crm/js/plugins/jquery.history.js"></script> -->
+<!--gzh func js-->
+<script src="/static/crm/js/login/login.js"></script>
+</body>
+</html>

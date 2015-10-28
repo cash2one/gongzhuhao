@@ -1,0 +1,102 @@
+
+<div class="clearfix row-main">
+    <?py include('ops/weixin/nav.html') ?>
+
+    <div class="col-md-10">
+        <div class="panel">
+            <div class="panel-heading">
+                <strong>一览</strong>
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-form">
+                    <tbody>
+                        <tr>
+                            <th>装修公司名称</th>
+                            <td colspan="2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" value="${name}" id="name" name="name">
+                                </div>
+                            </td>
+
+                            <td><input type="button" data-loading="稍候..." value="搜索" class="btn btn-primary"
+                                                   id="search" onclick="search(this);">
+                             </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                <tr class="text-center">
+                    <th>公司ID</th>
+                    <th>装修公司名称</th>
+                    <th>微信app地址</th>
+                    <th>微信token</th>
+                    <th>操作</th>
+                </tr>
+
+                </thead>
+
+                <tbody id="house_type_list">
+                <?py if companies:?>
+                    <?py for company in companies: ?>
+                    <tr class="text-center">
+                        <td>${company.Fid}</td>
+                        <td>${company.Fcompany_name}</td>
+                        <td>
+                            <?py if company.Fapp_id : ?>
+                            ${company.Fapp_url}
+                            <?py else: ?>
+                            &nbsp;
+                            <?py #endif ?>
+                        </td>
+                        <td>
+                            <?py if company.Fapp_id : ?>
+                            ${company.Fapp_token}
+                            <?py else: ?>
+                            &nbsp;
+                            <?py #endif ?>
+                        </td>
+                        <td>
+                            <?py if company.Fapp_id : ?>
+                                <a href="/admin/weixin/delete/${company.Fid}"><font color="red">解绑</font> | </a>
+                            <?py else: ?>
+                                <a href="/admin/weixin/detail/${company.Fid}/">绑定 | </a>
+                            <?py #endif ?>
+                            <a href="javascript:goto_menu(this, ${company.Fid}, '${company.Fapp_url}')">菜单</a>
+                        </td>
+                    </tr>
+                    <?py #endfor ?>
+                <?py #endif ?>
+
+                </tbody>
+                #{page_html}
+            </table>
+        </div>
+    </div>
+</div>
+
+<?py include('ops/common/dialog.html') ?>
+
+<script language="Javascript">
+$(document).ready(function()
+{
+    $('#weixin_nav').addClass('active');
+});
+
+function search(obj){
+    cond = $("#name").val();
+    url = '/admin/weixin/';
+    window.location.href = url + cond + "/";
+}
+
+function goto_menu(obj, company_id, app_url){
+    if(app_url == ''){
+        alert("请先进行绑定。");
+    }else{
+        window.location.href = "/admin/weixin/menu/" + company_id;
+    }
+}
+</script>

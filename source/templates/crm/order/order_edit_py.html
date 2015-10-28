@@ -1,0 +1,333 @@
+<link rel="stylesheet" href="/static/crm/js/plugins/dataTime/jquery.datetimepicker.css" />
+<link href='/static/crm/css/order/order.css' rel='stylesheet' />
+<link rel="stylesheet" href="/static/crm/js/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="/static/crm/js/plugins/zTree_v3/js/jquery.ztree.core-3.5.min.js"></script>
+<script type="text/javascript">
+    var setting = {
+
+		data: {
+			simpleData: {
+				enable: true
+			}
+		},
+		callback: {
+			onClick: onClick
+		}
+	};
+
+	function filter(treeId, parentNode, childNodes) {
+		if (!childNodes) return null;
+		for (var i=0, l=childNodes.length; i<l; i++) {
+			childNodes[i].name = childNodes[i].name.replace(/\.n/g, '.');
+		}
+		return childNodes;
+	}
+
+	var zNodes=[
+	    <?py for d in data:?>
+		{ id:${d.get('id')}, pId:${d.get('pId')},open:true, name:'${d.get('name')}' },
+	    <?py #endfor?>
+	    ];
+    function onClick(event, treeId, treeNode, clickFlag) {
+    	
+    		var is_exist=false;
+    		var obj = null;
+    		$('#department_staffs_show').children("div").each(function(){
+    			if($(this).attr('id').toString()==treeNode.id.toString()){
+    				is_exist=true
+    				$(this).show();
+    			}else{
+    				$(this).hide();
+    			}
+    			
+    		})    	
+ 		if(!is_exist){	
+    			$.get('/merchant/department/staffers/'+treeNode.id,{},function(data){
+	            //$('#staffes').html('');
+	            var arrays = $.parseJSON(data);
+	            var tmp_html="<div id='"+treeNode.id+"'>"
+		        $.each(arrays, function(key,obj) {
+	                var ss = "#{item.get('order_stf_id')}".split('&');
+	                var sf = '';
+	                if(ss.indexOf(obj.id.toString()) != -1){
+	                	
+	                    sf = '<label class="checkbox-inline"><input type="checkbox" value="'+obj.id+'" id="'+obj.id+'" name="department_staffes" checked><span class="department_stf">'+obj.name+'</span></label>';
+	                }else{
+	                    sf = '<label class="checkbox-inline"><input type="checkbox" value="'+obj.id+'" id="'+obj.id+'" name="department_staffes"><span class="department_stf">'+obj.name+'</span></label>';
+	                }
+		            tmp_html+=sf
+		            //$('#staffes').append(sf);
+		        });
+	            tmp_html+='</div>'
+	            $('#department_staffs_show').append(tmp_html);
+	        })       
+    		}  
+    		
+	}
+    function get_starff_by_department_id(treeNode_id){
+    		var is_exist=false;
+    		var obj = null;
+    		$('#department_staffs_show').children("div").each(function(){
+    			if($(this).attr('id').toString()==treeNode_id.toString()){
+    				is_exist=true
+    				$(this).show();
+    			}else{
+    				$(this).hide();
+    			}
+    			
+    		})    	
+ 		if(!is_exist){	
+    			$.get('/merchant/department/staffers/'+treeNode_id,{},function(data){
+	            //$('#staffes').html('');
+	            var arrays = $.parseJSON(data);
+	            var tmp_html="<div id='"+treeNode_id+"' style='display:none'>"
+		        $.each(arrays, function(key,obj) {
+	                var ss = "#{item.get('order_stf_id')}".split('&');
+	                var sf = '';
+	                if(ss.indexOf(obj.id.toString()) != -1){
+	                	
+	                    sf = '<label class="checkbox-inline"><input type="checkbox" value="'+obj.id+'" id="'+obj.id+'" name="department_staffes" checked><span class="department_stf">'+obj.name+'</span></label>';
+	                }else{
+	                    sf = '<label class="checkbox-inline"><input type="checkbox" value="'+obj.id+'" id="'+obj.id+'" name="department_staffes"><span class="department_stf">'+obj.name+'</span></label>';
+	                }
+		            tmp_html+=sf
+		            //$('#staffes').append(sf);
+		        });
+	            tmp_html+='</div>'
+	            $('#department_staffs_show').append(tmp_html);
+	        })       
+    		}  
+    }
+    
+    
+	$(document).ready(function(){
+        $.fn.zTree.init($("#ztree"), setting,zNodes);
+        $("#save").on("click",function(){
+	    		var _stf=""; 
+            var _id="";
+	    		$("input[name='department_staffes']:checked").each(function(){    
+	     		//_stf += $(this).val() + ","; 
+	     		_stf += $(this).next(".department_stf").text() + " ";
+                if(_id==""){
+                    _id += $(this).attr('value');
+                }else{
+                    _id += "&" + $(this).attr('value');
+                }
+	    		});    
+	    		
+	    		//alert(_stf);
+	    		$("#m_order_stf").empty();
+	    		$("#m_order_stf").html(_stf).css("margin-right","10px");
+	    		$("#m_order_stf").attr('value', _id);//.css("margin-right","10px");
+	    		$("#addModal").hide();
+	    		$("#order_choose").html("修改接单人");
+        })
+        <?py if department_ids:?>
+	        <?py for i in department_ids:?>
+	        		get_starff_by_department_id('${i}');
+	        <?py #endfor?>
+        <?py #endif?>
+	});
+
+</script>	
+
+<div id="content" class="col-lg-10 col-sm-10">
+	<!-- content starts -->		
+	<div class="row-fluid sortable">		
+		<div class="box col-md-12">
+			<div class="box-inner">
+			<div class="box-header well" data-original-title>
+				<h2>修改订单</h2>
+			</div>
+			<div class="box-content order-edit">
+				<form method="">
+					<ul>
+						<li>
+							<label class="order-label">订单类型<em class="red">*</em></label>
+							<div class="btn-group">
+	                            <?py
+	                            l_chk = {i:'' for i in range(5)}
+	                            idx = int(item['order_type'])
+	                            l_chk[idx] = 'checked'
+	                            ?>
+								<label class="radio-inline">
+	                                <input type="radio" name="type" id="radio1" class="type-bdrde" value="1" ${l_chk[1]}>婚纱
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="type" id="radio2" class="type-other" value="3" ${l_chk[3]}>孕妇
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="type" id="radio3" class="type-other" value="4" ${l_chk[4]}>亲子
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="type" id="radio4" class="type-other" value="2" ${l_chk[2]}>写真
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="type" id="radio5" class="type-other" value="0" ${l_chk[0]}>其他
+								</label>
+								
+							</div>
+						</li>
+						<li>
+							<span class="order-label v-top customer-name">新娘<em class="red">*</em></span>
+							<div class="order-profile clear">
+								<div class="form-group fleft">
+								    <label for="user_name">姓名<em class="red">*</em></label>
+	                                <input type="text" class="form-control a name" id="m_user_name" placeholder="姓名" value="${item.get('order_name')}" required>
+								</div>
+								<div class="form-group fleft">
+								    <label for="user_mobi">手机号<em class="red">*</em></label>
+	                                <input type="tel" class="form-control a mobile" id="m_user_mobi" placeholder="手机号" value="${item.get('order_mobi')}" required>
+								</div>
+								<div class="form-group fleft">
+								    <label for="user_birth">生日</label>
+	                                <input type="text" class="form-control datatime" id="m_user_birth" value="${item.get('order_user_birth')}">
+								</div>
+							</div>
+						</li>
+	                    <?py if idx==1: ?>
+						<li class="bride">
+	                    <?py else: ?>
+						<li class="bride hide-this">
+	                    <?py #endif ?>
+							<span class="order-label v-top"></label>新郎</span>
+							<div class="order-profile clear">
+								<div class="form-group fleft">
+								    <label for="user_name">姓名</label>
+	                                <input type="text" class="form-control" id="m_user_name_ex" value="${item.get('order_name_ex', '')}">
+								</div>
+								<div class="form-group fleft">
+								    <label for="user_mobi">手机号</label>
+								    <input type="tel" class="form-control" id="m_user_mobi_ex" value="${item.get('order_mobi_ex', '')}">
+								</div>
+								<div class="form-group fleft">
+								    <label for="user_birth">生日</label>
+								    <input type="text" class="form-control datatime" id="m_user_birth_ex" value="${item.get('order_birth_ex', '')}">
+								</div>
+							</div>
+						</li>
+						<li>
+							<label class="order-label" for="order_num">订单号<em class="red">*</em></label>
+							<div class="order-profile w">
+	                            <input type="text" class="form-control order-num" id="m_order_num" value="${item.get('order_id_user')}" required>
+							</div>
+						</li>
+
+                        <li>
+							<label class="order-label" for="order_create_time">订单时间<em class="red">*</em></label>
+							<div class="order-profile">
+								<input type="text" class="form-control datatime"  id="create_time" name="create_time" required placeholder="订单时间" value="${item.get('order_date')}"/>
+							</div>
+						</li>
+
+	                    <li>
+							<label class="order-label" for="m_order_amount">订单金额<em class="red">*</em></label>
+							<div class="order-profile">
+	                            <input type="text" class="form-control money" id="m_order_amount" value="${item.get('order_amount')}" required>
+							</div>
+						</li>
+
+                        <li>
+							<label class="order-label" for="pre_order_amount">预付订金<em class="red">*</em></label>
+							<div class="order-profile">
+								<input type="text" class="form-control money" id="pre_order_amount" value="${item.get('pre_order_acount')}" required placeholder="预付订金" />
+							</div>
+						</li>
+
+                        <li>
+							<label class="order-label" for="order_stf">尾款<em class="red"></em></label>
+							<div class="order-profile">
+                                <div id="retainage">
+                                    <?py for r in retainages:?>
+                                         <input type="text" name="retain" value="${r.Famount}" readonly>
+                                    <?py #endfor ?>
+								    <span class="btn btn-link" data-toggle="modal" data-target="#add_money_Modal" id="add_order_retainage">新增尾款</span>
+                                </div>
+							</div>
+						</li>
+
+						<li>
+							<label class="order-label" for="order_stf">接单人<em class="red">*</em></label>
+							<div class="order-profile">
+	                            <span id="m_order_stf" class="order_stf" value="#{item.get('order_stf_id')}">${item.get('order_stf_name')}</span>
+								<span class="btn-link" data-toggle="modal" data-target="#addModal" id="order_choose">选择接单人</span>
+							</div>
+						</li>
+
+                        <?py if orders_from:?>
+                            <li>
+                                <label class="order-label" for="order_stf">订单来源<em class="red"></em></label>
+                                <div class="order-profile">
+                                    <?py for of in orders_from:?>
+                                        <?py if str(of.Fid) in _order_from :?>
+                                            <label>
+                                                <input type="checkbox" name="order_from" value="${of.Fid}" checked/>${of.Fname}
+                                            </label>
+                                        <?py else:?>
+                                            <label>
+                                                <input type="checkbox" name="order_from" value="${of.Fid}" />${of.Fname}
+                                            </label>
+                                        <?py #endif?>
+                                    <?py #endfor?>
+                                </div>
+                            </li>
+                        <?py #endif?>
+
+						<li>
+							<label class="order-label v-top" for="order_comment">备注：</label>
+							<div class="order-profile w">
+	                            <textarea class="form-control" rows="3" id="m_order_comment">${item.get('order_comment')}</textarea> 
+							</div>
+						</li>
+					</ul>
+					<div class="form-group">
+						<button type="button" class="btn btn-green save" id="js_save">保存</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="cancel">取消</button>
+					</div>
+					<input type="hidden" id="order_id_m" value="${item.get('order_id')}"/>
+					<input type="hidden" id="url"  />
+				</form>
+			</div>
+		</div><!--/span-->
+	</div>
+</div><!--/row-->
+
+</div><!--/#content.span10-->
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<form method="">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="addModalLabel">选择接单人</h4>
+			</div>
+			<div class="modal-body order-infos">
+                <div id="ztree" class="ztree"></div>
+                <div class="stf-list" id="staffes">	
+					<div id="department_staffs_show">
+						
+					</div>
+                </div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-green save" id="save">保存</button>
+			</div>
+		</div>
+		</form>
+	</div>
+</div>		
+
+<!--gzh func js-->
+<script src="/static/crm/js/plugins/dataTime/jquery.datetimepicker.js" ></script>
+<script src="/static/crm/js/order/order-edit.js"></script>
+<script>
+	$(function(){
+        $(".all_orders").addClass("active");
+
+        $('#add_order_retainage').on('click',function(){
+            $('#retainage').prepend('<input type="text" name="retainage" value=""> ');
+        })
+	})	
+</script>

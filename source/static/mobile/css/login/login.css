@@ -1,0 +1,22 @@
+*, *:after, *:before {box-sizing: border-box;}
+html, body {height: 100%;}	
+body, div,ul,li,p{ margin: 0; padding: 0;}
+.wrapper{ height: 100%; background: #fff8fc;}
+
+.nav{ margin: 0; padding: 0; clear: both; list-style: none;}
+.nav li{ height: 100px; line-height: 100px; width: 50%; float: left; background: #fff; font-size: 2em; text-align: center;}
+.nav li a{ display: inline-block; width: 100%; height: 100%; text-decoration: none; border-bottom: 2px solid #fff; color: #333;}
+.nav li a.on{ border-bottom: 2px solid #ed32a4; color: #ed32a4;}
+.con{ overflow: hidden; display: inline-block; width: 100%;}
+.con-item{ display: none; position: relative; margin: 3em auto; padding: 1%; width: 98%;}
+.con-item.on{ display: block;}
+.item{ display: inline-block;position: relative; top: 0; left: 0; width: 100%; height: 82px; border: 1px solid #ccc;}
+.borderNone{ border-bottom: none;}
+.item:first{ border-bottom: none;}
+.input-txt{ top: 0; left: 0; padding-left: 2em; width: 100%; height: 80px; line-height: 80px; border: none; font-size: 2em;}
+.input-mobile{  position: absolute;}
+.item span{ display: inline-block;}
+.icon{  position: absolute; top: 24px; left: 1em; width: 32px; height: 32px;}
+.btnCons{ margin: 1em 2em;}
+.login{ width: 100%; height: 80px; line-height: 80px; background: #ed32a4; color: #fff; border: none; font-size: 2em;}
+.btn-code{ position: absolute; right: 0; top: 0; margin: 10px; padding: 0; width: 150px; height: 60px; line-height: 60px; text-align: center; border: 1px solid #ffa0da; background: #ffd8f0; color: #ed32a4; font-size: 1.8em;}

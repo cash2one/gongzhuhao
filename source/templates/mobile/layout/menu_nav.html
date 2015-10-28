@@ -1,0 +1,26 @@
+<nav id="cd-lateral-nav">
+	<div class="slide-avatar">
+        <div class="avatar">
+            <div target="_blank" href="" class="avatar-box">
+                <img  width="120" height="120" alt="avatar" src="/static/images/topic_default_img.png" >
+                <em class="avatar-cover"></em>
+            </div>	
+        </div>
+        <?py nick_name = handler.get_current_user().get('Fnick_name')?>
+        <div class="avatar-name">
+        	${nick_name}
+        </div>
+	</div>
+	<ul class="cd-navigation cd-single-item-wrapper">
+		<li><a href="/weixin/user/orders/" class="nav_schedule"><span class="icon icon-arrow fright"></span>我的排期</a></li>
+		<li><a href="/weixin/user/photos/" class="nav_photo"><span class="icon icon-arrow fright"></span>我的照片</a></li>
+		<li><a href="/weixin/user/share/" class="nav_share"><span class="icon icon-arrow fright"></span>我的分享</a></li>
+        <?py role_codes = handler.get_current_user().get('Frole_codes') ?>
+      		<?py permission = handler.get_current_user().get('Fpermission') ?>
+			<?py if role_codes or ('orders_view' in permission): ?>
+                <!--<li><a id="my_service" href="#0">订单服务</a></li>-->
+                <li><a href="/mobile/merchant/service/" class="nav_service"><span class="icon icon-arrow fright"></span>服务列表</a></li>
+        <?py #endif ?>	
+        <li><a href="../users/setting.html"><span class="icon icon-arrow fright"></span>设置</a></li>
+	</ul> 
+</nav>		

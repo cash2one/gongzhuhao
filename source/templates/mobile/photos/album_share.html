@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="/static/mobile/css/photo/photo.css" />
+<link rel="stylesheet" href="/static/web/js/plugins/lightbox/css/lightbox.css" />
+
+<header data-role="header"  class="header">
+	<a class="back" href="javascript:history.go(-1);"><span class="icon icon-back"></span></a>
+    <p class="title">分享照片</p>
+</header>
+
+ <form method="post" action="/mobile/user/select/share/photos/" id="share_img_submit">
+    <section class="share cd-main-content" style="padding-top: 100px;">
+    		#{xsrf_form_html}
+    		<input type="hidden" id="album_id" name="album_id" value="${album_id}"/>
+	    	<div class="photo-share">
+	    		<p class="ps-title">请选择要分享的照片</p>
+	    		<?py if photos:?>
+	    		<ul class="share-list">
+                    <?py for photo in photos:?>
+                        <li>
+                                <div class="bg-alpha">
+                                <label for="share-${photo.Fid}" class="label-check">
+                                        <input type="checkbox" name="share-img" id="share-${photo.Fid}" value="${photo.Fid}" class="share-check" checked/>
+                                </label>
+                                <label for="cover-${photo.Fid}" class="label-cover" style="color: #fff;">
+                                        <input type="radio" name="cover" id="cover-${photo.Fid}" value="${photo.Fid}" class="cover-radio" checked/>
+                                        设封面
+                              </label>
+                                </div>
+                            <a class="pt-link" data-lightbox="pt-thumb"  href="${handler.get_show_img_url(photo.Fimage_url,400)}">
+                                <img src="${handler.get_show_img_url(photo.Fimage_url,600)}" id="${photo.Fid}" />
+                            </a>
+                        </li>
+                    <?py #endfor ?>
+                    </ul>
+                <?py #endif?>
+		    	</div>
+	</section>
+	<footer class="footer">
+		<input type="submit" class="btn-share" id="do_share" value="分享"/>
+	</footer>
+</form>
+<script src="/static/web/js/plugins/lightbox/js/lightbox.min.js"></script>
+

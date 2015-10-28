@@ -1,0 +1,56 @@
+<div class="clearfix row-main">
+<?py include('ops/music/music_base.html') ?>
+ <div class="col-md-10">
+   <div class="panel">
+     <div class="panel-heading"><strong><i class="icon-globe"></i>上传背景音乐</strong></div>
+       <div class="panel-body">
+         <form class="form-inline" action="" id="user_ajax_form" method="post" enctype="multipart/form-data" onsubmit="return saveReport();">
+           <table class="table table-form">
+             <tbody>
+              <tr>
+                <th class="col-xs-2">音乐名称</th>
+                <td class="col-xs-6">
+                    <input type="text"  class="form-control" value="" id="music_name" name="music_name">
+                    <span class="text-error red" for="title" ></span>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                  <th>背景音乐</th>
+                  <td>
+                     <input type="file" class="form-control" id="background_music" name="background_music" accept="application/ostream" multiple/>
+                  </td>
+              </tr>
+              <tr>
+                <th></th>
+                <td colspan="2">
+                    <input type="submit" data-loading="稍候..." value="保存" class="btn btn-primary" id="user_submit"></td>
+              </tr>
+             </tbody>
+           </table>
+             #{xsrf_form_html}
+         </form>
+       </div>
+   </div>
+ </div>
+</div>
+<?py include('ops/common/dialog.html') ?>
+<script language="Javascript">
+    $(document).ready(function(){
+        $('#music_nav').addClass('active');
+        $('#upload_music').addClass('active');
+    });
+
+    function saveReport(){
+        $('#user_ajax_form').ajaxSubmit(function(data){
+           var obj = $.parseJSON(data);
+           if(obj.stat == 'success'){
+                alert('上传成功!');
+                location.href = "/gzh/ops/music/list/";
+           }else{
+                alert('error');
+           }
+        });
+        return false;
+    }
+</script>

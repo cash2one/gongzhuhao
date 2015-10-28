@@ -1,0 +1,200 @@
+<link href='/static/crm/css/dragula.min.css' rel='stylesheet' />
+<link href='/static/crm/css/work/work.css' rel='stylesheet' />
+<!--<form action="/merchant/work/add/" method="post" name="myForm" onSubmit="return checkForm();">-->
+<input type="hidden" name="_xsrf" value="${xsrf_token}" />
+<div id="content" class="col-lg-10 col-sm-10">
+    <div class="row-fluid sortable">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title>
+                    <h2>作品发布</h2>
+                </div>
+                <div class="box-content series">
+                    <div class="form-group">
+                        <label class="label-title">名称<em>*</em></label>
+                        <input type="text" name="work_name" class="form-control" id="work-name" value="${work.Fname}" placeholder="请填写作品名称" />
+                        <div class="error name-error"></div>
+                    </div>
+
+                    <div class="form-group work-style" id="work-category">
+                        <label class="label-title">分类</label>
+                        <div class="series-extra">
+                            <?py user_writing = True ?>
+                            <?py for code, name in category_info.iteritems(): ?>
+                                <?py if work.Fcategory == code: ?>
+                                    <a href="javascript:;" class="tags current" data-value="${code}">${name}</a>
+                                    <?py user_writing = False ?>
+                                <?py else: ?>
+                                    <a href="javascript:;" class="tags" data-value="${code}">${name}</a>
+                                <?py #endif?>
+                            <?py #endfor ?>
+
+                            <?py if user_writing and work.Fcategory: ?>
+                                <a href="javascript:;" class="tags current" data-value="user_writing">自己写</a>
+                                <input type="text" name="category" class="form-control input-write" style="display:inline-block" value="${work.Fcategory}" />
+                            <?py else: ?>
+                                <a href="javascript:;" class="tags" data-value="user_writing">自己写</a>
+                                <input type="text" name="category" class="form-control input-write" value="" />
+                            <?py #endif ?>
+                        </div>
+                    </div>
+
+                    <div class="form-group work-style" id="work-color">
+                        <label class="label-title">颜色</label>
+                        <div class="series-extra">
+                            <?py user_writing = True ?>
+                            <?py for code, name in color_info.iteritems(): ?>
+                                <?py if work.Fcolor == code: ?>
+                                    <a href="javascript:;" class="tags current" data-value="${code}">${name}</a>
+                                    <?py user_writing = False ?>
+                                <?py else: ?>
+                                    <a href="javascript:;" class="tags" data-value="${code}">${name}</a>
+                                <?py #endif?>
+                            <?py #endfor ?>
+
+                            <?py if user_writing and work.Fcolor: ?>
+                                <a href="javascript:;" class="tags current" data-value="user_writing">自己写</a>
+                                <input type="text" name="color" class="form-control input-write" style="display:inline-block" value="${work.Fcolor}" />
+                            <?py else: ?>
+                                <a href="javascript:;" class="tags" data-value="user_writing">自己写</a>
+                                <input type="text" name="color" class="form-control input-write" value="" />
+                            <?py #endif ?>
+                        </div>
+                    </div>
+
+                    <div class="form-group work-style" id="work-style">
+                        <label class="label-title">款式</label>
+                        <div class="series-extra">
+                            <?py user_writing = True ?>
+                            <?py for code, name in style_info.iteritems(): ?>
+                                <?py if work.Fstyle == code: ?>
+                                    <a href="javascript:;" class="tags current" data-value="${code}">${name}</a>
+                                    <?py user_writing = False ?>
+                                <?py else: ?>
+                                    <a href="javascript:;" class="tags" data-value="${code}">${name}</a>
+                                <?py #endif?>
+                            <?py #endfor ?>
+
+                            <?py if user_writing and work.Fstyle: ?>
+                                <a href="javascript:;" class="tags current" data-value="user_writing">自己写</a>
+                                <input type="text" name="style" class="form-control input-write" style="display:inline-block" value="${work.Fstyle}" />
+                            <?py else: ?>
+                                <a href="javascript:;" class="tags" data-value="user_writing">自己写</a>
+                                <input type="text" name="style" class="form-control input-write" value="" />
+                            <?py #endif ?>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-title">起拍价<em>*</em></label>
+                        <input type="text" name="sale_price" id="sale-price" class="form-control" value="${work.Fsale_price}" placeholder="请填写起拍价格"/>
+                        （高于此价格的套餐可拍摄本主题，默认不显示）
+                        <div class="error sale-price-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="v-top label-title">作品描述</label>
+                        <textarea name="description" class="form-control textarea" id="description" cols="3" placeholder="请填写作品描述">${work.Fdescription}</textarea>
+                        <span class="txt-count text-gray v-top" id="txt-count" style="margin-left: 5px;"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label-title v-top">封面图</label>
+                        <div class="series-upload">
+                        		<div class="cover-img">
+                                 <form action="/merchant/product/upload/series" method="post" id="js_cover"  enctype="multipart/form-data"/>
+                                    <input type="hidden" name="_xsrf" value="${xsrf_token}">
+                                    <div class="btn-uploadcover" value="" >上传封面图</div>
+                                    <img title="封面图" alt="" data-id="" src="${work.Fcover_img}" id="cover" class="cover">
+                                    <input id="coverupload" type="file" name="files" title="请选择图片" />
+                                </form>
+                        		</div>
+                            <div class="cover-desc v-top">
+                            		<p>图片宽度和高度940X580px，其他类目发横图1600*1200px，</p>
+                            		<p>单张图片不要超过10M，图片上不要有任何文字及Logo；</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt">
+                        <label class="label-title">图片展示<em>*</em></label>
+                        <div class="series-upload">
+                        		<div class="cover-img">
+                                <form action="/merchant/product/upload/series" method="post" enctype="multipart/form-data" id="J-formFile" />
+						            <input type="hidden" name="_xsrf" value="${xsrf_token}" />
+						            <input type="button" class="btn btn-sm btn-success btn-uploadphoto" value="上传图片" />
+						            <input id="fileupload" type="file" name="files" data-url="#"  title="请选择图片" multiple />
+						        </form>
+					        </div>
+					        <div class="cover-desc">
+                            		<p>单张图片不要超过5M, 建议上传8张图片及以上;</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="series-extra">
+                            <ul class="photo-thumb" id="J-append-photo">
+                                <input type="hidden" id="js-photo" />
+                                <?py if images:?>
+                                    <?py for img in images:?>
+                                        <li class="photo-item" sort-id="">
+                                            <div class="up-photo">
+                                                <img src="${img.Furl}" alt="" title="" data-id="${img.Fimg_id}"/>
+                                            </div>
+                                            <!--<textarea name="photo_desc" class="photo-desc" placeholder="请填写图片描述">${img.Fdescription}</textarea>-->
+                                            <span class="delete-photo" data-id="${img.Fid}">
+									        		<i class="glyphicon glyphicon-trash"></i>
+									        </span>
+                                        </li>
+                                    <?py #endfor?>
+                                <?py #endif ?>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group tcenter">
+                        <input type="button" class="btn btn-success" id="save" value="提交" />
+                        <input type="hidden" name="_post_url" value="'/merchant/weddingdress/work/edit/'" />
+                        <a href="/merchant/weddingdress/work/list/" class="btn btn-default" id="cancel">取消</a>
+                    </div>                                
+                </div>
+            </div><!--/span-->
+        </div>
+    </div><!--/row-->
+</div><!--/#content.span10-->
+
+<!--<script type="text/html" id="J-model-cover">
+	<img src="/static/apps_crm/js/plugins/uploadify/img/user-loading.gif" alt="" title="" data-id=""/>
+</script>-->
+
+<script type="text/html" id="J-model-photo">
+	<li class="photo-item">
+        <div class="up-photo">
+            <img src="/static/crm/js/plugins/uploadify/img/user-loading.gif" alt="" title="" data-id=""/>
+        </div>
+        <span class="v-top delete-photo">
+        		<i class="glyphicon glyphicon-trash"></i>
+        </span>
+	</li> 
+</script>
+
+<!--gzh func js-->
+
+<script src="/static/crm/js/plugins/uploadify/js/jquery.ui.widget.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.iframe-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/load-image.min.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.xdr-transport.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-ui.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-process.js"></script>
+<script src="/static/crm/js/plugins/uploadify/js/jquery.fileupload-image.js"></script>
+<script src="/static/crm/js/dragula.min.js"></script>
+
+
+<script src="/static/crm/js/weddingdress/work_add.js"></script>
+<script>
+	$(function(){
+		$(".nav-work").addClass("active");
+        dragula([$('#J-append-photo')[0]]);
+	})
+</script>
+

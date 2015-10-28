@@ -1,0 +1,122 @@
+/*
+ * 
+ * 
+ */
+.wrapper{ overflow: hidden; height: auto; background: #f3f3f3;}
+.wrapper .container-fluid{ padding: 0;}
+.system-name{ height: 50px; line-height: 50px; background: #2ad79c; color: #fff;}
+.mainCons{ overflow: hidden; padding: 0 0 10px 0; min-height: 600px; background: #fff;}
+.title{ margin: 0 0 20px 0; padding: 0 0 0 30px; height: 50px; line-height: 50px; border-bottom: 1px solid #ccc;}
+
+.border{ border: 1px solid #ccc;}
+.mainCons .glyphicon{ margin-right: 8px;}
+.mainCons .title h2{ margin: 0; padding: 0; font-size: 20px; line-height: 50px;}
+.department-item{ }
+.member .col-md-3{ padding: 0;}
+.member .col-md-9{ padding: 0;}
+.department-item.col-md-3{ padding: 0;}
+.department-item ul{ padding: 0; margin: 0;}
+.department-item ul li{ display: inline-block; width: 100%; line-height: 40px;}
+.department-item a{ display: inline-block; line-height: 40px;}
+.department-item .top-depart{ }
+
+.department-item .top-depart a{ padding-left: 20px;}
+.department-item .children a{ padding-left: 35px;}
+.department-item .grandson a{ padding-left: 50px;}
+.glyphicon-plus{ display: inline-block; }
+.level-item{ }
+.level-item a{ display: inline-block;}
+.level-item{ position: relative; }
+.level-item .add-depart{ position: absolute; right: 10px; top: 13px; margin-top: 0;}
+
+
+.level-item .btn-depart{ margin: 5px 20px 5px 0; width: 50px; vertical-align: middle; }
+.level-item .glyphicon{ margin-right: 8px;}
+
+.department-item .table>tbody>tr>td, 
+.department-item .table>tbody>tr>th, 
+.department-item .table>tfoot>tr>td, 
+.department-item .table>tfoot>tr>th, 
+.department-item .table>thead>tr>td, 
+.department-item .table>thead>tr>th{ padding: 8px 5px;}
+
+.sub-sector.table>tbody>tr>td, 
+.sub-sector.table>tbody>tr>th, 
+.sub-sector.table>tfoot>tr>td, 
+.sub-sector.table>tfoot>tr>th, 
+.sub-sector.table>thead>tr>td, 
+.sub-sector.table>thead>tr>th{ padding: 15px 0 0 15px; height: 45px; border: none;}
+.sub-sector.table>tbody tr{ border-bottom: 1px solid #ddd;} 
+
+.menu{ line-height: 40px;}
+.di-child{ padding: 0 10px;}
+.di-child li{ line-height: 40px;}
+.departHome li{ line-height: 30px;}
+.departChild{ padding-left: 20px;}
+.member{ padding: 0;}
+.member .col-md-9{ float: right;}
+.member .col-md-10{ padding: 0; }
+.member .col-md-3{ float: left;}
+.member .col-md-9{ float: right;}
+.member-title{ margin: 0; padding: 0; height: 40px;}
+.member-title h3{ }
+.member-list{ overflow: hidden; width: 100%; min-height: 485px;}
+.member-title button{ display: inline-block; padding: 8px 45px 0 0}
+.member-name{ padding: 0 0 0 15px; margin: 0; background: #fafafa; line-height: 40px; font-size: 20px;}
+.member-title .member-name button{ display: inline-block; padding: 0px 5px 2px 15px}
+
+.ml-avatar{ width: 15%;}
+.ml-avatar img{ display: inline-block; float: left; margin-right: 10px; width: 45px; height: 45px;}
+.ml-mobile{ width: 15%;}
+.ml-group{ width: 20%; vertical-align: middle;}
+.ml-lastlogin{ width: 20%; vertical-align: middle;}
+.ml-role{ padding-right: 20px; width: 25%; vertical-align: middle; text-align: center;}
+.btn-depart{ margin-left: 15px;}
+
+
+.member-list ul{ text-align: center;}
+.member-list ul li{ margin: 10px 0;}
+.member-list ul label{ display: inline-block; width: 100px;}
+.member-list ul select{ width: 316px; height: 40px;}
+.member-list ul li button{ margin: 0 5px;}
+
+.ul-third{ padding: 0 10px;}
+.ml-item{ display: table; border: none; width: 100%; height: 485px;}
+.sub-sector{ padding: 1% 0; width: 100%; font-size: 14px; }
+.order-page{ margin: 0 auto; width: 100%; text-align: center;}
+.order-page .pagination{ margin: 10px auto;}
+
+.addMember ul{ padding: 0; margin: 0;}
+.addMember ul li{ clear: both; margin: 10px 0;}
+.addMember ul li label{ display: inline-block;  width: 100px;}
+.addMember .avatar{ display: inline-block; border: 0;}
+.input-txt{ padding-left: 5px; width: 318px; height: 38px; line-height: 38px; border: 1px solid #ccc; border-radius: 5px; outline: none;}
+.addMember .btn-upload{ display: inline-block; margin-left: 10px; width: 200px; vertical-align: top;}
+
+#editMemModal, #addMemModal{ z-index: 99999999;} 
+
+.create-depart{ overflow: hidden;}
+hr{ margin-bottom: 0;}
+.department select,
+.department input{ display: inline-block; vertical-align: middle;}
+.department select{ width: 300px; padding: 10px; height: 38px;}
+.department{ padding: 10px 20px;}
+.department .depart-name{ display: inline-block; padding: 0 10px;} 
+.department .btn-edit{ display: inline-block; margin: 0 15px;}
+.department .table>tbody>tr>td, 
+.department .table>tbody>tr>th, 
+.department .table>tfoot>tr>td, 
+.department .table>tfoot>tr>th, 
+.department .table>thead>tr>td, 
+.department .table>thead>tr>th{ padding: 10px 10px; }
+
+.dpt-name{ width: 80%; vertical-align: middle;}
+.dpt-action{ width: 20%; text-align: center; vertical-align: middle;}
+.dpt-action a{ display: inline-block;} 
+.dpt-action .btn-sm{ padding: 5px 8px;}
+.my-dpt{ margin-right: 10px;}
+
+#addMemModal select{width: 318px; padding: 10px; height: 38px; }
+
+.v-top{ vertical-align: top;}
+.btn-sm{ padding: 3px 8px;}

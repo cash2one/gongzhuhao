@@ -1,0 +1,48 @@
+/*
+	话题详情跟帖列表
+*/
+.posts_comment{
+	border-top: 1px dashed #e5e5e5;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.posts_comment li{
+	margin-bottom: 0px;
+}
+.posts-right .btn-span,
+.posts_comment .btn-span{
+	color: #fff;
+    background-color: #53aefb;
+    border-radius: 3px;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    border:0px;
+}
+
+.comment_more .btn_more{
+	overflow: auto;
+	color: #ff6657;
+	font-size: 0.9em;
+	cursor: pointer;
+}
+
+.posts_comment .comment_name{
+	color:#ff6657;
+	font-size: 0.9em;
+}
+
+.posts_comment p .comment_name{
+	font-size: 1em;
+} 
+
+.posts_comment .comment_reply,
+.posts_comment .comment_time{
+	color:#999;
+}
+
+.posts_comment p{
+	display: inline-block;
+	line-height: 1.2em;
+	font-size: 0.9em;
+}

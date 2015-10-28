@@ -1,0 +1,11 @@
+<form method="post">
+    <label>登陆</label>
+    <input type="text" name="username">
+    <input type="password" name="passwd" value="">
+    <input type="submit" value="登陆">
+    <label>
+        <?py if data:?>
+                ${data['error']}
+        <?py #endif ?>
+    </label>
+</form>

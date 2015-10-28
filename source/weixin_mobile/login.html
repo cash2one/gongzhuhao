@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>公主号手机登录页面</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<link rel="stylesheet" href="/static/styles/icon.css"  />
+	<link rel="stylesheet" href="/static/styles/login.css"  />
+	<script type="text/javascript">
+		var phoneWidth = parseInt(window.screen.width);
+		var phoneScale = phoneWidth/640;
+		var ua = navigator.userAgent;
+		if (/Android (\d+\.\d+)/.test(ua)){
+			var version = parseFloat(RegExp.$1);
+			// andriod 2.3
+			if(version>2.3){
+				document.write('<meta name="viewport" content="width=640, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi" />');
+			// andriod 2.3以上
+			}else{
+				document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi" />');
+			}
+		// 其他系统
+		} else {
+			document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi" />');
+		}
+	</script>
+</head>
+<body>
+	<section class="wrapper">
+			 #{xsrf_form_html}
+			<ul id="nav" class="nav">
+				<li>
+					<a href="javascript:;">账号登录</a>
+				</li>
+				<li>
+					<a href="javascript:;">手机号登录</a>
+				</li>
+			</ul>
+			<div class="con" id="con">
+				<div class="con-item">
+					<form method="post" action="/mobile/user/login" id="user_login_form">
+						<div class="item borderNone">
+							<input type="text" name="mobile" id="mobile" class="input-txt input-mobile" placeholder="用户名"/>
+							<span class="icon icon-mobile"></span>
+						</div>
+						<div class="item">
+							<input type="password" name="password" id="password" class="input-txt" placeholder="密码"/>
+							<span class="icon icon-code"></span>
+						</div>
+						<div class="btnCons">
+							<input type="submit" name="login" id="login" class="login" value="登录" style="-webkit-appearance : none"/>
+						</div>
+						<div class="error"></div>
+					</form>
+				</div>
+				<div class="con-item">
+					<form method="" action="" id="user_reg_form">
+						<div class="item borderNone">
+							<input type="text" name="phone" id="phone" class="input-txt" placeholder="手机号码"/>
+							<span class="icon icon-mobile"></span>
+							<input type="submit" class="btn btn-code" id="sendCode" value="获取验证码"/>
+						</div>
+						<div class="item">
+							<input type="text" name="code" id="code" class="input-txt" placeholder="输入验证码"/>
+							<span class="icon icon-code"></span>
+						</div>
+						<div class="btnCons">
+							<input type="button" name="register" id="register" class="login" value="登录" style="-webkit-appearance : none"/>
+						</div>	
+						<div class="error reg-error"></div>
+					</form>
+				</div>
+			</div>
+	</section>
+	<script src="/static/vendor/jquery.min.js"></script>
+	<script src="/static/vendor/login.js"></script>
+</body>
+</html>

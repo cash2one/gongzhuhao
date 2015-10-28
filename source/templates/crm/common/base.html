@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>公主号,商家管理</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Central Page -- User">
+	<meta name="author" content="">
+
+	<!-- The styles -->
+	<link rel="stylesheet" href="/static/crm/css/plugins/bootstrap.min.css" />
+	<link rel="stylesheet" href="/static/crm/css/plugins/bootstrap-dialog.min.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/static/crm/css/common.css" />
+	<script src="/static/crm/js/plugins/jquery-1.11.2.min.js"></script>
+	<script src="/static/crm/js/common.js"></script>
+	<!--[if lt IE 9]>
+	  <script src="/static/crm/js/plugins/html5.js"></script>
+	<![endif]-->	
+	<script src="/static/crm/js/plugins/json2.js"></script>
+</head>
+
+<body>
+	#{xsrf_form_html}
+	<!-- topbar starts -->
+	
+	<?py include('crm/common/_nav.html') ?>
+
+    <!-- topbar ends -->
+		<div class="ch-container" id="wrapper">
+		<div class="row">
+			<!-- left menu starts -->
+			<?py include("crm/common/_left.html") ?>
+			<!-- left menu ends -->		
+	        #{_content}
+
+		</div><!--/fluid-row-->
+	</div><!--/.fluid-container-->
+
+<script src="/static/crm/js/plugins/bootstrap.min.js"></script>
+<script src="/static/crm/js/plugins/bootstrap-dialog.min.js" type="text/javascript"></script>
+<script src="/static/crm/js/plugins/jquery.cookie.js"></script>
+<script src="/static/crm/js/plugins/jquery.history.js"></script>
+
+<!--gzh func js-->
+<div style="display:none">
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255477685'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1255477685' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>

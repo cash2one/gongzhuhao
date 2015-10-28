@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/static/web/js/plugins/lightbox/css/lightbox.css" />
+<link rel="stylesheet" href="/static/mobile/css/photo/photo.css" />
+    <?py company_name, order_id_user = handler.get_company_order_info(album_id) ?>
+    <header class="header">
+    		<a class="back" href="javascript:history.go(-1);"><span class="icon icon-back"></span></a>
+        <p class="title">${company_name}   ${order_id_user}</p>
+    </header>		
+    <section class="photo cd-main-content">
+        <div class="photo-share">
+	    		<?py if photos:?>
+	    		<ul class="share-list">
+            <?py for photo in photos:?>
+                <li>
+                    <a class="pt-link" data-lightbox="pt-thumb" data-lightbox="pt-thumb"  href="${photo.Fimage_url}">
+                        <img src="${handler.get_show_img_url(photo.Fimage_url,400)}" id="${photo.Fid}" />
+                    </a>
+                </li>
+            <?py #endfor ?>
+          </ul>
+          <?py #endif?>
+         </div>
+    </section>
+	<footer class="footer">
+		<a href="/mobile/user/album/detail/${album_id}/"  class="btn-share share">分享</a>
+	</footer>      
+</div>
+<script src="/static/web/js/plugins/lightbox/js/lightbox.min.js"></script>
+<script>
+	$(function(){
+		$('.nav_photo').addClass('current');
+	})
+</script>
